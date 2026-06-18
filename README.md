@@ -64,3 +64,14 @@ CNAME  www    <GitHub username>.github.io
 - `styles.css`: visual system
 - `script.js`: language toggle and trend filter
 - `server.js`: minimal local/static Node server for the root site
+
+## Ad Platform Notes
+
+- HilltopAds ownership verification file: `2b50aba8f8f10d7e2cbd.txt`
+- Referrer policy is currently set with:
+
+```html
+<meta name="referrer" content="no-referrer-when-downgrade" />
+```
+
+This helps ad platforms receive page referrer information for HTTPS-to-HTTPS requests. Keep personal data, user IDs, access tokens, and private campaign tokens out of public URLs before adding more ad scripts. If sensitive URL parameters become necessary later, revisit this policy and consider a stricter option such as `strict-origin-when-cross-origin`.
