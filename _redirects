@@ -1,0 +1,3 @@
+/gamewiki / 301
+/gamewiki/ / 301
+/gamewiki/* /:splat 301

@@ -1,0 +1,13 @@
+{
+  "name": "gamewiki-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static GAME WIKI site served at the domain root.",
+  "scripts": {
+    "start": "node server.js",
+    "preview": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
