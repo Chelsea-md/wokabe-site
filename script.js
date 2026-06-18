@@ -1,5 +1,5 @@
 (function () {
-  const storageKey = "gamewiki-language";
+  const storageKey = "gamewiki-language-v2";
   const body = document.body;
   const languageButtons = Array.from(document.querySelectorAll("[data-lang-switch]"));
   const filterButtons = Array.from(document.querySelectorAll("[data-filter]"));
@@ -33,10 +33,10 @@
         return saved;
       }
     } catch (error) {
-      return "ko";
+      return "en";
     }
 
-    return navigator.language && navigator.language.toLowerCase().startsWith("en") ? "en" : "ko";
+    return "en";
   }
 
   function setFilter(filter) {
