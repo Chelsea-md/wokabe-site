@@ -2,7 +2,7 @@ const response=await fetch('design-briefs.json');
 if(!response.ok)throw Error('시안 목록을 불러오지 못했습니다.');
 const brief=await response.json(),chosen={character:null,ui:null};
 for(const group of ['character','ui']){
-  document.querySelector('#'+group+'-grid').innerHTML=brief.records.filter(r=>r.group===group).map(record=>`<article class="concept" data-concept="${record.id}"><a href="${record.file}" target="_blank" rel="noopener" aria-label="${record.id} 원본 크게 보기"><img src="${record.file}" alt="${group==='character'?'캐릭터':'홈·인게임 UI'} 디자인 ${record.id}" ${record.id==='C1'?'':'loading="lazy"'}></a><footer><label><input type="radio" name="${group}" value="${record.id}">${record.id}</label><small>이미지 클릭 · 원본 크게 보기</small></footer></article>`).join('');
+  document.querySelector('#'+group+'-grid').innerHTML=brief.records.filter(r=>r.group===group).map(record=>`<article class="concept" data-concept="${record.id}"><a href="${record.file}" target="_blank" rel="noopener" aria-label="${record.id} 원본 크게 보기"><img src="${record.file}" width="${record.width}" height="${record.height}" alt="${group==='character'?'캐릭터':'홈·인게임 UI'} 디자인 ${record.id}" ${record.id==='C1'?'':'loading="lazy"'}></a><footer><label><input type="radio" name="${group}" value="${record.id}">${record.id}</label><small>이미지 클릭 · 원본 크게 보기</small></footer></article>`).join('');
 }
 document.addEventListener('change',event=>{
   const input=event.target;if(!input.matches('input[type="radio"]'))return;

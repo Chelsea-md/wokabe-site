@@ -13,7 +13,9 @@
       "name": "Soft Clay Garden",
       "file": "images/character-1.png",
       "direction": "Matte sculpted clay; pistachio, apricot, cream; rounded original botanical silhouettes.",
-      "role": "Concept preview, not game-ready sprite or implemented interface"
+      "role": "Concept preview, not game-ready sprite or implemented interface",
+      "width": 1536,
+      "height": 1024
     },
     {
       "id": "C2",
@@ -21,7 +23,9 @@
       "name": "Bold Bloom",
       "file": "images/character-2.png",
       "direction": "Crisp geometric cel illustration; coral/mint/ink; confident tapered outlines.",
-      "role": "Concept preview, not game-ready sprite or implemented interface"
+      "role": "Concept preview, not game-ready sprite or implemented interface",
+      "width": 1536,
+      "height": 1024
     },
     {
       "id": "C3",
@@ -29,7 +33,9 @@
       "name": "Moonlit Herbarium",
       "file": "images/character-3.png",
       "direction": "Painted2.5D magical botanical figures; midnight teal with restrained luminescence.",
-      "role": "Concept preview, not game-ready sprite or implemented interface"
+      "role": "Concept preview, not game-ready sprite or implemented interface",
+      "width": 1536,
+      "height": 1024
     },
     {
       "id": "C4",
@@ -37,7 +43,9 @@
       "name": "Wildflower Storybook",
       "file": "images/character-4.png",
       "direction": "Gouache and colored-pencil illustration; honey/terracotta/sage; gentle original faces.",
-      "role": "Concept preview, not game-ready sprite or implemented interface"
+      "role": "Concept preview, not game-ready sprite or implemented interface",
+      "width": 1536,
+      "height": 1024
     },
     {
       "id": "C5",
@@ -45,7 +53,9 @@
       "name": "Paper Garden Theatre",
       "file": "images/character-5.png",
       "direction": "Layered cut paper, folded card-stock and shallow relief shadows.",
-      "role": "Concept preview, not game-ready sprite or implemented interface"
+      "role": "Concept preview, not game-ready sprite or implemented interface",
+      "width": 1536,
+      "height": 1024
     },
     {
       "id": "C6",
@@ -53,7 +63,9 @@
       "name": "Botanical Clockwork",
       "file": "images/character-6.png",
       "direction": "Celadon porcelain, aged brass, warm wood and botanical automaton miniatures.",
-      "role": "Concept preview, not game-ready sprite or implemented interface"
+      "role": "Concept preview, not game-ready sprite or implemented interface",
+      "width": 1536,
+      "height": 1024
     },
     {
       "id": "C7",
@@ -61,7 +73,9 @@
       "name": "Petal Patrol",
       "file": "images/character-7.png",
       "direction": "Original modern chibi botanical designs, clean colored outlines and soft cel shading.",
-      "role": "Concept preview, not game-ready sprite or implemented interface"
+      "role": "Concept preview, not game-ready sprite or implemented interface",
+      "width": 1536,
+      "height": 1024
     },
     {
       "id": "U1",
@@ -69,7 +83,9 @@
       "name": "Cozy Ceramic",
       "file": "images/ui-1.png",
       "direction": "Warm cream/sage/apricot, ceramic-and-clay material, soft shadows.",
-      "role": "Concept preview, not game-ready sprite or implemented interface"
+      "role": "Concept preview, not game-ready sprite or implemented interface",
+      "width": 1793,
+      "height": 877
     },
     {
       "id": "U2",
@@ -77,7 +93,9 @@
       "name": "Botanical Studio",
       "file": "images/ui-2.png",
       "direction": "Illustrated botanical boardgame; pale ivory/forest/ochre, fine ink outlines.",
-      "role": "Concept preview, not game-ready sprite or implemented interface"
+      "role": "Concept preview, not game-ready sprite or implemented interface",
+      "width": 1794,
+      "height": 877
     },
     {
       "id": "U3",
@@ -85,7 +103,9 @@
       "name": "Bloom Arcade",
       "file": "images/ui-3.png",
       "direction": "Bold arcade geometry; controlled coral/yellow/cyan/ink and strong contrast.",
-      "role": "Concept preview, not game-ready sprite or implemented interface"
+      "role": "Concept preview, not game-ready sprite or implemented interface",
+      "width": 1821,
+      "height": 864
     },
     {
       "id": "U4",
@@ -93,7 +113,9 @@
       "name": "Garden Workshop",
       "file": "images/ui-4.png",
       "direction": "Layered paper/card-stock tabletop garden; sage/cornflower/terracotta.",
-      "role": "Concept preview, not game-ready sprite or implemented interface"
+      "role": "Concept preview, not game-ready sprite or implemented interface",
+      "width": 1793,
+      "height": 877
     },
     {
       "id": "U5",
@@ -101,7 +123,9 @@
       "name": "Moon Garden",
       "file": "images/ui-5.png",
       "direction": "Deep teal meadow, moonstone UI, ivory text and restrained cyan-lilac light.",
-      "role": "Concept preview, not game-ready sprite or implemented interface"
+      "role": "Concept preview, not game-ready sprite or implemented interface",
+      "width": 1794,
+      "height": 877
     },
     {
       "id": "U6",
@@ -109,7 +133,9 @@
       "name": "Petal Expedition",
       "file": "images/ui-6.png",
       "direction": "Adventure illustration with navy controls, ivory panels and restrained brass.",
-      "role": "Concept preview, not game-ready sprite or implemented interface"
+      "role": "Concept preview, not game-ready sprite or implemented interface",
+      "width": 1794,
+      "height": 876
     },
     {
       "id": "U7",
@@ -117,7 +143,9 @@
       "name": "Pocket Diorama",
       "file": "images/ui-7.png",
       "direction": "Clean isometric satin-resin miniatures, near-flat ivory/emerald/tangerine UI.",
-      "role": "Concept preview, not game-ready sprite or implemented interface"
+      "role": "Concept preview, not game-ready sprite or implemented interface",
+      "width": 1794,
+      "height": 877
     }
   ]
 }
