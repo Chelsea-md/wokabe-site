@@ -303,7 +303,7 @@ export const documents = {
           },
           {
             "type": "figure",
-            "src": "forest-camp-01.png",
+            "src": "forest-camp-01.png?v=20261017-forest",
             "caption": "웨이브1/10 준비 화면. 이번 전투 역시 총10웨이브다."
           },
           {
@@ -343,12 +343,12 @@ export const documents = {
           },
           {
             "type": "figure",
-            "src": "forest-camp-06.png",
+            "src": "forest-camp-06.png?v=20261017-forest",
             "caption": "웨이브7/10. 뱀파이어형 외형의 적과 큰 파란 적이 함께 등장한다. 외형만으로 공격 방식을 확정하지 않는다."
           },
           {
             "type": "figure",
-            "src": "forest-camp-07.png",
+            "src": "forest-camp-07.png?v=20261017-forest",
             "caption": "웨이브10/10의 큰 파란 적과 해골 표식. 화면의 선·투사체만으로 각 발사 주체나 적별 사거리를 역산하지 않았다."
           },
           {
@@ -357,7 +357,7 @@ export const documents = {
           },
           {
             "type": "figure",
-            "src": "forest-camp-09.png",
+            "src": "forest-camp-09.png?v=20261017-forest",
             "caption": "표시 클리어 보상7200코인. X2 버튼 표시와 실제 광고 시청·수령은 구분한다."
           },
           {
