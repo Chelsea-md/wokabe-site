@@ -1,0 +1,20 @@
+PASS — 3 plant classes, 10 whole-character star looks each; rookie to golden legend.
+PASS — Calm idle, cheeky walk, additive hurt hop/tint; attack timers keep running.
+PASS — Grounded character shadows respond to bounce.
+PASS — Plants and enemies face the attack target; both directions tested.
+PASS — Every ranged enemy fires independently; lime seeds / piercing bolts / pinecone shells / violet enemy shots have distinct silhouettes.
+PASS — Generated mint soul rises and fades on enemy death.
+PASS — Generated gold ring, rays and sparkles play on star merge.
+PASS — Range only on hold/drag and briefly after deployment; no persistent unit inspector or star badges.
+PASS — Final user-selected five-stage leaf-roof garden base, grounded shadow and broad soft floor light.
+PASS — Castle Health advances base tier; base HP only above base briefly after a hit and never during boss intro.
+PASS — Red cartoon ribbon, lime action buttons, slate tray/nav, cream/gold cards and English in-game labels.
+PASS — Sunlight number is left, sun icon is right; deployment costs use the same order.
+PASS — Squad uses a transparent golden helmet; settings has a consistent dark frame.
+PASS — Boss slow motion, camera focus, supplied warning/name artwork and skip; no logo during play.
+PASS — Logo splashes only before entering / after leaving play.
+PASS — PAUSED and RETURN HOME popups; icon + label centered together; Cancel restores pause and Resume continues.
+PASS — Main validation: 21 JavaScript files, 128 catalog resources, 3 chapters.
+PASS — Combat behavior: 5 tests. Private workspace: 15 tests. v4 preservation: 16 files.
+Scope: This deliverable is the art/UI/combat preview in cartoon-v5. Persistent main-game progression and final combat balance are not changed.
+PASS — Last six fixes: tight contact shadow; separate home background clears UI; nameplate backing closes tip; 5px popup icon outline; base heights 62 / 78 / 96 / 114 / 136; final user-supplied troop icon.

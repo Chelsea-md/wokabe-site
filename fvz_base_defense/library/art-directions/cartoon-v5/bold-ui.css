@@ -54,3 +54,72 @@ body[data-ui-theme=bold] .sun-stock>.ui-raster{width:3.7cqw;height:3.7cqw;order:
 body[data-ui-theme=bold] .game-frame .troop-card b img.ui-raster{position:static!important;width:2.4cqw!important;height:2.4cqw!important;top:auto!important;flex-shrink:0;object-fit:contain}
 
 #scene-splash{position:absolute;inset:0;z-index:55;background:#222b24f7;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1cqw;pointer-events:auto}#scene-splash[hidden]{display:none}#splash-logo{position:static;width:36%;height:65%;object-fit:contain;filter:drop-shadow(0 7px #111a10);animation:logo-pop .4s cubic-bezier(.18,.9,.25,1.25) both}#splash-label{font:1.9cqw GameChunk,sans-serif;color:#fff5d0;letter-spacing:.07em}.splash-dots{font:1cqw GameChunk,sans-serif;color:#b9d37e;letter-spacing:.16em;animation:splash-pulse .55s alternate infinite}@keyframes logo-pop{from{transform:translateY(15px) scale(.85);opacity:0}to{transform:none;opacity:1}}@keyframes splash-pulse{to{opacity:.45}}.scene-changing .troop-card{pointer-events:none}
+
+/* Field / cinematic refinement: persistent base HUD is intentionally absent. */
+body[data-ui-theme=bold] .health{display:none!important}
+body[data-ui-theme=bold] .boss-title{left:2%;bottom:14%;width:51%;padding:1cqw 1.4cqw 1.5cqw;background:linear-gradient(120deg,#15232e,#0a171f);border:3px solid #edbd30;border-left:0;clip-path:polygon(0 0,94% 0,100% 24%,94% 100%,0 100%);filter:drop-shadow(0 4px #090f16)}
+body[data-ui-theme=bold] .boss-title span{font-size:2.7cqw;border:4px solid #080d13;border-radius:.7cqw;background:#ff2428;box-shadow:inset 0 3px #ff8781,0 3px #eab827;padding:.45cqw 1cqw;transform:rotate(-3deg);color:#fff6dc;-webkit-text-stroke:1px #101014;paint-order:stroke fill}
+body[data-ui-theme=bold] .boss-title span::before{content:'⚠';color:#ffe235;margin-right:.6cqw}
+body[data-ui-theme=bold] .boss-title strong{font-size:4.5cqw;color:#ffe577;-webkit-text-stroke:5px #080d12;paint-order:stroke fill;text-shadow:0 4px #c28d0b}
+body[data-ui-theme=bold] .boss-title small{font-size:1.8cqw;letter-spacing:.02em;-webkit-text-stroke:3px #080d12;paint-order:stroke fill}
+body[data-ui-theme=bold] #skip-boss{bottom:9%;right:2%;font-size:1.6cqw;border:3px solid #edbd30;box-shadow:0 3px #080f16,inset 0 2px #617283;border-radius:1cqw;background:#10202c;padding:.7cqw 1.2cqw}
+body[data-ui-theme=bold] .home-actions{top:18%;height:61%}
+body[data-ui-theme=bold] .home .bottom-nav{height:16%}
+
+body[data-ui-theme=bold] .pause-overlay{background:#071b25b8;backdrop-filter:none;z-index:60}
+body[data-ui-theme=bold] .pause-overlay section{position:relative;width:37%;padding:4.8cqw 3cqw 2.5cqw;border:5px solid #101b29;border-radius:2.5cqw;background:radial-gradient(ellipse at center,#fff8df,#fff0c5);box-shadow:inset 0 0 0 5px #ffce2c,inset 0 0 0 9px #fff1aa,0 6px #0c1925;color:#122332}
+body[data-ui-theme=bold] .pause-overlay section>span{position:absolute;top:-1.3cqw;left:20%;width:60%;box-sizing:border-box;padding:.5cqw;font:2cqw GameChunk,sans-serif;background:linear-gradient(#ff7143,#f03a27);border:4px solid #101b29;border-radius:1cqw;color:#fff8dc;-webkit-text-stroke:3px #111b26;paint-order:stroke fill;box-shadow:inset 0 3px #ffb279,0 3px #9a241d}
+body[data-ui-theme=bold] .pause-overlay h2{margin:0;font:3.8cqw GameChunk,sans-serif;color:#fffbed;-webkit-text-stroke:7px #101b28;paint-order:stroke fill;text-shadow:0 5px #101b28;line-height:1.15}
+body[data-ui-theme=bold] .pause-overlay h2::before{content:'🌱';display:block;font-size:3cqw;-webkit-text-stroke:0;line-height:1.2;text-shadow:none}
+body[data-ui-theme=bold] .pause-overlay p{font:1.7cqw GameChunk,sans-serif;margin:1cqw 0 1.5cqw}
+body[data-ui-theme=bold] .pause-overlay button{display:block;position:relative;width:100%;height:5.6cqw;margin:1cqw 0 0;border:4px solid #0b1b27;border-radius:1.5cqw;font:2.7cqw GameChunk,sans-serif;color:#122332;background:linear-gradient(#9bff38,#5bdb24);box-shadow:inset 0 4px #d9ff9b,inset 0 -6px #079b31,0 3px #0a1621}
+body[data-ui-theme=bold] #resume-battle::before{content:'▶';position:absolute;left:15%;color:#fff7d5;-webkit-text-stroke:3px #10202c;paint-order:stroke fill}
+body[data-ui-theme=bold] .pause-overlay #pause-to-home{color:#fff7db;background:linear-gradient(#42698c,#233f61);box-shadow:inset 0 4px #6a91b0,inset 0 -6px #122b43,0 3px #0a1621;-webkit-text-stroke:3px #10202c;paint-order:stroke fill}
+body[data-ui-theme=bold] #pause-to-home::before{content:'⌂';position:absolute;left:15%;font-size:3.5cqw;top:.2cqw}
+
+body[data-ui-theme=bold] .boss-title{width:46%}body[data-ui-theme=bold] .boss-title strong{font-size:4.1cqw}
+
+body[data-ui-theme=bold] .boss-title{background:var(--skin-bossNamePlate) center/100% 100% no-repeat;border:0;clip-path:none;padding:1.5cqw 2cqw 1.6cqw;width:47%;box-sizing:border-box}
+body[data-ui-theme=bold] .boss-title span{background:var(--skin-bossWarning) left center/contain no-repeat;width:36cqw;height:7.4cqw;padding:0;border:0;border-radius:0;box-shadow:none;transform:none;font-size:0;-webkit-text-stroke:0;margin-top:-7cqw}
+body[data-ui-theme=bold] .boss-title span::before{content:none}
+body[data-ui-theme=bold] .boss-title strong{font-size:3.6cqw;white-space:nowrap;margin-top:0}
+body[data-ui-theme=bold] .boss-title small{font-size:1.45cqw}
+body[data-ui-theme=bold] .pause-overlay h2{font-size:4.1cqw}
+body[data-ui-theme=bold] .pause-overlay h2::before{content:none}
+.pause-sprout{display:block;width:5cqw;height:4cqw;margin:-1.5cqw auto 1cqw;filter:drop-shadow(0 2px #18362b)}
+.pause-symbol{position:absolute;left:14%;top:1cqw;width:3.2cqw;height:3.2cqw;fill:#fff4ce;stroke:#10202b;stroke-width:2.5;stroke-linejoin:round}
+body[data-ui-theme=bold] #resume-battle::before,body[data-ui-theme=bold] #pause-to-home::before{content:none}
+
+/* Sunlight counters share the reference's number → icon reading order. */
+body[data-ui-theme=bold] .sun-stock{display:flex;align-items:center;justify-content:center;gap:1cqw;box-sizing:border-box;width:14cqw;height:5.2cqw;padding:.5cqw .9cqw}
+body[data-ui-theme=bold] .sun-stock>div:not(.sun-rate){order:1;flex:0 0 auto;width:auto;min-width:2.5cqw;text-align:center}
+body[data-ui-theme=bold] .sun-stock>.ui-raster{order:2;flex:0 0 auto;width:3.8cqw;height:3.8cqw;margin:0}
+body[data-ui-theme=bold] .troop-card b{display:flex;flex-direction:row-reverse;align-items:center;justify-content:center;gap:.3cqw}
+body[data-ui-theme=bold] #home-roster .ui-raster{width:6.2cqw;height:6.2cqw}
+body[data-ui-theme=bold] #home-roster .sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+/* Shared popup skin: red ribbon, dark frame, cream paper, gold corners. */
+body[data-ui-theme=bold] .pause-overlay section{border-radius:2.5cqw;border:7px solid #142738;padding:4.2cqw 3cqw 2cqw;box-shadow:inset 0 0 0 3px #ffc638,0 4px #0b1521;background:linear-gradient(#fff8e7,#fff2d3)}
+body[data-ui-theme=bold] .pause-overlay section>span{top:-2cqw;left:7%;width:86%;height:6cqw;display:flex;justify-content:center;align-items:center;padding:0 0 .6cqw;background:var(--skin-ribbon) center/100% 100% no-repeat;border:0;border-radius:0;box-shadow:none;font-size:2.4cqw;letter-spacing:0}
+body[data-ui-theme=bold] .pause-overlay h2{font-size:2.6cqw;-webkit-text-stroke:0;text-shadow:none;color:#0d1b29;margin:.5cqw 0 0}
+body[data-ui-theme=bold] .pause-overlay p{font-size:1.4cqw;margin:.4cqw 0 1.2cqw;color:#5e655e}
+body[data-ui-theme=bold] .pause-overlay button{height:4.7cqw;font-size:2.2cqw;color:#fff7dc;-webkit-text-stroke:3px #0b1823;paint-order:stroke fill}
+body[data-ui-theme=bold] .pause-overlay button .pause-symbol{top:.7cqw;width:2.7cqw;height:2.7cqw}
+.pause-sprout{margin:-.7cqw auto .4cqw}
+.pause-dialog-actions{display:flex;gap:1cqw;margin-top:1.2cqw}
+body[data-ui-theme=bold] .pause-dialog-actions button{width:50%;margin:0}
+body[data-ui-theme=bold] #cancel-home{background:linear-gradient(#557ca0,#305272);box-shadow:inset 0 3px #87a5bf,inset 0 -5px #18344c,0 3px #0a1621}
+.return-house{display:block;width:7cqw;height:7cqw;margin:0 auto 1cqw}
+
+body[data-ui-theme=bold] .game-frame .game-settings,body[data-ui-theme=bold] .home .game-settings{border:3px solid #0c1119!important;border-radius:24%;background:#343f52!important;box-shadow:inset 0 3px #737d8e,0 3px #0c1119!important;padding:.5cqw!important}
+body[data-ui-theme=bold] .unit-inspector{display:none!important}
+/* Center icon and label as one group, rather than independent columns. */
+body[data-ui-theme=bold] .pause-overlay button{display:flex;align-items:center;justify-content:center;gap:1cqw;padding:0 .7cqw;line-height:1}
+body[data-ui-theme=bold] .pause-overlay button .pause-symbol{position:static;display:block;flex:0 0 2.7cqw;width:2.7cqw;height:2.7cqw;margin:0;top:auto;left:auto;transform:none}
+
+body[data-ui-theme=bold] #boss-cinematic.brass-art .boss-title{background-image:var(--skin-brassNameArt);height:10cqw;padding:0;width:51%}
+body[data-ui-theme=bold] #boss-cinematic.brass-art .boss-title span{margin-top:-6.2cqw;margin-left:1cqw}
+body[data-ui-theme=bold] #boss-cinematic.brass-art .boss-title strong,body[data-ui-theme=bold] #boss-cinematic.brass-art .boss-title small{position:absolute;clip:rect(0,0,0,0);width:1px;height:1px;overflow:hidden;white-space:nowrap}
+
+body[data-ui-theme=bold] .pause-overlay .pause-symbol path{stroke:#0a111a;stroke-width:5;stroke-linejoin:round;paint-order:stroke fill}
+body[data-ui-theme=bold] .pause-overlay .pause-symbol{overflow:visible}
+body[data-ui-theme=bold] #boss-cinematic.brass-art .boss-title{background-image:var(--skin-brassNameArt),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 950 200'%3E%3Cpath d='M16 8H896L942 100L896 192H16L8 184V16Z' fill='%2310202b' stroke='%23f4bf22' stroke-width='6' stroke-linejoin='round'/%3E%3C/svg%3E");background-size:100% 100%;background-position:center;background-repeat:no-repeat}

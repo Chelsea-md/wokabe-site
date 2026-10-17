@@ -187,5 +187,41 @@
       482,
       1522
     ]
+  },
+  "bossWarning": {
+    "atlas": "../../../assets/cartoon-v5-boss-ui.png",
+    "source": [
+      58,
+      202,
+      1019,
+      399
+    ]
+  },
+  "bossNamePlate": {
+    "atlas": "../../../assets/cartoon-v5-boss-ui.png",
+    "source": [
+      955,
+      492,
+      1777,
+      663
+    ]
+  },
+  "helmet": {
+    "atlas": "../../../assets/cartoon-v5-troop-icon.png",
+    "source": [
+      180,
+      150,
+      1090,
+      1090
+    ]
+  },
+  "brassNameArt": {
+    "atlas": "../../../assets/cartoon-v5-boss-ui.png",
+    "source": [
+      25,
+      490,
+      925,
+      667
+    ]
   }
 }

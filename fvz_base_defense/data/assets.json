@@ -1834,6 +1834,97 @@
       "height": 793,
       "bytes": 1541981,
       "transparent": true
+    },
+    {
+      "id": "cartoon-v5-base-evolution",
+      "file": "cartoon-v5-base-evolution.png",
+      "name": "v5 base-evolution",
+      "category": "art-direction",
+      "origin": "Built-in ImageGen",
+      "usage": "review",
+      "preload": false,
+      "width": 2172,
+      "height": 724,
+      "bytes": 1472096,
+      "transparent": true
+    },
+    {
+      "id": "cartoon-v5-boss-ui",
+      "file": "cartoon-v5-boss-ui.png",
+      "name": "v5 boss-ui",
+      "category": "art-direction",
+      "origin": "User supplied boss entrance UI",
+      "usage": "review",
+      "preload": false,
+      "width": 1781,
+      "height": 883,
+      "bytes": 1424862,
+      "transparent": true
+    },
+    {
+      "id": "cartoon-v5-combat-vfx",
+      "file": "cartoon-v5-combat-vfx.png",
+      "name": "combat-vfx",
+      "category": "art-direction",
+      "origin": "Built-in ImageGen",
+      "usage": "review",
+      "preload": false,
+      "width": 1774,
+      "height": 887,
+      "bytes": 1222489,
+      "transparent": true
+    },
+    {
+      "id": "cartoon-v5-squad-helmet",
+      "file": "cartoon-v5-squad-helmet.png",
+      "name": "squad-helmet",
+      "category": "art-direction",
+      "origin": "Built-in ImageGen",
+      "usage": "review",
+      "preload": false,
+      "width": 1322,
+      "height": 1190,
+      "bytes": 1008990,
+      "transparent": true
+    },
+    {
+      "id": "cartoon-v5-garden-base",
+      "file": "cartoon-v5-garden-base.png",
+      "name": "Selected five tier leaf roof garden base",
+      "category": "art-direction",
+      "origin": "User supplied final selection",
+      "usage": "review",
+      "preload": false,
+      "width": 2172,
+      "height": 724,
+      "bytes": 1313499,
+      "transparent": true
+    },
+    {
+      "id": "cartoon-v5-home-field",
+      "file": "cartoon-v5-home-field.png",
+      "name": "home-field",
+      "category": "art-direction",
+      "origin": "User reference and built-in ImageGen",
+      "usage": "review",
+      "preload": false,
+      "width": 1774,
+      "height": 887,
+      "bytes": 1455477,
+      "transparent": false
+    },
+    {
+      "id": "cartoon-v5-troop-icon",
+      "file": "cartoon-v5-troop-icon.png",
+      "name": "troop-icon",
+      "category": "art-direction",
+      "origin": "User reference and built-in ImageGen",
+      "usage": "review",
+      "preload": false,
+      "width": 1254,
+      "height": 1254,
+      "bytes": 740704,
+      "transparent": true
     }
   ]
 }

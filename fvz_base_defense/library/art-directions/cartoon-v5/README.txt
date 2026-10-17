@@ -18,3 +18,13 @@ Character evolution, panel and field assets use built-in ImageGen. User original
 
 SCOPE
 Art, motion and UI preview; not final combat progression or balance. v4 remains unchanged.
+
+COMBAT / BASE / PAUSE REFINEMENT
+Five base forms: wooden hut > reinforced hut > greenhouse > fortified greenhouse > golden garden fortress. Click Castle Health to compare tiers.
+All ranged enemies have independent firing cooldowns. Seeds, bolts and pinecone shells have separate shapes and trails. Facing follows the attack target.
+Preview Star Upgrade replays the star burst. Drag merges use the same effect.
+Base HP appears above the base for 3 seconds after damage, hidden during boss intro. Permanent health HUD removed.
+Boss uses supplied warning artwork and gold nameplate with English labels. Pause uses a cream/gold card and RESUME / HOME.
+
+FINAL USER SELECTION: garden base now uses cartoon-v5-garden-base.png (leaf roof and sun crest, five tiers). Earlier wooden / greenhouse atlas is preserved but inactive. Soft ground shadow and broad light surround the base.
+Latest interactions: range only on hold or briefly after deployment; no persistent unit inspector or star badges; mint soul exit and gold upgrade ring use transparent generated VFX; PAUSED and RETURN HOME dialogs have centered icon/label groups.

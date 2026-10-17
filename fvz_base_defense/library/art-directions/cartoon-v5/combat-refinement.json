@@ -1,0 +1,96 @@
+{
+  "base": {
+    "atlas": "../../../assets/cartoon-v5-garden-base.png",
+    "source": [
+      [
+        28,
+        386,
+        219,
+        244
+      ],
+      [
+        287,
+        345,
+        295,
+        289
+      ],
+      [
+        614,
+        283,
+        386,
+        349
+      ],
+      [
+        1035,
+        247,
+        560,
+        392
+      ],
+      [
+        1621,
+        80,
+        531,
+        559
+      ]
+    ],
+    "health": [
+      140,
+      180,
+      220,
+      260,
+      300
+    ],
+    "healthBar": "Visible above base for 3 simulation seconds after damage; hidden during boss entrance",
+    "selection": "Final user supplied leaf roof and sun crest buildings; earlier generated buildings retained as archive",
+    "groundLight": "Broad soft warm radial lighting, 350 world unit radius",
+    "shadow": "Tight contact ellipses at 2–3 world pixels above the sprite baseline",
+    "heights": [
+      62,
+      78,
+      96,
+      114,
+      136
+    ]
+  },
+  "projectiles": {
+    "scout": "Rapid lime seeds",
+    "marksman": "Piercing ivory bolt and long trail",
+    "gunner": "Heavy pinecone shell and splash",
+    "enemy": "Violet diamond; individual ranged cooldown"
+  },
+  "boss": {
+    "warning": "User supplied atlas",
+    "logo": false,
+    "duration": 4.2,
+    "slowMotion": 0.12
+  },
+  "scope": "Design and combat preview; main game balance and persistence unchanged",
+  "vfx": {
+    "atlas": "../../../assets/cartoon-v5-combat-vfx.png",
+    "soulSource": [
+      120,
+      45,
+      550,
+      800
+    ],
+    "upgradeSource": [
+      850,
+      20,
+      920,
+      850
+    ],
+    "soulDuration": 1.1,
+    "upgradeDuration": 1.15,
+    "prompt": "Two separate transparent VFX sprites: lime zombie soul with dark oval eyes, skull crack, ghost arms and curled vapor tail; golden elliptical upgrade ring with rising sunlight shafts and four point sparkles. Omit all screenshot backgrounds and text. Match user references."
+  },
+  "interaction": {
+    "range": "Only during pointer hold / drag and 1.25 seconds after deployment or moving",
+    "starInspector": false,
+    "homeConfirm": "CANCEL returns to paused battle; CONFIRM runs logo transition home",
+    "pauseButtons": "Icon and label centered as a single flex group",
+    "settings": "Matching dark framed button",
+    "squad": "Final user supplied cartoon-v5-troop-icon.png",
+    "popupIconStroke": 5
+  },
+  "homeBackground": "Separate authored field: tree upper left, stump lower left, log between base and actions, no props behind UI"
+}
