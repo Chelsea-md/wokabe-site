@@ -1,0 +1,201 @@
+[
+  {
+    "id": "poppy",
+    "file": "../../../assets/cartoon-v5-whole-characters.png",
+    "name": "PEPPER SCOUT",
+    "role": "RAPID SEED FIRE",
+    "cost": 3,
+    "transparent": true,
+    "status": "일체형 캐릭터 · 코드 모션",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "bounds": [
+      33,
+      56,
+      1226,
+      1216
+    ],
+    "sourceFile": "assets/poppy.png"
+  },
+  {
+    "id": "bellflower",
+    "file": "../../../assets/cartoon-v5-whole-characters.png",
+    "name": "ACORN MARKSMAN",
+    "role": "PIERCING BOLT",
+    "cost": 7,
+    "transparent": true,
+    "status": "일체형 캐릭터 · 코드 모션",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "bounds": [
+      0,
+      39,
+      1224,
+      1254
+    ],
+    "sourceFile": "assets/bellflower.png"
+  },
+  {
+    "id": "marigold",
+    "file": "../../../assets/cartoon-v5-whole-characters.png",
+    "name": "PINECONE GUNNER",
+    "role": "BURST SEED CANNON",
+    "cost": 12,
+    "transparent": true,
+    "status": "일체형 캐릭터 · 코드 모션",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "bounds": [
+      59,
+      5,
+      1198,
+      1177
+    ],
+    "sourceFile": "assets/marigold.png"
+  },
+  {
+    "id": "shambler",
+    "file": "../../../assets/cartoon-v5-enemies-forest.png",
+    "name": "MELEE",
+    "role": "Stage enemy",
+    "transparent": true,
+    "status": "디자인 프리뷰용 단일 포즈 · 애니메이션 프레임 미제작",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "bounds": [
+      25,
+      18,
+      1232,
+      1254
+    ],
+    "sourceFile": "assets/shambler.png"
+  },
+  {
+    "id": "courier",
+    "file": "../../../assets/cartoon-v5-enemies-forest.png",
+    "name": "RANGED",
+    "role": "Stage enemy",
+    "transparent": true,
+    "status": "디자인 프리뷰용 단일 포즈 · 애니메이션 프레임 미제작",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "bounds": [
+      43,
+      25,
+      1238,
+      1254
+    ],
+    "sourceFile": "assets/courier.png"
+  },
+  {
+    "id": "bruiser",
+    "file": "../../../assets/cartoon-v5-enemies-forest.png",
+    "name": "TANK",
+    "role": "Stage enemy",
+    "transparent": true,
+    "status": "디자인 프리뷰용 단일 포즈 · 애니메이션 프레임 미제작",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "bounds": [
+      0,
+      9,
+      1254,
+      1254
+    ],
+    "sourceFile": "assets/bruiser.png"
+  },
+  {
+    "id": "base",
+    "file": "../../../assets/cartoon-v1-base.png",
+    "name": "Greenhouse",
+    "role": "기지",
+    "transparent": true,
+    "status": "디자인 프리뷰용 단일 포즈 · 애니메이션 프레임 미제작",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "bounds": [
+      0,
+      33,
+      1234,
+      1254
+    ],
+    "sourceFile": "assets/base.png"
+  },
+  {
+    "id": "forest",
+    "file": "../../../assets/cartoon-v1-forest.png",
+    "name": "Garden Forest",
+    "role": "배경",
+    "transparent": false,
+    "status": "디자인 프리뷰용 단일 포즈 · 애니메이션 프레임 미제작",
+    "width": 1672,
+    "height": 941,
+    "mode": "RGB",
+    "alphaExtrema": null,
+    "bounds": [
+      0,
+      0,
+      1672,
+      941
+    ],
+    "sourceFile": "assets/forest.png"
+  },
+  {
+    "id": "boss",
+    "file": "../../../assets/cartoon-v5-enemies-forest.png",
+    "name": "BOSS",
+    "role": "Stage boss",
+    "transparent": true,
+    "width": 1448,
+    "height": 1086,
+    "bounds": [
+      0,
+      0,
+      1448,
+      1086
+    ]
+  },
+  {
+    "id": "desert",
+    "file": "../../../assets/desert-terrain.png",
+    "name": "Desert terrain",
+    "transparent": false,
+    "width": 120,
+    "height": 120
+  }
+]

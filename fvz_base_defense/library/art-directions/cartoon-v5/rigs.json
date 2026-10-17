@@ -1,0 +1,420 @@
+{
+  "version": 5,
+  "method": "Whole character sprites; no separated limbs. Code-driven squash, stretch, hop, recoil and synchronized ground shadows.",
+  "players": {
+    "poppy": {
+      "name": "PEPPER SCOUT",
+      "class": "scout",
+      "skill": "RAPID SEED FIRE",
+      "atlas": "../../../assets/cartoon-v5-whole-characters.png",
+      "source": [
+        74,
+        88,
+        331,
+        497
+      ]
+    },
+    "bellflower": {
+      "name": "ACORN MARKSMAN",
+      "class": "marksman",
+      "skill": "PIERCING BOLT",
+      "atlas": "../../../assets/cartoon-v5-whole-characters.png",
+      "source": [
+        827,
+        139,
+        1092,
+        497
+      ]
+    },
+    "marigold": {
+      "name": "PINECONE GUNNER",
+      "class": "gunner",
+      "skill": "SPLASH BURST",
+      "atlas": "../../../assets/cartoon-v5-whole-characters.png",
+      "source": [
+        1163,
+        119,
+        1469,
+        500
+      ]
+    }
+  },
+  "enemies": {
+    "forest": {
+      "shambler": {
+        "atlas": "../../../assets/cartoon-v5-stage-enemies.png",
+        "source": [
+          81,
+          67,
+          360,
+          341
+        ]
+      },
+      "courier": {
+        "atlas": "../../../assets/cartoon-v5-stage-enemies.png",
+        "source": [
+          441,
+          44,
+          719,
+          341
+        ]
+      },
+      "bruiser": {
+        "atlas": "../../../assets/cartoon-v5-stage-enemies.png",
+        "source": [
+          782,
+          30,
+          1078,
+          341
+        ]
+      },
+      "boss": {
+        "atlas": "../../../assets/cartoon-v5-stage-enemies.png",
+        "source": [
+          1169,
+          5,
+          1444,
+          341
+        ]
+      }
+    },
+    "desert": {
+      "shambler": {
+        "atlas": "../../../assets/cartoon-v5-stage-enemies.png",
+        "source": [
+          71,
+          341,
+          341,
+          672
+        ]
+      },
+      "courier": {
+        "atlas": "../../../assets/cartoon-v5-stage-enemies.png",
+        "source": [
+          427,
+          341,
+          727,
+          673
+        ]
+      },
+      "bruiser": {
+        "atlas": "../../../assets/cartoon-v5-stage-enemies.png",
+        "source": [
+          781,
+          341,
+          1152,
+          682
+        ]
+      },
+      "boss": {
+        "atlas": "../../../assets/cartoon-v5-stage-enemies.png",
+        "source": [
+          1152,
+          341,
+          1466,
+          678
+        ]
+      }
+    },
+    "night": {
+      "shambler": {
+        "atlas": "../../../assets/cartoon-v5-stage-enemies.png",
+        "source": [
+          101,
+          714,
+          351,
+          990
+        ]
+      },
+      "courier": {
+        "atlas": "../../../assets/cartoon-v5-stage-enemies.png",
+        "source": [
+          447,
+          735,
+          730,
+          1000
+        ]
+      },
+      "bruiser": {
+        "atlas": "../../../assets/cartoon-v5-stage-enemies.png",
+        "source": [
+          782,
+          682,
+          1098,
+          1002
+        ]
+      },
+      "boss": {
+        "atlas": "../../../assets/cartoon-v5-stage-enemies.png",
+        "source": [
+          1160,
+          702,
+          1476,
+          1003
+        ]
+      }
+    }
+  },
+  "equipment": {
+    "scout": {
+      "atlas": "../../../assets/cartoon-v5-class-weapons.png",
+      "frames": [
+        [
+          36,
+          210,
+          280,
+          341
+        ],
+        [
+          36,
+          210,
+          280,
+          341
+        ],
+        [
+          321,
+          176,
+          614,
+          341
+        ],
+        [
+          321,
+          176,
+          614,
+          341
+        ],
+        [
+          614,
+          184,
+          917,
+          341
+        ],
+        [
+          614,
+          184,
+          917,
+          341
+        ],
+        [
+          935,
+          179,
+          1215,
+          341
+        ],
+        [
+          935,
+          179,
+          1215,
+          341
+        ],
+        [
+          1235,
+          160,
+          1513,
+          341
+        ],
+        [
+          1235,
+          160,
+          1513,
+          341
+        ]
+      ]
+    },
+    "marksman": {
+      "atlas": "../../../assets/cartoon-v5-class-weapons.png",
+      "frames": [
+        [
+          33,
+          341,
+          289,
+          622
+        ],
+        [
+          33,
+          341,
+          289,
+          622
+        ],
+        [
+          334,
+          341,
+          614,
+          630
+        ],
+        [
+          334,
+          341,
+          614,
+          630
+        ],
+        [
+          614,
+          341,
+          921,
+          609
+        ],
+        [
+          614,
+          341,
+          921,
+          609
+        ],
+        [
+          921,
+          341,
+          1220,
+          631
+        ],
+        [
+          921,
+          341,
+          1220,
+          631
+        ],
+        [
+          1243,
+          341,
+          1520,
+          635
+        ],
+        [
+          1243,
+          341,
+          1520,
+          635
+        ]
+      ]
+    },
+    "gunner": {
+      "atlas": "../../../assets/cartoon-v5-class-weapons.png",
+      "frames": [
+        [
+          32,
+          751,
+          306,
+          904
+        ],
+        [
+          32,
+          751,
+          306,
+          904
+        ],
+        [
+          328,
+          687,
+          602,
+          904
+        ],
+        [
+          328,
+          687,
+          602,
+          904
+        ],
+        [
+          623,
+          686,
+          913,
+          907
+        ],
+        [
+          623,
+          686,
+          913,
+          907
+        ],
+        [
+          934,
+          683,
+          1216,
+          907
+        ],
+        [
+          934,
+          683,
+          1216,
+          907
+        ],
+        [
+          1229,
+          698,
+          1516,
+          908
+        ],
+        [
+          1229,
+          698,
+          1516,
+          908
+        ]
+      ]
+    },
+    "accessories": {
+      "atlas": "../../../assets/cartoon-v5-upgrade-gear.png",
+      "frames": [
+        [
+          55,
+          86,
+          396,
+          372
+        ],
+        [
+          396,
+          125,
+          753,
+          369
+        ],
+        [
+          795,
+          77,
+          1181,
+          362
+        ],
+        [
+          1211,
+          81,
+          1586,
+          368
+        ],
+        [
+          1586,
+          144,
+          1963,
+          331
+        ],
+        [
+          36,
+          448,
+          396,
+          729
+        ],
+        [
+          396,
+          443,
+          784,
+          721
+        ],
+        [
+          837,
+          442,
+          1147,
+          723
+        ],
+        [
+          1211,
+          442,
+          1562,
+          741
+        ],
+        [
+          1599,
+          457,
+          1954,
+          688
+        ]
+      ]
+    }
+  }
+}

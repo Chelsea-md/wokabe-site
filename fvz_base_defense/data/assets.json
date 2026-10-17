@@ -1639,6 +1639,58 @@
       "width": 1254,
       "height": 1254,
       "bytes": 526600
+    },
+    {
+      "id": "cartoon-v5-whole-characters",
+      "file": "cartoon-v5-whole-characters.png",
+      "name": "whole-characters",
+      "category": "art-direction",
+      "origin": "User approved reference",
+      "usage": "review",
+      "preload": false,
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1214136,
+      "transparent": true
+    },
+    {
+      "id": "cartoon-v5-class-weapons",
+      "file": "cartoon-v5-class-weapons.png",
+      "name": "class-weapons",
+      "category": "art-direction",
+      "origin": "Built-in ImageGen",
+      "usage": "review",
+      "preload": false,
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1556861,
+      "transparent": true
+    },
+    {
+      "id": "cartoon-v5-upgrade-gear",
+      "file": "cartoon-v5-upgrade-gear.png",
+      "name": "upgrade-gear",
+      "category": "art-direction",
+      "origin": "Built-in ImageGen",
+      "usage": "review",
+      "preload": false,
+      "width": 1983,
+      "height": 793,
+      "bytes": 830934,
+      "transparent": true
+    },
+    {
+      "id": "cartoon-v5-stage-enemies",
+      "file": "cartoon-v5-stage-enemies.png",
+      "name": "stage-enemies",
+      "category": "art-direction",
+      "origin": "Built-in ImageGen",
+      "usage": "review",
+      "preload": false,
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1787119,
+      "transparent": true
     }
   ]
 }
