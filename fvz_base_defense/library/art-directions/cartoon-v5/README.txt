@@ -32,3 +32,7 @@ Latest interactions: range only on hold or briefly after deployment; no persiste
 PLANTS / EDGE ENTRY
 Plants tab opens the four-card collection UI. Unlocked cards show stats; ACORN costs 100 and PINECONE costs 400 coins. The background repeats only the user-selected sprout. This is session-only UI state, not persistent main-game progression. Sunflower is included in the collection; combat and fitted star gear remain the three reviewed classes.
 Initial enemies and replacements now spawn 85 units outside the map. An obstacle-aware path guides them around ground props. Boss entry waits until it has walked into the visible field.
+
+PLANNED PURCHASE PROGRESSION
+Main-game Plants must read saved purchase ownership. SUNFLOWER becomes purchasable after clearing stage 3, ACORN after 6, PINECONE after 9, then one additional plant every 3 cleared stages. This unlocks eligibility, not free ownership. Current illustrative collection state is intentionally unchanged until integration. See planned-purchase-progression.json.
+Base growth demonstration: base-growth-preview.gif / base-growth-comparison.png (native preview captures, equal camera scale).

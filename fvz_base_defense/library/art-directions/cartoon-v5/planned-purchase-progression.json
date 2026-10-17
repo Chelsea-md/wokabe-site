@@ -1,0 +1,14 @@
+{
+  "status": "planned-for-main-game-integration",
+  "ownershipSource": "Actual saved player purchases; never infer owned plants from stage progress.",
+  "startingOwned": ["chili"],
+  "eligibilityRule": "Clear stage 3 to make SUNFLOWER purchasable. Every three cleared stages thereafter makes one more plant purchasable. Eligibility does not grant ownership.",
+  "purchaseEligibility": [
+    {"plant": "sunflower", "afterClearingStage": 3},
+    {"plant": "acorn", "afterClearingStage": 6},
+    {"plant": "pinecone", "afterClearingStage": 9}
+  ],
+  "futurePlants": {"firstStage": 12, "interval": 3},
+  "uiStates": ["stage-locked", "eligible-but-unowned", "not-enough-coins", "owned"],
+  "currentPreview": "Illustrative collection state remains unchanged until purchase-save integration is implemented."
+}
