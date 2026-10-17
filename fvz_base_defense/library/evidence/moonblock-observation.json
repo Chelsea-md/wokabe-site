@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-17",
+  "chapterName": "Moonblock",
+  "userStageDescription": "3스테이지",
+  "sequenceStatus": "Noon Strip과의 연결 순서는 미확정",
+  "waves": 10,
+  "displayedVictoryReward": 6480,
+  "doubleRewardClaimed": null,
+  "doubleRewardEvidence": "선택 버튼만 확인. 광고 시청·수령·다음 맵은 확인하지 않음.",
+  "startingHomeStats": {
+    "health": 140,
+    "rate": 1.28,
+    "income": 19,
+    "verification": "홈 화면의 표시값. 전투 직전 추가 강화 여부는 미확인."
+  },
+  "observedReaperWaves": [
+    3,
+    5
+  ],
+  "observedHeavyReaperWave": 10,
+  "playerObservation": "체력이 더 큰 사신형 탱커가 등장해12미트 병력의 가치가 올라간 판으로 느껴짐.",
+  "unknown": [
+    "정확한 적 체력과 공격력",
+    "낫 적의 일반·엘리트·보스 구분 기준",
+    "12미트 가치 상승에서 사거리·공격 간격·조준 지속시간이 차지하는 영향",
+    "Noon Strip과 Moonblock의 진행 순서",
+    "광고 후 잔액과 다음 챕터"
+  ],
+  "captures": [
+    {
+      "file": "moonblock-01-home.png",
+      "caption": "Moonblock 홈. 체력140, 생산1.28, 인컴19가 표시됨.",
+      "width": 817,
+      "height": 418,
+      "source": "User-shared original gameplay screenshot"
+    },
+    {
+      "file": "moonblock-02-wave1-countdown.png",
+      "caption": "웨이브1/10과 준비 카운트다운. 묘지 분위기 배경.",
+      "width": 826,
+      "height": 415,
+      "source": "User-shared original gameplay screenshot"
+    },
+    {
+      "file": "moonblock-03-wave1-skeleton.png",
+      "caption": "웨이브1/10. 해골형 일반 적 등장.",
+      "width": 830,
+      "height": 426,
+      "source": "User-shared original gameplay screenshot"
+    },
+    {
+      "file": "moonblock-04-wave2.png",
+      "caption": "웨이브2/10. 갑옷 적과 원거리 적이 보임.",
+      "width": 815,
+      "height": 409,
+      "source": "User-shared original gameplay screenshot"
+    },
+    {
+      "file": "moonblock-05-wave3-reaper.png",
+      "caption": "웨이브3/10. 검은 로브와 낫을 든 사신형 적.",
+      "width": 814,
+      "height": 417,
+      "source": "User-shared original gameplay screenshot"
+    },
+    {
+      "file": "moonblock-06-wave5-reaper.png",
+      "caption": "웨이브5/10에서도 사신형 적이 나타남.",
+      "width": 827,
+      "height": 413,
+      "source": "User-shared original gameplay screenshot"
+    },
+    {
+      "file": "moonblock-07-wave10-heavy.png",
+      "caption": "웨이브10/10. 체격이 크고 갑옷을 두른 사신형 적과 작은 해골 표식.",
+      "width": 827,
+      "height": 414,
+      "source": "User-shared original gameplay screenshot"
+    },
+    {
+      "file": "moonblock-08-victory.png",
+      "caption": "You Win, Chapter Finished, 표시 보상6480, 선택형2배 버튼.",
+      "width": 826,
+      "height": 409,
+      "source": "User-shared original gameplay screenshot"
+    }
+  ]
+}
