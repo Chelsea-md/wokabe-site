@@ -143,10 +143,10 @@ body.production[data-ui-theme=bold] .upgrades>button:disabled b{filter:grayscale
 body.production[data-ui-theme=bold] #wave-countdown{font-size:1.55cqw;top:13%;line-height:1.2;-webkit-text-stroke:.12em #10171c}
 body.production .wave-pointer[hidden]{display:none!important}
 
-/* Landscape continuation fills aspect-ratio gutters without changing world or UI coordinates. */
-body.production.ready{background-color:#829b4f;background-image:linear-gradient(to bottom,transparent 86.4%,#404550 86.4%),var(--page-field);background-size:100% 100%,var(--page-field-size,cover);background-position:center;background-repeat:no-repeat,repeat}
-body.production.ready:has(.game-frame.plants){background-color:#bacd91;background-image:linear-gradient(to bottom,transparent 86.4%,#404550 86.4%),var(--game-wallpaper);background-size:100% 100%,600px 400px}
-
+/* Muted surrounds at tall aspect ratios; near-2:1 screens remain edge-to-edge. */
+body.production.ready{background-color:#829b4f;background-image:linear-gradient(to bottom,transparent 50%,#404550 50%);background-size:100% 100%;background-repeat:no-repeat}
+body.production.ready:has(.game-frame.plants){background-color:#bacd91}
 /* Near the designed landscape ratio, use every pixel of the viewport. */
 @media (min-aspect-ratio:19/10) and (max-aspect-ratio:21/10){body.production.stage-focus .game-frame{width:100vw;height:100dvh;max-height:none;aspect-ratio:auto}}
+
 
