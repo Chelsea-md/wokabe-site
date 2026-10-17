@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-17",
+  "chapterName": "Oasis Cross",
+  "sequenceEvidence": "사용자가 Forest Camp 다음 판이라고 설명함. 미관찰 구간의 챕터 순서는 미확정.",
+  "progress": "웨이브1/10까지 제공",
+  "wavesShown": 10,
+  "clearObserved": false,
+  "displayedVictoryReward": null,
+  "homeStats": {
+    "health": 170,
+    "rate": 1.56,
+    "income": 26,
+    "coinsDisplay": "15.1K",
+    "note": "홈 표시값. 전투 직전 추가 강화 여부 미확인."
+  },
+  "playerObservation": "사막 미라형 적을 다시 사용하며 몬스터가 나오는 속도가 빨라진 것 같음.",
+  "unknown": [
+    "실제 등장 간격과 동시 등장 수",
+    "이동 속도 변화 여부",
+    "전체 적 구성과 보스",
+    "클리어 보상과 다음 챕터"
+  ],
+  "captures": [
+    {
+      "file": "oasis-cross-01-home.png",
+      "caption": "Oasis Cross 홈. 체력170, 생산1.56, 인컴26, 코인15.1K 표시."
+    },
+    {
+      "file": "oasis-cross-02-wave1.png",
+      "caption": "웨이브1/10, 여러 방향의 미라형 적."
+    }
+  ]
+}
