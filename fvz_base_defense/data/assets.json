@@ -1925,6 +1925,32 @@
       "height": 1254,
       "bytes": 740704,
       "transparent": true
+    },
+    {
+      "id": "cartoon-v5-plants-sprout",
+      "file": "cartoon-v5-plants-sprout.png",
+      "name": "plants-sprout",
+      "category": "art-direction",
+      "origin": "User supplied sprout / built-in ImageGen cutout",
+      "usage": "review",
+      "preload": false,
+      "width": 79,
+      "height": 52,
+      "bytes": 6871,
+      "transparent": false
+    },
+    {
+      "id": "cartoon-v5-plants-sprout-transparent",
+      "file": "cartoon-v5-plants-sprout-transparent.png",
+      "name": "plants-sprout-transparent",
+      "category": "art-direction",
+      "origin": "User supplied sprout / built-in ImageGen cutout",
+      "usage": "review",
+      "preload": false,
+      "width": 1545,
+      "height": 1018,
+      "bytes": 627884,
+      "transparent": true
     }
   ]
 }

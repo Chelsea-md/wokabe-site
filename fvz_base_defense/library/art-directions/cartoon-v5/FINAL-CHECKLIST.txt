@@ -14,7 +14,10 @@ PASS — Squad uses a transparent golden helmet; settings has a consistent dark 
 PASS — Boss slow motion, camera focus, supplied warning/name artwork and skip; no logo during play.
 PASS — Logo splashes only before entering / after leaving play.
 PASS — PAUSED and RETURN HOME popups; icon + label centered together; Cancel restores pause and Resume continues.
-PASS — Main validation: 21 JavaScript files, 128 catalog resources, 3 chapters.
-PASS — Combat behavior: 5 tests. Private workspace: 15 tests. v4 preservation: 16 files.
+PASS — Main validation: 23 JavaScript files, 130 catalog resources, 3 chapters.
+PASS — Combat behavior: 7 tests. Private workspace: 17 tests. v4 preservation: 16 files.
 Scope: This deliverable is the art/UI/combat preview in cartoon-v5. Persistent main-game progression and final combat balance are not changed.
 PASS — Last six fixes: tight contact shadow; separate home background clears UI; nameplate backing closes tip; 5px popup icon outline; base heights 62 / 78 / 96 / 114 / 136; final user-supplied troop icon.
+PASS — 7: Initial and respawn enemies enter from outside all four map edges; A* routes avoid each stage ground obstacle; no direct in-map respawn.
+PASS — 8: PLANTS menu and four neutral character cards, stats, locks and affordability; ACORN unlock verified at 235 > 135 coins. Background uses only the supplied sprout cutout at 11% opacity.
+Collection screen is a session preview. SUNFLOWER is displayed in the collection; combat deployment and fitted star equipment remain the three reviewed classes.

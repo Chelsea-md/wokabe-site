@@ -92,5 +92,31 @@
     "squad": "Final user supplied cartoon-v5-troop-icon.png",
     "popupIconStroke": 5
   },
-  "homeBackground": "Separate authored field: tree upper left, stump lower left, log between base and actions, no props behind UI"
+  "homeBackground": "Separate authored field: tree upper left, stump lower left, log between base and actions, no props behind UI",
+  "navigation": {
+    "spawn": "85 units beyond top / left / right / bottom world edge",
+    "routing": "20-unit A* grid, diagonal corner checks, per-class footprint padding, repath every 1.5 seconds",
+    "obstacles": "Tree trunk, fallen log, stump, dead trunk / desert cactus footprints",
+    "boss": "Entrance cinematic triggers after boss walks into visible playfield; replay button remains a demonstration shortcut"
+  },
+  "plants": {
+    "names": [
+      "CHILI",
+      "SUNFLOWER",
+      "ACORN",
+      "PINECONE"
+    ],
+    "unlockCosts": [
+      0,
+      0,
+      100,
+      400
+    ],
+    "initialUnlocks": [
+      "CHILI",
+      "SUNFLOWER"
+    ],
+    "pattern": "Sprout-only at opacity .11",
+    "persistentProgress": false
+  }
 }

@@ -28,3 +28,7 @@ Boss uses supplied warning artwork and gold nameplate with English labels. Pause
 
 FINAL USER SELECTION: garden base now uses cartoon-v5-garden-base.png (leaf roof and sun crest, five tiers). Earlier wooden / greenhouse atlas is preserved but inactive. Soft ground shadow and broad light surround the base.
 Latest interactions: range only on hold or briefly after deployment; no persistent unit inspector or star badges; mint soul exit and gold upgrade ring use transparent generated VFX; PAUSED and RETURN HOME dialogs have centered icon/label groups.
+
+PLANTS / EDGE ENTRY
+Plants tab opens the four-card collection UI. Unlocked cards show stats; ACORN costs 100 and PINECONE costs 400 coins. The background repeats only the user-selected sprout. This is session-only UI state, not persistent main-game progression. Sunflower is included in the collection; combat and fitted star gear remain the three reviewed classes.
+Initial enemies and replacements now spawn 85 units outside the map. An obstacle-aware path guides them around ground props. Boss entry waits until it has walked into the visible field.
