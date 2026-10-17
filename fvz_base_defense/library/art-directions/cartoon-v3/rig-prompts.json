@@ -1,0 +1,18 @@
+{
+  "version": 3,
+  "createdAt": "2026-10-18",
+  "method": "Built-in ImageGen: approved character reference → transparent four-piece arm atlas. Existing head, torso, legs and weapon reused from v2. Runtime two-bone arm solver; no bitmap repainting.",
+  "note": "Normalized production briefs, not a verbatim generation transcript. Draft assets pending pose review.",
+  "assets": [
+    {
+      "id": "cartoon-v3-poppy-arms",
+      "file": "../../../assets/cartoon-v3-poppy-arms.png",
+      "brief": "Preserve approved red-flower Poppy. Four disconnected pieces in 2×2 layout, transparent background: two short green upper-arm sleeves, one forearm with pinching seed hand, one forearm with mitten gripping slingshot. Bold black contour, flat saturated greens, no attached torso, no text."
+    },
+    {
+      "id": "cartoon-v3-shambler-arms",
+      "file": "../../../assets/cartoon-v3-shambler-arms.png",
+      "brief": "Preserve approved mint-green Shambler and ochre jacket. Four disconnected pieces in 2×2 layout, transparent background: two ochre upper sleeves with shoulder overlap and two green forearms with reaching hands. Sideways limb axis, rounded joints, bold contour, no torso, no text."
+    }
+  ]
+}

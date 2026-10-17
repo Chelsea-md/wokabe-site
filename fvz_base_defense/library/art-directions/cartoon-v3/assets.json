@@ -1,0 +1,178 @@
+[
+  {
+    "id": "poppy",
+    "file": "../../../assets/cartoon-v1-poppy.png",
+    "name": "팝피",
+    "role": "식물 · 기본형",
+    "cost": 3,
+    "transparent": true,
+    "status": "디자인 프리뷰용 단일 포즈 · 애니메이션 프레임 미제작",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "bounds": [
+      33,
+      56,
+      1226,
+      1216
+    ],
+    "sourceFile": "assets/poppy.png"
+  },
+  {
+    "id": "bellflower",
+    "file": "../../../assets/cartoon-v1-bellflower.png",
+    "name": "벨라",
+    "role": "식물 · 궁수형",
+    "cost": 7,
+    "transparent": true,
+    "status": "디자인 프리뷰용 단일 포즈 · 애니메이션 프레임 미제작",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "bounds": [
+      0,
+      39,
+      1224,
+      1254
+    ],
+    "sourceFile": "assets/bellflower.png"
+  },
+  {
+    "id": "marigold",
+    "file": "../../../assets/cartoon-v1-marigold.png",
+    "name": "메리",
+    "role": "식물 · 중화기형",
+    "cost": 12,
+    "transparent": true,
+    "status": "디자인 프리뷰용 단일 포즈 · 애니메이션 프레임 미제작",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "bounds": [
+      59,
+      5,
+      1198,
+      1177
+    ],
+    "sourceFile": "assets/marigold.png"
+  },
+  {
+    "id": "shambler",
+    "file": "../../../assets/cartoon-v1-shambler.png",
+    "name": "모시",
+    "role": "좀비 · 일반형",
+    "transparent": true,
+    "status": "디자인 프리뷰용 단일 포즈 · 애니메이션 프레임 미제작",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "bounds": [
+      25,
+      18,
+      1232,
+      1254
+    ],
+    "sourceFile": "assets/shambler.png"
+  },
+  {
+    "id": "courier",
+    "file": "../../../assets/cartoon-v1-courier.png",
+    "name": "크룩",
+    "role": "좀비 · 원거리형",
+    "transparent": true,
+    "status": "디자인 프리뷰용 단일 포즈 · 애니메이션 프레임 미제작",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "bounds": [
+      43,
+      25,
+      1238,
+      1254
+    ],
+    "sourceFile": "assets/courier.png"
+  },
+  {
+    "id": "bruiser",
+    "file": "../../../assets/cartoon-v1-bruiser.png",
+    "name": "팟벨리",
+    "role": "좀비 · 탱커형",
+    "transparent": true,
+    "status": "디자인 프리뷰용 단일 포즈 · 애니메이션 프레임 미제작",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "bounds": [
+      0,
+      9,
+      1254,
+      1254
+    ],
+    "sourceFile": "assets/bruiser.png"
+  },
+  {
+    "id": "base",
+    "file": "../../../assets/cartoon-v1-base.png",
+    "name": "꽃 온실",
+    "role": "기지",
+    "transparent": true,
+    "status": "디자인 프리뷰용 단일 포즈 · 애니메이션 프레임 미제작",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "bounds": [
+      0,
+      33,
+      1234,
+      1254
+    ],
+    "sourceFile": "assets/base.png"
+  },
+  {
+    "id": "forest",
+    "file": "../../../assets/cartoon-v1-forest.png",
+    "name": "가든 숲",
+    "role": "배경",
+    "transparent": false,
+    "status": "디자인 프리뷰용 단일 포즈 · 애니메이션 프레임 미제작",
+    "width": 1672,
+    "height": 941,
+    "mode": "RGB",
+    "alphaExtrema": null,
+    "bounds": [
+      0,
+      0,
+      1672,
+      941
+    ],
+    "sourceFile": "assets/forest.png"
+  }
+]

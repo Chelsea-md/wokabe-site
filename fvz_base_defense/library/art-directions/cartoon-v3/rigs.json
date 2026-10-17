@@ -1,0 +1,305 @@
+{
+  "version": 3,
+  "method": "2-bone IK arms with fixed hand targets and torso-relative layering",
+  "characters": {
+    "poppy": {
+      "atlas": "../../../assets/cartoon-v2-poppy-parts.png",
+      "width": 1254,
+      "height": 1254,
+      "parts": {
+        "head": {
+          "source": [
+            8,
+            54,
+            489,
+            455
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "parent": "body"
+        },
+        "body": {
+          "source": [
+            507,
+            136,
+            856,
+            448
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "parent": "root"
+        },
+        "leftLeg": {
+          "source": [
+            506,
+            516,
+            773,
+            840
+          ],
+          "pivot": [
+            0.5,
+            0.08
+          ],
+          "parent": "root"
+        },
+        "rightLeg": {
+          "source": [
+            945,
+            523,
+            1209,
+            836
+          ],
+          "pivot": [
+            0.5,
+            0.08
+          ],
+          "parent": "root"
+        },
+        "weapon": {
+          "source": [
+            77,
+            885,
+            412,
+            1208
+          ],
+          "pivot": [
+            0.5,
+            0.92
+          ],
+          "parent": "frontArm"
+        },
+        "seed": {
+          "source": [
+            562,
+            975,
+            711,
+            1125
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "parent": "weapon"
+        }
+      },
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "actions": [
+        "idle",
+        "attack",
+        "hit"
+      ],
+      "armAtlas": "../../../assets/cartoon-v3-poppy-arms.png",
+      "armParts": {
+        "rearUpper": {
+          "source": [
+            119,
+            227,
+            574,
+            529
+          ],
+          "start": [
+            0.13,
+            0.5
+          ],
+          "end": [
+            0.9,
+            0.5
+          ]
+        },
+        "frontUpper": {
+          "source": [
+            701,
+            232,
+            1154,
+            529
+          ],
+          "start": [
+            0.13,
+            0.5
+          ],
+          "end": [
+            0.9,
+            0.5
+          ]
+        },
+        "rearLower": {
+          "source": [
+            61,
+            785,
+            628,
+            1043
+          ],
+          "start": [
+            0.08,
+            0.53
+          ],
+          "end": [
+            0.79,
+            0.53
+          ]
+        },
+        "frontLower": {
+          "source": [
+            668,
+            786,
+            1198,
+            1043
+          ],
+          "start": [
+            0.08,
+            0.53
+          ],
+          "end": [
+            0.79,
+            0.53
+          ]
+        }
+      },
+      "version": 3
+    },
+    "shambler": {
+      "atlas": "../../../assets/cartoon-v2-shambler-parts.png",
+      "width": 1536,
+      "height": 1024,
+      "parts": {
+        "head": {
+          "source": [
+            67,
+            37,
+            515,
+            531
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "parent": "body"
+        },
+        "body": {
+          "source": [
+            599,
+            105,
+            1018,
+            514
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "parent": "root"
+        },
+        "leftLeg": {
+          "source": [
+            568,
+            583,
+            907,
+            971
+          ],
+          "pivot": [
+            0.64,
+            0.08
+          ],
+          "parent": "root"
+        },
+        "rightLeg": {
+          "source": [
+            1116,
+            586,
+            1452,
+            971
+          ],
+          "pivot": [
+            0.43,
+            0.08
+          ],
+          "parent": "root"
+        }
+      },
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "actions": [
+        "idle",
+        "walk",
+        "attack",
+        "hit"
+      ],
+      "armAtlas": "../../../assets/cartoon-v3-shambler-arms.png",
+      "armParts": {
+        "rearUpper": {
+          "source": [
+            188,
+            271,
+            578,
+            493
+          ],
+          "start": [
+            0.88,
+            0.5
+          ],
+          "end": [
+            0.12,
+            0.5
+          ]
+        },
+        "frontUpper": {
+          "source": [
+            736,
+            266,
+            1194,
+            513
+          ],
+          "start": [
+            0.88,
+            0.5
+          ],
+          "end": [
+            0.12,
+            0.5
+          ]
+        },
+        "rearLower": {
+          "source": [
+            47,
+            814,
+            591,
+            1021
+          ],
+          "start": [
+            0.88,
+            0.5
+          ],
+          "end": [
+            0.2,
+            0.55
+          ]
+        },
+        "frontLower": {
+          "source": [
+            636,
+            822,
+            1207,
+            1055
+          ],
+          "start": [
+            0.88,
+            0.5
+          ],
+          "end": [
+            0.2,
+            0.55
+          ]
+        }
+      },
+      "version": 3
+    }
+  }
+}

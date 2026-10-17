@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-17",
+  "updatedAt": "2026-10-18",
   "assets": [
     {
       "id": "archer-zombie",
@@ -1557,6 +1557,40 @@
       "width": 1536,
       "height": 1024,
       "bytes": 1522432
+    },
+    {
+      "id": "cartoon-v3-poppy-arms",
+      "file": "cartoon-v3-poppy-arms.png",
+      "name": "팝피 위팔·아래팔 시트 · v3",
+      "category": "plants",
+      "origin": "ImageGen 생성 · 팔 연결 보정",
+      "usage": "active",
+      "reviewStatus": "review",
+      "preload": false,
+      "usedIn": [
+        "카툰 v3 전장",
+        "팔 포즈 검토"
+      ],
+      "width": 1254,
+      "height": 1254,
+      "bytes": 612097
+    },
+    {
+      "id": "cartoon-v3-shambler-arms",
+      "file": "cartoon-v3-shambler-arms.png",
+      "name": "모시 위팔·아래팔 시트 · v3",
+      "category": "enemies",
+      "origin": "ImageGen 생성 · 팔 연결 보정",
+      "usage": "active",
+      "reviewStatus": "review",
+      "preload": false,
+      "usedIn": [
+        "카툰 v3 전장",
+        "팔 포즈 검토"
+      ],
+      "width": 1254,
+      "height": 1254,
+      "bytes": 539162
     }
   ]
 }

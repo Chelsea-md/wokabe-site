@@ -1,5 +1,5 @@
 import { rules, assetCatalog } from "../config.js";
-import { documents, openQuestions } from "./content.js?v=20261018-rig-v2";
+import { documents, openQuestions } from "./content.js?v=20261018-arm-ui-v3";
 
 const $ = (selector) => document.querySelector(selector);
 const esc = (value) =>

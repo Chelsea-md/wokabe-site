@@ -1,0 +1,85 @@
+@font-face{font-family:GameChunk;src:url('../../../assets/LilitaOne.ttf') format('truetype');font-display:swap}
+:root{--ink:#182333}body{background:#eee5c9;color:#25352d}.page-head h1{font-weight:950}.theme-chooser{margin:20px 0 22px}.theme-chooser>div:first-child>span{font-size:11px;font-weight:900;letter-spacing:2px;color:#617445}.theme-chooser h2{font-size:25px;margin:7px 0}.theme-chooser p{font-size:12px;color:#69775c;margin:8px 0 18px}.theme-options{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.theme-options>button{display:flex;align-items:center;text-align:left;gap:14px;padding:15px 18px;background:#fff8df;border:3px solid #233730;border-radius:9px;box-shadow:0 4px #b4b897;color:#263f31}.theme-options b{font:32px GameChunk,sans-serif}.theme-options span{font-size:16px;font-weight:900}.theme-options small{display:block;font-size:11px;font-weight:500;margin-top:5px;line-height:1.5}.theme-options button[aria-pressed=true]{background:#ffda5b;transform:translateY(-3px);box-shadow:0 7px #233730}.game-frame{--ink:#182333;border:5px solid var(--ink);border-radius:7px;box-shadow:0 9px #c3c7a2}.game-frame .wave-head>strong,.game-frame .currency strong,.game-frame .sun-stock strong,.game-frame .troop-card b,.game-frame .card-name,.game-frame .chapter-title strong{font-family:GameChunk,'Arial Black',sans-serif;font-weight:400}.game-frame .wave-head small{font-family:GameChunk,sans-serif}.game-frame .currency,.game-frame .game-settings,.game-frame .battle-pause{border-color:var(--ink);border-width:4px}.game-frame .currency strong{font-size:2.6cqw;letter-spacing:.05cqw}.game-frame .troop-card{border:4px solid var(--ink)}.game-frame .card-name{letter-spacing:.06cqw}.game-frame .troop-card b{font-size:2.05cqw}.game-frame .troop-card b svg{width:2.2cqw;height:2.2cqw}.game-frame .sun-stock strong{font-size:3.3cqw}.game-frame .wave-head>strong{font-size:3.2cqw;line-height:.95;-webkit-text-stroke:1.5px var(--ink);paint-order:stroke fill;text-shadow:0 3px var(--ink)}.game-frame .wave-head>span{font-family:GameChunk,sans-serif;font-size:1.15cqw;letter-spacing:.12cqw}.game-frame .health{border-color:var(--ink)}.game-frame .battle-tray{border-top:5px solid var(--ink)}.game-frame .unit-inspector{border:4px solid var(--ink)}.game-frame .start-game,.game-frame .upgrades>button,.game-frame .bottom-nav button,.game-frame .pause-overlay section{border-color:var(--ink)}.game-frame .placement-tip{border:3px solid var(--ink);box-shadow:0 3px var(--ink)}
+/* A: sharp comic panels, warm spotlight colors and hard ink shadows. */
+body[data-ui-theme=arcade] .game-frame{--ink:#18202d}
+body[data-ui-theme=arcade] .battle-tray{background-color:#233047;background-image:radial-gradient(#75809324 1px,transparent 1px);background-size:7px 7px;box-shadow:inset 0 5px #536783}
+body[data-ui-theme=arcade] .wave-head{top:3.3%;width:27%;left:36.5%;background:#f8c946;border:4px solid var(--ink);border-radius:4px;box-shadow:5px 5px var(--ink);padding:.55cqw .9cqw .7cqw;transform:skew(-3deg)}
+body[data-ui-theme=arcade] .wave-head>span{background:#e9526e;color:#fff5da;border:2px solid var(--ink);border-radius:3px;font-size:.95cqw;padding:.15cqw 1.5cqw;display:inline-block;transform:translateY(-1.3cqw);margin-bottom:-1cqw;box-shadow:2px 2px var(--ink)}
+body[data-ui-theme=arcade] .wave-head>strong{color:#fff8dc;margin:0;transform:skew(3deg)}
+body[data-ui-theme=arcade] .wave-track{height:.65cqw;background:#222c39;border-color:#18202d;box-shadow:none;border-radius:0;margin:.45cqw 0 0}.wave-track i{transition:width .2s}
+body[data-ui-theme=arcade] .wave-track i{background:#ff6c55}
+body[data-ui-theme=arcade] .currency{background:#fff4ce;color:#172332;border-radius:4px;box-shadow:4px 4px var(--ink);padding:.35cqw 1.1cqw .35cqw .3cqw;min-width:10.8%}
+body[data-ui-theme=arcade] .game-settings,body[data-ui-theme=arcade] .battle-pause{background:#b7e3ec;border-radius:6px;box-shadow:4px 4px var(--ink)}
+body[data-ui-theme=arcade] .health{top:15%;background:#fff5cf;color:#26373d;border-radius:4px;box-shadow:3px 3px var(--ink)}
+body[data-ui-theme=arcade] .troop-card{border-radius:7px;box-shadow:inset 0 5px #fff9ce,5px 6px var(--ink);height:12cqw;width:9.4cqw;overflow:visible}
+body[data-ui-theme=arcade] .troop-card:before{content:'';position:absolute;inset:0;background-image:radial-gradient(#18202d1a 1px,transparent 1px);background-size:5px 5px;border-radius:3px;pointer-events:none}
+body[data-ui-theme=arcade] .troop-card.poppy{background:#ff8797;transform:rotate(-2deg)}
+body[data-ui-theme=arcade] .troop-card.bellflower{background:#9f9aff;transform:translateY(-.45cqw)}
+body[data-ui-theme=arcade] .troop-card.marigold{background:#ffd64b;transform:rotate(2deg)}
+body[data-ui-theme=arcade] .troop-card .card-name{background:#fff8d7;border:2px solid var(--ink);padding:.2cqw .7cqw;position:absolute;top:-1cqw;left:8%;right:8%;font-size:1.25cqw;z-index:1;box-shadow:2px 2px var(--ink)}
+body[data-ui-theme=arcade] .troop-card img{top:6%;height:72%;width:94%}
+body[data-ui-theme=arcade] .troop-card b{bottom:0;border:0;border-top:3px solid var(--ink);border-radius:0 0 3px 3px;height:2.7cqw;background:#fff4c6;color:#1d2835}
+body[data-ui-theme=arcade] .sun-stock{border:4px solid var(--ink);background:#ffda57;color:#18202d;border-radius:4px;box-shadow:4px 4px var(--ink);width:15%}
+body[data-ui-theme=arcade] .sun-stock span,body[data-ui-theme=arcade] .sun-rate{color:#33443e}.production-track{overflow:hidden}
+body[data-ui-theme=arcade] .production-track{background:#b6792a;border:1px solid #714e28;height:.45cqw}body[data-ui-theme=arcade] .production-track i{background:#fff7a6}
+body[data-ui-theme=arcade] .drag-hint{color:#fff5d4}body[data-ui-theme=arcade] .drag-hint span{color:#a9c4dc}
+body[data-ui-theme=arcade] .unit-inspector{background:#fff5d8;border-radius:3px;box-shadow:5px 5px var(--ink)}
+body[data-ui-theme=arcade] .unit-inspector:after{content:'';position:absolute;right:17px;bottom:-12px;width:18px;height:18px;background:#fff5d8;border-bottom:4px solid var(--ink);border-right:4px solid var(--ink);transform:skewY(35deg)}
+body[data-ui-theme=arcade] .chapter-title{border-radius:4px;background:#ffce43;box-shadow:7px 7px var(--ink);border-width:5px;color:#fff7d0}body[data-ui-theme=arcade] .chapter-title span{color:#20313b;text-shadow:none}
+body[data-ui-theme=arcade] .start-game{border-radius:5px;border-width:5px;background:#9fe63b;box-shadow:6px 6px var(--ink),inset 0 5px #d7ff91}
+body[data-ui-theme=arcade] .upgrades>button{border-radius:5px;box-shadow:4px 5px var(--ink);background:#f8e9a9}body[data-ui-theme=arcade] .upgrades b{background:#ffcf47;border-radius:3px;border-color:var(--ink)}
+body[data-ui-theme=arcade] .bottom-nav{background:#27354c}body[data-ui-theme=arcade] .bottom-nav button{border-radius:5px 5px 0 0;background:#5c6b83}body[data-ui-theme=arcade] .bottom-nav .chosen{background:#ffcf44}
+/* B: timber signboards and cream paper, with a warmer field-kit hierarchy. */
+body[data-ui-theme=camp] .game-frame{--ink:#30281f;border-radius:17px}
+body[data-ui-theme=camp] .battle-tray{background:#654337;background-image:repeating-linear-gradient(0deg,transparent 0 17px,#291c192a 18px 20px);border-top:7px solid #34291f;box-shadow:inset 0 6px #b7814c,inset 0 10px #462f26}
+body[data-ui-theme=camp] .wave-head{left:36%;width:28%;top:2.8%;background:#825239;border:5px solid var(--ink);border-radius:9px;padding:.5cqw 1.2cqw .6cqw;box-shadow:inset 0 4px #c28d4d,0 5px #473023}
+body[data-ui-theme=camp] .wave-head:before,body[data-ui-theme=camp] .wave-head:after{content:'';position:absolute;top:45%;width:.55cqw;height:.55cqw;border:2px solid #3d2d23;border-radius:50%;background:#ddbc6c;box-shadow:inset 0 2px #fff0a5}
+body[data-ui-theme=camp] .wave-head:before{left:.6cqw}body[data-ui-theme=camp] .wave-head:after{right:.6cqw}
+body[data-ui-theme=camp] .wave-head>span{background:#334f38;border:2px solid #203627;color:#dceab8;border-radius:3px;font-size:.85cqw;letter-spacing:.15cqw;padding:.15cqw .8cqw}
+body[data-ui-theme=camp] .wave-head>strong{color:#fff0bb;font-size:2.8cqw;margin:.35cqw 0 .5cqw;-webkit-text-stroke:1px #4a3022;text-shadow:0 3px #4a3022}
+body[data-ui-theme=camp] .wave-track{height:.7cqw;background:#342b22;border-color:#30281f;box-shadow:0 2px #b9844e}.game-frame .wave-head small{color:inherit}
+body[data-ui-theme=camp] .wave-track i{background:#b7da67}
+body[data-ui-theme=camp] .currency{background:#f8e4a8;color:#4d3527;border-color:#3b2c23;border-radius:7px;box-shadow:0 5px #69452e,inset 0 3px #fff6ce}
+body[data-ui-theme=camp] .game-settings,body[data-ui-theme=camp] .battle-pause{background:#d4bc7a;border-radius:8px;box-shadow:0 4px #735638,inset 0 3px #f8e9b6}
+body[data-ui-theme=camp] .health{top:15%;background:#4e633b;border:4px solid #302b21;border-radius:8px;box-shadow:0 4px #987442;color:#f8edbf}
+body[data-ui-theme=camp] .troop-card{height:11.8cqw;width:9.8cqw;background-color:#f7e5b2;border-color:#3c2b23;border-radius:5px;box-shadow:0 5px #2f241d,0 0 0 3px #b6854c,inset 0 5px #fff8d4;transform:rotate(-1deg)}
+body[data-ui-theme=camp] .troop-card:nth-child(2){transform:rotate(1.2deg)}body[data-ui-theme=camp] .troop-card:before{content:'';position:absolute;top:.5cqw;left:.5cqw;width:.5cqw;height:.5cqw;border-radius:50%;background:#7a5636;box-shadow:7.8cqw 0 #7a5636}
+body[data-ui-theme=camp] .troop-card .card-name{font-size:1.2cqw;color:#f8edbd;background:#4f6d3e;border:2px solid #2a3c26;border-radius:4px;padding:.15cqw .8cqw;position:absolute;top:-.8cqw;z-index:1}
+body[data-ui-theme=camp] .troop-card img{height:77%;top:1%;width:94%;filter:drop-shadow(1px 3px 0 #9c88473b)}
+body[data-ui-theme=camp] .troop-card b{height:2.6cqw;border-radius:0;background:#d9b770;border-top:3px solid #5d3e29;color:#3e3224;box-shadow:inset 0 3px #f9dfa1}
+body[data-ui-theme=camp] .sun-stock{background:#fff1bc;border:4px solid #342c21;border-radius:9px;color:#483426;box-shadow:0 4px #30251e,inset 0 3px #fffbe0}
+body[data-ui-theme=camp] .sun-stock span,body[data-ui-theme=camp] .sun-rate{color:#687045}body[data-ui-theme=camp] .production-track{background:#bba368}body[data-ui-theme=camp] .production-track i{background:#67864a}
+body[data-ui-theme=camp] .drag-hint{color:#ffebc5}body[data-ui-theme=camp] .drag-hint span{color:#d4b184}
+body[data-ui-theme=camp] .unit-inspector{background:#fff0bf;border:4px solid #59412b;border-radius:5px;box-shadow:0 5px #704c30,0 0 0 3px #c59b5b}
+body[data-ui-theme=camp] .chapter-title{background:#7d5139;box-shadow:inset 0 4px #bb8d56,0 7px #463226;color:#fff2bb;border-width:5px;border-radius:7px}body[data-ui-theme=camp] .chapter-title span{color:#e2c28c}
+body[data-ui-theme=camp] .start-game{border-radius:8px;background:#b8d957;border-width:5px;box-shadow:0 7px #526337,inset 0 5px #e6eea0;color:#344e2d}
+body[data-ui-theme=camp] .upgrades>button{background:#f7e5b1;border-radius:5px;box-shadow:0 5px #745436,0 0 0 2px #b28b52}body[data-ui-theme=camp] .upgrades b{background:#bcce6f;border-color:#486139;border-radius:4px}
+body[data-ui-theme=camp] .bottom-nav{background:#5c4032}body[data-ui-theme=camp] .bottom-nav button{background:#8c7249;border-radius:6px 6px 0 0;color:#f5e4b7}body[data-ui-theme=camp] .bottom-nav .chosen{background:#d5b368;color:#382f22}
+/* C: chunky toy frames, broad highlights, raised costs and bright blue plastic. */
+body[data-ui-theme=toy] .game-frame{--ink:#192747;border-radius:24px}
+body[data-ui-theme=toy] .battle-tray{background:#54469b;border-top:6px solid var(--ink);box-shadow:inset 0 7px #9f89df,inset 0 13px #6f5bbb}
+body[data-ui-theme=toy] .wave-head{top:3%;left:35.5%;width:29%;border:5px solid var(--ink);border-radius:22px;background:#5fbfd8;padding:.5cqw 1.2cqw .7cqw;box-shadow:inset 0 5px #b7edf2,0 6px #223650}
+body[data-ui-theme=toy] .wave-head>span{background:#ffd660;color:#24334d;border:2px solid var(--ink);border-radius:8px;padding:.15cqw 1cqw;box-shadow:0 2px #d99936;font-size:.9cqw}
+body[data-ui-theme=toy] .wave-head>strong{font-size:3cqw;color:#fff6cb;margin:.25cqw 0 .4cqw;text-shadow:0 3px #2a4b61}
+body[data-ui-theme=toy] .wave-track{height:.75cqw;background:#2d6682;border:2px solid var(--ink);box-shadow:0 2px #bbf3ee}.wave-track i{border-radius:0}
+body[data-ui-theme=toy] .wave-track i{background:#ffda5c}
+body[data-ui-theme=toy] .currency{background:#fff0b6;color:#26344f;border-radius:16px;border:4px solid var(--ink);box-shadow:inset 0 4px #fff9da,0 5px #4a416c}
+body[data-ui-theme=toy] .game-settings,body[data-ui-theme=toy] .battle-pause{background:#7ed8de;border:4px solid var(--ink);border-radius:16px;box-shadow:inset 0 4px #d5ffff,0 5px #386a86}
+body[data-ui-theme=toy] .health{top:15%;border:4px solid var(--ink);background:#4c6da2;box-shadow:inset 0 3px #91b6de,0 4px #344267;border-radius:14px}
+body[data-ui-theme=toy] .troop-card{width:9.7cqw;height:12.1cqw;border:5px solid var(--ink);border-radius:18px;box-shadow:inset 0 6px #ffffff99,inset 0 -6px #20325f38,0 7px #222a57;overflow:visible}
+body[data-ui-theme=toy] .troop-card.poppy{background:#ff9b84}body[data-ui-theme=toy] .troop-card.bellflower{background:#b79cff}body[data-ui-theme=toy] .troop-card.marigold{background:#ffde75}
+body[data-ui-theme=toy] .troop-card .card-name{background:#fff1c3;border:3px solid var(--ink);border-radius:9px;font-size:1.25cqw;padding:.15cqw .7cqw;position:absolute;top:-.9cqw;z-index:1;box-shadow:0 3px #655986}
+body[data-ui-theme=toy] .troop-card img{height:77%;top:3%;width:96%}
+body[data-ui-theme=toy] .troop-card b{left:8%;right:8%;bottom:-.5cqw;border:3px solid var(--ink);border-radius:10px;height:2.8cqw;background:#a6e66b;box-shadow:inset 0 3px #def7a1,0 3px #467854;color:#213842}
+body[data-ui-theme=toy] .sun-stock{border:4px solid var(--ink);background:#ffd967;color:#29334a;box-shadow:inset 0 4px #fff1b2,0 5px #322e5b;border-radius:17px}
+body[data-ui-theme=toy] .sun-stock span,body[data-ui-theme=toy] .sun-rate{color:#5b5043}body[data-ui-theme=toy] .production-track{background:#c48a41;height:.45cqw}body[data-ui-theme=toy] .production-track i{background:#fff6b5}
+body[data-ui-theme=toy] .drag-hint{color:#fff0cb}body[data-ui-theme=toy] .drag-hint span{color:#d3c1ef}
+body[data-ui-theme=toy] .unit-inspector{border:4px solid var(--ink);border-radius:18px;background:#e9f1d9;box-shadow:inset 0 4px #ffffff,0 6px #343060}
+body[data-ui-theme=toy] .chapter-title{border:5px solid var(--ink);border-radius:22px;background:#6dcadd;box-shadow:inset 0 6px #baf6f1,0 7px #294873;color:#fff5bd}
+body[data-ui-theme=toy] .start-game{border:5px solid var(--ink);border-radius:20px;background:#afe457;box-shadow:inset 0 6px #e7ffa0,0 8px #426b4e}
+body[data-ui-theme=toy] .upgrades>button{background:#b1ddeb;border:4px solid var(--ink);border-radius:15px;box-shadow:inset 0 4px #e3ffff,0 6px #3e4b78}body[data-ui-theme=toy] .upgrades b{background:#ffdb66;border:3px solid var(--ink);border-radius:9px;box-shadow:inset 0 3px #fff0a7}
+body[data-ui-theme=toy] .bottom-nav{background:#50478e}body[data-ui-theme=toy] .bottom-nav button{background:#8b80c6;border:4px solid var(--ink);border-radius:15px 15px 0 0;box-shadow:inset 0 4px #bcb2ec}body[data-ui-theme=toy] .bottom-nav .chosen{background:#ffcf66;color:#303654}
+body.stage-focus .theme-chooser{visibility:hidden}
+@media(max-width:700px){.theme-options{gap:7px}.theme-options>button{padding:10px 7px;gap:6px;border-width:2px}.theme-options b{font-size:23px}.theme-options span{font-size:12px}.theme-options small{font-size:9px;line-height:1.5}.theme-chooser h2{font-size:22px}.theme-chooser p{font-size:11px;line-height:1.7}.game-frame{border-width:3px!important}.game-frame .troop-card,.game-frame .currency,.game-frame .wave-head,.game-frame .sun-stock,.game-frame .health{border-width:2px!important}.game-frame .wave-head>strong{-webkit-text-stroke:.6px var(--ink)}.game-frame .troop-card .card-name,.game-frame .troop-card b{border-width:1px!important}.game-frame .game-settings,.game-frame .battle-pause{border-width:2px!important}}
+
+body.stage-focus .motion-lab{visibility:hidden}
