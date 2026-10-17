@@ -1,5 +1,5 @@
 import { rules, assetCatalog } from "../config.js";
-import { documents, openQuestions } from "./content.js?v=20261017-oasis";
+import { documents, openQuestions } from "./content.js?v=20261017-artrefs";
 
 const $ = (selector) => document.querySelector(selector);
 const esc = (value) =>
