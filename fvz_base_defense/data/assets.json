@@ -2047,6 +2047,38 @@
         "본편 게임",
         "v5 디자인 프리뷰"
       ]
+    },
+    {
+      "id": "cartoon-v5-popup-sprout",
+      "file": "cartoon-v5-popup-sprout.png",
+      "name": "popup-sprout",
+      "category": "ui",
+      "origin": "User supplied",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "본편 팝업"
+      ],
+      "width": 1545,
+      "height": 1018,
+      "bytes": 772508,
+      "transparent": true
+    },
+    {
+      "id": "cartoon-v5-pause-controls",
+      "file": "cartoon-v5-pause-controls.png",
+      "name": "pause-controls",
+      "category": "ui",
+      "origin": "User supplied",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "본편 팝업"
+      ],
+      "width": 2172,
+      "height": 724,
+      "bytes": 1728990,
+      "transparent": true
     }
   ]
 }
