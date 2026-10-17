@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-17",
+  "chapterName": "Forest Camp",
+  "chapterNameEvidence": "사용자 명칭. 첨부 화면에는 홈 타이틀 없음.",
+  "userStageDescription": "4스테이지",
+  "waves": 10,
+  "displayedVictoryReward": 7200,
+  "doubleRewardClaimed": null,
+  "playerObservation": "유령·뱀파이어들이 많이 나왔고 원거리 몬스터가 늘었다.",
+  "unknown": [
+    "정확한 적 이름과 공격 방식",
+    "이전 챕터 대비 원거리 적 수와 비중",
+    "적별 사거리·공격력·목표 선택",
+    "보상 산식과 전투 시작 인컴",
+    "광고 수령 여부와 다음 챕터"
+  ],
+  "captures": [
+    {
+      "file": "forest-camp-01.png",
+      "caption": "1/10 준비 카운트다운, 청회색 숲과 눈 덮인 나무"
+    },
+    {
+      "file": "forest-camp-02.png",
+      "caption": "1/10 파란 유령형 적"
+    },
+    {
+      "file": "forest-camp-03.png",
+      "caption": "2/10 여러 방향의 적과 전투"
+    },
+    {
+      "file": "forest-camp-04.png",
+      "caption": "3/10 원거리 교전 장면"
+    },
+    {
+      "file": "forest-camp-05.png",
+      "caption": "3/10 큰 파란 적과 작은 적"
+    },
+    {
+      "file": "forest-camp-06.png",
+      "caption": "7/10 보라색 망토의 뱀파이어형 적과 큰 파란 적"
+    },
+    {
+      "file": "forest-camp-07.png",
+      "caption": "10/10 큰 파란 적, 해골 표식, 뱀파이어형 적"
+    },
+    {
+      "file": "forest-camp-08.png",
+      "caption": "10/10 추가 제공 화면. 앞선 화면과 중복 가능"
+    },
+    {
+      "file": "forest-camp-09.png",
+      "caption": "You Win, Chapter Finished, 표시 보상7200, X2 선택 버튼"
+    }
+  ]
+}
