@@ -1180,3 +1180,5 @@ td {
     color: #111;
   }
 }
+
+.online-link{display:inline-flex;align-items:center;padding:9px 14px;min-height:42px;border:1px solid var(--line);border-radius:9px;text-decoration:none;background:var(--white);font-size:13px}
