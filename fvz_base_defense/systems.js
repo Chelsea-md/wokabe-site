@@ -1,4 +1,4 @@
-import { rules } from "./config.js?v=campaign-4";
+import { rules } from "./config.js?v=campaign-6";
 
 export function chapterFor(save) {
   return rules.chapters[
@@ -31,14 +31,18 @@ export function increaseStat(save, stat) {
   save[stat] = +(save[stat] + rules.economy.increments[stat]).toFixed(2);
 }
 
+export function encounterScale(save){return 1+Math.floor((save.completedStages||0)/rules.chapters.length)*(rules.campaign?.repeatDifficultyIncrement||.18);}
+
 export function countForWave(save, wave) {
-  return chapterFor(save).waveCounts[wave - 1] || 15;
+  return Math.ceil((chapterFor(save).waveCounts[wave - 1] || 15)*encounterScale(save));
 }
 
 export function kindForSpawn(save, wave, index, total) {
   const chapter = chapterFor(save);
   if (wave === chapter.waves && index === Math.floor(total * chapter.bossAt))
     return 3;
+  if (chapter.id==='forest-camp'&&wave>=3)return [0,2,2,4,1][index%5];
+  if (chapter.id==='moonblock'&&(wave===3||wave===5))return [1,1,0,2][index%4];
   if (!save.chapter) return wave === 1 ? 0 : wave === 2 ? index % 2 : index % 3;
   if (wave === 1) return 0;
   if (wave === 2) return index % 2 ? 2 : 0;
@@ -48,7 +52,7 @@ export function kindForSpawn(save, wave, index, total) {
 
 export function spawnInterval(save, wave) {
   const cadence = chapterFor(save).spawn;
-  return Math.max(cadence.min, cadence.base - wave * cadence.decrease);
+  return Math.max(cadence.min, (cadence.base - wave * cadence.decrease)/Math.sqrt(encounterScale(save)));
 }
 
 export function killReward(save, kind) {

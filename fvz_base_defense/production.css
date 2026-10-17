@@ -83,3 +83,23 @@ body.production .plant-collection-card:nth-child(3) .collection-character{animat
 body.production .plant-collection-card:nth-child(4) .collection-character{animation-delay:-2.4s}
 @keyframes collection-idle{0%,100%{transform:translateY(0) rotate(-.4deg) scale(1,1)}50%{transform:translateY(-.25cqw) rotate(.4deg) scale(1.012,1.025)}}
 @media(prefers-reduced-motion:reduce){body.production .collection-character{animation:none!important;will-change:auto}}
+/* The resource and wave panels themselves fill, as in the benchmark. */
+body.production[data-ui-theme=bold] .wave-track{top:13%;left:3%;width:94%;height:74%;min-height:0;border:0;border-radius:1.25cqw;background:transparent;box-shadow:none;z-index:0}
+body.production[data-ui-theme=bold] .wave-track i{border-radius:0;background:linear-gradient(#ffbd43,#fa780e);box-shadow:inset 0 .18cqw #ffe8a27a}
+body.production[data-ui-theme=bold] .wave-head>strong{position:relative;z-index:1}
+body.production[data-ui-theme=bold] .game-frame .sun-stock .production-track{inset:14% 4%;height:auto;min-height:0;border:0;border-radius:1.8cqw;background:transparent;box-shadow:none;z-index:0}
+body.production[data-ui-theme=bold] .production-track i{border-radius:0;background:linear-gradient(#ffd44f,#f99a16);box-shadow:inset 0 .16cqw #fff4b06b;opacity:.88}
+body.production[data-ui-theme=bold] .sun-stock{padding:.42cqw .85cqw;isolation:isolate}
+body.production[data-ui-theme=bold] .sun-stock>.ui-raster,body.production[data-ui-theme=bold] .sun-stock strong{position:relative;z-index:1}
+body.production .troop-card.selected>img{visibility:hidden}
+body.production[data-ui-theme=bold] .upgrades>button.free-invite{animation:free-invite 6.5s ease-in-out infinite;transform-origin:50% 90%}
+body.production .free-invite:nth-child(2){animation-delay:1.1s!important}body.production .free-invite:nth-child(3){animation-delay:2.2s!important}
+@keyframes free-invite{0%,82%,100%{rotate:0deg}86%{rotate:-2deg}90%{rotate:2deg}94%{rotate:-1deg}97%{rotate:1deg}}
+body.production:has(.pause-overlay:not([hidden])) .free-invite{animation-play-state:paused!important}
+body.production #game-message{left:50%;right:auto;bottom:22%;width:max-content;max-width:64%;padding:.55cqw 1.3cqw;border:.12cqw solid #fff4cd80;border-radius:2cqw;background:#173a2de8;color:#fff6d7;box-shadow:0 .3cqw .8cqw #102d2430;font:1.25cqw GameChunk,sans-serif;line-height:1.3;transform:translate(-50%,.6cqw);transition:opacity .2s,transform .2s;pointer-events:none}
+body.production #game-message.visible{transform:translate(-50%,0)}
+#merge-tutorial{position:absolute;z-index:9;display:flex;gap:.6cqw;align-items:center;pointer-events:none;transform:translate(-50%,0);color:#fff9df;font:1.15cqw GameChunk,sans-serif;text-shadow:0 1px 2px #173b2c;white-space:nowrap}
+#merge-tutorial[hidden]{display:none!important}#merge-tutorial>span{padding:.5cqw .9cqw;border-radius:1.4cqw;background:#173a2ddc;border:.1cqw solid #fff7c15c}
+#merge-tutorial img{width:4cqw;height:3.5cqw;object-fit:contain;animation:tutorial-drag 2.5s ease-in-out infinite}
+@keyframes tutorial-drag{0%,100%{transform:translate(0,.2cqw) rotate(-6deg)}55%{transform:translate(.8cqw,-.4cqw) rotate(4deg)}}
+@media(prefers-reduced-motion:reduce){body.production .free-invite,#merge-tutorial img{animation:none!important}}

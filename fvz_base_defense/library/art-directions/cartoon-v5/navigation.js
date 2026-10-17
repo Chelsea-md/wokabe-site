@@ -4,6 +4,7 @@ export function spawnOutside(index,width=1200,height=600,random=Math.random){
   return side===0?{x:-pad,y:height*t}:side===1?{x:width+pad,y:height*t}:side===2?{x:width*t,y:-pad}:{x:width*t,y:height+pad};
 }
 export function stageObstacles(stage){
+  if(stage==='moon')return [[375,191,42,28],[970,238,55,22],[446,463,40,18],[879,512,35,20]];
   if(stage==='dune'||stage==='oasis')return [[185,151,28,34],[1020,211,28,34],[265,505,28,34],[945,500,28,34]];
   return [[360,143,43,43],[970,226,65,29],[437,445,43,25],[875,490,30,42]];
 }

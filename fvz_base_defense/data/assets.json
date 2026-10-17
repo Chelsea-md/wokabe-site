@@ -2096,6 +2096,72 @@
       "height": 400,
       "bytes": 81742,
       "transparent": true
+    },
+    {
+      "id": "cartoon-v5-sunflower-growth",
+      "file": "cartoon-v5-sunflower-growth.png",
+      "name": "cartoon-v5-sunflower-growth",
+      "category": "characters",
+      "origin": "Built-in imagegen",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "SUNFLOWER 1–10성"
+      ],
+      "width": 1983,
+      "height": 793,
+      "bytes": 1540990,
+      "transparent": true
+    },
+    {
+      "id": "cartoon-v5-tutorial-hand",
+      "file": "cartoon-v5-tutorial-hand.png",
+      "name": "cartoon-v5-tutorial-hand",
+      "category": "ui",
+      "origin": "User supplied",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "첫 배치/합성 안내"
+      ],
+      "width": 1774,
+      "height": 887,
+      "bytes": 1193886,
+      "transparent": true
+    },
+    {
+      "id": "cartoon-v5-chapter-enemies",
+      "name": "Observed chapter enemy roles",
+      "file": "cartoon-v5-chapter-enemies.png",
+      "category": "characters",
+      "origin": "Built-in imagegen",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "Moonblock",
+        "Forest Camp",
+        "近거리 엘리트"
+      ],
+      "width": 2172,
+      "height": 724,
+      "bytes": 1117496,
+      "transparent": true
+    },
+    {
+      "id": "cartoon-v5-moon-field",
+      "file": "cartoon-v5-moon-field.png",
+      "name": "Moon graveyard battlefield",
+      "category": "background",
+      "origin": "Built-in imagegen",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "Moonblock"
+      ],
+      "width": 1774,
+      "height": 887,
+      "bytes": 2170075,
+      "transparent": false
     }
   ]
 }

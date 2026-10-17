@@ -219,7 +219,9 @@
         "income": 15,
         "coins": 7163
       },
-      "verification": "full-clear-observed-counts-calibrated"
+      "verification": "full-clear-observed-counts-calibrated",
+      "artStage": "green",
+      "hpFactor": 1
     },
     {
       "id": "dune-loop",
@@ -250,7 +252,9 @@
         "income": 17,
         "coins": 5040
       },
-      "verification": "full-clear-observed-counts-calibrated"
+      "verification": "full-clear-observed-counts-calibrated",
+      "artStage": "dune",
+      "hpFactor": 1
     },
     {
       "id": "forest-camp",
@@ -259,25 +263,114 @@
       "theme": "night",
       "ribbon": "noon-ribbon",
       "waveCounts": [
-        4,
+        6,
         12,
-        16,
-        13,
-        26,
+        18,
         22,
-        24,
-        16,
-        24,
-        15
+        26,
+        28,
+        32,
+        34,
+        38,
+        28
       ],
       "spawn": {
-        "base": 1.65,
-        "decrease": 0.055,
-        "min": 0.9
+        "base": 1.55,
+        "decrease": 0.06,
+        "min": 0.78
       },
       "bossAt": 0.2,
       "bossHp": 4500,
-      "verification": "home-only-wave-rules-provisional"
+      "verification": "observed-theme-ranged-pressure-calibrated-wave-counts",
+      "artStage": "camp",
+      "hpFactor": 1.15
+    },
+    {
+      "id": "moonblock",
+      "name": "Moonblock",
+      "waves": 10,
+      "theme": "moon",
+      "artStage": "moon",
+      "ribbon": "noon-ribbon",
+      "waveCounts": [
+        6,
+        12,
+        18,
+        20,
+        26,
+        28,
+        32,
+        36,
+        40,
+        30
+      ],
+      "spawn": {
+        "base": 1.6,
+        "decrease": 0.05,
+        "min": 0.65
+      },
+      "bossAt": 0.5,
+      "bossHp": 5000,
+      "hpFactor": 1.7,
+      "verification": "observed-theme-provisional-route-and-calibrated-combat"
+    },
+    {
+      "id": "oasis-cross",
+      "name": "Oasis Cross",
+      "waves": 10,
+      "theme": "oasis",
+      "artStage": "oasis",
+      "ribbon": "noon-ribbon",
+      "waveCounts": [
+        8,
+        14,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        32
+      ],
+      "spawn": {
+        "base": 1.3,
+        "decrease": 0.05,
+        "min": 0.65
+      },
+      "bossAt": 0.5,
+      "bossHp": 4800,
+      "hpFactor": 1.3,
+      "verification": "observed-theme-provisional-route-and-calibrated-combat"
+    },
+    {
+      "id": "noon-strip",
+      "name": "Noon Strip",
+      "waves": 10,
+      "theme": "noon",
+      "artStage": "noon",
+      "ribbon": "noon-ribbon",
+      "waveCounts": [
+        6,
+        12,
+        18,
+        22,
+        26,
+        30,
+        32,
+        36,
+        40,
+        30
+      ],
+      "spawn": {
+        "base": 1.5,
+        "decrease": 0.05,
+        "min": 0.65
+      },
+      "bossAt": 0.5,
+      "bossHp": 4800,
+      "hpFactor": 1.4,
+      "verification": "observed-theme-provisional-route-and-calibrated-combat"
     }
   ],
   "web": {
@@ -290,5 +383,10 @@
     1,
     2,
     3
-  ]
+  ],
+  "campaign": {
+    "routePolicy": "preserve-existing-three-then-observed-expansion",
+    "repeatDifficultyIncrement": 0.18,
+    "verification": "new-game-design-not-exact-source-measurement"
+  }
 }

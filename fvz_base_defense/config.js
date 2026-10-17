@@ -5,8 +5,8 @@ async function readData(file) {
 }
 
 export const [rules, assetCatalog] = await Promise.all([
-  readData("./data/rules.json?v=campaign-4"),
-  readData("./data/assets.json?v=campaign-4"),
+  readData("./data/rules.json?v=campaign-6"),
+  readData("./data/assets.json?v=campaign-6"),
 ]);
 
 if (rules.schemaVersion !== 1 || assetCatalog.schemaVersion !== 1) {
