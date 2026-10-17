@@ -1,5 +1,5 @@
 import { rules, assetCatalog } from "../config.js";
-import { documents, openQuestions } from "./content.js?v=20261017-artrefs";
+import { documents, openQuestions } from "./content.js?v=20261017-cartoon-v1";
 
 const $ = (selector) => document.querySelector(selector);
 const esc = (value) =>
@@ -38,7 +38,7 @@ const assetUrl = (asset) =>
   `../assets/${encodeURIComponent(asset.file)}?v=${library.state.revision || 0}`;
 const metaFor = (id) => library.state.assets[id] || {};
 const reviewFor = (asset) =>
-  metaFor(asset.id).reviewStatus ||
+  metaFor(asset.id).reviewStatus || asset.reviewStatus ||
   (asset.usage === "stored" ? "archived" : "ready");
 const nameFor = (asset) => metaFor(asset.id).name || asset.name;
 let library = {

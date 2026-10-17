@@ -1395,6 +1395,134 @@
       "width": 154,
       "height": 198,
       "bytes": 17377
+    },
+    {
+      "id": "cartoon-v1-poppy",
+      "file": "cartoon-v1-poppy.png",
+      "name": "팝피 · 카툰 v1",
+      "category": "plants",
+      "origin": "ImageGen 생성 · 카툰 가든 v1",
+      "usage": "active",
+      "reviewStatus": "review",
+      "preload": false,
+      "usedIn": [
+        "카툰 v1 디자인 프리뷰"
+      ],
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1032525
+    },
+    {
+      "id": "cartoon-v1-bellflower",
+      "file": "cartoon-v1-bellflower.png",
+      "name": "벨라 · 카툰 v1",
+      "category": "plants",
+      "origin": "ImageGen 생성 · 카툰 가든 v1",
+      "usage": "active",
+      "reviewStatus": "review",
+      "preload": false,
+      "usedIn": [
+        "카툰 v1 디자인 프리뷰"
+      ],
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1092890
+    },
+    {
+      "id": "cartoon-v1-marigold",
+      "file": "cartoon-v1-marigold.png",
+      "name": "메리 · 카툰 v1",
+      "category": "plants",
+      "origin": "ImageGen 생성 · 카툰 가든 v1",
+      "usage": "active",
+      "reviewStatus": "review",
+      "preload": false,
+      "usedIn": [
+        "카툰 v1 디자인 프리뷰"
+      ],
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1136954
+    },
+    {
+      "id": "cartoon-v1-shambler",
+      "file": "cartoon-v1-shambler.png",
+      "name": "모시 · 카툰 v1",
+      "category": "enemies",
+      "origin": "ImageGen 생성 · 카툰 가든 v1",
+      "usage": "active",
+      "reviewStatus": "review",
+      "preload": false,
+      "usedIn": [
+        "카툰 v1 디자인 프리뷰"
+      ],
+      "width": 1254,
+      "height": 1254,
+      "bytes": 916596
+    },
+    {
+      "id": "cartoon-v1-courier",
+      "file": "cartoon-v1-courier.png",
+      "name": "크룩 · 카툰 v1",
+      "category": "enemies",
+      "origin": "ImageGen 생성 · 카툰 가든 v1",
+      "usage": "active",
+      "reviewStatus": "review",
+      "preload": false,
+      "usedIn": [
+        "카툰 v1 디자인 프리뷰"
+      ],
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1092171
+    },
+    {
+      "id": "cartoon-v1-bruiser",
+      "file": "cartoon-v1-bruiser.png",
+      "name": "팟벨리 · 카툰 v1",
+      "category": "enemies",
+      "origin": "ImageGen 생성 · 카툰 가든 v1",
+      "usage": "active",
+      "reviewStatus": "review",
+      "preload": false,
+      "usedIn": [
+        "카툰 v1 디자인 프리뷰"
+      ],
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1318616
+    },
+    {
+      "id": "cartoon-v1-base",
+      "file": "cartoon-v1-base.png",
+      "name": "꽃 온실 · 카툰 v1",
+      "category": "bases",
+      "origin": "ImageGen 생성 · 카툰 가든 v1",
+      "usage": "active",
+      "reviewStatus": "review",
+      "preload": false,
+      "usedIn": [
+        "카툰 v1 디자인 프리뷰"
+      ],
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1182281
+    },
+    {
+      "id": "cartoon-v1-forest",
+      "file": "cartoon-v1-forest.png",
+      "name": "가든 숲 · 카툰 v1",
+      "category": "backgrounds",
+      "origin": "ImageGen 생성 · 카툰 가든 v1",
+      "usage": "active",
+      "reviewStatus": "review",
+      "preload": false,
+      "usedIn": [
+        "카툰 v1 디자인 프리뷰"
+      ],
+      "width": 1672,
+      "height": 941,
+      "bytes": 1672652
     }
   ]
 }

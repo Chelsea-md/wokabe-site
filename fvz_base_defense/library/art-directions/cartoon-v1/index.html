@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>카툰 가든 · 인게임 디자인 프리뷰</title><link rel="stylesheet" href="preview.css"><link rel="icon" href="assets/poppy.png"></head>
+<body>
+<svg class="svg-defs" aria-hidden="true"><defs>
+<symbol id="sun" viewBox="0 0 32 32"><path d="m16 1 4 6 7-2-1 8 5 3-6 4 2 7-8-1-3 5-4-6-7 2 1-8-5-3 6-4-2-7 8 1Z" fill="#ffca39" stroke="#29302c" stroke-width="2"/><circle cx="16" cy="16" r="7" fill="#ffed82" stroke="#e99d19" stroke-width="2"/></symbol>
+<symbol id="coin" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="#ffc63b" stroke="#242c32" stroke-width="2.5"/><circle cx="16" cy="16" r="10" fill="#ffe575" stroke="#ed931b" stroke-width="2"/><path d="M20 10h-8v12m0-6h7" stroke="#d68116" stroke-width="3.5" fill="none" stroke-linecap="round"/></symbol>
+<symbol id="leaf" viewBox="0 0 32 32"><path d="M26 4C7 2 1 15 9 24c10 8 21-3 17-20Z" fill="#a5e44f" stroke="#233b32" stroke-width="2.5"/><path d="m5 29 16-17" stroke="#233b32" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="shield" viewBox="0 0 32 32"><path d="m16 2 12 5v10c-2 7-7 10-12 13C9 26 5 23 4 17V7Z" fill="#83dbdc" stroke="#263139" stroke-width="2.5"/><path d="M16 8v15" stroke="#eaffef" stroke-width="5"/></symbol>
+<symbol id="sword" viewBox="0 0 32 32"><path d="m24 2 6 1-1 6-16 16-6-6Z" fill="#ebf6ee" stroke="#243039" stroke-width="2.3"/><path d="m5 16 13 13M2 29l8-8" stroke="#ffcb42" stroke-width="5" stroke-linecap="round"/><path d="m2 29 2 1" stroke="#243039" stroke-width="4"/></symbol>
+<symbol id="lock" viewBox="0 0 32 32"><rect x="7" y="13" width="19" height="16" rx="4" fill="#7b8f86" stroke="#203a33" stroke-width="2.5"/><path d="M11 13V8a6 6 0 0 1 12 0v5" stroke="#c5d5c4" stroke-width="4" fill="none"/><path d="M16 20v4" stroke="#263c33" stroke-width="3"/></symbol>
+<symbol id="gear" viewBox="0 0 32 32"><path d="m12 3 8 0 1 5 5 0 3 7-4 4 1 5-7 5-4-4-5 1-5-7 4-4-1-5Z" fill="#e9f2d7" stroke="#23352d" stroke-width="2.5"/><circle cx="16" cy="16" r="4" fill="#4e7464"/></symbol>
+</defs></svg>
+<main>
+<header class="page-head"><div><a href="../">← 비주얼 라이브러리</a><h1>카툰 가든 <span>새 비주얼 프리뷰</span></h1></div><a class="download-all" href="cartoon-garden-assets.zip" download>PNG 리소스 묶음 ↓</a></header>
+<div class="preview-tools"><div class="view-switch" role="group" aria-label="프리뷰 화면"><button id="view-battle" class="active" aria-pressed="true">인게임</button><button id="view-home" aria-pressed="false">메인 화면</button><a href="#resources">투명 리소스 7종</a></div><div><button id="stage-mode" aria-pressed="false">화면만 보기</button><button id="pause" aria-pressed="false">연출 정지</button><button id="reset">처음 장면</button></div></div>
+<section id="game-frame" class="game-frame battle" aria-label="새 리소스를 적용한 디자인 프리뷰">
+<canvas id="world" width="1200" height="680" aria-label="중앙 온실과 주변 여덟 칸, 식물과 좀비가 있는 전장"></canvas>
+<button class="game-settings" id="settings" aria-label="프리뷰 안내"><svg><use href="#gear"/></svg></button>
+<div class="currency"><svg><use href="#coin"/></svg><strong id="coins">235</strong></div>
+<div class="home-only chapter-title"><span>CHAPTER 01</span><strong>GREEN BLOCK</strong></div>
+<div class="battle-only wave-head"><span>GREEN BLOCK</span><strong>WAVE 3 <small>/ 6</small></strong><div class="wave-track"><i></i></div></div>
+<div class="battle-only health"><svg><use href="#shield"/></svg><div><span>온실 체력</span><b>160 / 160</b><i></i></div></div>
+<div class="home-only home-actions"><button id="start" class="start-game"><svg><use href="#sword"/></svg><span>전투 시작<small>GREEN BLOCK · 6 WAVES</small></span><b>▶</b></button><div class="upgrades">
+<button data-upgrade="health"><span>온실 체력</span><svg><use href="#shield"/></svg><strong id="stat-health">160 → 170</strong><b><svg><use href="#coin"/></svg>234</b></button>
+<button data-upgrade="rate"><span>햇빛 생산</span><svg><use href="#sun"/></svg><strong id="stat-rate">1.20 → 1.22</strong><b><svg><use href="#coin"/></svg>1.4K</b></button>
+<button data-upgrade="income"><span>코인 수입</span><svg><use href="#coin"/></svg><strong id="stat-income">17 → 18</strong><b><svg><use href="#coin"/></svg>286</b></button>
+</div></div>
+<div class="home-only home-caption"><b>우리의 작은 온실</b><span>꽃을 모으고, 합성하고, 지켜내세요.</span></div>
+<nav class="home-only bottom-nav" aria-label="홈 메뉴"><button disabled aria-label="잠긴 메뉴"><svg><use href="#lock"/></svg></button><button id="home-roster"><svg><use href="#leaf"/></svg><span>꽃 도감</span></button><button class="chosen" id="home-battle"><svg><use href="#sword"/></svg><span>전투</span></button><button disabled aria-label="잠긴 메뉴"><svg><use href="#lock"/></svg></button><button disabled aria-label="잠긴 메뉴"><svg><use href="#lock"/></svg></button></nav>
+<div class="battle-only battle-tray"><div class="sun-stock"><svg><use href="#sun"/></svg><div><span>햇빛</span><strong id="sun-count">28</strong></div><div class="sun-rate">+1.2/s</div></div><div class="troop-cards" aria-label="식물 구매 카드">
+<button class="troop-card poppy" data-type="0" aria-label="팝피 배치 · 햇빛 3"><span class="card-name">팝피</span><img draggable="false" src="assets/poppy.png" alt="붉은 꽃 기본형 팝피"><b><svg><use href="#sun"/></svg>3</b></button>
+<button class="troop-card bellflower" data-type="1" aria-label="벨라 배치 · 햇빛 7"><span class="card-name">벨라</span><img draggable="false" src="assets/bellflower.png" alt="보라색 꽃 궁수형 벨라"><b><svg><use href="#sun"/></svg>7</b></button>
+<button class="troop-card marigold" data-type="2" aria-label="메리 배치 · 햇빛 12"><span class="card-name">메리</span><img draggable="false" src="assets/marigold.png" alt="노란 꽃 중화기형 메리"><b><svg><use href="#sun"/></svg>12</b></button>
+</div><p class="drag-hint">카드를 끌어 빈 칸에 배치<br><span>같은 꽃끼리 합성</span></p></div>
+<div id="game-message" role="status" aria-live="polite"></div>
+</section>
+<p class="preview-note">새 PNG를 직접 그리는 인터랙티브 디자인 프리뷰입니다. 홈·전투 전환, 드래그 배치, 합성, 공격 범위, 안착 모션을 확인할 수 있습니다. 전투 수치와 반복 연출은 시안용이며 본편 진행에 저장되지 않습니다.</p>
+<section id="resources"><div class="resource-heading"><div><p class="eyebrow">REUSABLE GAME ASSETS</p><h2>같은 그림이, 그대로 게임 안으로</h2><p>식물 3종 · 좀비 3종 · 온실 1종. 실제 알파 채널이 있는 개별 PNG입니다.</p></div><div class="background-switch" role="group" aria-label="리소스 배경"><button data-bg="checker" class="active">투명 격자</button><button data-bg="light">밝게</button><button data-bg="dark">어둡게</button></div></div><div id="asset-grid" class="asset-grid checker"></div><p class="asset-note">현재는 캐릭터별 단일 포즈 리소스입니다. 전장의 호흡·반동·이동 모션은 코드 연출이며, 걷기·공격·피격의 개별 애니메이션 프레임은 다음 제작 단계입니다.</p><div class="background-asset"><img src="assets/forest.png" alt="새 프리뷰의 카툰 숲 배경"><div><h3>전장 배경도 같은 방향으로</h3><p>낮은 대비의 지면과 외곽 수풀로 캐릭터의 윤곽과 색이 먼저 읽히도록 구성했습니다.</p><a href="assets/forest.png" download>숲 배경 PNG ↓</a> · <a href="prompts.json">제작 프롬프트</a> · <a href="assets.json">리소스 명세</a></div></div></section>
+<button id="stage-close" hidden>프리뷰 페이지로 돌아가기</button><footer>Flower vs Zombie : Base Defense · Cartoon Garden v1 · Built-in ImageGen · 제작 프리뷰</footer>
+</main><script type="module" src="preview.js"></script></body></html>
