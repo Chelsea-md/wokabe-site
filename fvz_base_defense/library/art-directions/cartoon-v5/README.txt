@@ -4,3 +4,5 @@ Three playable visual classes: Pepper Scout, Acorn Marksman, Pinecone Gunner. Fi
 Motion: code-driven squash, stretch, exaggerated hops and recoil. Ground shadow is synchronized: smaller/lighter in flight, wider/darker at landing. Gear follows the whole sprite.
 In-game text is English. v4 is preserved unchanged. This is an art/UI preview, not final combat balance.
 Weapons, gear and enemies generated with built-in ImageGen from the approved reference. PNGs have real alpha channels. Runtime source rectangles assemble sprites without editing the source bitmaps.
+
+Boss entrance: same atlas sprite enlarged to 150 world units; 4.2 second camera push/hold/return, 12% world simulation speed, English stage-specific names, skip/replay and pause support. Preview only.
