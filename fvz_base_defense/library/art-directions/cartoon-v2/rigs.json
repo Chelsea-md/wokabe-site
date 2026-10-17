@@ -1,0 +1,221 @@
+{
+  "version": 2,
+  "method": "Transparent atlas + source rectangles + joint transforms",
+  "characters": {
+    "poppy": {
+      "atlas": "../../../assets/cartoon-v2-poppy-parts.png",
+      "width": 1254,
+      "height": 1254,
+      "parts": {
+        "head": {
+          "source": [
+            8,
+            54,
+            489,
+            455
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "parent": "body"
+        },
+        "body": {
+          "source": [
+            507,
+            136,
+            856,
+            448
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "parent": "root"
+        },
+        "rearArm": {
+          "source": [
+            927,
+            112,
+            1236,
+            456
+          ],
+          "pivot": [
+            0.12,
+            0.13
+          ],
+          "parent": "body"
+        },
+        "frontArm": {
+          "source": [
+            57,
+            527,
+            325,
+            846
+          ],
+          "pivot": [
+            0.84,
+            0.1
+          ],
+          "parent": "body"
+        },
+        "leftLeg": {
+          "source": [
+            506,
+            516,
+            773,
+            840
+          ],
+          "pivot": [
+            0.5,
+            0.08
+          ],
+          "parent": "root"
+        },
+        "rightLeg": {
+          "source": [
+            945,
+            523,
+            1209,
+            836
+          ],
+          "pivot": [
+            0.5,
+            0.08
+          ],
+          "parent": "root"
+        },
+        "weapon": {
+          "source": [
+            77,
+            885,
+            412,
+            1208
+          ],
+          "pivot": [
+            0.5,
+            0.92
+          ],
+          "parent": "frontArm"
+        },
+        "seed": {
+          "source": [
+            562,
+            975,
+            711,
+            1125
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "parent": "weapon"
+        }
+      },
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "actions": [
+        "idle",
+        "attack",
+        "hit"
+      ]
+    },
+    "shambler": {
+      "atlas": "../../../assets/cartoon-v2-shambler-parts.png",
+      "width": 1536,
+      "height": 1024,
+      "parts": {
+        "head": {
+          "source": [
+            67,
+            37,
+            515,
+            531
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "parent": "body"
+        },
+        "body": {
+          "source": [
+            599,
+            105,
+            1018,
+            514
+          ],
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "parent": "root"
+        },
+        "rearArm": {
+          "source": [
+            1085,
+            114,
+            1478,
+            539
+          ],
+          "pivot": [
+            0.83,
+            0.1
+          ],
+          "parent": "body"
+        },
+        "frontArm": {
+          "source": [
+            81,
+            578,
+            500,
+            954
+          ],
+          "pivot": [
+            0.83,
+            0.1
+          ],
+          "parent": "body"
+        },
+        "leftLeg": {
+          "source": [
+            568,
+            583,
+            907,
+            971
+          ],
+          "pivot": [
+            0.64,
+            0.08
+          ],
+          "parent": "root"
+        },
+        "rightLeg": {
+          "source": [
+            1116,
+            586,
+            1452,
+            971
+          ],
+          "pivot": [
+            0.43,
+            0.08
+          ],
+          "parent": "root"
+        }
+      },
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "actions": [
+        "idle",
+        "walk",
+        "attack",
+        "hit"
+      ]
+    }
+  }
+}

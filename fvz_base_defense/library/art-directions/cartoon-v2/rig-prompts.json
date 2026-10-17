@@ -1,0 +1,22 @@
+{
+  "method": "Built-in ImageGen",
+  "date": "2026-10-18",
+  "jobs": [
+    {
+      "id": "poppy-parts",
+      "reference": "cartoon-v1-poppy.png",
+      "prompt": "Use case: precise-object-edit. Asset type: production 2D cutout puppet part atlas. Decompose approved Poppy Scout into head, complete torso, rear arm, front arm, left leg, right leg, Y slingshot and seed. Preserve coral petals, cream face, teal leaf poncho, lime mittens, bold outlines and cel shading. Square transparent atlas, target1536x1536, invisible3x3 cells. Paint complete hidden shoulders and hips. No assembled character, labels, grid lines, ground or shadows. Each part centered with transparent gutters."
+    },
+    {
+      "id": "shambler-parts",
+      "reference": "cartoon-v1-shambler.png",
+      "prompt": "Use case: precise-object-edit. Production2D cutout atlas: split approved Mossy Shambler into six fully painted parts. Preserve mint skin, yellow eyes, crooked teeth, floppy hair, patched ochre coat, plum trousers and chunky boots. Invisible3columns by2rows, target1536x1024. Top row head, complete torso, rear arm. Bottom row front arm, left leg, right leg. Complete rounded shoulder/hip stubs. Transparent gaps, no assembled character or labels."
+    },
+    {
+      "id": "shambler-alpha-cleanup",
+      "reference": "generated shambler atlas",
+      "prompt": "Clean the exact six-part zombie atlas for production. Preserve every part shape, colors, outline, scale and exact placement. Remove surrounding colored halos, gradients, shadows and haze. Outside closed outlines fully transparent, interior opaque. Do not add background, checkerboard, labels, new parts or glow."
+    }
+  ],
+  "note": "Generation briefs normalized for the asset record; source PNGs are preserved without external background editing."
+}

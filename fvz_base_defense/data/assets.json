@@ -1523,6 +1523,40 @@
       "width": 1672,
       "height": 941,
       "bytes": 1672652
+    },
+    {
+      "id": "cartoon-v2-poppy-parts",
+      "file": "cartoon-v2-poppy-parts.png",
+      "name": "팝피 파츠 시트 · v2",
+      "category": "plants",
+      "origin": "ImageGen 생성 · 컷아웃 파츠",
+      "usage": "active",
+      "reviewStatus": "review",
+      "preload": false,
+      "usedIn": [
+        "카툰 v2 전장",
+        "파츠·움직임 프리뷰"
+      ],
+      "width": 1254,
+      "height": 1254,
+      "bytes": 852924
+    },
+    {
+      "id": "cartoon-v2-shambler-parts",
+      "file": "cartoon-v2-shambler-parts.png",
+      "name": "모시 파츠 시트 · v2",
+      "category": "enemies",
+      "origin": "ImageGen 생성 · 컷아웃 파츠",
+      "usage": "active",
+      "reviewStatus": "review",
+      "preload": false,
+      "usedIn": [
+        "카툰 v2 전장",
+        "파츠·움직임 프리뷰"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1522432
     }
   ]
 }
