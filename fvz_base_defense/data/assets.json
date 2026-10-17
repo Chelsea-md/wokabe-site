@@ -2079,6 +2079,23 @@
       "height": 724,
       "bytes": 1728990,
       "transparent": true
+    },
+    {
+      "id": "cartoon-v5-wallpaper-tile",
+      "file": "cartoon-v5-wallpaper-tile.png",
+      "name": "Approved small game icon wallpaper",
+      "category": "ui",
+      "origin": "Exported approved runtime canvas pattern",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "로딩",
+        "PLANTS"
+      ],
+      "width": 600,
+      "height": 400,
+      "bytes": 81742,
+      "transparent": true
     }
   ]
 }

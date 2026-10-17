@@ -24,7 +24,7 @@ body.production[data-ui-theme=bold] .locked .plant-collection-footer{padding:.25
 body.production[data-ui-theme=bold] #wave-countdown{-webkit-text-stroke:.12em #10171c}
 /* Wallpaper stays behind the logo, with a seamless, slow diagonal drift. */
 #boot-loading,#scene-splash{overflow:hidden;isolation:isolate;background:radial-gradient(ellipse at center,#244b3a,#142e26)}
-#boot-loading::before,#scene-splash::before{content:'';position:absolute;inset:-600px;z-index:-1;pointer-events:none;background-image:var(--game-wallpaper,url('assets/cartoon-v5-plants-sprout-transparent.png'));background-size:600px 400px;background-repeat:repeat;opacity:.09;animation:wallpaper-drift 75s linear infinite}
+#boot-loading::before,#scene-splash::before{content:'';position:absolute;inset:-600px;z-index:-1;pointer-events:none;background-image:var(--game-wallpaper,url('assets/cartoon-v5-wallpaper-tile.png'));background-size:600px 400px;background-repeat:repeat;opacity:.09;animation:wallpaper-drift 75s linear infinite}
 #boot-logo,#boot-status,#splash-logo,#splash-label,.splash-dots{position:relative;z-index:1}
 #boot-logo{filter:drop-shadow(0 9px 18px #071b2255)}
 @keyframes wallpaper-drift{from{transform:translate3d(0,0,0)}to{transform:translate3d(600px,400px,0)}}
