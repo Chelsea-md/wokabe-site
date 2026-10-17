@@ -15,12 +15,13 @@ export function loadProgress(storage) {
     result.chapter = Math.floor(
       number(data.chapter, 0, 0, rules.chapters.length - 1),
     );
+    result.completedStages = Math.floor(number(data.completedStages, result.chapter, 0, 100000));
     result.coins = Math.floor(number(data.coins, 0, 0, 1e12));
     result.health = number(data.health, result.health, 10, 1e8);
     result.rate = number(data.rate, result.rate, 0.01, 1e5);
     result.income = Math.floor(number(data.income, result.income, 1, 1e8));
     if (Array.isArray(data.unlocks))
-      result.unlocks = [true, !!data.unlocks[1], !!data.unlocks[2]];
+      result.unlocks = [true, !!data.unlocks[1], !!data.unlocks[2], !!data.unlocks[3]];
     for (const key of ["tutorial", "played", "sound"])
       if (typeof data[key] === "boolean") result[key] = data[key];
     if (data.freeUsed && typeof data.freeUsed === "object") {

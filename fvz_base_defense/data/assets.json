@@ -1646,12 +1646,16 @@
       "name": "whole-characters",
       "category": "art-direction",
       "origin": "User approved reference",
-      "usage": "review",
+      "usage": "active",
       "preload": false,
       "width": 1536,
       "height": 1024,
       "bytes": 1214136,
-      "transparent": true
+      "transparent": true,
+      "usedIn": [
+        "본편 게임",
+        "v5 디자인 프리뷰"
+      ]
     },
     {
       "id": "cartoon-v5-class-weapons",
@@ -1659,12 +1663,16 @@
       "name": "class-weapons",
       "category": "art-direction",
       "origin": "Built-in ImageGen",
-      "usage": "review",
+      "usage": "active",
       "preload": false,
       "width": 1536,
       "height": 1024,
       "bytes": 1556861,
-      "transparent": true
+      "transparent": true,
+      "usedIn": [
+        "본편 게임",
+        "v5 디자인 프리뷰"
+      ]
     },
     {
       "id": "cartoon-v5-upgrade-gear",
@@ -1672,12 +1680,16 @@
       "name": "upgrade-gear",
       "category": "art-direction",
       "origin": "Built-in ImageGen",
-      "usage": "review",
+      "usage": "active",
       "preload": false,
       "width": 1983,
       "height": 793,
       "bytes": 830934,
-      "transparent": true
+      "transparent": true,
+      "usedIn": [
+        "본편 게임",
+        "v5 디자인 프리뷰"
+      ]
     },
     {
       "id": "cartoon-v5-stage-enemies",
@@ -1685,12 +1697,16 @@
       "name": "stage-enemies",
       "category": "art-direction",
       "origin": "Built-in ImageGen",
-      "usage": "review",
+      "usage": "active",
       "preload": false,
       "width": 1536,
       "height": 1024,
       "bytes": 1787119,
-      "transparent": true
+      "transparent": true,
+      "usedIn": [
+        "본편 게임",
+        "v5 디자인 프리뷰"
+      ]
     },
     {
       "id": "cartoon-v5-ui-atlas",
@@ -1698,12 +1714,16 @@
       "name": "ui-atlas",
       "category": "art-direction",
       "origin": "User supplied ImageGen atlas",
-      "usage": "review",
+      "usage": "active",
       "preload": false,
       "width": 1447,
       "height": 1087,
       "bytes": 775641,
-      "transparent": true
+      "transparent": true,
+      "usedIn": [
+        "본편 게임",
+        "v5 디자인 프리뷰"
+      ]
     },
     {
       "id": "cartoon-v5-ui-effects",
@@ -1711,12 +1731,16 @@
       "name": "ui-effects",
       "category": "art-direction",
       "origin": "User supplied ImageGen atlas",
-      "usage": "review",
+      "usage": "active",
       "preload": false,
       "width": 1536,
       "height": 1024,
       "bytes": 1481055,
-      "transparent": true
+      "transparent": true,
+      "usedIn": [
+        "본편 게임",
+        "v5 디자인 프리뷰"
+      ]
     },
     {
       "id": "cartoon-v5-ui-hand",
@@ -1724,12 +1748,16 @@
       "name": "ui-hand",
       "category": "art-direction",
       "origin": "User supplied ImageGen atlas",
-      "usage": "review",
+      "usage": "active",
       "preload": false,
       "width": 1536,
       "height": 1024,
       "bytes": 684462,
-      "transparent": true
+      "transparent": true,
+      "usedIn": [
+        "본편 게임",
+        "v5 디자인 프리뷰"
+      ]
     },
     {
       "id": "cartoon-v5-ui-field",
@@ -1737,12 +1765,16 @@
       "name": "ui-field",
       "category": "art-direction",
       "origin": "Built-in ImageGen",
-      "usage": "review",
+      "usage": "active",
       "preload": false,
       "width": 1774,
       "height": 887,
       "bytes": 1385376,
-      "transparent": false
+      "transparent": false,
+      "usedIn": [
+        "본편 게임",
+        "v5 디자인 프리뷰"
+      ]
     },
     {
       "id": "cartoon-v5-ui-panels",
@@ -1750,12 +1782,16 @@
       "name": "ui-panels",
       "category": "art-direction",
       "origin": "Built-in ImageGen",
-      "usage": "review",
+      "usage": "active",
       "preload": false,
       "width": 1446,
       "height": 1087,
       "bytes": 707326,
-      "transparent": true
+      "transparent": true,
+      "usedIn": [
+        "본편 게임",
+        "v5 디자인 프리뷰"
+      ]
     },
     {
       "id": "cartoon-v5-ui-sunlight",
@@ -1763,12 +1799,16 @@
       "name": "Sunlight UI reference atlas",
       "category": "art-direction",
       "origin": "User supplied corrected sunlight atlas",
-      "usage": "review",
+      "usage": "active",
       "preload": false,
       "width": 1536,
       "height": 1024,
       "bytes": 1648097,
-      "transparent": true
+      "transparent": true,
+      "usedIn": [
+        "본편 게임",
+        "v5 디자인 프리뷰"
+      ]
     },
     {
       "id": "cartoon-v5-logo-color",
@@ -1776,12 +1816,16 @@
       "name": "logo-color",
       "category": "art-direction",
       "origin": "User supplied original game logo",
-      "usage": "review",
+      "usage": "active",
       "preload": false,
       "width": 1024,
       "height": 1536,
       "bytes": 2330337,
-      "transparent": true
+      "transparent": true,
+      "usedIn": [
+        "본편 게임",
+        "v5 디자인 프리뷰"
+      ]
     },
     {
       "id": "cartoon-v5-logo-mono",
@@ -1789,12 +1833,16 @@
       "name": "logo-mono",
       "category": "art-direction",
       "origin": "User supplied original game logo",
-      "usage": "review",
+      "usage": "active",
       "preload": false,
       "width": 1024,
       "height": 1536,
       "bytes": 1827405,
-      "transparent": true
+      "transparent": true,
+      "usedIn": [
+        "본편 게임",
+        "v5 디자인 프리뷰"
+      ]
     },
     {
       "id": "cartoon-v5-fitted-pepper",
@@ -1802,12 +1850,16 @@
       "name": "pepper fitted equipment evolution",
       "category": "art-direction",
       "origin": "Built-in ImageGen using approved character reference",
-      "usage": "review",
+      "usage": "active",
       "preload": false,
       "width": 1983,
       "height": 793,
       "bytes": 1323680,
-      "transparent": true
+      "transparent": true,
+      "usedIn": [
+        "본편 게임",
+        "v5 디자인 프리뷰"
+      ]
     },
     {
       "id": "cartoon-v5-fitted-acorn",
@@ -1815,12 +1867,16 @@
       "name": "acorn fitted equipment evolution",
       "category": "art-direction",
       "origin": "Built-in ImageGen using approved character reference",
-      "usage": "review",
+      "usage": "active",
       "preload": false,
       "width": 1983,
       "height": 793,
       "bytes": 1481205,
-      "transparent": true
+      "transparent": true,
+      "usedIn": [
+        "본편 게임",
+        "v5 디자인 프리뷰"
+      ]
     },
     {
       "id": "cartoon-v5-fitted-pinecone",
@@ -1828,12 +1884,16 @@
       "name": "pinecone fitted equipment evolution",
       "category": "art-direction",
       "origin": "Built-in ImageGen using approved character reference",
-      "usage": "review",
+      "usage": "active",
       "preload": false,
       "width": 1983,
       "height": 793,
       "bytes": 1541981,
-      "transparent": true
+      "transparent": true,
+      "usedIn": [
+        "본편 게임",
+        "v5 디자인 프리뷰"
+      ]
     },
     {
       "id": "cartoon-v5-base-evolution",
@@ -1841,12 +1901,16 @@
       "name": "v5 base-evolution",
       "category": "art-direction",
       "origin": "Built-in ImageGen",
-      "usage": "review",
+      "usage": "active",
       "preload": false,
       "width": 2172,
       "height": 724,
       "bytes": 1472096,
-      "transparent": true
+      "transparent": true,
+      "usedIn": [
+        "본편 게임",
+        "v5 디자인 프리뷰"
+      ]
     },
     {
       "id": "cartoon-v5-boss-ui",
@@ -1854,12 +1918,16 @@
       "name": "v5 boss-ui",
       "category": "art-direction",
       "origin": "User supplied boss entrance UI",
-      "usage": "review",
+      "usage": "active",
       "preload": false,
       "width": 1781,
       "height": 883,
       "bytes": 1424862,
-      "transparent": true
+      "transparent": true,
+      "usedIn": [
+        "본편 게임",
+        "v5 디자인 프리뷰"
+      ]
     },
     {
       "id": "cartoon-v5-combat-vfx",
@@ -1867,12 +1935,16 @@
       "name": "combat-vfx",
       "category": "art-direction",
       "origin": "Built-in ImageGen",
-      "usage": "review",
+      "usage": "active",
       "preload": false,
       "width": 1774,
       "height": 887,
       "bytes": 1222489,
-      "transparent": true
+      "transparent": true,
+      "usedIn": [
+        "본편 게임",
+        "v5 디자인 프리뷰"
+      ]
     },
     {
       "id": "cartoon-v5-squad-helmet",
@@ -1880,25 +1952,33 @@
       "name": "squad-helmet",
       "category": "art-direction",
       "origin": "Built-in ImageGen",
-      "usage": "review",
+      "usage": "active",
       "preload": false,
       "width": 1322,
       "height": 1190,
       "bytes": 1008990,
-      "transparent": true
+      "transparent": true,
+      "usedIn": [
+        "본편 게임",
+        "v5 디자인 프리뷰"
+      ]
     },
     {
       "id": "cartoon-v5-garden-base",
       "file": "cartoon-v5-garden-base.png",
       "name": "Selected five tier leaf roof garden base",
       "category": "art-direction",
-      "origin": "User supplied final selection",
-      "usage": "review",
+      "origin": "User supplied lighthouse_그림자22.png with contact shadows",
+      "usage": "active",
       "preload": false,
-      "width": 2172,
+      "width": 2457,
       "height": 724,
-      "bytes": 1313499,
-      "transparent": true
+      "bytes": 1336660,
+      "transparent": true,
+      "usedIn": [
+        "본편 게임",
+        "v5 디자인 프리뷰"
+      ]
     },
     {
       "id": "cartoon-v5-home-field",
@@ -1906,12 +1986,16 @@
       "name": "home-field",
       "category": "art-direction",
       "origin": "User reference and built-in ImageGen",
-      "usage": "review",
+      "usage": "active",
       "preload": false,
       "width": 1774,
       "height": 887,
       "bytes": 1455477,
-      "transparent": false
+      "transparent": false,
+      "usedIn": [
+        "본편 게임",
+        "v5 디자인 프리뷰"
+      ]
     },
     {
       "id": "cartoon-v5-troop-icon",
@@ -1919,12 +2003,16 @@
       "name": "troop-icon",
       "category": "art-direction",
       "origin": "User reference and built-in ImageGen",
-      "usage": "review",
+      "usage": "active",
       "preload": false,
       "width": 1254,
       "height": 1254,
       "bytes": 740704,
-      "transparent": true
+      "transparent": true,
+      "usedIn": [
+        "본편 게임",
+        "v5 디자인 프리뷰"
+      ]
     },
     {
       "id": "cartoon-v5-plants-sprout",
@@ -1932,12 +2020,16 @@
       "name": "plants-sprout",
       "category": "art-direction",
       "origin": "User supplied sprout / built-in ImageGen cutout",
-      "usage": "review",
+      "usage": "active",
       "preload": false,
       "width": 79,
       "height": 52,
       "bytes": 6871,
-      "transparent": false
+      "transparent": false,
+      "usedIn": [
+        "본편 게임",
+        "v5 디자인 프리뷰"
+      ]
     },
     {
       "id": "cartoon-v5-plants-sprout-transparent",
@@ -1945,12 +2037,16 @@
       "name": "plants-sprout-transparent",
       "category": "art-direction",
       "origin": "User supplied sprout / built-in ImageGen cutout",
-      "usage": "review",
+      "usage": "active",
       "preload": false,
       "width": 1545,
       "height": 1018,
       "bytes": 627884,
-      "transparent": true
+      "transparent": true,
+      "usedIn": [
+        "본편 게임",
+        "v5 디자인 프리뷰"
+      ]
     }
   ]
 }

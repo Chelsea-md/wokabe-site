@@ -50,17 +50,19 @@
     "unlocks": [
       true,
       false,
+      false,
       false
     ],
     "tutorial": false,
     "played": false,
     "sound": true,
-    "freeUsed": {}
+    "freeUsed": {},
+    "completedStages": 0
   },
   "troops": [
     {
       "id": "pea",
-      "name": "완두콩 탱커",
+      "name": "CHILI",
       "sourceName": "기본 병력",
       "attack": 7.5,
       "hp": 50,
@@ -72,11 +74,12 @@
         "stats": "source-ui",
         "range": "measured",
         "cooldown": "calibrated"
-      }
+      },
+      "unlockStage": 0
     },
     {
       "id": "cabbage",
-      "name": "양배추 궁수",
+      "name": "ACORN",
       "sourceName": "궁수",
       "attack": 18.75,
       "hp": 40,
@@ -88,11 +91,12 @@
         "stats": "source-ui",
         "range": "measured",
         "cooldown": "calibrated"
-      }
+      },
+      "unlockStage": 6
     },
     {
       "id": "cactus",
-      "name": "선인장 사수",
+      "name": "PINECONE",
       "sourceName": "장총 병력",
       "attack": 10,
       "hp": 20,
@@ -104,7 +108,19 @@
         "stats": "source-ui",
         "range": "inferred",
         "cooldown": "calibrated"
-      }
+      },
+      "unlockStage": 9
+    },
+    {
+      "id": "sunflower",
+      "name": "SUNFLOWER",
+      "attack": 18,
+      "hp": 40,
+      "cost": 5,
+      "cooldown": 1.3,
+      "range": 145,
+      "unlockCost": 100,
+      "unlockStage": 3
     }
   ],
   "economy": {
@@ -237,10 +253,10 @@
       "verification": "full-clear-observed-counts-calibrated"
     },
     {
-      "id": "noon-strip",
-      "name": "Noon Strip",
+      "id": "forest-camp",
+      "name": "Forest Camp",
       "waves": 10,
-      "theme": "noon",
+      "theme": "night",
       "ribbon": "noon-ribbon",
       "waveCounts": [
         4,
