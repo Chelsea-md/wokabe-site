@@ -163,3 +163,22 @@ body.production .plant-collection-card:nth-child(4) .plant-select::after{animati
 @keyframes collection-shadow{0%,100%{transform:scaleX(1);opacity:1}50%{transform:scaleX(.9);opacity:.8}}
 @media(prefers-reduced-motion:reduce){#boot-logo,body.production .plant-select::after{animation:none!important;will-change:auto}#boot-logo.logo-ready{opacity:1}#boot-loading{transition:none!important}}
 
+
+/* Production 10: compact battle controls retain readable three-digit resources. */
+body.production[data-ui-theme=bold] .battle-tray{height:13.2%;gap:2.4cqw}
+body.production[data-ui-theme=bold] .troop-cards{gap:1cqw;margin-bottom:.8cqw}
+body.production[data-ui-theme=bold] .troop-card{width:7.15cqw;height:9.46cqw}
+body.production[data-ui-theme=bold] .troop-card b{bottom:.9cqw;height:2cqw;font-size:2.05cqw;gap:.25cqw}
+body.production[data-ui-theme=bold] .game-frame .troop-card b img.ui-raster{width:1.8cqw!important;height:1.8cqw!important}
+body.production[data-ui-theme=bold] .sun-stock{width:12.3cqw;height:4.22cqw;padding:.35cqw .7cqw;gap:.55cqw}
+body.production[data-ui-theme=bold] .sun-stock>.ui-raster{width:2.65cqw;height:2.65cqw;flex-basis:2.65cqw}
+body.production[data-ui-theme=bold] .sun-stock>div:not(.sun-rate){min-width:4.6cqw;width:4.95cqw}
+body.production[data-ui-theme=bold] .sun-stock strong{font-size:2.25cqw}
+/* Explicitly outline nested wave numbers as well as the word Wave. */
+body.production[data-ui-theme=bold] .wave-head>strong,body.production[data-ui-theme=bold] .wave-number,body.production[data-ui-theme=bold] .wave-number small{-webkit-text-stroke:.16em #10151b;paint-order:stroke fill;text-shadow:0 .1cqw #10151b}
+/* A brief, transparent text hint sits above the entire card silhouette. */
+body.production #game-message{top:73%;bottom:auto;left:50%;right:auto;max-width:70%;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;font:1.05cqw/1.3 GameChunk,sans-serif;color:#fff9de;-webkit-text-stroke:.12em #173229;paint-order:stroke fill;text-shadow:0 .12cqw .22cqw #10291f88;opacity:0;transform:translate(-50%,.35cqw);transition:opacity .18s ease,transform .24s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+body.production #game-message.visible{opacity:1;transform:translate(-50%,0)}
+body.production #merge-tutorial{font-size:1.05cqw;gap:.4cqw}
+body.production #merge-tutorial>span{padding:0;border:0;background:transparent;-webkit-text-stroke:.12em #173229;paint-order:stroke fill;text-shadow:0 .12cqw .22cqw #10291f88}
+body.production #merge-tutorial img{width:3cqw;height:2.6cqw}
