@@ -123,3 +123,30 @@ body.production [data-upgrade]:disabled b{color:#c2c5bd}
 body.production button{transition:translate .1s ease-out,transform .1s ease-out,filter .1s,scale .1s!important}
 body.production button:not(:disabled):not([aria-disabled=true]):active,body.production button.pressed:not(:disabled):not([aria-disabled=true]){translate:0 .28cqw!important;scale:.94!important;filter:brightness(.88) saturate(1.1)!important;animation-play-state:paused!important}
 body.production #boot-status,body.production #scene-splash{display:none!important}
+
+/* Production 8: one aligned card layout and isolated control states. */
+body.production #plants-grid{top:25%;height:47%;left:17.5%;right:17.5%;align-items:stretch}
+body.production .plant-collection-card{display:grid;grid-template-rows:70% 30%;gap:0;background:#14232d;border-radius:1.6cqw;min-width:0}
+body.production #plants-grid .plant-select{position:relative;inset:auto;width:100%;height:100%;min-height:0;z-index:2}
+body.production[data-ui-theme=bold] .plant-select>strong{left:4%;width:92%;box-sizing:border-box;bottom:0;height:2.3cqw;display:flex;align-items:center;justify-content:center;line-height:1;font-size:1.4cqw}
+body.production[data-ui-theme=bold] .plant-collection-footer{position:relative;inset:auto;width:100%;height:100%;box-sizing:border-box;min-height:0;display:flex;flex-direction:column;justify-content:center;padding:.3cqw 1cqw;gap:0;border:.3cqw solid #14232d;border-top:0;border-radius:0 0 1.6cqw 1.6cqw}
+body.production[data-ui-theme=bold] .plant-collection-footer .plant-stat{height:50%;min-height:0;display:flex;align-items:center;line-height:1;gap:.85cqw}
+body.production .plant-stat b{font-size:2.15cqw}
+body.production[data-ui-theme=bold] .locked .plant-collection-footer{padding:.25cqw}
+body.production .unlock-plant{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.1cqw;width:100%;height:100%;min-height:0;box-sizing:border-box;padding:.1cqw!important}
+body.production .unlock-plant strong{font-size:1.65cqw;line-height:1.05}
+body.production .unlock-plant span{line-height:1.05;display:flex;align-items:center;justify-content:center}
+body.production .unlock-plant b{font-size:1.95cqw}
+body.production .unlock-plant small{font-size:.78cqw;line-height:1.1;min-height:.9cqw}
+body.production[data-ui-theme=bold] .upgrades>button:disabled{filter:none;opacity:1;animation:none;cursor:default}
+body.production[data-ui-theme=bold] .upgrades>button:disabled b{filter:grayscale(1) brightness(.78);opacity:1;cursor:not-allowed}
+body.production[data-ui-theme=bold] #wave-countdown{font-size:1.55cqw;top:13%;line-height:1.2;-webkit-text-stroke:.12em #10171c}
+body.production .wave-pointer[hidden]{display:none!important}
+
+/* Landscape continuation fills aspect-ratio gutters without changing world or UI coordinates. */
+body.production.ready{background-color:#829b4f;background-image:linear-gradient(to bottom,transparent 86.4%,#404550 86.4%),var(--page-field);background-size:100% 100%,var(--page-field-size,cover);background-position:center;background-repeat:no-repeat,repeat}
+body.production.ready:has(.game-frame.plants){background-color:#bacd91;background-image:linear-gradient(to bottom,transparent 86.4%,#404550 86.4%),var(--game-wallpaper);background-size:100% 100%,600px 400px}
+
+/* Near the designed landscape ratio, use every pixel of the viewport. */
+@media (min-aspect-ratio:19/10) and (max-aspect-ratio:21/10){body.production.stage-focus .game-frame{width:100vw;height:100dvh;max-height:none;aspect-ratio:auto}}
+

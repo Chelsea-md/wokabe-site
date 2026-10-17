@@ -1,4 +1,4 @@
-import { rules } from "./config.js?v=campaign-6";
+import { rules } from "./config.js?v=campaign-8";
 
 const fresh = () => structuredClone(rules.defaults);
 const number = (value, fallback, minimum, maximum) =>

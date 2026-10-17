@@ -63,7 +63,7 @@
     {
       "id": "pea",
       "name": "CHILI",
-      "sourceName": "기본 병력",
+      "sourceName": "\uae30\ubcf8 \ubcd1\ub825",
       "attack": 7.5,
       "hp": 50,
       "cost": 3,
@@ -80,7 +80,7 @@
     {
       "id": "cabbage",
       "name": "ACORN",
-      "sourceName": "궁수",
+      "sourceName": "\uad81\uc218",
       "attack": 18.75,
       "hp": 40,
       "cost": 7,
@@ -92,12 +92,12 @@
         "range": "measured",
         "cooldown": "calibrated"
       },
-      "unlockStage": 3
+      "unlockStage": 0
     },
     {
       "id": "cactus",
       "name": "PINECONE",
-      "sourceName": "장총 병력",
+      "sourceName": "\uc7a5\ucd1d \ubcd1\ub825",
       "attack": 35,
       "hp": 20,
       "cost": 12,
@@ -109,7 +109,7 @@
         "range": "short-range user direction",
         "cooldown": "calibrated"
       },
-      "unlockStage": 6
+      "unlockStage": 0
     },
     {
       "id": "sunflower",
@@ -120,7 +120,7 @@
       "cooldown": 1.3,
       "range": 145,
       "unlockCost": 100,
-      "unlockStage": 9
+      "unlockStage": 2
     }
   ],
   "economy": {
