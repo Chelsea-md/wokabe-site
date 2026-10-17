@@ -1591,6 +1591,54 @@
       "width": 1254,
       "height": 1254,
       "bytes": 539162
+    },
+    {
+      "id": "cartoon-v4-ui-icons",
+      "file": "cartoon-v4-ui-icons.png",
+      "name": "가든 토이 핵심 UI 아이콘 9종",
+      "category": "ui",
+      "origin": "Built-in ImageGen · Garden Camp v4",
+      "usage": "active",
+      "reviewStatus": "review",
+      "preload": false,
+      "usedIn": [
+        "가든 캠프 v4 프리뷰"
+      ],
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1125344
+    },
+    {
+      "id": "cartoon-v4-ui-lettering",
+      "file": "cartoon-v4-ui-lettering.png",
+      "name": "가든 토이 영문 이미지 레터링 6종",
+      "category": "ui",
+      "origin": "Built-in ImageGen · Garden Camp v4",
+      "usage": "active",
+      "reviewStatus": "review",
+      "preload": false,
+      "usedIn": [
+        "가든 캠프 v4 프리뷰"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1581583
+    },
+    {
+      "id": "cartoon-v4-shambler-arms",
+      "file": "cartoon-v4-shambler-arms.png",
+      "name": "모시 소매 겹침 보정 파츠 · v4",
+      "category": "enemies",
+      "origin": "Built-in ImageGen · Garden Camp v4",
+      "usage": "active",
+      "reviewStatus": "review",
+      "preload": false,
+      "usedIn": [
+        "가든 캠프 v4 프리뷰"
+      ],
+      "width": 1254,
+      "height": 1254,
+      "bytes": 526600
     }
   ]
 }

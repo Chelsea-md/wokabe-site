@@ -1,0 +1,23 @@
+{
+  "version": 4,
+  "method": "Built-in ImageGen; raw RGBA outputs copied into project. UI sprites clipped at runtime; frame shapes and timber/paper textures are CSS. English lettering is a bitmap label set, not an installable font.",
+  "prompts": [
+    {
+      "id": "cartoon-v4-ui-icons",
+      "prompt": "Create a production-ready transparent game UI icon atlas for an original cute cartoon flower-versus-zombie garden defense mobile game. Actual transparent RGBA background, not a checkerboard. Square 3 by 3 equal-cell grid, EXACTLY nine isolated icons, huge clear transparent gutters so each cell can be used independently in a runtime sprite atlas. Row 1: golden sunlight sun with chunky rays; embossed gold coin with a simple leaf emblem; turquoise steel shield with cream center. Row 2: crossed short swords with cream blades and wooden handles; cream gear with dark forest-green inset; two chunky cream pause bars. Row 3: bright lime green fast-forward double triangles; orange-brown wooden treasure chest with leaves and gold latch; chunky brown garden compass with leaf pointer. Style: hand-authored 2D mobile RPG UI, heavy near-black dark pine outline, confident simple silhouette, flat colors with one broad cel-shaded highlight, rounded chunky toy proportions, warm cream / golden honey / timber brown / deep forest-green palette. No cyan or violet UI panels. No text, no labels, no numerals, no icon buttons, no square backplates, no photorealism, no glow, no delicate lines. Icon centered in each equal 1/3 cell, contained within central 70% of its cell; no pieces touch adjacent cells. Visually readable at 36px."
+    },
+    {
+      "id": "cartoon-v4-ui-lettering",
+      "prompt": "Create a transparent game UI lettering sprite sheet, exactly 2 columns × 3 equal rows, six isolated English text labels centered in their own equal cells with wide transparent gutters. Actual transparent RGBA background. EXACT text and positions: top-left 'WAVE', top-right 'START WAVE'; middle-left 'HEALTH', middle-right 'SUN RATE'; bottom-left 'INCOME', bottom-right 'FLOWERS'. No other text. ALL TEXT ENGLISH. Lettering style: bold hand-lettered cute cartoon mobile RPG game font, very thick rounded irregular bubble forms, warm cream-white face, very thick near-black pine outline, tiny golden bottom edge and a hard dark offset shadow. Strong readable silhouette at small display sizes, playful but polished professionally authored game HUD. One line in every cell. No panels, buttons, banners, decorative objects, background, or glow. Each text stays inside central 82% of its equal grid cell with completely transparent space between cells. Landscape sheet, warm wood/cream/forest-green garden game palette. Make this a usable sprite atlas."
+    },
+    {
+      "id": "cartoon-v4-shambler-arms",
+      "prompt": "Edit this exact transparent cutout arm atlas. Preserve canvas size, positions of all four pieces, all hands, colors and ink style. Critical repair: replace the circular green severed stump/socket at the RIGHT end of EACH of the four pieces with a SOLID rounded OCHRE ORANGE FABRIC overlap cap that extends the sleeve smoothly. No green circular joint surfaces, no visible socket holes, no black holes, no buttons, no seams across the rightmost round cap. All four right ends should be solid orange cloth, rounded for smooth overlapping into torso or the next sleeve, matching existing yellow-orange jacket. The green hands at the LEFT ends of bottom pieces stay exactly unchanged. Maintain actual transparent background and clear gutters. These are working 2D skeletal animation limb sprites; the orange caps must cover torso socket holes during rotation. Only repair the four exposed right-end joint surfaces; do not redesign or rearrange the atlas."
+    }
+  ],
+  "rigRevision": {
+    "poppy": "Torso 43→36; legs 28→22; head 50→57. Torso-relative head position and weapon lowered. Screen-left upper arm drawn after torso/head. Hand constrained to keep elbow on outer left.",
+    "shambler": "Shoulder anchors inset ±14 from ±17/18; upper sleeves drawn over torso; green cut joint ends replaced with solid orange fabric overlap caps."
+  },
+  "language": "All text inside v4 game frame, including dynamic notices, selection and pause state, English. Surrounding review page Korean."
+}
