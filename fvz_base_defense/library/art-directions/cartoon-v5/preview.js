@@ -1,3 +1,4 @@
+import {observeWorldResolution} from '../../../canvas-resolution.js';
 import {createPlantsRoster} from './plants-roster.js?v=plants-entry';
 import {spawnOutside,stageObstacles,moveEnemy} from './navigation.js?v=plants-entry';
 import {loadUiSkins} from './ui-skins.js?v=combat-refinement';
@@ -17,7 +18,7 @@ function refreshPortraits(){document.querySelectorAll('.troop-card').forEach((bu
 refreshPortraits();
 
 const frame=$('#game-frame'),canvas=$('#world'),g=canvas.getContext('2d');
-const W=1200,H=600,ratio=Math.min(2,devicePixelRatio||1);canvas.width=W*ratio;canvas.height=H*ratio;
+const W=1200,H=600;let ratio=1;observeWorldResolution(canvas,W,H,value=>ratio=value);
 const names=['poppy','bellflower','marigold'],costs=[3,7,12],ranges=[190,285,245];
 const slotOffsets=[[0,-94],[-47,-47],[47,-47],[-94,0],[94,0],[-47,47],[47,47],[0,94]];
 const center={x:600,y:265};

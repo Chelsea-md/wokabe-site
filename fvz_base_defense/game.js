@@ -1,3 +1,4 @@
+import {observeWorldResolution} from './canvas-resolution.js';
 import {rules} from './config.js';
 import {loadProgress,persistProgress} from './storage.js';
 import {chapterFor,costFor,increaseStat,countForWave,kindForSpawn,spawnInterval,killReward,mergeHealth} from './systems.js';
@@ -8,8 +9,9 @@ import {loadPopupArt} from './popup-art.js';
 import {createLoadingWallpaper} from './loading-wallpaper.js';
 const $=s=>document.querySelector(s),uiSkins=await loadUiSkins();createLoadingWallpaper(uiSkins);$('#boot-logo').src=uiSkins.logoForest;const popupArt=await loadPopupArt();const sprout=$('.pause-sprout'),popupSprout=document.createElement('img');popupSprout.className='pause-sprout';popupSprout.src=popupArt.sprout;popupSprout.alt='';sprout.replaceWith(popupSprout);for(const [id,key,label]of [['resume-battle','resume','Resume'],['pause-to-home','home','Home']]){const b=$('#'+id);b.classList.add('asset-button');b.innerHTML='<span class="sr-only">'+label+'</span>';b.setAttribute('aria-label',label);b.style.setProperty('--button-art',`url("${popupArt[key]}")`);}const rigs=await loadRigs();
 let saved=loadProgress();
-const W=1200,H=600,ratio=Math.min(2,devicePixelRatio||1),frame=$('#game-frame'),canvas=$('#world'),g=canvas.getContext('2d');
-canvas.width=W*ratio;canvas.height=H*ratio;
+let ratio=1;
+const W=1200,H=600,frame=$('#game-frame'),canvas=$('#world'),g=canvas.getContext('2d');
+observeWorldResolution(canvas,W,H,value=>ratio=value);
 const names=['poppy','bellflower','marigold','sunflower'],costs=rules.troops.map(p=>p.cost),ranges=rules.troops.map(p=>p.range*1200/824),slotOffsets=[[0,-94],[-47,-47],[47,-47],[-94,0],[94,0],[-47,47],[47,47],[0,94]],center={x:600,y:265};
 let scene='home',previewStage='green',previewStar=1,time=0,last=performance.now(),sun=0,coins=saved.coins,units=[],enemies=[],shots=[],effects=[],drag=null,rangePreview=null,paused=false,bossIntro=null,sceneSplash=null,messageUntil=0;
 let baseTier=0,baseMaxHp=saved.health,baseHp=saved.health,baseHitUntil=0,wave=1,countdown=10,spawnClock=0,spawned=0,earned=0,runResolved=true,unitSerial=0;
