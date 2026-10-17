@@ -1,0 +1,618 @@
+{
+  "updatedAt": "2026-10-17T12:56:30.711Z",
+  "basic": {
+    "passed": 29,
+    "failed": 0,
+    "checks": [
+      {
+        "name": "Fresh guest opens directly to game",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Tutorial appears",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Passive sun production",
+        "pass": true,
+        "detail": "Wave 1 of 6. Sun 3. Base health 80. Plants 0. Levels none. Tiles none. Types none."
+      },
+      {
+        "name": "Click does not buy",
+        "pass": true,
+        "detail": "Wave 1 of 6. Sun 3. Base health 80. Plants 0. Levels none. Tiles none. Types none."
+      },
+      {
+        "name": "Base tile rejects drop without spending",
+        "pass": true,
+        "detail": "Wave 1 of 6. Sun 3. Base health 80. Plants 0. Levels none. Tiles none. Types none."
+      },
+      {
+        "name": "Valid drag buys and deploys",
+        "pass": true,
+        "detail": "Wave 1 of 6. Sun 0. Base health 80. Plants 1. Levels 1. Tiles 1. Types 0."
+      },
+      {
+        "name": "Lifting an existing unit shows its attack range",
+        "pass": true,
+        "detail": "Wave 1 of 6. Sun 0. Base health 80. Plants 1. Levels 1. Tiles 1. Types 0. Dragging plant. Attack range 120."
+      },
+      {
+        "name": "Repositioning preserves level and costs no sun",
+        "pass": true,
+        "detail": "Wave 1 of 6. Sun 0. Base health 80. Plants 1. Levels 1. Tiles 5. Types 0."
+      },
+      {
+        "name": "Outside-grid drop returns existing unit to its tile",
+        "pass": true,
+        "detail": "Wave 1 of 6. Sun 0. Base health 80. Plants 1. Levels 1. Tiles 5. Types 0."
+      },
+      {
+        "name": "Second matching drag merges",
+        "pass": true,
+        "detail": "Wave 1 of 6. Sun 0. Base health 80. Plants 1. Levels 2. Tiles 5. Types 0."
+      },
+      {
+        "name": "Settings pauses battle",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Sound preference saves",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "End battle asks for confirmation",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Cancelling returns to settings",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Abandon returns home without awarding battle coins",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Defeat reaches coin result",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Reward waits before continue",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Reward increases saved health",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Free upgrade cannot repeat in same attempt",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Guest progress persists across reload",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Unavailable unlock preserves coins",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "All five mobile tabs visible",
+        "pass": true,
+        "detail": "[{\"x\":38.796875,\"y\":759.453125,\"right\":102.21875,\"bottom\":798.984375},{\"x\":101.28125,\"y\":738.59375,\"right\":164.703125,\"bottom\":798.984375},{\"x\":163.75,\"y\":759.453125,\"right\":227.171875,\"bottom\":798.984375},{\"x\":226.234375,\"y\":759.453125,\"right\":289.65625,\"bottom\":798.984375},{\"x\":288.703125,\"y\":759.453125,\"right\":352.125,\"bottom\":798.984375}]"
+      },
+      {
+        "name": "Real touch drag deploys on portrait viewport",
+        "pass": true,
+        "detail": "Wave 1 of 6. Sun 0. Base health 90. Plants 1. Levels 1. Tiles 1. Types 0."
+      },
+      {
+        "name": "Unlock costs exactly 200 saved coins",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Second troop requires seven sun",
+        "pass": true,
+        "detail": "Wave 1 of 6. Sun 4. Base health 100. Plants 0. Levels none. Tiles none. Types none."
+      },
+      {
+        "name": "Unlocked second card deploys and spends seven",
+        "pass": true,
+        "detail": "Wave 1 of 6. Sun 0. Base health 100. Plants 1. Levels 1. Tiles 4. Types 1."
+      },
+      {
+        "name": "Third troop unlock costs exactly 400",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Third card deploys for twelve sun",
+        "pass": true,
+        "detail": "Wave 1 of 6. Sun 0. Base health 140. Plants 1. Levels 1. Tiles 4. Types 2."
+      },
+      {
+        "name": "No browser or asset errors",
+        "pass": true,
+        "detail": ""
+      }
+    ],
+    "errors": []
+  },
+  "extra": {
+    "passed": 34,
+    "failed": 0,
+    "checks": [
+      {
+        "name": "Start button grows on hover",
+        "pass": true,
+        "detail": {
+          "original": {
+            "x": 494,
+            "y": 79,
+            "width": 171,
+            "height": 73
+          },
+          "hovered": {
+            "x": 485.25390625,
+            "y": 75.26628112792969,
+            "width": 188.4921875,
+            "height": 80.46742248535156
+          }
+        }
+      },
+      {
+        "name": "Paid rate upgrade 1 matches observed cost",
+        "pass": true,
+        "detail": {
+          "chapter": 0,
+          "coins": 1595,
+          "health": 140,
+          "rate": 0.46,
+          "income": 12,
+          "unlocks": [
+            true,
+            true,
+            true
+          ],
+          "tutorial": true,
+          "played": true,
+          "sound": false,
+          "freeUsed": {}
+        }
+      },
+      {
+        "name": "Paid upgrades never force an ad 1",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Paid rate upgrade 2 matches observed cost",
+        "pass": true,
+        "detail": {
+          "chapter": 0,
+          "coins": 1410,
+          "health": 140,
+          "rate": 0.48,
+          "income": 12,
+          "unlocks": [
+            true,
+            true,
+            true
+          ],
+          "tutorial": true,
+          "played": true,
+          "sound": false,
+          "freeUsed": {}
+        }
+      },
+      {
+        "name": "Paid upgrades never force an ad 2",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Paid rate upgrade 3 matches observed cost",
+        "pass": true,
+        "detail": {
+          "chapter": 0,
+          "coins": 1201,
+          "health": 140,
+          "rate": 0.5,
+          "income": 12,
+          "unlocks": [
+            true,
+            true,
+            true
+          ],
+          "tutorial": true,
+          "played": true,
+          "sound": false,
+          "freeUsed": {}
+        }
+      },
+      {
+        "name": "Paid upgrades never force an ad 3",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Paid rate upgrade 4 matches observed cost",
+        "pass": true,
+        "detail": {
+          "chapter": 0,
+          "coins": 967,
+          "health": 140,
+          "rate": 0.52,
+          "income": 12,
+          "unlocks": [
+            true,
+            true,
+            true
+          ],
+          "tutorial": true,
+          "played": true,
+          "sound": false,
+          "freeUsed": {}
+        }
+      },
+      {
+        "name": "Paid upgrades never force an ad 4",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Paid rate upgrade 5 matches observed cost",
+        "pass": true,
+        "detail": {
+          "chapter": 0,
+          "coins": 707,
+          "health": 140,
+          "rate": 0.54,
+          "income": 12,
+          "unlocks": [
+            true,
+            true,
+            true
+          ],
+          "tutorial": true,
+          "played": true,
+          "sound": false,
+          "freeUsed": {}
+        }
+      },
+      {
+        "name": "Paid upgrades never force an ad 5",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Paid rate upgrade 6 matches observed cost",
+        "pass": true,
+        "detail": {
+          "chapter": 0,
+          "coins": 421,
+          "health": 140,
+          "rate": 0.56,
+          "income": 12,
+          "unlocks": [
+            true,
+            true,
+            true
+          ],
+          "tutorial": true,
+          "played": true,
+          "sound": false,
+          "freeUsed": {}
+        }
+      },
+      {
+        "name": "Paid upgrades never force an ad 6",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Paid rate upgrade 7 matches observed cost",
+        "pass": true,
+        "detail": {
+          "chapter": 0,
+          "coins": 108,
+          "health": 140,
+          "rate": 0.58,
+          "income": 12,
+          "unlocks": [
+            true,
+            true,
+            true
+          ],
+          "tutorial": true,
+          "played": true,
+          "sound": false,
+          "freeUsed": {}
+        }
+      },
+      {
+        "name": "Paid upgrades never force an ad 7",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Insufficient balance changes all three offers to Free",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Free offer uses a three-second idle and wiggle cycle",
+        "pass": true,
+        "detail": {
+          "idle": "matrix(1, 0, 0, 1, 0, 0)",
+          "rotated": {
+            "transform": "matrix(0.991196, -0.132406, 0.132406, 0.991196, 0, 0)",
+            "duration": "3s"
+          }
+        }
+      },
+      {
+        "name": "Ad opens only after clicking Free",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Free ad grants one rate upgrade without charging coins",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Economy upgrades leave Troops screen unchanged",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Cactus drag shows long attack range",
+        "pass": true,
+        "detail": "Wave 1 of 6. Sun 12. Base health 140. Plants 0. Levels none. Tiles none. Types none. Dragging plant. Attack range 300."
+      },
+      {
+        "name": "Cabbage drag shows 180 range",
+        "pass": true,
+        "detail": "Wave 1 of 6. Sun 7. Base health 140. Plants 1. Levels 1. Tiles 5. Types 2. Dragging plant. Attack range 180."
+      },
+      {
+        "name": "Peashooter drag shows 120 range",
+        "pass": true,
+        "detail": "Wave 1 of 6. Sun 1. Base health 140. Plants 3. Levels 1,1,1. Tiles 5,4,1. Types 2,1,0. Dragging plant. Attack range 120."
+      },
+      {
+        "name": "Dropping a unit releases its range preview",
+        "pass": true,
+        "detail": "Wave 1 of 6. Sun 1. Base health 140. Plants 3. Levels 1,1,1. Tiles 5,4,2. Types 2,1,0."
+      },
+      {
+        "name": "Large reward supports eighteen observed rate upgrades",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Rate becomes Free while other upgrades remain affordable",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Income upgrade costs match the new screenshot sequence",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Final health upgrade leaves the observed eleven coins",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "All offers become Free only when individually unaffordable",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Dune upgrade sequence reproduces the observed 51 coins",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Observed Dune free ad raises production to 1.20 without charging",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "Used Free card becomes disabled with compact 1.4K cost",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "New Dune round has ten waves and produces resources during countdown",
+        "pass": true,
+        "detail": "Wave 1 of 10. Sun 3. Base health 160. Plants 0. Levels none. Tiles none. Types none."
+      },
+      {
+        "name": "No browser or asset errors",
+        "pass": true,
+        "detail": []
+      }
+    ],
+    "errors": []
+  },
+  "library": {
+    "passed": 22,
+    "failed": 0,
+    "checks": [
+      {
+        "name": "Library opens with shared workspace storage",
+        "pass": true
+      },
+      {
+        "name": "Resource search filters actual sprites",
+        "pass": true,
+        "detail": [
+          "미라 궁수",
+          "근거리 미라 궁수",
+          "미라 좀비"
+        ]
+      },
+      {
+        "name": "Category and search filters combine",
+        "pass": true
+      },
+      {
+        "name": "Empty search has a working recovery action",
+        "pass": true
+      },
+      {
+        "name": "Filter reset restores catalog",
+        "pass": true
+      },
+      {
+        "name": "PNG can be added as an unlinked resource",
+        "pass": true
+      },
+      {
+        "name": "Notes and tags survive a page reload",
+        "pass": true
+      },
+      {
+        "name": "Preview backgrounds work",
+        "pass": true
+      },
+      {
+        "name": "Replacement requires a visible before-and-after preview",
+        "pass": true
+      },
+      {
+        "name": "Applying a replacement creates a real file revision",
+        "pass": true
+      },
+      {
+        "name": "Restoring a revision recovers the exact original image",
+        "pass": true
+      },
+      {
+        "name": "Restore retains the replaced version in history",
+        "pass": true
+      },
+      {
+        "name": "Pinned resources can be filtered",
+        "pass": true
+      },
+      {
+        "name": "Management records export as JSON",
+        "pass": true
+      },
+      {
+        "name": "observations document is readable and has an export",
+        "pass": true
+      },
+      {
+        "name": "design document is readable and has an export",
+        "pass": true
+      },
+      {
+        "name": "systems document is readable and has an export",
+        "pass": true
+      },
+      {
+        "name": "Evidence page includes actual comparison images",
+        "pass": true
+      },
+      {
+        "name": "Mobile resource page does not overflow horizontally",
+        "pass": true
+      },
+      {
+        "name": "Mobile inspector stays inside the viewport",
+        "pass": true
+      },
+      {
+        "name": "Inspector supports keyboard dismissal",
+        "pass": true
+      },
+      {
+        "name": "No browser or asset errors",
+        "pass": true,
+        "detail": []
+      }
+    ],
+    "errors": []
+  },
+  "merge": {
+    "passed": 4,
+    "failed": 0,
+    "checks": [
+      {
+        "name": "Healthy target stays healthy",
+        "pass": true,
+        "value": {
+          "maxHp": 100,
+          "hp": 100
+        }
+      },
+      {
+        "name": "Damaged target retains missing health",
+        "pass": true,
+        "value": {
+          "maxHp": 100,
+          "hp": 60
+        }
+      },
+      {
+        "name": "Troop-specific base health is used",
+        "pass": true,
+        "value": {
+          "maxHp": 80,
+          "hp": 60
+        }
+      },
+      {
+        "name": "Repeated merge retains missing health",
+        "pass": true,
+        "value": {
+          "maxHp": 200,
+          "hp": 160
+        }
+      }
+    ]
+  },
+  "campaigns": [
+    {
+      "name": "Green Block",
+      "expectedReward": 7163,
+      "passed": true,
+      "method": "Public UI purchases and merges with a fixed strategy; virtual time at 20 rendering frames per second. No battle state injection.",
+      "errors": []
+    },
+    {
+      "name": "Dune Loop",
+      "expectedReward": 5040,
+      "passed": true,
+      "method": "Public UI purchases and merges with a fixed strategy; virtual time at 20 rendering frames per second. No battle state injection.",
+      "errors": []
+    }
+  ],
+  "motion": {
+    "passed": true,
+    "method": "Real public mouse drag and drop, 25 screenshots at 33ms intervals with Playwright clock; no battle-state injection.",
+    "frames": 25,
+    "label": "Wave 1 of 6. Sun 0. Base health 80. Plants 1. Levels 1. Tiles 4. Types 0.",
+    "errors": []
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "schemaVersion": 1,
+  "title": "Flower vs Zombie : Base Defense",
+  "reference": "CrazyGames Base Defence",
+  "saveKey": "bloomguard-faithful-v2",
+  "logicalViewport": {
+    "width": 824,
+    "height": 419
+  },
+  "slots": [
+    [
+      -54,
+      0
+    ],
+    [
+      -27,
+      -27
+    ],
+    [
+      0,
+      -54
+    ],
+    [
+      27,
+      -27
+    ],
+    [
+      54,
+      0
+    ],
+    [
+      27,
+      27
+    ],
+    [
+      0,
+      54
+    ],
+    [
+      -27,
+      27
+    ]
+  ],
+  "defaults": {
+    "chapter": 0,
+    "coins": 0,
+    "health": 20,
+    "rate": 0.22,
+    "income": 1,
+    "unlocks": [
+      true,
+      false,
+      false
+    ],
+    "tutorial": false,
+    "played": false,
+    "sound": true,
+    "freeUsed": {}
+  },
+  "troops": [
+    {
+      "id": "pea",
+      "name": "완두콩 탱커",
+      "sourceName": "기본 병력",
+      "attack": 7.5,
+      "hp": 50,
+      "cost": 3,
+      "cooldown": 0.7,
+      "range": 120,
+      "unlockCost": 0,
+      "verification": {
+        "stats": "source-ui",
+        "range": "measured",
+        "cooldown": "calibrated"
+      }
+    },
+    {
+      "id": "cabbage",
+      "name": "양배추 궁수",
+      "sourceName": "궁수",
+      "attack": 18.75,
+      "hp": 40,
+      "cost": 7,
+      "cooldown": 1.5,
+      "range": 180,
+      "unlockCost": 200,
+      "verification": {
+        "stats": "source-ui",
+        "range": "measured",
+        "cooldown": "calibrated"
+      }
+    },
+    {
+      "id": "cactus",
+      "name": "선인장 사수",
+      "sourceName": "장총 병력",
+      "attack": 10,
+      "hp": 20,
+      "cost": 12,
+      "cooldown": 0.65,
+      "range": 300,
+      "unlockCost": 400,
+      "verification": {
+        "stats": "source-ui",
+        "range": "inferred",
+        "cooldown": "calibrated"
+      }
+    }
+  ],
+  "economy": {
+    "prices": [
+      0,
+      10,
+      20,
+      30,
+      40,
+      50,
+      60,
+      70,
+      85,
+      102,
+      121,
+      141,
+      163,
+      185,
+      209,
+      234,
+      260,
+      286,
+      313,
+      341,
+      369,
+      398,
+      428,
+      458,
+      488,
+      520,
+      551,
+      583,
+      616,
+      649,
+      683,
+      717,
+      751,
+      786,
+      821,
+      856,
+      892,
+      929,
+      965
+    ],
+    "priceVerification": "exact-through-index-38",
+    "fallback": {
+      "anchor": 892,
+      "anchorIndex": 36,
+      "linear": 36,
+      "quadratic": 0.2
+    },
+    "increments": {
+      "health": 10,
+      "rate": 0.02,
+      "income": 1
+    },
+    "killBaseBonus": 4,
+    "adDurationMs": 5000,
+    "adProvider": "local-simulation"
+  },
+  "merge": {
+    "attackGrowth": 2,
+    "hpGrowth": 2,
+    "healthPolicy": "preserve-missing-health",
+    "verification": "direction-and-ratio-increase-observed-formula-inferred"
+  },
+  "motion": {
+    "followSpeed": 32,
+    "settleSeconds": 0.22,
+    "rangeFadeSeconds": 0.08,
+    "rangeGlowWidth": 30
+  },
+  "chapters": [
+    {
+      "id": "green-block",
+      "name": "Green Block",
+      "waves": 6,
+      "theme": "grass",
+      "ribbon": "map-ribbon",
+      "waveCounts": [
+        8,
+        18,
+        42,
+        44,
+        48,
+        35
+      ],
+      "spawn": {
+        "base": 3.1,
+        "decrease": 0.13,
+        "min": 1
+      },
+      "bossAt": 0.6,
+      "bossHp": 3200,
+      "coinsAtObservedIncome": {
+        "income": 15,
+        "coins": 7163
+      },
+      "verification": "full-clear-observed-counts-calibrated"
+    },
+    {
+      "id": "dune-loop",
+      "name": "Dune Loop",
+      "waves": 10,
+      "theme": "desert",
+      "ribbon": "dune-ribbon",
+      "waveCounts": [
+        4,
+        12,
+        16,
+        13,
+        26,
+        22,
+        24,
+        16,
+        24,
+        15
+      ],
+      "spawn": {
+        "base": 1.65,
+        "decrease": 0.055,
+        "min": 0.9
+      },
+      "bossAt": 0.2,
+      "bossHp": 4500,
+      "coinsAtObservedIncome": {
+        "income": 17,
+        "coins": 5040
+      },
+      "verification": "full-clear-observed-counts-calibrated"
+    },
+    {
+      "id": "noon-strip",
+      "name": "Noon Strip",
+      "waves": 10,
+      "theme": "noon",
+      "ribbon": "noon-ribbon",
+      "waveCounts": [
+        4,
+        12,
+        16,
+        13,
+        26,
+        22,
+        24,
+        16,
+        24,
+        15
+      ],
+      "spawn": {
+        "base": 1.65,
+        "decrease": 0.055,
+        "min": 0.9
+      },
+      "bossAt": 0.2,
+      "bossHp": 4500,
+      "verification": "home-only-wave-rules-provisional"
+    }
+  ],
+  "web": {
+    "basePath": "/fvz_base_defense",
+    "canonicalUrl": "https://wokabe.xyz/fvz_base_defense/",
+    "repository": "https://github.com/Chelsea-md/fvz_base_defense"
+  }
+}

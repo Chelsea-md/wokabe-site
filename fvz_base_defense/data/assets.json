@@ -1,0 +1,1400 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-10-17",
+  "assets": [
+    {
+      "id": "archer-zombie",
+      "file": "archer-zombie.png",
+      "name": "궁수 좀비",
+      "category": "enemies",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "전투"
+      ],
+      "width": 511,
+      "height": 512,
+      "bytes": 90438
+    },
+    {
+      "id": "bucket-zombie",
+      "file": "bucket-zombie.png",
+      "name": "양동이 탱커 좀비",
+      "category": "enemies",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "전투"
+      ],
+      "width": 156,
+      "height": 241,
+      "bytes": 19941
+    },
+    {
+      "id": "cabbage-2",
+      "file": "cabbage-2.png",
+      "name": "양배추 2단계",
+      "category": "plants",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "전투",
+        "병종",
+        "구매 카드"
+      ],
+      "width": 372,
+      "height": 512,
+      "bytes": 57836
+    },
+    {
+      "id": "cabbage-3",
+      "file": "cabbage-3.png",
+      "name": "양배추 3단계",
+      "category": "plants",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "전투",
+        "병종",
+        "구매 카드"
+      ],
+      "width": 378,
+      "height": 512,
+      "bytes": 61176
+    },
+    {
+      "id": "cabbage",
+      "file": "cabbage.png",
+      "name": "양배추 1단계",
+      "category": "plants",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "전투",
+        "병종",
+        "구매 카드"
+      ],
+      "width": 195,
+      "height": 292,
+      "bytes": 27797
+    },
+    {
+      "id": "cactus-1",
+      "file": "cactus-1.png",
+      "name": "선인장 1단계",
+      "category": "plants",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "전투",
+        "병종",
+        "구매 카드"
+      ],
+      "width": 512,
+      "height": 441,
+      "bytes": 60855
+    },
+    {
+      "id": "cactus-2",
+      "file": "cactus-2.png",
+      "name": "선인장 2단계",
+      "category": "plants",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "전투",
+        "병종",
+        "구매 카드"
+      ],
+      "width": 512,
+      "height": 431,
+      "bytes": 61315
+    },
+    {
+      "id": "cactus-3",
+      "file": "cactus-3.png",
+      "name": "선인장 3단계",
+      "category": "plants",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "전투",
+        "병종",
+        "구매 카드"
+      ],
+      "width": 506,
+      "height": 512,
+      "bytes": 84680
+    },
+    {
+      "id": "chapter-badge",
+      "file": "chapter-badge.png",
+      "name": "챕터 완료 배지",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 39,
+      "height": 38,
+      "bytes": 1325
+    },
+    {
+      "id": "chapter-check",
+      "file": "chapter-check.png",
+      "name": "챕터 완료 체크",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 32,
+      "height": 31,
+      "bytes": 858
+    },
+    {
+      "id": "claim-button",
+      "file": "claim-button.png",
+      "name": "패배 2배 보상 버튼",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 126,
+      "height": 52,
+      "bytes": 5278
+    },
+    {
+      "id": "close-button",
+      "file": "close-button.png",
+      "name": "close-button",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 18,
+      "height": 20,
+      "bytes": 568
+    },
+    {
+      "id": "coin",
+      "file": "coin.png",
+      "name": "코인",
+      "category": "ui",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 199,
+      "height": 206,
+      "bytes": 50362
+    },
+    {
+      "id": "confirm-panel",
+      "file": "confirm-panel.png",
+      "name": "전투 중단 확인 창",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 169,
+      "height": 108,
+      "bytes": 8700
+    },
+    {
+      "id": "corn",
+      "file": "corn.png",
+      "name": "corn",
+      "category": "plants",
+      "origin": "생성 리소스",
+      "usage": "stored",
+      "preload": true,
+      "usedIn": [
+        "전투",
+        "병종",
+        "구매 카드"
+      ],
+      "width": 263,
+      "height": 222,
+      "bytes": 26602
+    },
+    {
+      "id": "dead-tree",
+      "file": "dead-tree.png",
+      "name": "마른 나무",
+      "category": "props",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "환경"
+      ],
+      "width": 157,
+      "height": 320,
+      "bytes": 16910
+    },
+    {
+      "id": "desert-cactus",
+      "file": "desert-cactus.png",
+      "name": "사막 선인장",
+      "category": "props",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "환경"
+      ],
+      "width": 47,
+      "height": 68,
+      "bytes": 4951
+    },
+    {
+      "id": "desert-horns",
+      "file": "desert-horns.png",
+      "name": "뿔 장식",
+      "category": "props",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "환경"
+      ],
+      "width": 256,
+      "height": 179,
+      "bytes": 17613
+    },
+    {
+      "id": "desert-ribs",
+      "file": "desert-ribs.png",
+      "name": "갈비뼈 장식",
+      "category": "props",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "환경"
+      ],
+      "width": 256,
+      "height": 159,
+      "bytes": 23092
+    },
+    {
+      "id": "desert-skull",
+      "file": "desert-skull.png",
+      "name": "동물 두개골",
+      "category": "props",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "환경"
+      ],
+      "width": 256,
+      "height": 205,
+      "bytes": 23104
+    },
+    {
+      "id": "desert-terrain",
+      "file": "desert-terrain.png",
+      "name": "Dune Loop 지면",
+      "category": "backgrounds",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "환경"
+      ],
+      "width": 120,
+      "height": 120,
+      "bytes": 2396
+    },
+    {
+      "id": "dialog",
+      "file": "dialog.png",
+      "name": "dialog",
+      "category": "ui",
+      "origin": "생성 리소스",
+      "usage": "stored",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 316,
+      "height": 323,
+      "bytes": 119948
+    },
+    {
+      "id": "double-pea",
+      "file": "double-pea.png",
+      "name": "완두콩 2단계",
+      "category": "plants",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "전투",
+        "병종",
+        "구매 카드"
+      ],
+      "width": 259,
+      "height": 208,
+      "bytes": 23911
+    },
+    {
+      "id": "dune-ribbon",
+      "file": "dune-ribbon.png",
+      "name": "Dune Loop 리본",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 246,
+      "height": 64,
+      "bytes": 9365
+    },
+    {
+      "id": "end-button",
+      "file": "end-button.png",
+      "name": "end-button",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 68,
+      "height": 31,
+      "bytes": 1631
+    },
+    {
+      "id": "enemy-arrow",
+      "file": "enemy-arrow.svg",
+      "name": "적 화살",
+      "category": "ui",
+      "origin": "Font Awesome Free",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 448,
+      "height": 512,
+      "bytes": 512
+    },
+    {
+      "id": "free-button",
+      "file": "free-button.png",
+      "name": "무료 강화 버튼",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 81,
+      "height": 34,
+      "bytes": 3490
+    },
+    {
+      "id": "fx-coin",
+      "file": "fx-coin.png",
+      "name": "코인 획득 효과",
+      "category": "effects",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "전투 효과"
+      ],
+      "width": 354,
+      "height": 346,
+      "bytes": 39755
+    },
+    {
+      "id": "fx-ghost",
+      "file": "fx-ghost.png",
+      "name": "사망 효과",
+      "category": "effects",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "전투 효과"
+      ],
+      "width": 202,
+      "height": 368,
+      "bytes": 26743
+    },
+    {
+      "id": "fx-impact",
+      "file": "fx-impact.png",
+      "name": "명중 효과",
+      "category": "effects",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "전투 효과"
+      ],
+      "width": 248,
+      "height": 230,
+      "bytes": 28461
+    },
+    {
+      "id": "fx-merge",
+      "file": "fx-merge.png",
+      "name": "합성 효과",
+      "category": "effects",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "전투 효과"
+      ],
+      "width": 451,
+      "height": 403,
+      "bytes": 57536
+    },
+    {
+      "id": "gear",
+      "file": "gear.png",
+      "name": "설정 아이콘",
+      "category": "ui",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 179,
+      "height": 184,
+      "bytes": 42822
+    },
+    {
+      "id": "green-button",
+      "file": "green-button.png",
+      "name": "green-button",
+      "category": "ui",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 351,
+      "height": 148,
+      "bytes": 69400
+    },
+    {
+      "id": "greenhouse-damaged",
+      "file": "greenhouse-damaged.png",
+      "name": "손상된 온실",
+      "category": "bases",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "홈",
+        "전투"
+      ],
+      "width": 491,
+      "height": 512,
+      "bytes": 99104
+    },
+    {
+      "id": "greenhouse-destroyed",
+      "file": "greenhouse-destroyed.png",
+      "name": "파괴된 온실",
+      "category": "bases",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "홈",
+        "전투"
+      ],
+      "width": 512,
+      "height": 354,
+      "bytes": 65753
+    },
+    {
+      "id": "greenhouse",
+      "file": "greenhouse.png",
+      "name": "온실 기지",
+      "category": "bases",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "홈",
+        "전투"
+      ],
+      "width": 272,
+      "height": 301,
+      "bytes": 41352
+    },
+    {
+      "id": "guide-hand",
+      "file": "guide-hand.svg",
+      "name": "드래그 가이드 손",
+      "category": "ui",
+      "origin": "Font Awesome Free",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 448,
+      "height": 512,
+      "bytes": 960
+    },
+    {
+      "id": "heart",
+      "file": "heart.png",
+      "name": "체력 아이콘",
+      "category": "ui",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 22,
+      "height": 23,
+      "bytes": 681
+    },
+    {
+      "id": "large-zombie",
+      "file": "large-zombie.png",
+      "name": "large-zombie",
+      "category": "enemies",
+      "origin": "생성 리소스",
+      "usage": "stored",
+      "preload": true,
+      "usedIn": [
+        "전투"
+      ],
+      "width": 301,
+      "height": 280,
+      "bytes": 41059
+    },
+    {
+      "id": "lock",
+      "file": "lock.png",
+      "name": "잠금 아이콘",
+      "category": "ui",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 155,
+      "height": 208,
+      "bytes": 47654
+    },
+    {
+      "id": "log",
+      "file": "log.png",
+      "name": "통나무",
+      "category": "props",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "환경"
+      ],
+      "width": 248,
+      "height": 195,
+      "bytes": 17117
+    },
+    {
+      "id": "map-ribbon",
+      "file": "map-ribbon.png",
+      "name": "Green Block 리본",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 246,
+      "height": 64,
+      "bytes": 9244
+    },
+    {
+      "id": "mini-merge",
+      "file": "mini-merge.png",
+      "name": "mini-merge",
+      "category": "ui",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 160,
+      "height": 157,
+      "bytes": 18617
+    },
+    {
+      "id": "mini-place",
+      "file": "mini-place.png",
+      "name": "mini-place",
+      "category": "ui",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 160,
+      "height": 157,
+      "bytes": 10339
+    },
+    {
+      "id": "mini-shop",
+      "file": "mini-shop.png",
+      "name": "mini-shop",
+      "category": "ui",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 58,
+      "height": 97,
+      "bytes": 8229
+    },
+    {
+      "id": "mummy-archer",
+      "file": "mummy-archer.png",
+      "name": "미라 궁수",
+      "category": "enemies",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "전투"
+      ],
+      "width": 351,
+      "height": 384,
+      "bytes": 61704
+    },
+    {
+      "id": "mummy-armor",
+      "file": "mummy-armor.png",
+      "name": "파라오 탱커",
+      "category": "enemies",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "전투"
+      ],
+      "width": 351,
+      "height": 384,
+      "bytes": 67900
+    },
+    {
+      "id": "mummy-shortbow",
+      "file": "mummy-shortbow.png",
+      "name": "근거리 미라 궁수",
+      "category": "enemies",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "전투"
+      ],
+      "width": 377,
+      "height": 384,
+      "bytes": 63559
+    },
+    {
+      "id": "mummy",
+      "file": "mummy.png",
+      "name": "미라 좀비",
+      "category": "enemies",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "전투"
+      ],
+      "width": 296,
+      "height": 384,
+      "bytes": 50141
+    },
+    {
+      "id": "nav-battle-active",
+      "file": "nav-battle-active.png",
+      "name": "하단 메뉴 battle-active",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 134,
+      "height": 84,
+      "bytes": 6926
+    },
+    {
+      "id": "nav-battle",
+      "file": "nav-battle.png",
+      "name": "하단 메뉴 battle",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 134,
+      "height": 54,
+      "bytes": 3124
+    },
+    {
+      "id": "nav-locked",
+      "file": "nav-locked.png",
+      "name": "하단 메뉴 locked",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 134,
+      "height": 54,
+      "bytes": 1598
+    },
+    {
+      "id": "nav-troops-active",
+      "file": "nav-troops-active.png",
+      "name": "하단 메뉴 troops-active",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 134,
+      "height": 84,
+      "bytes": 8774
+    },
+    {
+      "id": "nav-troops",
+      "file": "nav-troops.png",
+      "name": "하단 메뉴 troops",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 134,
+      "height": 54,
+      "bytes": 5330
+    },
+    {
+      "id": "noon-ribbon",
+      "file": "noon-ribbon.png",
+      "name": "Noon Strip 리본",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 246,
+      "height": 64,
+      "bytes": 10275
+    },
+    {
+      "id": "noon-terrain",
+      "file": "noon-terrain.png",
+      "name": "Noon Strip 지면",
+      "category": "backgrounds",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "환경"
+      ],
+      "width": 824,
+      "height": 824,
+      "bytes": 373601
+    },
+    {
+      "id": "paid-upgrade",
+      "file": "paid-upgrade.png",
+      "name": "코인 강화 버튼",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 81,
+      "height": 34,
+      "bytes": 2995
+    },
+    {
+      "id": "pea-level-3",
+      "file": "pea-level-3.png",
+      "name": "완두콩 3단계",
+      "category": "plants",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "전투",
+        "병종",
+        "구매 카드"
+      ],
+      "width": 452,
+      "height": 423,
+      "bytes": 61770
+    },
+    {
+      "id": "pea-level-4",
+      "file": "pea-level-4.png",
+      "name": "완두콩 4단계",
+      "category": "plants",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "전투",
+        "병종",
+        "구매 카드"
+      ],
+      "width": 417,
+      "height": 497,
+      "bytes": 67973
+    },
+    {
+      "id": "pea-level-5",
+      "file": "pea-level-5.png",
+      "name": "완두콩 5단계",
+      "category": "plants",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "전투",
+        "병종",
+        "구매 카드"
+      ],
+      "width": 441,
+      "height": 437,
+      "bytes": 68325
+    },
+    {
+      "id": "pea-level-6",
+      "file": "pea-level-6.png",
+      "name": "완두콩 6단계",
+      "category": "plants",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "전투",
+        "병종",
+        "구매 카드"
+      ],
+      "width": 436,
+      "height": 510,
+      "bytes": 69659
+    },
+    {
+      "id": "pea",
+      "file": "pea.png",
+      "name": "완두콩 1단계",
+      "category": "plants",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "전투",
+        "병종",
+        "구매 카드"
+      ],
+      "width": 216,
+      "height": 204,
+      "bytes": 20863
+    },
+    {
+      "id": "purchase-card",
+      "file": "purchase-card.png",
+      "name": "병력 구매 카드",
+      "category": "ui",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 237,
+      "height": 343,
+      "bytes": 90617
+    },
+    {
+      "id": "reaper-zombie",
+      "file": "reaper-zombie.png",
+      "name": "사신 보스 좀비",
+      "category": "enemies",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "전투"
+      ],
+      "width": 512,
+      "height": 467,
+      "bytes": 79434
+    },
+    {
+      "id": "resource-frame",
+      "file": "resource-frame.png",
+      "name": "자원 카운터 틀",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 77,
+      "height": 30,
+      "bytes": 1913
+    },
+    {
+      "id": "ribbon",
+      "file": "ribbon.png",
+      "name": "ribbon",
+      "category": "ui",
+      "origin": "생성 리소스",
+      "usage": "stored",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 479,
+      "height": 132,
+      "bytes": 68101
+    },
+    {
+      "id": "scroll-curl",
+      "file": "scroll-curl.png",
+      "name": "scroll-curl",
+      "category": "ui",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 15,
+      "height": 47,
+      "bytes": 694
+    },
+    {
+      "id": "selected-tab",
+      "file": "selected-tab.png",
+      "name": "selected-tab",
+      "category": "ui",
+      "origin": "생성 리소스",
+      "usage": "stored",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 217,
+      "height": 154,
+      "bytes": 40275
+    },
+    {
+      "id": "settings-off",
+      "file": "settings-off.png",
+      "name": "설정 소리 끔",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 152,
+      "height": 190,
+      "bytes": 5637
+    },
+    {
+      "id": "settings-on",
+      "file": "settings-on.png",
+      "name": "설정 소리 켬",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 152,
+      "height": 190,
+      "bytes": 5499
+    },
+    {
+      "id": "speaker",
+      "file": "speaker.svg",
+      "name": "소리 아이콘",
+      "category": "ui",
+      "origin": "Font Awesome Free",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 640,
+      "height": 512,
+      "bytes": 1162
+    },
+    {
+      "id": "start-button",
+      "file": "start-button.png",
+      "name": "웨이브 시작 버튼",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 171,
+      "height": 73,
+      "bytes": 7812
+    },
+    {
+      "id": "stump",
+      "file": "stump.png",
+      "name": "그루터기",
+      "category": "props",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "환경"
+      ],
+      "width": 193,
+      "height": 159,
+      "bytes": 15995
+    },
+    {
+      "id": "sun",
+      "file": "sun.png",
+      "name": "태양 자원",
+      "category": "ui",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 200,
+      "height": 206,
+      "bytes": 21246
+    },
+    {
+      "id": "swords",
+      "file": "swords.png",
+      "name": "전투 아이콘",
+      "category": "ui",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 238,
+      "height": 223,
+      "bytes": 74631
+    },
+    {
+      "id": "tab",
+      "file": "tab.png",
+      "name": "tab",
+      "category": "ui",
+      "origin": "생성 리소스",
+      "usage": "stored",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 299,
+      "height": 129,
+      "bytes": 36322
+    },
+    {
+      "id": "terrain",
+      "file": "terrain.png",
+      "name": "초원 지면",
+      "category": "backgrounds",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "환경"
+      ],
+      "width": 150,
+      "height": 90,
+      "bytes": 1695
+    },
+    {
+      "id": "tree",
+      "file": "tree.png",
+      "name": "참나무",
+      "category": "props",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "환경"
+      ],
+      "width": 246,
+      "height": 297,
+      "bytes": 21891
+    },
+    {
+      "id": "troops-terrain",
+      "file": "troops-terrain.png",
+      "name": "병종 화면 배경",
+      "category": "backgrounds",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "환경"
+      ],
+      "width": 166,
+      "height": 95,
+      "bytes": 1831
+    },
+    {
+      "id": "tutorial-frame",
+      "file": "tutorial-frame.png",
+      "name": "조작 안내 틀",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 155,
+      "height": 220,
+      "bytes": 16830
+    },
+    {
+      "id": "unlock-200-ready",
+      "file": "unlock-200-ready.png",
+      "name": "unlock-200-ready",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 108,
+      "height": 53,
+      "bytes": 5031
+    },
+    {
+      "id": "unlock-200",
+      "file": "unlock-200.png",
+      "name": "unlock-200",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 108,
+      "height": 53,
+      "bytes": 4971
+    },
+    {
+      "id": "unlock-400-ready",
+      "file": "unlock-400-ready.png",
+      "name": "unlock-400-ready",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 108,
+      "height": 53,
+      "bytes": 4849
+    },
+    {
+      "id": "unlock-400",
+      "file": "unlock-400.png",
+      "name": "unlock-400",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 108,
+      "height": 53,
+      "bytes": 4800
+    },
+    {
+      "id": "upgrade-cyan",
+      "file": "upgrade-cyan.png",
+      "name": "청록색 강화 카드",
+      "category": "ui",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 184,
+      "height": 256,
+      "bytes": 23323
+    },
+    {
+      "id": "upgrade-frame",
+      "file": "upgrade-frame.png",
+      "name": "사용한 무료 강화 카드",
+      "category": "ui",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 228,
+      "height": 341,
+      "bytes": 84833
+    },
+    {
+      "id": "video",
+      "file": "video.png",
+      "name": "video",
+      "category": "ui",
+      "origin": "생성 리소스",
+      "usage": "stored",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 240,
+      "height": 171,
+      "bytes": 42991
+    },
+    {
+      "id": "win-double",
+      "file": "win-double.png",
+      "name": "승리 2배 보상 버튼",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 109,
+      "height": 44,
+      "bytes": 3976
+    },
+    {
+      "id": "win-ribbon",
+      "file": "win-ribbon.png",
+      "name": "You Win 리본",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 209,
+      "height": 54,
+      "bytes": 9602
+    },
+    {
+      "id": "win-trophy",
+      "file": "win-trophy.png",
+      "name": "승리 트로피",
+      "category": "ui",
+      "origin": "원본 UI 캡처",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "인터페이스"
+      ],
+      "width": 90,
+      "height": 60,
+      "bytes": 6541
+    },
+    {
+      "id": "zombie",
+      "file": "zombie.png",
+      "name": "기본 좀비",
+      "category": "enemies",
+      "origin": "생성 리소스",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "전투"
+      ],
+      "width": 154,
+      "height": 198,
+      "bytes": 17377
+    }
+  ]
+}
