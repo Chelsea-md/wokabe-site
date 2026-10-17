@@ -1,0 +1,146 @@
+{
+  "ribbon": {
+    "atlas": "../../../assets/cartoon-v5-ui-atlas.png",
+    "source": [
+      30,
+      154,
+      507,
+      283
+    ]
+  },
+  "start": {
+    "atlas": "../../../assets/cartoon-v5-ui-atlas.png",
+    "source": [
+      523,
+      145,
+      872,
+      291
+    ]
+  },
+  "nav": {
+    "atlas": "../../../assets/cartoon-v5-ui-atlas.png",
+    "source": [
+      889,
+      158,
+      1186,
+      285
+    ]
+  },
+  "activeNav": {
+    "atlas": "../../../assets/cartoon-v5-ui-atlas.png",
+    "source": [
+      1203,
+      136,
+      1417,
+      286
+    ]
+  },
+  "purple": {
+    "atlas": "../../../assets/cartoon-v5-ui-atlas.png",
+    "source": [
+      129,
+      373,
+      355,
+      713
+    ]
+  },
+  "cyan": {
+    "atlas": "../../../assets/cartoon-v5-ui-atlas.png",
+    "source": [
+      433,
+      373,
+      668,
+      714
+    ]
+  },
+  "greenCard": {
+    "atlas": "../../../assets/cartoon-v5-ui-atlas.png",
+    "source": [
+      744,
+      384,
+      1057,
+      705
+    ]
+  },
+  "gear": {
+    "atlas": "../../../assets/cartoon-v5-ui-atlas.png",
+    "source": [
+      1153,
+      473,
+      1330,
+      655
+    ]
+  },
+  "lock": {
+    "atlas": "../../../assets/cartoon-v5-ui-atlas.png",
+    "source": [
+      151,
+      795,
+      304,
+      1001
+    ]
+  },
+  "swords": {
+    "atlas": "../../../assets/cartoon-v5-ui-atlas.png",
+    "source": [
+      446,
+      785,
+      682,
+      1006
+    ]
+  },
+  "video": {
+    "atlas": "../../../assets/cartoon-v5-ui-atlas.png",
+    "source": [
+      787,
+      811,
+      1025,
+      980
+    ]
+  },
+  "coin": {
+    "atlas": "../../../assets/cartoon-v5-ui-atlas.png",
+    "source": [
+      1146,
+      802,
+      1343,
+      1006
+    ]
+  },
+  "card": {
+    "atlas": "../../../assets/cartoon-v5-ui-panels.png",
+    "source": [
+      173,
+      80,
+      611,
+      590
+    ]
+  },
+  "counter": {
+    "atlas": "../../../assets/cartoon-v5-ui-panels.png",
+    "source": [
+      766,
+      219,
+      1361,
+      403
+    ]
+  },
+  "wave": {
+    "atlas": "../../../assets/cartoon-v5-ui-panels.png",
+    "source": [
+      88,
+      746,
+      755,
+      928
+    ]
+  },
+  "teal": {
+    "atlas": "../../../assets/cartoon-v5-ui-panels.png",
+    "source": [
+      894,
+      517,
+      1276,
+      1026
+    ]
+  }
+}

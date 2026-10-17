@@ -1,0 +1,51 @@
+/* Selected bright cartoon direction. Frames are supplied/generated raster skins. */
+body[data-ui-theme=bold] .game-frame{--ink:#0b0e13;aspect-ratio:2;border:0;border-radius:0;box-shadow:none;background:#8b9d4c}
+body[data-ui-theme=bold].stage-focus .game-frame{width:min(100vw,calc(100dvh * 2))}
+body[data-ui-theme=bold] .game-frame .ui-raster{object-fit:contain;display:block;pointer-events:none}
+body[data-ui-theme=bold] .game-frame .game-settings{left:2.5%;top:4%;width:5.6%;height:11%;border:0;border-radius:14%;background:#333a49;box-shadow:inset 0 4px #697080,0 4px #10131a;padding:.4cqw}
+body[data-ui-theme=bold] .game-settings .ui-raster{width:100%;height:100%}
+body[data-ui-theme=bold] .currency{right:2.5%;top:4%;min-width:11%;height:8%;border:0;background:var(--skin-counter) center/100% 100% no-repeat;box-shadow:none;padding:0 1cqw 0 0;gap:.5cqw;overflow:visible}
+body[data-ui-theme=bold] .currency .ui-raster{width:5cqw;height:5cqw;margin-left:-1cqw}
+body[data-ui-theme=bold] .currency strong,body[data-ui-theme=bold] .sun-stock strong{font:3cqw GameChunk,sans-serif;color:#fff8e7;-webkit-text-stroke:4px #0b0c10;paint-order:stroke fill;text-shadow:0 3px #0b0c10}
+body[data-ui-theme=bold] .wave-head{left:40.5%;width:19%;top:3.5%;height:7.5%;border:0;background:var(--skin-wave) center/100% 100% no-repeat;padding:0;box-shadow:none;filter:none;display:flex;align-items:center;justify-content:center}
+body[data-ui-theme=bold] .wave-head>span,body[data-ui-theme=bold] .wave-track{display:none}
+body[data-ui-theme=bold] .wave-head>strong{font:2.4cqw GameChunk,sans-serif;margin:0;color:#fffbe9;-webkit-text-stroke:4px #101015;paint-order:stroke fill;text-shadow:0 2px #101015}
+body[data-ui-theme=bold] .wave-head .wave-number,body[data-ui-theme=bold] .wave-head small{font:inherit}
+body[data-ui-theme=bold] .health{top:16%;left:2.5%;background:#303745e8;border:3px solid #10131b;border-radius:10px;padding:.3cqw;color:#fff7e1;opacity:.9}
+body[data-ui-theme=bold] .battle-pause{width:4%;height:8%;top:4%;right:16%;border-color:#0c1017;background:#4b5366;box-shadow:inset 0 3px #818797,0 3px #151821;padding:.4cqw}
+body[data-ui-theme=bold] .chapter-title{top:2.5%;left:34%;width:32%;height:15%;border:0;background:var(--skin-ribbon) center/100% 100% no-repeat;box-shadow:none;padding-bottom:1cqw;justify-content:center}
+body[data-ui-theme=bold] .chapter-title strong{font:3.2cqw GameChunk,sans-serif;color:#fff8d9;-webkit-text-stroke:5px #101010;paint-order:stroke fill;text-shadow:0 3px #111}
+body[data-ui-theme=bold] .home-actions{right:3%;top:18%;width:43%;height:61%}
+body[data-ui-theme=bold] .start-game{position:relative;width:91%;height:27%;margin-left:auto;border:0;background:var(--skin-start) center/100% 100% no-repeat;box-shadow:none;padding:1cqw;justify-content:center;display:flex;text-align:center;color:#071e09;filter:drop-shadow(0 4px #3c5b29)}
+body[data-ui-theme=bold] .start-game>span{display:block;font:3.4cqw/.95 GameChunk,sans-serif;letter-spacing:.03em}
+body[data-ui-theme=bold] .start-game small{position:absolute;top:110%;left:14%;width:72%;background:#28351dd9;color:#fffbe8;border-radius:.8cqw;font:1.6cqw GameChunk,sans-serif;line-height:1.8;letter-spacing:0}
+body[data-ui-theme=bold] .upgrades{margin-top:4cqw;gap:1cqw;height:51%}
+body[data-ui-theme=bold] .upgrades>button{position:relative;border:0;border-radius:0;background:var(--skin-teal) center/100% 100% no-repeat;box-shadow:none;padding:1cqw .5cqw;gap:.7cqw;overflow:visible}
+body[data-ui-theme=bold] .upgrades>button:first-child{background-image:var(--skin-purple)}
+body[data-ui-theme=bold] .upgrade-label{font:1.65cqw GameChunk,sans-serif;color:#fff9e8;white-space:nowrap;-webkit-text-stroke:3px #0d1014;paint-order:stroke fill;text-shadow:0 2px #0d1014}
+body[data-ui-theme=bold] .upgrades>button>.ui-raster,body[data-ui-theme=bold] .upgrades>button>.asset-icon{width:5cqw;height:5cqw;margin:.1cqw auto}
+body[data-ui-theme=bold] .upgrades strong{font:2.1cqw GameChunk,sans-serif;color:#fffbed;-webkit-text-stroke:4px #101015;paint-order:stroke fill;text-shadow:0 2px #111}
+body[data-ui-theme=bold] .upgrades b{position:absolute;bottom:-1.4cqw;left:4%;width:92%;height:4.1cqw;border:0;background:var(--skin-start) center/100% 100% no-repeat;box-shadow:none;padding:.6cqw;color:#fffbe8;font:2cqw GameChunk,sans-serif;-webkit-text-stroke:3px #102015;paint-order:stroke fill;text-shadow:0 2px #111}
+body[data-ui-theme=bold] .upgrades b .ui-raster{width:2.4cqw;height:2.4cqw}
+body[data-ui-theme=bold] .home-caption{display:none}
+body[data-ui-theme=bold] .bottom-nav,body[data-ui-theme=bold] .battle-tray{background:#414653;border-top:5px solid #0d1119;box-shadow:inset 0 5px #838797;background-image:none}
+body[data-ui-theme=bold] .bottom-nav{height:16%;padding:0 7%;gap:0}
+body[data-ui-theme=bold] .bottom-nav button{border:0;border-radius:0;background:var(--skin-nav) center/100% 100% no-repeat;box-shadow:none;transform:translateY(-1cqw);height:calc(100% + 1cqw);padding-top:.6cqw}
+body[data-ui-theme=bold] .bottom-nav .chosen{background-image:var(--skin-activeNav);height:calc(100% + 2.3cqw);transform:translateY(-2.3cqw)}
+body[data-ui-theme=bold] .bottom-nav .ui-raster{width:5cqw;height:5cqw}
+body[data-ui-theme=bold] .bottom-nav button span{font:2cqw GameChunk,sans-serif;color:#fffbe8;-webkit-text-stroke:4px #101015;paint-order:stroke fill;text-shadow:0 2px #111}
+body[data-ui-theme=bold] .bottom-nav button:disabled .ui-raster{width:3.5cqw;height:3.5cqw}
+body[data-ui-theme=bold] .battle-tray{height:21%;gap:4cqw}
+body[data-ui-theme=bold] .sun-stock{height:7cqw;width:14%;padding:1cqw;background:var(--skin-counter) center/100% 100% no-repeat;border:0;box-shadow:none;position:relative;gap:.5cqw}
+body[data-ui-theme=bold] .sun-stock>.asset-icon{width:3.5cqw;height:3.5cqw;order:2}.game-frame .sun-stock .production-track{display:none}
+body[data-ui-theme=bold] .sun-stock span,body[data-ui-theme=bold] .sun-rate{display:none}
+body[data-ui-theme=bold] .troop-cards{margin-bottom:1cqw;gap:1.5cqw}
+body[data-ui-theme=bold] .troop-card{width:10.5cqw;height:13.9cqw;padding:0;border:0;border-radius:0;background:var(--skin-card) center/100% 100% no-repeat!important;box-shadow:none}
+body[data-ui-theme=bold] .game-frame .troop-card img{width:94%!important;height:78%!important;top:2%!important}
+body[data-ui-theme=bold] .troop-card b{left:9%;right:9%;bottom:1.2cqw;background:none;border:0;box-shadow:none;height:2.5cqw;font:2.7cqw GameChunk,sans-serif;color:#fffbe6;-webkit-text-stroke:4px #101015;paint-order:stroke fill;text-shadow:0 2px #111}
+body[data-ui-theme=bold] .drag-hint{display:none}
+body[data-ui-theme=bold] .unit-inspector,body[data-ui-theme=bold] .pause-overlay section{background:#fff4d7;border:4px solid #0c1118;box-shadow:0 6px #151d23}
+body[data-ui-theme=bold] .pause-overlay button{background:var(--skin-start) center/100% 100% no-repeat;border:0;box-shadow:none;color:#162417;font-family:GameChunk,sans-serif}
+body[data-ui-theme=bold] .boss-title span{background:#f83b30;border-color:#111}
+@media(max-width:700px){body[data-ui-theme=bold] .currency strong,body[data-ui-theme=bold] .sun-stock strong,body[data-ui-theme=bold] .wave-head>strong,body[data-ui-theme=bold] .upgrades strong,body[data-ui-theme=bold] .bottom-nav button span,body[data-ui-theme=bold] .troop-card b{-webkit-text-stroke:2px #101015}body[data-ui-theme=bold] .upgrade-label{-webkit-text-stroke:1.5px #111}body[data-ui-theme=bold] .chapter-title strong{-webkit-text-stroke:2.5px #111}}
+body[data-ui-theme=bold] .home .start-game{width:70%;height:30%;margin-right:3cqw}body[data-ui-theme=bold] .home .game-settings{background:none;box-shadow:none;padding:0}

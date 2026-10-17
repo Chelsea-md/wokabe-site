@@ -1,0 +1,18 @@
+{
+  "method": "Built-in ImageGen; original transparent atlases supplied by user reused unchanged",
+  "selectedReferences": [
+    "codex-clipboard-9d13f0e6-3d47-4dfa-adda-29e4d9d85266.png",
+    "codex-clipboard-948f26a2-59f2-4147-862b-fe365edb1a9f.png"
+  ],
+  "newAssets": [
+    {
+      "file": "cartoon-v5-ui-field.png",
+      "promptSummary": "Olive 2:1 cartoon grass field; thick outlined tree with skull, log, stump and dead trunk; sparse grass marks; no UI or characters."
+    },
+    {
+      "file": "cartoon-v5-ui-panels.png",
+      "promptSummary": "Transparent 2 by 2 atlas: ivory/gold character card, dark slate counter, purple wave pill, cyan upgrade panel; no text or icons."
+    }
+  ],
+  "runtime": "Live English text, image-backed panels, original class characters and coding-driven boss camera and shadows."
+}

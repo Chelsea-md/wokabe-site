@@ -1691,6 +1691,71 @@
       "height": 1024,
       "bytes": 1787119,
       "transparent": true
+    },
+    {
+      "id": "cartoon-v5-ui-atlas",
+      "file": "cartoon-v5-ui-atlas.png",
+      "name": "ui-atlas",
+      "category": "art-direction",
+      "origin": "User supplied ImageGen atlas",
+      "usage": "review",
+      "preload": false,
+      "width": 1447,
+      "height": 1087,
+      "bytes": 775641,
+      "transparent": true
+    },
+    {
+      "id": "cartoon-v5-ui-effects",
+      "file": "cartoon-v5-ui-effects.png",
+      "name": "ui-effects",
+      "category": "art-direction",
+      "origin": "User supplied ImageGen atlas",
+      "usage": "review",
+      "preload": false,
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1481055,
+      "transparent": true
+    },
+    {
+      "id": "cartoon-v5-ui-hand",
+      "file": "cartoon-v5-ui-hand.png",
+      "name": "ui-hand",
+      "category": "art-direction",
+      "origin": "User supplied ImageGen atlas",
+      "usage": "review",
+      "preload": false,
+      "width": 1536,
+      "height": 1024,
+      "bytes": 684462,
+      "transparent": true
+    },
+    {
+      "id": "cartoon-v5-ui-field",
+      "file": "cartoon-v5-ui-field.png",
+      "name": "ui-field",
+      "category": "art-direction",
+      "origin": "Built-in ImageGen",
+      "usage": "review",
+      "preload": false,
+      "width": 1774,
+      "height": 887,
+      "bytes": 1385376,
+      "transparent": false
+    },
+    {
+      "id": "cartoon-v5-ui-panels",
+      "file": "cartoon-v5-ui-panels.png",
+      "name": "ui-panels",
+      "category": "art-direction",
+      "origin": "Built-in ImageGen",
+      "usage": "review",
+      "preload": false,
+      "width": 1446,
+      "height": 1087,
+      "bytes": 707326,
+      "transparent": true
     }
   ]
 }

@@ -7,18 +7,18 @@
     "cost": 3,
     "transparent": true,
     "status": "일체형 캐릭터 · 코드 모션",
-    "width": 1254,
-    "height": 1254,
+    "width": 1536,
+    "height": 1024,
     "mode": "RGBA",
     "alphaExtrema": [
       0,
       255
     ],
     "bounds": [
-      33,
-      56,
-      1226,
-      1216
+      74,
+      88,
+      331,
+      497
     ],
     "sourceFile": "assets/poppy.png"
   },
@@ -30,18 +30,18 @@
     "cost": 7,
     "transparent": true,
     "status": "일체형 캐릭터 · 코드 모션",
-    "width": 1254,
-    "height": 1254,
+    "width": 1536,
+    "height": 1024,
     "mode": "RGBA",
     "alphaExtrema": [
       0,
       255
     ],
     "bounds": [
-      0,
-      39,
-      1224,
-      1254
+      827,
+      139,
+      1092,
+      497
     ],
     "sourceFile": "assets/bellflower.png"
   },
@@ -53,84 +53,84 @@
     "cost": 12,
     "transparent": true,
     "status": "일체형 캐릭터 · 코드 모션",
-    "width": 1254,
-    "height": 1254,
+    "width": 1536,
+    "height": 1024,
     "mode": "RGBA",
     "alphaExtrema": [
       0,
       255
     ],
     "bounds": [
-      59,
-      5,
-      1198,
-      1177
+      1163,
+      119,
+      1469,
+      500
     ],
     "sourceFile": "assets/marigold.png"
   },
   {
     "id": "shambler",
-    "file": "../../../assets/cartoon-v5-enemies-forest.png",
+    "file": "../../../assets/cartoon-v5-stage-enemies.png",
     "name": "MELEE",
     "role": "Stage enemy",
     "transparent": true,
     "status": "디자인 프리뷰용 단일 포즈 · 애니메이션 프레임 미제작",
-    "width": 1254,
-    "height": 1254,
+    "width": 1536,
+    "height": 1024,
     "mode": "RGBA",
     "alphaExtrema": [
       0,
       255
     ],
     "bounds": [
-      25,
-      18,
-      1232,
-      1254
+      81,
+      67,
+      360,
+      341
     ],
     "sourceFile": "assets/shambler.png"
   },
   {
     "id": "courier",
-    "file": "../../../assets/cartoon-v5-enemies-forest.png",
+    "file": "../../../assets/cartoon-v5-stage-enemies.png",
     "name": "RANGED",
     "role": "Stage enemy",
     "transparent": true,
     "status": "디자인 프리뷰용 단일 포즈 · 애니메이션 프레임 미제작",
-    "width": 1254,
-    "height": 1254,
+    "width": 1536,
+    "height": 1024,
     "mode": "RGBA",
     "alphaExtrema": [
       0,
       255
     ],
     "bounds": [
-      43,
-      25,
-      1238,
-      1254
+      441,
+      44,
+      719,
+      341
     ],
     "sourceFile": "assets/courier.png"
   },
   {
     "id": "bruiser",
-    "file": "../../../assets/cartoon-v5-enemies-forest.png",
+    "file": "../../../assets/cartoon-v5-stage-enemies.png",
     "name": "TANK",
     "role": "Stage enemy",
     "transparent": true,
     "status": "디자인 프리뷰용 단일 포즈 · 애니메이션 프레임 미제작",
-    "width": 1254,
-    "height": 1254,
+    "width": 1536,
+    "height": 1024,
     "mode": "RGBA",
     "alphaExtrema": [
       0,
       255
     ],
     "bounds": [
-      0,
-      9,
-      1254,
-      1254
+      782,
+      30,
+      1078,
+      341
     ],
     "sourceFile": "assets/bruiser.png"
   },
@@ -158,36 +158,36 @@
   },
   {
     "id": "forest",
-    "file": "../../../assets/cartoon-v1-forest.png",
+    "file": "../../../assets/cartoon-v5-ui-field.png",
     "name": "Garden Forest",
     "role": "배경",
     "transparent": false,
     "status": "디자인 프리뷰용 단일 포즈 · 애니메이션 프레임 미제작",
-    "width": 1672,
-    "height": 941,
+    "width": 1774,
+    "height": 887,
     "mode": "RGB",
     "alphaExtrema": null,
     "bounds": [
       0,
       0,
-      1672,
-      941
+      1774,
+      887
     ],
     "sourceFile": "assets/forest.png"
   },
   {
     "id": "boss",
-    "file": "../../../assets/cartoon-v5-enemies-forest.png",
+    "file": "../../../assets/cartoon-v5-stage-enemies.png",
     "name": "BOSS",
     "role": "Stage boss",
     "transparent": true,
-    "width": 1448,
-    "height": 1086,
+    "width": 1536,
+    "height": 1024,
     "bounds": [
-      0,
-      0,
-      1448,
-      1086
+      1169,
+      5,
+      1444,
+      341
     ]
   },
   {
