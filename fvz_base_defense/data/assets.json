@@ -1756,6 +1756,84 @@
       "height": 1087,
       "bytes": 707326,
       "transparent": true
+    },
+    {
+      "id": "cartoon-v5-ui-sunlight",
+      "file": "cartoon-v5-ui-sunlight.png",
+      "name": "Sunlight UI reference atlas",
+      "category": "art-direction",
+      "origin": "User supplied corrected sunlight atlas",
+      "usage": "review",
+      "preload": false,
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1648097,
+      "transparent": true
+    },
+    {
+      "id": "cartoon-v5-logo-color",
+      "file": "cartoon-v5-logo-color.png",
+      "name": "logo-color",
+      "category": "art-direction",
+      "origin": "User supplied original game logo",
+      "usage": "review",
+      "preload": false,
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2330337,
+      "transparent": true
+    },
+    {
+      "id": "cartoon-v5-logo-mono",
+      "file": "cartoon-v5-logo-mono.png",
+      "name": "logo-mono",
+      "category": "art-direction",
+      "origin": "User supplied original game logo",
+      "usage": "review",
+      "preload": false,
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1827405,
+      "transparent": true
+    },
+    {
+      "id": "cartoon-v5-fitted-pepper",
+      "file": "cartoon-v5-fitted-pepper.png",
+      "name": "pepper fitted equipment evolution",
+      "category": "art-direction",
+      "origin": "Built-in ImageGen using approved character reference",
+      "usage": "review",
+      "preload": false,
+      "width": 1983,
+      "height": 793,
+      "bytes": 1323680,
+      "transparent": true
+    },
+    {
+      "id": "cartoon-v5-fitted-acorn",
+      "file": "cartoon-v5-fitted-acorn.png",
+      "name": "acorn fitted equipment evolution",
+      "category": "art-direction",
+      "origin": "Built-in ImageGen using approved character reference",
+      "usage": "review",
+      "preload": false,
+      "width": 1983,
+      "height": 793,
+      "bytes": 1481205,
+      "transparent": true
+    },
+    {
+      "id": "cartoon-v5-fitted-pinecone",
+      "file": "cartoon-v5-fitted-pinecone.png",
+      "name": "pinecone fitted equipment evolution",
+      "category": "art-direction",
+      "origin": "Built-in ImageGen using approved character reference",
+      "usage": "review",
+      "preload": false,
+      "width": 1983,
+      "height": 793,
+      "bytes": 1541981,
+      "transparent": true
     }
   ]
 }

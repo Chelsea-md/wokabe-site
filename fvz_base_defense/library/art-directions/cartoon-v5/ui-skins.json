@@ -142,5 +142,50 @@
       1276,
       1026
     ]
+  },
+  "sun": {
+    "atlas": "../../../assets/cartoon-v5-ui-sunlight.png",
+    "source": [
+      514,
+      882,
+      644,
+      1012
+    ]
+  },
+  "logoForest": {
+    "atlas": "../../../assets/cartoon-v5-logo-color.png",
+    "source": [
+      50,
+      14,
+      478,
+      403
+    ]
+  },
+  "logoNight": {
+    "atlas": "../../../assets/cartoon-v5-logo-color.png",
+    "source": [
+      49,
+      403,
+      478,
+      814
+    ]
+  },
+  "logoDesert": {
+    "atlas": "../../../assets/cartoon-v5-logo-color.png",
+    "source": [
+      49,
+      814,
+      480,
+      1221
+    ]
+  },
+  "logoWordmark": {
+    "atlas": "../../../assets/cartoon-v5-logo-color.png",
+    "source": [
+      42,
+      1221,
+      482,
+      1522
+    ]
   }
 }
