@@ -103,3 +103,23 @@ body.production #game-message.visible{transform:translate(-50%,0)}
 #merge-tutorial img{width:4cqw;height:3.5cqw;object-fit:contain;animation:tutorial-drag 2.5s ease-in-out infinite}
 @keyframes tutorial-drag{0%,100%{transform:translate(0,.2cqw) rotate(-6deg)}55%{transform:translate(.8cqw,-.4cqw) rotate(4deg)}}
 @media(prefers-reduced-motion:reduce){body.production .free-invite,#merge-tutorial img{animation:none!important}}
+/* Smaller collection cards with consistent breathing room above and below. */
+body.production #plants-grid{left:18%;right:18%;top:25%;height:46%;gap:1.8cqw}
+body.production .plant-select>strong{font-size:1.45cqw;height:2.2cqw}
+body.production .plant-collection-footer .plant-stat{min-height:2.4cqw;gap:.9cqw}
+body.production .plant-stat>img,body.production .plant-stat>svg{width:2.35cqw;height:2.35cqw}
+body.production .plant-stat b{font-size:2.4cqw}
+body.production .unlock-plant strong{font-size:1.9cqw}
+body.production .unlock-plant b{font-size:2.25cqw}
+body.production .unlock-plant span img{width:2.3cqw;height:2.3cqw}
+body.production .unlock-plant small{font-size:.9cqw;min-height:1.05cqw}
+body.production[data-ui-theme=bold] .production-track i{background:linear-gradient(#fff8ad,#ffdc36 45%,#ffc718);opacity:1;box-shadow:inset 0 .2cqw #ffffdf,0 0 .4cqw #ffe76880}
+body.production .wave-pointer{position:absolute;top:calc(100% + .1cqw);width:1cqw;height:.9cqw;transform:translateX(-50%);pointer-events:none;transition:left .2s ease-out}
+body.production .wave-pointer svg{display:block;width:100%;height:100%;transform:rotate(-90deg);overflow:visible}
+body.production .wave-pointer path{fill:#fff8df;stroke:#14202b;stroke-width:5;stroke-linejoin:round}
+body.production[data-ui-theme=bold] .wave-head>.wave-pointer{display:block;padding:0;background:none;border:0;border-radius:0;line-height:0;min-width:0}
+body.production [data-upgrade]:disabled{filter:grayscale(1) brightness(.76);opacity:.72;cursor:not-allowed;animation:none!important}
+body.production [data-upgrade]:disabled b{color:#c2c5bd}
+body.production button{transition:translate .1s ease-out,transform .1s ease-out,filter .1s,scale .1s!important}
+body.production button:not(:disabled):not([aria-disabled=true]):active,body.production button.pressed:not(:disabled):not([aria-disabled=true]){translate:0 .28cqw!important;scale:.94!important;filter:brightness(.88) saturate(1.1)!important;animation-play-state:paused!important}
+body.production #boot-status,body.production #scene-splash{display:none!important}
