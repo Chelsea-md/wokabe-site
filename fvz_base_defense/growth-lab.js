@@ -1,7 +1,7 @@
-import {publicationBar} from './publication-ui.js?v=production-43';
-import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-43';
-import {tierFor} from './library/art-directions/cartoon-v5/growth-style.js?v=production-43';
-import {growthCharacters} from './character-growth.js?v=production-43';
+import {publicationBar} from './publication-ui.js?v=production-44';
+import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-44';
+import {tierFor} from './library/art-directions/cartoon-v5/growth-style.js?v=production-44';
+import {growthCharacters} from './character-growth.js?v=production-44';
 const $=s=>document.querySelector(s);
 try{
  const rigs=await loadRigs();

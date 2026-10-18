@@ -1,8 +1,8 @@
-import {publicationBar} from './publication-ui.js?v=production-43';
-import {copyGrowthSettings} from './editor-batch.js?v=production-43';
-import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-43';
-import {growthCharacters,hatNames,defaultGrowth,validateGrowth} from './character-growth.js?v=production-43';
-import {tierFor} from './library/art-directions/cartoon-v5/growth-style.js?v=production-43';
+import {publicationBar} from './publication-ui.js?v=production-44';
+import {copyGrowthSettings} from './editor-batch.js?v=production-44';
+import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-44';
+import {growthCharacters,hatNames,defaultGrowth,validateGrowth} from './character-growth.js?v=production-44';
+import {tierFor} from './library/art-directions/cartoon-v5/growth-style.js?v=production-44';
 const $=s=>document.querySelector(s),clone=x=>JSON.parse(JSON.stringify(x)),draftKey='fvz-character-growth-draft-v1';
 const rigs=await loadRigs(),baselineConfig=clone(rigs.growth.config);let config=clone(baselineConfig),id='poppy',star=2,cloud=false,version=0,history=[],busy=false,dirty=false;const undos=[];
 function status(s,error=false){$('#status').textContent=s;$('#status').classList.toggle('error',error);}

@@ -1,9 +1,9 @@
-import {readLiveRelease} from './live-release.js?v=production-43';
-import {publicationBar} from './publication-ui.js?v=production-43';
-import {createPlantPersonalityPack,personalityDraftKey,plantMotionPersonalities} from './plant-motion-personalities.js?v=production-43';
-import {defaultMotions,validateMotions,motionCharacters,motionActions,motionFrameLimits,motionFrame,sampleMotion} from './motion-config.js?v=production-43';
-import {growthCharacters} from './character-growth.js?v=production-43';
-import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-43';
+import {readLiveRelease} from './live-release.js?v=production-44';
+import {publicationBar} from './publication-ui.js?v=production-44';
+import {createPlantPersonalityPack,personalityDraftKey,plantMotionPersonalities} from './plant-motion-personalities.js?v=production-44';
+import {defaultMotions,validateMotions,motionCharacters,motionActions,motionFrameLimits,motionFrame,sampleMotion} from './motion-config.js?v=production-44';
+import {growthCharacters} from './character-growth.js?v=production-44';
+import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-44';
 const proposalParams=new URLSearchParams(location.search),packMode=proposalParams.get('pack')==='personality-v28';
 const $=s=>document.querySelector(s),copy=v=>structuredClone(v),cloud=location.hostname.endsWith('.chatgpt.site'),draftKey=personalityDraftKey(packMode),draftRoute=packMode?'motion-personality-drafts':'motion-drafts',liveKey='fvz-motion-live-v1';
 let config=defaultMotions(),saved=defaultMotions(),rigs,selected='gentle',frameIndex=0,clock=0,playing=!matchMedia('(prefers-reduced-motion: reduce)').matches,previous=0,lastPost=0,liveVersion=0,draftVersion=0,ready=false,busy=false,undo=[];
