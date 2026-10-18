@@ -2322,6 +2322,21 @@
       "width": 1983,
       "height": 793,
       "bytes": 1151883
+    },
+    {
+      "id": "cartoon-v5-upgrade-arrow",
+      "file": "cartoon-v5-upgrade-arrow-v17.png",
+      "name": "둥근 업그레이드 화살표",
+      "category": "ui",
+      "origin": "imagegen · built-in · 2026-10-18",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "홈 업그레이드 카드"
+      ],
+      "width": 1510,
+      "height": 1041,
+      "bytes": 434386
     }
   ]
 }

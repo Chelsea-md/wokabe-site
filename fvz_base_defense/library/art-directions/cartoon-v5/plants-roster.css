@@ -26,3 +26,8 @@ body[data-ui-theme=bold] .locked .plant-select{background-image:var(--skin-teal)
 body[data-ui-theme=bold] .plant-select>strong{font-size:.98cqw;height:1.55cqw;border-width:.15cqw;z-index:3}
 .plant-collection-footer{padding:.4cqw .7cqw;border-width:.25cqw;gap:.2cqw;border-radius:0 0 1.2cqw 1.2cqw}.plant-stat{gap:.5cqw}.plant-stat b{font-size:1.3cqw;-webkit-text-stroke:.23cqw #10151b}.plant-stat>img,.plant-stat>svg{width:1.5cqw;height:1.5cqw}.unlock-plant strong{font-size:1.1cqw}.unlock-plant span b{font-size:1.25cqw}.unlock-plant span img{width:1.25cqw;height:1.25cqw}.unlock-plant small{font-size:.59cqw}
 .future-plant .plant-collection-footer{align-items:center;text-align:center;gap:.2cqw;color:#d5e4d3}.future-plant .plant-collection-footer>b{font:.72cqw GameChunk,sans-serif}.future-plant .plant-collection-footer>small{font:.69cqw GameChunk,sans-serif}
+
+/* Compact collection and one shared, rounded upgrade arrow. */
+.game-frame.plants #plants-grid{transform:scale(.94);transform-origin:50% 0}
+.upgrades strong:has(.upgrade-arrow){display:flex;align-items:center;justify-content:center;gap:.18cqw;white-space:nowrap}
+.upgrades strong .upgrade-arrow{display:inline-block!important;width:1.65cqw!important;height:1.3cqw!important;position:static!important;flex:0 0 1.65cqw;overflow:visible;filter:none!important}

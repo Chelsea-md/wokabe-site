@@ -1,4 +1,4 @@
-import {defaultStage,validateStage,themes,themeNames,propNames,propBounds} from './stage-layout.js?v=production-16';
+import {defaultStage,validateStage,themes,themeNames,propNames,propBounds} from './stage-layout.js?v=production-17';
 const $=s=>document.querySelector(s),clone=x=>JSON.parse(JSON.stringify(x)),key=n=>'fvz-liveops-draft-v1-'+n;
 let loaded=false;
 let stage=Math.max(1,Math.min(999,Number(new URLSearchParams(location.search).get('stage'))||2)),layout=defaultStage(stage),selected=null,scene='home',cloud=false,version=0,history=[],ready=false,dirty=false,loading=false;

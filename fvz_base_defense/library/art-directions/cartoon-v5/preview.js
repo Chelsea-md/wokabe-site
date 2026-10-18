@@ -1,13 +1,14 @@
-import {paintSand,paintMapProps} from '../../../map-scenery.js?v=production-16';
-import {defaultStage,layoutObstacles} from '../../../stage-layout.js?v=production-16';
+import {upgradeValue} from '../../../ui-markup.js?v=production-17';
+import {paintSand,paintMapProps} from '../../../map-scenery.js?v=production-17';
+import {defaultStage,layoutObstacles} from '../../../stage-layout.js?v=production-17';
 import {observeWorldResolution} from '../../../canvas-resolution.js';
-import {createPlantsRoster} from './plants-roster.js?v=production-16';
+import {createPlantsRoster} from './plants-roster.js?v=production-17';
 import {spawnOutside,stageObstacles as oldStageObstacles,moveEnemy} from './navigation.js?v=plants-entry';
 import {loadUiSkins} from './ui-skins.js?v=combat-refinement';
 const uiSkins=await loadUiSkins();
-import {loadRigs,drawRig,drawExploded} from "./rig-renderer.js?v=production-16";
+import {loadRigs,drawRig,drawExploded} from "./rig-renderer.js?v=production-17";
 const stagePreset=s=>defaultStage(({green:1,dune:2,camp:3,moon:4,oasis:5,noon:6})[s]||1);const stageObstacles=s=>layoutObstacles(stagePreset(s),['dune','oasis','noon'].includes(s)?[]:oldStageObstacles(s));const [desertProps,egyptProps]=await Promise.all(['cartoon-v5-desert-props.png','cartoon-v5-egypt-props-v16.png'].map(src=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=reject;im.src='../../../assets/'+src;})));
-const rigs=await loadRigs();const rosterRules=await fetch('../../../data/rules.json?v=production-16').then(r=>r.json());
+const rigs=await loadRigs();const rosterRules=await fetch('../../../data/rules.json?v=production-17').then(r=>r.json());
 let previewStar=1,previewStage='green';
 const portraitCache=new Map();
 const playerNames=['PEPPER SCOUT','ACORN MARKSMAN','PINECONE GUNNER'];
@@ -50,7 +51,7 @@ const point=e=>{const r=canvas.getBoundingClientRect();return{x:(e.clientX-r.lef
 function notify(message){$('#game-message').textContent=message;$('#game-message').classList.add('visible');messageUntil=performance.now()+2300;}
 function setScene(next){if(next!=="battle")endBossIntro();rangePreview=null;scene=next;frame.className='game-frame '+scene;document.querySelector('.chapter-title strong').textContent=scene==='plants'?'PLANTS':({green:'GREEN BLOCK',dune:'DUNE LOOP',camp:'FOREST CAMP',oasis:'SUN TEMPLE'})[previewStage];$('#home-roster').classList.toggle('chosen',scene==='plants');$('#home-battle').classList.toggle('chosen',scene!=='plants');if(scene==='plants')plantRoster.render();for(const id of ['home','battle']){$('#view-'+id).classList.toggle('active',id===scene);$('#view-'+id).setAttribute('aria-pressed',String(id===scene));}drag=null;selected=null;$('#pause-overlay').hidden=true;render();}
 function freshEnemy(i){const p=spawnOutside(i,W,H);return{x:p.x,y:p.y,kind:i%7===6?'boss':i%7===2?'bruiser':i%3===1?'courier':'shambler',hp:i%7===6?350:i%7===2?160:55,maxHp:i%7===6?350:i%7===2?160:55,phase:i*.8,hit:0,fire:1+i*.35,recoil:0,flip:false,moving:true,id:Math.random()};}
-function reset(){$('#stat-health').textContent=baseTier===4?'300 · MAX':baseMaxHp+' → '+(baseMaxHp+40);endBossIntro();time=0;rangePreview=null;baseHp=baseMaxHp;baseHitUntil=0;sun=28;coins=235;shots=[];effects=[];drag=null;selected=null;units=[{type:0,slot:0},{type:1,slot:1},{type:2,slot:2},{type:0,slot:3},{type:1,slot:5},{type:2,slot:7}].map((u,i)=>({...u,level:previewStar,age:2,fire:i*.3,recoil:0,hit:0,flip:false}));enemies=Array.from({length:7},(_,i)=>freshEnemy(i));$('#sun-count').textContent='28';$('#coins').textContent='235';notify('Drag cards to deploy. Merge matching plants.');}
+function reset(){$('#stat-health').innerHTML=baseTier===4?'300 · MAX':upgradeValue(baseMaxHp,baseMaxHp+40);endBossIntro();time=0;rangePreview=null;baseHp=baseMaxHp;baseHitUntil=0;sun=28;coins=235;shots=[];effects=[];drag=null;selected=null;units=[{type:0,slot:0},{type:1,slot:1},{type:2,slot:2},{type:0,slot:3},{type:1,slot:5},{type:2,slot:7}].map((u,i)=>({...u,level:previewStar,age:2,fire:i*.3,recoil:0,hit:0,flip:false}));enemies=Array.from({length:7},(_,i)=>freshEnemy(i));$('#sun-count').textContent='28';$('#coins').textContent='235';notify('Drag cards to deploy. Merge matching plants.');}
 function round(x,y,w,h,r,fill,stroke,line=2){g.beginPath();g.roundRect(x,y,w,h,r);g.fillStyle=fill;g.fill();if(stroke){g.strokeStyle=stroke;g.lineWidth=line;g.stroke();}}
 function ellipse(x,y,rx,ry,color){g.beginPath();g.ellipse(x,y,rx,ry,0,0,Math.PI*2);g.fillStyle=color;g.fill();}
 function label(text,x,y,size=15,color='#fff8de'){g.font=`900 ${size}px GameChunk,sans-serif`;g.textAlign='center';g.textBaseline='middle';g.strokeStyle='#233b2c';g.lineWidth=3;g.lineJoin='round';g.strokeText(text,x,y);g.fillStyle=color;g.fillText(text,x,y);}
@@ -86,7 +87,7 @@ canvas.addEventListener('pointerdown',e=>{if(scene!=='battle'||bossIntro||sceneS
 window.addEventListener('pointermove',e=>{if(drag&&e.pointerId===drag.pointer){const p=point(e);drag.x=p.x;drag.y=p.y;e.preventDefault();}},{passive:false});
 window.addEventListener('pointerup',e=>{if(!drag||e.pointerId!==drag.pointer)return;const slot=nearestSlot(drag);if(slot>=0&&(!drag.unit||drag.unit.slot!==slot))place(drag.type,slot,drag.unit);else if(drag.unit)selected=drag.unit;drag=null;document.querySelectorAll('.troop-card').forEach(b=>b.classList.remove('selected'));});
 window.addEventListener('pointercancel',()=>{drag=null;document.querySelectorAll('.troop-card').forEach(b=>b.classList.remove('selected'));});
-$('#view-home').onclick=()=>showSceneSplash('home');$('#view-battle').onclick=()=>showSceneSplash('battle');$('#start').onclick=()=>showSceneSplash('battle',{resetBattle:true});$('#home-battle').onclick=()=>scene==='plants'?setScene('home'):showSceneSplash('battle');$('#home-roster').onclick=()=>setScene('plants');$('#settings').onclick=()=>notify('Design preview — progress is not saved.');$('#pause').onclick=()=>setPaused(!paused);$('#reset').onclick=()=>{reset();render();};document.querySelectorAll('[data-upgrade]').forEach(button=>button.onclick=()=>{if(button.dataset.upgrade==='health'){if(baseTier>=4)return notify('LEGENDARY GARDEN · Maximum base tier');baseTier++;baseMaxHp=140+baseTier*40;baseHp=baseMaxHp;$('#stat-health').textContent=baseTier===4?'300 · MAX':baseMaxHp+' → '+(baseMaxHp+40);notify('GARDEN UPGRADED · TIER '+(baseTier+1));render();}else notify('Preview upgrade: '+(button.dataset.upgrade==='rate'?'Sunlight Rate':'Income'));});
+$('#view-home').onclick=()=>showSceneSplash('home');$('#view-battle').onclick=()=>showSceneSplash('battle');$('#start').onclick=()=>showSceneSplash('battle',{resetBattle:true});$('#home-battle').onclick=()=>scene==='plants'?setScene('home'):showSceneSplash('battle');$('#home-roster').onclick=()=>setScene('plants');$('#settings').onclick=()=>notify('Design preview — progress is not saved.');$('#pause').onclick=()=>setPaused(!paused);$('#reset').onclick=()=>{reset();render();};document.querySelectorAll('[data-upgrade]').forEach(button=>button.onclick=()=>{if(button.dataset.upgrade==='health'){if(baseTier>=4)return notify('LEGENDARY GARDEN · Maximum base tier');baseTier++;baseMaxHp=140+baseTier*40;baseHp=baseMaxHp;$('#stat-health').innerHTML=baseTier===4?'300 · MAX':upgradeValue(baseMaxHp,baseMaxHp+40);notify('GARDEN UPGRADED · TIER '+(baseTier+1));render();}else notify('Preview upgrade: '+(button.dataset.upgrade==='rate'?'Sunlight Rate':'Income'));});
 const descriptions={poppy:'고추 몸통과 씨앗 연사총으로 구분하는 일체형 정찰형입니다.',bellflower:'도토리 몸통과 관통 볼트 무기의 정밀 사격형입니다.',marigold:'솔방울 몸통과 묵직한 씨앗포의 범위 공격형입니다.',shambler:'맵 테마에 맞는 근거리 좀비입니다. 통통 튀는 동작으로 공격합니다.',courier:'투척 장비와 복장으로 구분하는 원거리 좀비입니다.',bruiser:'넓은 몸과 방어 장비를 가진 탱커 좀비입니다.',boss:'맵별 전용 외형과 큰 실루엣의 보스입니다.',base:'기존 v4 온실과 UI는 보관한 기준으로 유지했습니다.'};
 $('#asset-grid').innerHTML=manifest.filter(row=>row.transparent).map(row=>`<article class="asset-card" data-rigid="${row.id}"><div class="asset-visual"><img loading="lazy" src="${row.file}" alt="${row.name} 투명 PNG"></div><div class="asset-info"><h3>${row.name}</h3><span>${row.role} · ${row.width} × ${row.height} · RGBA</span><p>${descriptions[row.id]}</p><div class="actual-size"><img loading="lazy" src="${row.file}" alt="${row.name} 52픽셀 미리보기"><span>작은 크기에서 보기 · 52px</span></div><a href="${row.file}" download="fvz-${row.id}.png">개별 투명 PNG ↓</a></div></article>`).join('');
 document.querySelectorAll('[data-bg]').forEach(button=>button.onclick=()=>{$('#asset-grid').className='asset-grid '+button.dataset.bg;document.querySelectorAll('[data-bg]').forEach(b=>b.classList.toggle('active',b===button));});
@@ -140,10 +141,12 @@ if(new URLSearchParams(location.search).get('editor')==='base-size'&&window.pare
     const data=event.data;
     if(data?.type!=='fvz-base-size-preview'||!Array.isArray(data.heights)||data.heights.length!==5||!data.heights.every(n=>Number.isInteger(n)&&n>=40&&n<=240)||!Number.isInteger(data.tier)||data.tier<0||data.tier>4)return;
     baseHeights=[...data.heights];baseTier=data.tier;baseMaxHp=140+40*baseTier;baseHp=baseMaxHp;
-    $('#stat-health').textContent=baseTier===4?'300 · MAX':baseMaxHp+' → '+(baseMaxHp+40);
+    $('#stat-health').innerHTML=baseTier===4?'300 · MAX':upgradeValue(baseMaxHp,baseMaxHp+40);
     setScene('home');setPaused(true);render();
   });
   window.parent.postMessage({type:'fvz-base-size-ready'},location.origin);
 }
 
 $("#preview-merge-ready").onclick=()=>{endBossIntro();setScene("battle");setPaused(false);focusStage(true);drag={x:780,y:370,type:0,unit:null,pointer:-1};setTimeout(()=>{if(drag?.pointer===-1)drag=null;},12000);};
+
+for(const key of ['rate','income']){const node=$('#stat-'+key);const values=node.textContent.split(' → ');if(values.length===2)node.innerHTML=upgradeValue(...values);}

@@ -36,3 +36,8 @@ body.production .game-frame:not(.plants) #plants-grid{display:none}
 .stage-editor-preview.map-only #game-frame>*:not(canvas){visibility:hidden!important}.stage-editor-preview #boot-loading{display:none!important}
 
 body.production[data-ui-theme=bold] #plants-grid .future-plant .plant-select{background-color:#b4dedd;background-blend-mode:normal}body.production #plants-grid .future-plant .plant-select::after{display:block}.future-plant .collection-character{filter:none}
+
+/* Compact collection and one shared, rounded upgrade arrow. */
+.game-frame.plants #plants-grid{transform:scale(.94);transform-origin:50% 0}
+.upgrades strong:has(.upgrade-arrow){display:flex;align-items:center;justify-content:center;gap:.18cqw;white-space:nowrap}
+.upgrades strong .upgrade-arrow{display:inline-block!important;width:1.65cqw!important;height:1.3cqw!important;position:static!important;flex:0 0 1.65cqw;overflow:visible;filter:none!important}
