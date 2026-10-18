@@ -1,0 +1,1730 @@
+{
+  "schemaVersion": 1,
+  "motions": [
+    {
+      "id": "personality-v28-poppy-idle",
+      "name": "고추 · 짧은 들썩임",
+      "duration": 1.15,
+      "loop": true,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.2,
+          "x": 0,
+          "y": -1,
+          "rotation": -1,
+          "scaleX": 0.99,
+          "scaleY": 1.02
+        },
+        {
+          "t": 0.34,
+          "x": 0,
+          "y": 0,
+          "rotation": 1,
+          "scaleX": 1.02,
+          "scaleY": 0.98
+        },
+        {
+          "t": 0.5,
+          "x": 0,
+          "y": -2,
+          "rotation": 0,
+          "scaleX": 0.99,
+          "scaleY": 1.025
+        },
+        {
+          "t": 0.63,
+          "x": 0,
+          "y": 0,
+          "rotation": -1,
+          "scaleX": 1.02,
+          "scaleY": 0.985
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-poppy-walk",
+      "name": "고추 · 다급한 두 박자",
+      "duration": 0.42,
+      "loop": true,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.18,
+          "x": 1,
+          "y": -7,
+          "rotation": -5,
+          "scaleX": 0.96,
+          "scaleY": 1.08
+        },
+        {
+          "t": 0.38,
+          "x": 0,
+          "y": 0,
+          "rotation": 2,
+          "scaleX": 1.09,
+          "scaleY": 0.9
+        },
+        {
+          "t": 0.61,
+          "x": 1,
+          "y": -5,
+          "rotation": 5,
+          "scaleX": 0.97,
+          "scaleY": 1.06
+        },
+        {
+          "t": 0.8,
+          "x": 0,
+          "y": 0,
+          "rotation": -2,
+          "scaleX": 1.07,
+          "scaleY": 0.93
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-poppy-attack",
+      "name": "고추 · 톡 쏘는 반동",
+      "duration": 0.32,
+      "loop": false,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.12,
+          "x": -5,
+          "y": -1,
+          "rotation": -9,
+          "scaleX": 0.94,
+          "scaleY": 1.06
+        },
+        {
+          "t": 0.3,
+          "x": 3,
+          "y": 0,
+          "rotation": 4,
+          "scaleX": 1.06,
+          "scaleY": 0.96
+        },
+        {
+          "t": 0.52,
+          "x": -1,
+          "y": -1,
+          "rotation": -2,
+          "scaleX": 0.99,
+          "scaleY": 1.02
+        },
+        {
+          "t": 0.76,
+          "x": 1,
+          "y": 0,
+          "rotation": 1,
+          "scaleX": 1.015,
+          "scaleY": 0.99
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-bellflower-idle",
+      "name": "에이콘 · 차분한 조준",
+      "duration": 3.2,
+      "loop": true,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.3,
+          "x": 0,
+          "y": -0.6,
+          "rotation": -0.5,
+          "scaleX": 0.995,
+          "scaleY": 1.01
+        },
+        {
+          "t": 0.55,
+          "x": 0,
+          "y": -0.6,
+          "rotation": -0.5,
+          "scaleX": 0.995,
+          "scaleY": 1.01
+        },
+        {
+          "t": 0.84,
+          "x": 0,
+          "y": 0,
+          "rotation": 0.3,
+          "scaleX": 1.005,
+          "scaleY": 0.995
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-bellflower-walk",
+      "name": "에이콘 · 낮은 잰걸음",
+      "duration": 0.8,
+      "loop": true,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.2,
+          "x": 0.5,
+          "y": -2,
+          "rotation": -2,
+          "scaleX": 0.99,
+          "scaleY": 1.025
+        },
+        {
+          "t": 0.45,
+          "x": 0,
+          "y": 0,
+          "rotation": 1,
+          "scaleX": 1.025,
+          "scaleY": 0.975
+        },
+        {
+          "t": 0.7,
+          "x": 0.5,
+          "y": -2,
+          "rotation": 2,
+          "scaleX": 0.99,
+          "scaleY": 1.025
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-bellflower-attack",
+      "name": "에이콘 · 절제된 반동",
+      "duration": 0.48,
+      "loop": false,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.1,
+          "x": -2.5,
+          "y": 0,
+          "rotation": -2.5,
+          "scaleX": 0.99,
+          "scaleY": 1.015
+        },
+        {
+          "t": 0.26,
+          "x": -2.5,
+          "y": 0,
+          "rotation": -2.5,
+          "scaleX": 0.99,
+          "scaleY": 1.015
+        },
+        {
+          "t": 0.55,
+          "x": 0.5,
+          "y": 0,
+          "rotation": 0.5,
+          "scaleX": 1.01,
+          "scaleY": 0.995
+        },
+        {
+          "t": 0.8,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-marigold-idle",
+      "name": "솔방울 · 무게 있는 호흡",
+      "duration": 3.6,
+      "loop": true,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.38,
+          "x": 0,
+          "y": 1,
+          "rotation": -0.5,
+          "scaleX": 1.025,
+          "scaleY": 0.975
+        },
+        {
+          "t": 0.62,
+          "x": 0,
+          "y": 1,
+          "rotation": -0.5,
+          "scaleX": 1.025,
+          "scaleY": 0.975
+        },
+        {
+          "t": 0.88,
+          "x": 0,
+          "y": -0.5,
+          "rotation": 0.4,
+          "scaleX": 0.995,
+          "scaleY": 1.01
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-marigold-walk",
+      "name": "솔방울 · 무거운 착지",
+      "duration": 1.05,
+      "loop": true,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.18,
+          "x": -1,
+          "y": -3,
+          "rotation": -4,
+          "scaleX": 0.98,
+          "scaleY": 1.04
+        },
+        {
+          "t": 0.3,
+          "x": 0,
+          "y": 2,
+          "rotation": 1,
+          "scaleX": 1.1,
+          "scaleY": 0.88
+        },
+        {
+          "t": 0.5,
+          "x": 0,
+          "y": 2,
+          "rotation": 1,
+          "scaleX": 1.1,
+          "scaleY": 0.88
+        },
+        {
+          "t": 0.7,
+          "x": -1,
+          "y": -3,
+          "rotation": 4,
+          "scaleX": 0.98,
+          "scaleY": 1.04
+        },
+        {
+          "t": 0.82,
+          "x": 0,
+          "y": 2,
+          "rotation": -1,
+          "scaleX": 1.08,
+          "scaleY": 0.9
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-marigold-attack",
+      "name": "솔방울 · 대포의 무거운 반동",
+      "duration": 0.9,
+      "loop": false,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.1,
+          "x": -9,
+          "y": 1,
+          "rotation": -12,
+          "scaleX": 0.9,
+          "scaleY": 1.06
+        },
+        {
+          "t": 0.2,
+          "x": -9,
+          "y": 1,
+          "rotation": -12,
+          "scaleX": 0.9,
+          "scaleY": 1.06
+        },
+        {
+          "t": 0.48,
+          "x": -4,
+          "y": 2,
+          "rotation": -5,
+          "scaleX": 1.08,
+          "scaleY": 0.92
+        },
+        {
+          "t": 0.74,
+          "x": 1,
+          "y": 0,
+          "rotation": 1,
+          "scaleX": 1.025,
+          "scaleY": 0.98
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-sunflower-idle",
+      "name": "해바라기 · 햇살 바운스",
+      "duration": 1.9,
+      "loop": true,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.18,
+          "x": 0,
+          "y": 1,
+          "rotation": -1,
+          "scaleX": 1.045,
+          "scaleY": 0.95
+        },
+        {
+          "t": 0.4,
+          "x": 0,
+          "y": -3,
+          "rotation": 1,
+          "scaleX": 0.97,
+          "scaleY": 1.045
+        },
+        {
+          "t": 0.65,
+          "x": 0,
+          "y": 0,
+          "rotation": 2,
+          "scaleX": 1.02,
+          "scaleY": 0.985
+        },
+        {
+          "t": 0.83,
+          "x": 0,
+          "y": -1,
+          "rotation": -1,
+          "scaleX": 0.99,
+          "scaleY": 1.02
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-sunflower-walk",
+      "name": "해바라기 · 경쾌한 스킵",
+      "duration": 0.64,
+      "loop": true,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.13,
+          "x": 0,
+          "y": 1,
+          "rotation": -3,
+          "scaleX": 1.08,
+          "scaleY": 0.91
+        },
+        {
+          "t": 0.34,
+          "x": 1,
+          "y": -11,
+          "rotation": 5,
+          "scaleX": 0.94,
+          "scaleY": 1.1
+        },
+        {
+          "t": 0.56,
+          "x": 0,
+          "y": 0,
+          "rotation": 1,
+          "scaleX": 1.08,
+          "scaleY": 0.92
+        },
+        {
+          "t": 0.76,
+          "x": 1,
+          "y": -6,
+          "rotation": -4,
+          "scaleX": 0.96,
+          "scaleY": 1.07
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-sunflower-attack",
+      "name": "해바라기 · 팡 퍼지는 기운",
+      "duration": 0.62,
+      "loop": false,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.12,
+          "x": -1,
+          "y": 1,
+          "rotation": -2,
+          "scaleX": 1.08,
+          "scaleY": 0.91
+        },
+        {
+          "t": 0.34,
+          "x": 1,
+          "y": -6,
+          "rotation": 3,
+          "scaleX": 0.93,
+          "scaleY": 1.11
+        },
+        {
+          "t": 0.52,
+          "x": 0,
+          "y": 0,
+          "rotation": -2,
+          "scaleX": 1.07,
+          "scaleY": 0.93
+        },
+        {
+          "t": 0.75,
+          "x": 0,
+          "y": -2,
+          "rotation": 1,
+          "scaleX": 0.98,
+          "scaleY": 1.03
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-mint-idle",
+      "name": "수정 · 또렷한 정지 호흡",
+      "duration": 2.8,
+      "loop": true,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.22,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.4,
+          "x": 0,
+          "y": -1.5,
+          "rotation": -0.75,
+          "scaleX": 0.99,
+          "scaleY": 1.02
+        },
+        {
+          "t": 0.66,
+          "x": 0,
+          "y": -1.5,
+          "rotation": -0.75,
+          "scaleX": 0.99,
+          "scaleY": 1.02
+        },
+        {
+          "t": 0.82,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-mint-walk",
+      "name": "수정 · 정밀한 짧은 도약",
+      "duration": 0.72,
+      "loop": true,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.14,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.3,
+          "x": 1,
+          "y": -6,
+          "rotation": -2,
+          "scaleX": 0.97,
+          "scaleY": 1.045
+        },
+        {
+          "t": 0.45,
+          "x": 1,
+          "y": -6,
+          "rotation": -2,
+          "scaleX": 0.97,
+          "scaleY": 1.045
+        },
+        {
+          "t": 0.6,
+          "x": 0,
+          "y": 0,
+          "rotation": 1,
+          "scaleX": 1.045,
+          "scaleY": 0.955
+        },
+        {
+          "t": 0.8,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-mint-attack",
+      "name": "수정 · 얼음처럼 날카로운 반동",
+      "duration": 0.46,
+      "loop": false,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.08,
+          "x": -4,
+          "y": -1,
+          "rotation": -5,
+          "scaleX": 0.97,
+          "scaleY": 1.035
+        },
+        {
+          "t": 0.25,
+          "x": -4,
+          "y": -1,
+          "rotation": -5,
+          "scaleX": 0.97,
+          "scaleY": 1.035
+        },
+        {
+          "t": 0.38,
+          "x": 2,
+          "y": 0,
+          "rotation": 2,
+          "scaleX": 1.035,
+          "scaleY": 0.98
+        },
+        {
+          "t": 0.6,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-mushroom-idle",
+      "name": "버섯 · 말랑한 졸음",
+      "duration": 3.9,
+      "loop": true,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.3,
+          "x": -0.5,
+          "y": 1,
+          "rotation": -2,
+          "scaleX": 1.055,
+          "scaleY": 0.94
+        },
+        {
+          "t": 0.6,
+          "x": 0.5,
+          "y": -1,
+          "rotation": 2,
+          "scaleX": 0.97,
+          "scaleY": 1.04
+        },
+        {
+          "t": 0.82,
+          "x": 0.3,
+          "y": -0.5,
+          "rotation": 1,
+          "scaleX": 0.99,
+          "scaleY": 1.015
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-mushroom-walk",
+      "name": "버섯 · 몽글몽글 이동",
+      "duration": 1.18,
+      "loop": true,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.2,
+          "x": -1,
+          "y": 2,
+          "rotation": -4,
+          "scaleX": 1.12,
+          "scaleY": 0.86
+        },
+        {
+          "t": 0.48,
+          "x": 1,
+          "y": -5,
+          "rotation": 4,
+          "scaleX": 0.93,
+          "scaleY": 1.09
+        },
+        {
+          "t": 0.72,
+          "x": 0,
+          "y": 1,
+          "rotation": 2,
+          "scaleX": 1.08,
+          "scaleY": 0.92
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-mushroom-attack",
+      "name": "버섯 · 느긋한 포자 펄스",
+      "duration": 1.02,
+      "loop": false,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.16,
+          "x": -2,
+          "y": 2,
+          "rotation": -4,
+          "scaleX": 1.13,
+          "scaleY": 0.85
+        },
+        {
+          "t": 0.35,
+          "x": -2,
+          "y": 2,
+          "rotation": -4,
+          "scaleX": 1.13,
+          "scaleY": 0.85
+        },
+        {
+          "t": 0.6,
+          "x": 2,
+          "y": -4,
+          "rotation": 4,
+          "scaleX": 0.92,
+          "scaleY": 1.1
+        },
+        {
+          "t": 0.82,
+          "x": 0,
+          "y": 1,
+          "rotation": -1,
+          "scaleX": 1.04,
+          "scaleY": 0.965
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-cactus-idle",
+      "name": "이끼 골렘 · 단단한 숨 고르기",
+      "duration": 4.4,
+      "loop": true,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.4,
+          "x": 0,
+          "y": 1,
+          "rotation": 0,
+          "scaleX": 1.018,
+          "scaleY": 0.98
+        },
+        {
+          "t": 0.65,
+          "x": 0,
+          "y": 1,
+          "rotation": 0,
+          "scaleX": 1.018,
+          "scaleY": 0.98
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-cactus-walk",
+      "name": "이끼 골렘 · 쿵쿵 버팀걸음",
+      "duration": 1.3,
+      "loop": true,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.15,
+          "x": -1,
+          "y": -1,
+          "rotation": -3,
+          "scaleX": 0.995,
+          "scaleY": 1.025
+        },
+        {
+          "t": 0.29,
+          "x": 0,
+          "y": 2,
+          "rotation": 1,
+          "scaleX": 1.085,
+          "scaleY": 0.9
+        },
+        {
+          "t": 0.49,
+          "x": 0,
+          "y": 2,
+          "rotation": 1,
+          "scaleX": 1.085,
+          "scaleY": 0.9
+        },
+        {
+          "t": 0.67,
+          "x": -1,
+          "y": -1,
+          "rotation": 3,
+          "scaleX": 0.995,
+          "scaleY": 1.025
+        },
+        {
+          "t": 0.8,
+          "x": 0,
+          "y": 2,
+          "rotation": -1,
+          "scaleX": 1.075,
+          "scaleY": 0.91
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-cactus-attack",
+      "name": "이끼 골렘 · 단단하게 받아치는 힘",
+      "duration": 0.96,
+      "loop": false,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.12,
+          "x": -5,
+          "y": 2,
+          "rotation": -5,
+          "scaleX": 1.09,
+          "scaleY": 0.88
+        },
+        {
+          "t": 0.3,
+          "x": -5,
+          "y": 2,
+          "rotation": -5,
+          "scaleX": 1.09,
+          "scaleY": 0.88
+        },
+        {
+          "t": 0.52,
+          "x": 2,
+          "y": 0,
+          "rotation": 3,
+          "scaleX": 1.015,
+          "scaleY": 1.025
+        },
+        {
+          "t": 0.78,
+          "x": 0,
+          "y": 1,
+          "rotation": 0,
+          "scaleX": 1.025,
+          "scaleY": 0.98
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-clover-idle",
+      "name": "릴리 · 잔잔한 꽃잎 흔들림",
+      "duration": 3.4,
+      "loop": true,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.24,
+          "x": -1,
+          "y": -1,
+          "rotation": -2,
+          "scaleX": 0.99,
+          "scaleY": 1.02
+        },
+        {
+          "t": 0.5,
+          "x": 0,
+          "y": -2,
+          "rotation": 0,
+          "scaleX": 0.985,
+          "scaleY": 1.03
+        },
+        {
+          "t": 0.76,
+          "x": 1,
+          "y": -1,
+          "rotation": 2,
+          "scaleX": 0.99,
+          "scaleY": 1.02
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-clover-walk",
+      "name": "릴리 · 유연한 물결걸음",
+      "duration": 1.04,
+      "loop": true,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.25,
+          "x": -2,
+          "y": -4,
+          "rotation": -4,
+          "scaleX": 0.98,
+          "scaleY": 1.045
+        },
+        {
+          "t": 0.5,
+          "x": 0,
+          "y": -2,
+          "rotation": 0,
+          "scaleX": 1.015,
+          "scaleY": 0.99
+        },
+        {
+          "t": 0.75,
+          "x": 2,
+          "y": -4,
+          "rotation": 4,
+          "scaleX": 0.98,
+          "scaleY": 1.045
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-clover-attack",
+      "name": "릴리 · 부드러운 치유 파동",
+      "duration": 1.08,
+      "loop": false,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.2,
+          "x": -2,
+          "y": -1,
+          "rotation": -3,
+          "scaleX": 0.985,
+          "scaleY": 1.035
+        },
+        {
+          "t": 0.45,
+          "x": 2,
+          "y": -4,
+          "rotation": 3,
+          "scaleX": 0.97,
+          "scaleY": 1.07
+        },
+        {
+          "t": 0.72,
+          "x": 1,
+          "y": -1,
+          "rotation": 1,
+          "scaleX": 1.025,
+          "scaleY": 0.98
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-bamboo-idle",
+      "name": "리프 · 가벼운 경계",
+      "duration": 1.55,
+      "loop": true,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.18,
+          "x": 1,
+          "y": -1,
+          "rotation": 1,
+          "scaleX": 0.99,
+          "scaleY": 1.02
+        },
+        {
+          "t": 0.34,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.62,
+          "x": -0.5,
+          "y": -1,
+          "rotation": -1,
+          "scaleX": 0.99,
+          "scaleY": 1.015
+        },
+        {
+          "t": 0.74,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-bamboo-walk",
+      "name": "리프 · 민첩한 짧은 스텝",
+      "duration": 0.36,
+      "loop": true,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.2,
+          "x": 2,
+          "y": -4,
+          "rotation": 6,
+          "scaleX": 0.97,
+          "scaleY": 1.05
+        },
+        {
+          "t": 0.44,
+          "x": 0,
+          "y": 0,
+          "rotation": -1,
+          "scaleX": 1.055,
+          "scaleY": 0.94
+        },
+        {
+          "t": 0.65,
+          "x": 1,
+          "y": -3,
+          "rotation": -5,
+          "scaleX": 0.975,
+          "scaleY": 1.04
+        },
+        {
+          "t": 0.85,
+          "x": 0,
+          "y": 0,
+          "rotation": 1,
+          "scaleX": 1.04,
+          "scaleY": 0.96
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-bamboo-attack",
+      "name": "리프 · 빠르게 뻗는 일격",
+      "duration": 0.3,
+      "loop": false,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.12,
+          "x": -2,
+          "y": 0,
+          "rotation": -4,
+          "scaleX": 0.98,
+          "scaleY": 1.035
+        },
+        {
+          "t": 0.32,
+          "x": 7,
+          "y": -1,
+          "rotation": 10,
+          "scaleX": 1.08,
+          "scaleY": 0.96
+        },
+        {
+          "t": 0.52,
+          "x": -1,
+          "y": 0,
+          "rotation": -2,
+          "scaleX": 0.98,
+          "scaleY": 1.02
+        },
+        {
+          "t": 0.76,
+          "x": 0.5,
+          "y": 0,
+          "rotation": 0.5,
+          "scaleX": 1.01,
+          "scaleY": 0.995
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-starfruit-idle",
+      "name": "홀리 · 당당한 에너지 박자",
+      "duration": 2.1,
+      "loop": true,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.2,
+          "x": 0,
+          "y": -1.5,
+          "rotation": -1,
+          "scaleX": 0.985,
+          "scaleY": 1.025
+        },
+        {
+          "t": 0.31,
+          "x": 0,
+          "y": 0,
+          "rotation": 1,
+          "scaleX": 1.03,
+          "scaleY": 0.97
+        },
+        {
+          "t": 0.43,
+          "x": 0,
+          "y": -1,
+          "rotation": 0,
+          "scaleX": 0.99,
+          "scaleY": 1.02
+        },
+        {
+          "t": 0.57,
+          "x": 0,
+          "y": 0,
+          "rotation": -1,
+          "scaleX": 1.02,
+          "scaleY": 0.985
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-starfruit-walk",
+      "name": "홀리 · 탄력 있는 행진",
+      "duration": 0.58,
+      "loop": true,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.22,
+          "x": 1,
+          "y": -7,
+          "rotation": -5,
+          "scaleX": 0.96,
+          "scaleY": 1.065
+        },
+        {
+          "t": 0.36,
+          "x": 0,
+          "y": 0,
+          "rotation": 2,
+          "scaleX": 1.075,
+          "scaleY": 0.92
+        },
+        {
+          "t": 0.49,
+          "x": 0,
+          "y": -2,
+          "rotation": 0,
+          "scaleX": 0.985,
+          "scaleY": 1.025
+        },
+        {
+          "t": 0.7,
+          "x": 1,
+          "y": -5,
+          "rotation": 5,
+          "scaleX": 0.97,
+          "scaleY": 1.055
+        },
+        {
+          "t": 0.83,
+          "x": 0,
+          "y": 0,
+          "rotation": -1,
+          "scaleX": 1.05,
+          "scaleY": 0.95
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    },
+    {
+      "id": "personality-v28-starfruit-attack",
+      "name": "홀리 · 번쩍이는 연속 펄스",
+      "duration": 0.58,
+      "loop": false,
+      "easing": "smooth",
+      "frames": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        {
+          "t": 0.1,
+          "x": -4,
+          "y": -1,
+          "rotation": -6,
+          "scaleX": 0.96,
+          "scaleY": 1.045
+        },
+        {
+          "t": 0.25,
+          "x": 3,
+          "y": 0,
+          "rotation": 4,
+          "scaleX": 1.06,
+          "scaleY": 0.95
+        },
+        {
+          "t": 0.38,
+          "x": -3,
+          "y": -1,
+          "rotation": -4,
+          "scaleX": 0.97,
+          "scaleY": 1.03
+        },
+        {
+          "t": 0.52,
+          "x": 2,
+          "y": 0,
+          "rotation": 3,
+          "scaleX": 1.04,
+          "scaleY": 0.97
+        },
+        {
+          "t": 0.72,
+          "x": -1,
+          "y": 0,
+          "rotation": -1,
+          "scaleX": 0.99,
+          "scaleY": 1.015
+        },
+        {
+          "t": 1,
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1
+        }
+      ]
+    }
+  ],
+  "assignments": {
+    "all": {},
+    "characters": {
+      "poppy": {
+        "idle": "personality-v28-poppy-idle",
+        "walk": "personality-v28-poppy-walk",
+        "attack": "personality-v28-poppy-attack"
+      },
+      "bellflower": {
+        "idle": "personality-v28-bellflower-idle",
+        "walk": "personality-v28-bellflower-walk",
+        "attack": "personality-v28-bellflower-attack"
+      },
+      "marigold": {
+        "idle": "personality-v28-marigold-idle",
+        "walk": "personality-v28-marigold-walk",
+        "attack": "personality-v28-marigold-attack"
+      },
+      "sunflower": {
+        "idle": "personality-v28-sunflower-idle",
+        "walk": "personality-v28-sunflower-walk",
+        "attack": "personality-v28-sunflower-attack"
+      },
+      "mint": {
+        "idle": "personality-v28-mint-idle",
+        "walk": "personality-v28-mint-walk",
+        "attack": "personality-v28-mint-attack"
+      },
+      "mushroom": {
+        "idle": "personality-v28-mushroom-idle",
+        "walk": "personality-v28-mushroom-walk",
+        "attack": "personality-v28-mushroom-attack"
+      },
+      "cactus": {
+        "idle": "personality-v28-cactus-idle",
+        "walk": "personality-v28-cactus-walk",
+        "attack": "personality-v28-cactus-attack"
+      },
+      "clover": {
+        "idle": "personality-v28-clover-idle",
+        "walk": "personality-v28-clover-walk",
+        "attack": "personality-v28-clover-attack"
+      },
+      "bamboo": {
+        "idle": "personality-v28-bamboo-idle",
+        "walk": "personality-v28-bamboo-walk",
+        "attack": "personality-v28-bamboo-attack"
+      },
+      "starfruit": {
+        "idle": "personality-v28-starfruit-idle",
+        "walk": "personality-v28-starfruit-walk",
+        "attack": "personality-v28-starfruit-attack"
+      }
+    }
+  }
+}
