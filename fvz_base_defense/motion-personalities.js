@@ -1,7 +1,7 @@
-import {publicationBar} from './publication-ui.js?v=production-40';
-import {plantMotionPersonalities,createPlantPersonalityPack} from './plant-motion-personalities.js?v=production-40';
-import {assignedMotion} from './motion-config.js?v=production-40';
-import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-40';
+import {publicationBar} from './publication-ui.js?v=production-41';
+import {plantMotionPersonalities,createPlantPersonalityPack} from './plant-motion-personalities.js?v=production-41';
+import {assignedMotion} from './motion-config.js?v=production-41';
+import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-41';
 const $=s=>document.querySelector(s),pack=createPlantPersonalityPack(),cards=[];let action='idle',playing=!matchMedia('(prefers-reduced-motion: reduce)').matches,clock=0,previous=0,rigs;
 for(let i=1;i<=10;i++)$('#gallery-star').add(new Option(i+'성',String(i)));$('#gallery-star').value='3';
 const observer=new IntersectionObserver(entries=>{for(const entry of entries){const row=cards.find(c=>c.canvas===entry.target);if(row)row.visible=entry.isIntersecting;}},{rootMargin:'100px'});

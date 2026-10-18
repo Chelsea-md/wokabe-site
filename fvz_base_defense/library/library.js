@@ -1,5 +1,5 @@
-import {publicationBar} from '../publication-ui.js?v=production-40';
-import {adminOrigin,privateEditor} from '../live-release.js?v=production-40';
+import {publicationBar} from '../publication-ui.js?v=production-41';
+import {adminOrigin,privateEditor} from '../live-release.js?v=production-41';
 import { rules, assetCatalog } from "../config.js";
 import { documents, openQuestions } from "./content.js?v=20261018-survivors-v5";
 

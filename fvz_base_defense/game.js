@@ -1,20 +1,20 @@
-import {defaultSizes,validateSizes,characterSize,sizeCatalog} from './character-sizes.js?v=production-40';
-import {validateGrowth} from './character-growth.js?v=production-40';
-import {bossNames} from './boss-names.js?v=production-40';
-import {readLiveRelease,publishedAsset} from './live-release.js?v=production-40';
-import {validateMotions,motionCharacters,motionActions,allyMotionState} from './motion-config.js?v=production-40';
-import {terrainCamera,advanceTerrainCamera} from './scene-camera.js?v=production-40';
-import {createWorldArt,worldThemes,drawEnemyLayers} from './world-themes.js?v=production-40';
-import {upgradeValue} from './ui-markup.js?v=production-40';
-import {paintSand,paintMapProps} from './map-scenery.js?v=production-40';
-import {defaultStage,validateStage,propPieces,layoutObstacles,sceneryCamera} from './stage-layout.js?v=production-40';
+import {defaultSizes,validateSizes,characterSize,sizeCatalog} from './character-sizes.js?v=production-41';
+import {validateGrowth} from './character-growth.js?v=production-41';
+import {bossNames} from './boss-names.js?v=production-41';
+import {readLiveRelease,publishedAsset} from './live-release.js?v=production-41';
+import {validateMotions,motionCharacters,motionActions,allyMotionState} from './motion-config.js?v=production-41';
+import {terrainCamera,advanceTerrainCamera} from './scene-camera.js?v=production-41';
+import {createWorldArt,worldThemes,drawEnemyLayers} from './world-themes.js?v=production-41';
+import {upgradeValue} from './ui-markup.js?v=production-41';
+import {paintSand,paintMapProps} from './map-scenery.js?v=production-41';
+import {defaultStage,validateStage,propPieces,layoutObstacles,sceneryCamera} from './stage-layout.js?v=production-41';
 import {observeWorldResolution} from './canvas-resolution.js';
-import {rules} from './config.js?v=production-40';
-import {loadProgress,persistProgress} from './storage.js?v=production-40';
-import {chapterFor,costFor,increaseStat,countForWave,kindForSpawn,spawnInterval,killReward,mergeHealth,encounterScale} from './systems.js?v=production-40';
-import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-40';
-import {loadUiSkins} from './library/art-directions/cartoon-v5/ui-skins.js?v=production-40';
-import {spawnOutside,stageObstacles,moveEnemy} from './library/art-directions/cartoon-v5/navigation.js?v=production-40';
+import {rules} from './config.js?v=production-41';
+import {loadProgress,persistProgress} from './storage.js?v=production-41';
+import {chapterFor,costFor,increaseStat,countForWave,kindForSpawn,spawnInterval,killReward,mergeHealth,encounterScale} from './systems.js?v=production-41';
+import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-41';
+import {loadUiSkins} from './library/art-directions/cartoon-v5/ui-skins.js?v=production-41';
+import {spawnOutside,stageObstacles,moveEnemy} from './library/art-directions/cartoon-v5/navigation.js?v=production-41';
 import {loadPopupArt} from './popup-art.js';
 import {createLoadingWallpaper} from './loading-wallpaper.js';
 const $=s=>document.querySelector(s),uiSkins=await loadUiSkins();createLoadingWallpaper(uiSkins);const popupArt=await loadPopupArt();const sprout=$('.pause-sprout'),popupSprout=document.createElement('img');popupSprout.className='pause-sprout';popupSprout.src=popupArt.sprout;popupSprout.alt='';sprout.replaceWith(popupSprout);for(const [id,key,label]of [['resume-battle','resume','Resume'],['pause-to-home','home','Home']]){const b=$('#'+id);b.classList.add('asset-button');b.innerHTML='<span class="sr-only">'+label+'</span>';b.setAttribute('aria-label',label);b.style.setProperty('--button-art',`url("${popupArt[key]}")`);}const rigs=await loadRigs();
@@ -203,7 +203,7 @@ async function finishBoot(){const overlay=$('#boot-loading'),shown=+$('#boot-log
 function advanceElapsed(seconds){let remaining=Math.max(0,seconds);while(remaining>1e-7){const dt=Math.min(1/30,remaining);tickVisuals(dt);tickSceneSplash(dt);if(!paused&&!sceneSplash){if(bossIntro){bossIntro.elapsed+=dt;if(bossIntro.elapsed>=introDuration)endBossIntro();}update(dt*(bossIntro?.12:1));}remaining-=dt;if(paused||(!sceneSplash&&scene!=='battle')||runResolved){if(!paused)time+=remaining;break;}}}
 function advanceFrame(now){if(now<=last)return;const elapsed=Math.max(0,(now-last)/1000);last=now;advanceElapsed(elapsed);}
 function loop(now){advanceFrame(now);tickRewardFlight(now);updateTutorial();if(bossIntro)$('#boss-cinematic').style.setProperty('--intro-opacity',String(introWeight()));if(messageUntil&&now>messageUntil){$('#game-message').classList.remove('visible');messageUntil=0;}updateUI();render();requestAnimationFrame(loop);}
-try{const clockWorker=new Worker(new URL('./background-clock.js?v=production-40',import.meta.url));clockWorker.onmessage=()=>{if(document.hidden)advanceFrame(performance.now());};}catch{setInterval(()=>{if(document.hidden)advanceFrame(performance.now());},250);}
+try{const clockWorker=new Worker(new URL('./background-clock.js?v=production-41',import.meta.url));clockWorker.onmessage=()=>{if(document.hidden)advanceFrame(performance.now());};}catch{setInterval(()=>{if(document.hidden)advanceFrame(performance.now());},250);}
 $('.production-track').setAttribute('role','progressbar');$('.production-track').setAttribute('aria-label','Charging next sunlight');$('.production-track').setAttribute('aria-valuemin','0');$('.production-track').setAttribute('aria-valuemax','100');applyTheme();buildCards();setScene(new URLSearchParams(location.search).get('screen')==='plants'?'plants':'home');updateUI();render();requestAnimationFrame(loop);await finishBoot();
 
 
