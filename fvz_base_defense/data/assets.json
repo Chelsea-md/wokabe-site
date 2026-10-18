@@ -3100,6 +3100,36 @@
       "width": 1536,
       "height": 1024,
       "bytes": 1063104
+    },
+    {
+      "id": "cartoon-v5-boss-panels-user-v36",
+      "file": "cartoon-v5-boss-panels-user-v36.png",
+      "name": "보스 경고·이름판 새 원화",
+      "category": "ui",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "보스 등장 컷씬"
+      ],
+      "width": 2073,
+      "height": 758,
+      "bytes": 931633
+    },
+    {
+      "id": "cartoon-v5-boss-panels-reference-v36",
+      "file": "cartoon-v5-boss-panels-reference-v36.png",
+      "name": "보스 경고·이름판 참고",
+      "category": "ui",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "reference",
+      "preload": true,
+      "usedIn": [
+        "보스 등장 컷씬"
+      ],
+      "width": 465,
+      "height": 170,
+      "bytes": 141157
     }
   ]
 }

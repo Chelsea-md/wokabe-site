@@ -223,5 +223,14 @@
       925,
       667
     ]
+  },
+  "bossComplete": {
+    "atlas": "../../../assets/cartoon-v5-boss-panels-user-v36.png",
+    "source": [
+      51,
+      75,
+      1077,
+      415
+    ]
   }
 }
