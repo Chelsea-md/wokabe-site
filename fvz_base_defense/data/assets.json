@@ -2930,6 +2930,91 @@
       "width": 1983,
       "height": 793,
       "bytes": 1418338
+    },
+    {
+      "id": "cartoon-v5-camp-props-v32",
+      "file": "cartoon-v5-camp-props-v32.png",
+      "name": "Night Camp · props",
+      "category": "props",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "Night Camp",
+        "LIVE OPS",
+        "챕터 갤러리"
+      ],
+      "width": 1774,
+      "height": 887,
+      "bytes": 1009438
+    },
+    {
+      "id": "cartoon-v5-camp-reference-v32",
+      "file": "cartoon-v5-camp-reference-v32.png",
+      "name": "Night Camp · reference",
+      "category": "backgrounds",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "reference",
+      "preload": false,
+      "usedIn": [
+        "Night Camp",
+        "LIVE OPS",
+        "챕터 갤러리"
+      ],
+      "width": 1774,
+      "height": 887,
+      "bytes": 2190368
+    },
+    {
+      "id": "cartoon-v5-camp-ground-v32",
+      "file": "cartoon-v5-camp-ground-v32.png",
+      "name": "Night Camp · ground",
+      "category": "backgrounds",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "Night Camp",
+        "LIVE OPS",
+        "챕터 갤러리"
+      ],
+      "width": 1774,
+      "height": 887,
+      "bytes": 1852128
+    },
+    {
+      "id": "cartoon-v5-camp-weapons-user-v32",
+      "file": "cartoon-v5-camp-weapons-user-v32.png",
+      "name": "Night Camp · weapons-user",
+      "category": "enemies",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "Night Camp",
+        "LIVE OPS",
+        "챕터 갤러리"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 900345
+    },
+    {
+      "id": "cartoon-v5-camp-monsters-user-v32",
+      "file": "cartoon-v5-camp-monsters-user-v32.png",
+      "name": "Night Camp · monsters-user",
+      "category": "enemies",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "Night Camp",
+        "LIVE OPS",
+        "챕터 갤러리"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1127589
     }
   ]
 }

@@ -1,6 +1,7 @@
-import {separateSprites} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-31';
-import {propAtlas} from './stage-layout.js?v=production-31';
+import {separateSprites} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-32';
+import {propAtlas} from './stage-layout.js?v=production-32';
 export const worldThemes={
+ camp:{name:'Night Camp',subtitle:'Moonlit Clearing',boss:'NIGHT RANGER',color:'#ffc75a',projectile:'#ffd56a'},
  dune:{name:'Dune Loop',subtitle:'Dusty Desert',boss:'DUNE SULTAN',color:'#ffc364',projectile:'#ffe1a5'},
  oasis:{name:'Sun Temple',subtitle:'Ancient Sands',boss:'SUN PHARAOH',color:'#ffd34d',projectile:'#ffe289'},
  noon:{name:'Sunset Dunes',subtitle:'Sunset Sands',boss:'DUNE SULTAN',color:'#ffae65',projectile:'#ffe1a5'},
@@ -24,9 +25,9 @@ export function createWorldArt(art,props={}){
  async function image(file){const im=new Image();im.src=new URL('./assets/'+file,import.meta.url);await im.decode();return im;}
  function once(key,fn){if(!pending.has(key))pending.set(key,fn().catch(e=>{pending.delete(key);throw e;}));return pending.get(key);}
  async function ensure(layout){const theme=layout.theme,ground=theme==='noon'?'dune':theme,tasks=[];
-  if(['dune','oasis',...Object.keys(worldThemes)].includes(ground))tasks.push(once('ground-'+theme,async()=>{grounds[theme]=await image('cartoon-v5-'+ground+'-ground-v19.png');}));
-  for(const name of new Set(layout.props.map(p=>propAtlas(p.asset))))if(!props[name])tasks.push(once('props-'+name,async()=>{props[name]=await image(name==='desert'?'cartoon-v5-desert-props.png':name==='egypt'?'cartoon-v5-egypt-props-v16.png':'cartoon-v5-'+name+'-props-v19.png');}));
-  if(worldThemes[theme])tasks.push(once('enemies-'+theme,async()=>{const source=theme==='noon'?'dune':theme,[body,weapon]=await Promise.all(['monsters','weapons'].map(kind=>image('cartoon-v5-'+source+'-'+kind+'-user-v19.png'))),frames=separateSprites(body,5),weapons=separateSprites(weapon,5);for(const [i,kind]of ['shambler','courier','bruiser','elite','boss'].entries()){const frame=frames[i];art['skin-'+theme+'-'+kind]={image:frame.image,weaponImage:weapons[i].image,handColor:theme==='hollow'&&i===4?'#d9cbed':'#c0edcf',bounds:[0,0,frame.image.width,frame.image.height]};}art['skin-'+theme+'-boss-attack']=art['skin-'+theme+'-boss'];}));
+  if(['dune','oasis',...Object.keys(worldThemes)].includes(ground))tasks.push(once('ground-'+theme,async()=>{grounds[theme]=await image('cartoon-v5-'+ground+'-ground-'+(ground==='camp'?'v32':'v19')+'.png');}));
+  for(const name of new Set(layout.props.map(p=>propAtlas(p.asset))))if(!props[name])tasks.push(once('props-'+name,async()=>{props[name]=await image(name==='desert'?'cartoon-v5-desert-props.png':name==='egypt'?'cartoon-v5-egypt-props-v16.png':'cartoon-v5-'+name+'-props-'+(name==='camp'?'v32':'v19')+'.png');}));
+  if(worldThemes[theme])tasks.push(once('enemies-'+theme,async()=>{const source=theme==='noon'?'dune':theme,[body,weapon]=await Promise.all(['monsters','weapons'].map(kind=>image('cartoon-v5-'+source+'-'+kind+'-user-'+(source==='camp'?'v32':'v19')+'.png'))),frames=separateSprites(body,5),weapons=separateSprites(weapon,5);for(const [i,kind]of ['shambler','courier','bruiser','elite','boss'].entries()){const frame=frames[i];art['skin-'+theme+'-'+kind]={image:frame.image,weaponImage:weapons[i].image,handColor:theme==='hollow'&&i===4?'#d9cbed':'#c0edcf',bounds:[0,0,frame.image.width,frame.image.height]};}art['skin-'+theme+'-boss-attack']=art['skin-'+theme+'-boss'];}));
   await Promise.all(tasks);
  }
  return {grounds,props,ensure};

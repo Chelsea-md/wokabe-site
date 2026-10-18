@@ -1,6 +1,6 @@
-import {readAppliedStage,saveAppliedStage} from './stage-persistence.js?v=production-31';
-import {copyStageShadows} from './editor-batch.js?v=production-31';
-import {defaultStage,validateStage,themes,themeNames,propNames,propBounds} from './stage-layout.js?v=production-31';
+import {readAppliedStage,saveAppliedStage} from './stage-persistence.js?v=production-32';
+import {copyStageShadows} from './editor-batch.js?v=production-32';
+import {defaultStage,validateStage,themes,themeNames,propNames,propBounds} from './stage-layout.js?v=production-32';
 const $=s=>document.querySelector(s),clone=x=>JSON.parse(JSON.stringify(x)),key=n=>'fvz-liveops-draft-v1-'+n;
 let loaded=false;
 let stage=Math.max(1,Math.min(999,Number(new URLSearchParams(location.search).get('stage'))||2)),layout=defaultStage(stage),selected=null,scene='home',cloud=false,version=0,history=[],ready=false,dirty=false,loading=false;
@@ -20,7 +20,7 @@ function renderObjects(){
  h.onkeydown=e=>{const moves={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]};if(!moves[e.key])return;e.preventDefault();remember();const [x,y]=moves[e.key],step=e.shiftKey?10:1;p.x=Math.max(-100,Math.min(1300,p.x+x*step));p.y=Math.max(-100,Math.min(700,p.y+y*step));selected=p.id;changed();renderInspector();$('#handles').querySelector(`[aria-label$="${p.id}"]`)?.focus();};$('#handles').append(h);}
  renderShadowTargets();
  $('#stage-list').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.stage===stage)));$('#theme').value=layout.theme;
- $('#baked-note').textContent=['green','camp','moon'].includes(layout.theme)?'통이미지 배경입니다. 배경 전체는 이동·확대할 수 있고, 장식은 새 레이어로 추가할 수 있습니다. 그려진 나무 자체는 분리할 수 없습니다.':'배경과 장식이 분리된 맵입니다. 개별 아이템을 자유롭게 조절하세요.';
+ $('#baked-note').textContent=['green','moon'].includes(layout.theme)?'통이미지 배경입니다. 배경 전체는 이동·확대할 수 있고, 장식은 새 레이어로 추가할 수 있습니다. 그려진 나무 자체는 분리할 수 없습니다.':'배경과 장식이 분리된 맵입니다. 개별 아이템을 자유롭게 조절하세요.';
 }
 function select(id){selected=id;renderObjects();renderInspector();$('.inspector').scrollTop=0;}
 function renderInspector(){const i=layout.props.findIndex(p=>p.id===selected),p=layout.props[i];$('#selection-title').textContent=p?propNames[p.asset]:'장식을 선택하세요';$('#duplicate').disabled=!p||layout.props.length>=60;$('#remove').disabled=!p;renderShadowTargets();
@@ -30,7 +30,7 @@ function renderInspector(){const i=layout.props.findIndex(p=>p.id===selected),p=
 }
 document.addEventListener('input',e=>{if(!e.target.dataset.path)return;const value=Number(e.target.value),old=e.target.dataset.path.split('.').reduce((o,k)=>o[k],layout);if(e.target.validity.valid&&value!==old)update(e.target.dataset.path,value);});
 document.addEventListener('change',e=>{if(e.target.dataset.shadowField){updateShadowAction();return;}if(e.target.dataset.path&&Number(e.target.value)!==e.target.dataset.path.split('.').reduce((o,k)=>o[k],layout)){if(!e.target.validity.valid){status('입력 범위를 확인해 주세요.',true);renderInspector();return;}update(e.target.dataset.path,Number(e.target.value));}if(e.target.dataset.bool){const i=layout.props.findIndex(p=>p.id===selected);if(i>=0)update(`props.${i}.`+e.target.dataset.bool,e.target.checked);}});
-function render(){renderObjects();renderInspector();$('#undo').disabled=!(undos.get(stage)?.length);$('#save').disabled=loading||(!cloud&&location.hostname.endsWith('.chatgpt.site'));$('#save').textContent=cloud?'라이브 게시':'이 브라우저에 라이브 적용';$('#applied-game').href='./?layout-preview='+stage+'&v=production-31';$('#revision').textContent=cloud?'라이브 적용본 v'+version+' · '+(dirty?'편집 초안은 아직 게시되지 않았습니다.':'게시된 배치와 같습니다.'):'이 브라우저의 게임 적용본과 초안을 따로 보관합니다.';$('#history').replaceChildren(new Option('이전 저장 기록 선택',''));for(const h of history)$('#history').add(new Option('v'+h.version+' · '+new Date(h.at).toLocaleString('ko-KR'),String(h.version)));$('#restore').disabled=true;send();}
+function render(){renderObjects();renderInspector();$('#undo').disabled=!(undos.get(stage)?.length);$('#save').disabled=loading||(!cloud&&location.hostname.endsWith('.chatgpt.site'));$('#save').textContent=cloud?'라이브 게시':'이 브라우저에 라이브 적용';$('#applied-game').href='./?layout-preview='+stage+'&v=production-32';$('#revision').textContent=cloud?'라이브 적용본 v'+version+' · '+(dirty?'편집 초안은 아직 게시되지 않았습니다.':'게시된 배치와 같습니다.'):'이 브라우저의 게임 적용본과 초안을 따로 보관합니다.';$('#history').replaceChildren(new Option('이전 저장 기록 선택',''));for(const h of history)$('#history').add(new Option('v'+h.version+' · '+new Date(h.at).toLocaleString('ko-KR'),String(h.version)));$('#restore').disabled=true;send();}
 async function load(n,{discard=false}={}){if(loading){$('#stage-number').value=stage;return;}loading=true;$('#save').disabled=true;$('#stage-number').disabled=true;$('#stage-list').querySelectorAll('button').forEach(b=>b.disabled=true);if(loaded)store();stage=n;$('#stage-number').value=n;selected=null;version=0;history=[];let base=defaultStage(n);try{const r=await fetch('/api/stage-layouts/'+n);if(r.ok){const data=await r.json();base=validateStage(data.layout,n);version=data.version;history=data.history||[];cloud=true;}else if(r.status!==404)throw Error('저장본을 불러오지 못했습니다.');else cloud=false;}catch(e){cloud=false;status(e.message,true);}
  if(!cloud){try{const bundle=await fetch('data/stage-layouts.json').then(r=>r.json());if(bundle.stages[n])base=validateStage(bundle.stages[n],n);}catch{}}
  if(!cloud&&!location.hostname.endsWith('.chatgpt.site'))base=readAppliedStage(n)||base;
