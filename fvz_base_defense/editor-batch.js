@@ -1,10 +1,11 @@
 const clone=value=>JSON.parse(JSON.stringify(value));
-export function copyStageShadows(layout,sourceId,fields){
+export function copyStageShadows(layout,sourceId,fields,targets=null){
  const source=layout.props.find(p=>p.id===sourceId),allowed=['width','height','opacity','x','y'];
  if(!source)throw Error('기준 오브젝트를 선택하세요.');
  if(!fields.length||fields.some(k=>!allowed.includes(k)))throw Error('복사할 그림자 항목을 선택하세요.');
- const next=clone(layout);
- for(const prop of next.props)for(const key of new Set(fields))prop.shadow[key]=source.shadow[key];
+ if(targets!==null&&(!Array.isArray(targets)||!targets.length||targets.some(id=>!layout.props.some(p=>p.id===id))))throw Error('적용할 대상 오브젝트를 선택하세요.');
+ const next=clone(layout),ids=targets===null?null:new Set(targets);
+ for(const prop of next.props)if(ids===null||ids.has(prop.id))for(const key of new Set(fields))prop.shadow[key]=source.shadow[key];
  return next;
 }
 export function copyGrowthSettings(config,id,sourceStar,targets,{includeHat=false}={}){
