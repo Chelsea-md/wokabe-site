@@ -13,7 +13,8 @@ export const growthTiers=[
 ];
 export function tierFor(star){return growthTiers[Math.max(0,Math.min(9,Math.round(star)-1))];}
 export function materialColor(rgb,star){const color=tierFor(star).color,r=parseInt(color.slice(1,3),16),g=parseInt(color.slice(3,5),16),b=parseInt(color.slice(5,7),16),light=(rgb[0]*.2126+rgb[1]*.7152+rgb[2]*.0722)/170,shade=Math.max(.56,Math.min(1.22,light));if(star===9&&light<1.08)return [43,53,65].map(v=>Math.round(v*Math.max(.8,shade)));return[r,g,b].map(v=>Math.min(255,Math.round(v*shade)));}
-export function growthRegion(x,y,w,h,anchor,kind){const head=anchor*w;if(kind!=='sunflower'&&y<h*.35)return 'sprout';if(y>h*.48&&y<h*.86&&x>head+h*(kind==='sunflower'?.35:.23))return 'weapon';return null;}
+// Weapon colours and highlights belong to the authored growth art; never tint a rectangular slice.
+export function growthRegion(x,y,w,h,anchor,kind){if(kind!=='sunflower'&&y<h*.35)return 'sprout';return null;}
 export function createGrowthSprite(image,star,kind,anchor=.5){
  const cv=document.createElement('canvas');cv.width=image.width;cv.height=image.height;const c=cv.getContext('2d',{willReadFrequently:true});c.drawImage(image,0,0);const d=c.getImageData(0,0,cv.width,cv.height),w=cv.width,h=cv.height;
  for(let y=0;y<h;y++)for(let x=0;x<w;x++){const i=(y*w+x)*4;if(d.data[i+3]<15)continue;const rgb=[d.data[i],d.data[i+1],d.data[i+2]],region=growthRegion(x,y,w,h,anchor,kind);if(!region||Math.max(...rgb)<48)continue;if(region==='sprout'&&(star===1||rgb[1]<rgb[0]*1.1||rgb[1]<rgb[2]*1.1))continue;const next=materialColor(rgb,star);d.data[i]=next[0];d.data[i+1]=next[1];d.data[i+2]=next[2];}

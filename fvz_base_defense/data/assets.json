@@ -2169,10 +2169,10 @@
       "name": "Emerald currency",
       "category": "ui",
       "origin": "User supplied",
-      "usage": "active",
+      "usage": "stored",
       "preload": false,
       "usedIn": [
-        "production-13"
+        "이전 젬 원화 · 사용자 두꺼운 외곽선으로 교체"
       ],
       "width": 1254,
       "height": 1254,
@@ -2805,6 +2805,23 @@
       "width": 1536,
       "height": 1024,
       "bytes": 1378330
+    },
+    {
+      "id": "cartoon-v5-gem-user-v20",
+      "file": "cartoon-v5-gem-user-v20.png",
+      "name": "Emerald · 사용자 두꺼운 외곽선",
+      "category": "ui",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "홈 재화",
+        "전투 보상",
+        "젬 카운터"
+      ],
+      "width": 1254,
+      "height": 1254,
+      "bytes": 226608
     }
   ]
 }
