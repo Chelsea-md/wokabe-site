@@ -1,6 +1,6 @@
-import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-22';
-import {tierFor} from './library/art-directions/cartoon-v5/growth-style.js?v=production-22';
-import {growthCharacters} from './character-growth.js?v=production-22';
+import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-23';
+import {tierFor} from './library/art-directions/cartoon-v5/growth-style.js?v=production-23';
+import {growthCharacters} from './character-growth.js?v=production-23';
 const $=s=>document.querySelector(s);
 try{
  const rigs=await loadRigs();

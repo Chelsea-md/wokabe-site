@@ -1,14 +1,14 @@
-import {createWorldArt,worldThemes,drawEnemyLayers} from './world-themes.js?v=production-22';
-import {upgradeValue} from './ui-markup.js?v=production-22';
-import {paintSand,paintMapProps} from './map-scenery.js?v=production-22';
-import {defaultStage,validateStage,propPieces,layoutObstacles} from './stage-layout.js?v=production-22';
+import {createWorldArt,worldThemes,drawEnemyLayers} from './world-themes.js?v=production-23';
+import {upgradeValue} from './ui-markup.js?v=production-23';
+import {paintSand,paintMapProps} from './map-scenery.js?v=production-23';
+import {defaultStage,validateStage,propPieces,layoutObstacles} from './stage-layout.js?v=production-23';
 import {observeWorldResolution} from './canvas-resolution.js';
-import {rules} from './config.js?v=production-22';
-import {loadProgress,persistProgress} from './storage.js?v=production-22';
-import {chapterFor,costFor,increaseStat,countForWave,kindForSpawn,spawnInterval,killReward,mergeHealth,encounterScale} from './systems.js?v=production-22';
-import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-22';
+import {rules} from './config.js?v=production-23';
+import {loadProgress,persistProgress} from './storage.js?v=production-23';
+import {chapterFor,costFor,increaseStat,countForWave,kindForSpawn,spawnInterval,killReward,mergeHealth,encounterScale} from './systems.js?v=production-23';
+import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-23';
 import {loadUiSkins} from './library/art-directions/cartoon-v5/ui-skins.js';
-import {spawnOutside,stageObstacles,moveEnemy} from './library/art-directions/cartoon-v5/navigation.js?v=production-22';
+import {spawnOutside,stageObstacles,moveEnemy} from './library/art-directions/cartoon-v5/navigation.js?v=production-23';
 import {loadPopupArt} from './popup-art.js';
 import {createLoadingWallpaper} from './loading-wallpaper.js';
 const $=s=>document.querySelector(s),uiSkins=await loadUiSkins();createLoadingWallpaper(uiSkins);const popupArt=await loadPopupArt();const sprout=$('.pause-sprout'),popupSprout=document.createElement('img');popupSprout.className='pause-sprout';popupSprout.src=popupArt.sprout;popupSprout.alt='';sprout.replaceWith(popupSprout);for(const [id,key,label]of [['resume-battle','resume','Resume'],['pause-to-home','home','Home']]){const b=$('#'+id);b.classList.add('asset-button');b.innerHTML='<span class="sr-only">'+label+'</span>';b.setAttribute('aria-label',label);b.style.setProperty('--button-art',`url("${popupArt[key]}")`);}const rigs=await loadRigs();
@@ -48,7 +48,7 @@ const sunflowerStyled=rigs.sunflower.evolution.sprites.map(s=>s.image);
 const chapterEnemies=await loadImage('../../../assets/cartoon-v5-chapter-enemies.png');
 for(const [id,b] of Object.entries({ghost:[25,103,477,524],vampire:[553,87,460,557],reaper:[1082,102,569,542],elite:[1646,96,513,548]})){const cv=document.createElement('canvas');cv.width=b[2];cv.height=b[3];const c=cv.getContext('2d');c.drawImage(chapterEnemies,...b,0,0,b[2],b[3]);if(id==='reaper')c.clearRect(b[2]-5,400-b[1],5,b[3]);if(id==='elite')c.clearRect(0,0,5,400-b[1]);art[id]={image:cv,bounds:[0,0,cv.width,cv.height]};}
 const [desertProps,egyptProps,pharaohImage]=await Promise.all(['cartoon-v5-desert-props.png','cartoon-v5-egypt-props-v16.png','cartoon-v5-pharaoh-armed.png'].map(n=>loadImage('../../../assets/'+n)));art.pharaoh={image:pharaohImage,bounds:[41,47,1177,1238]};
-const worldArt=createWorldArt(art,{desert:desertProps,egypt:egyptProps});await worldArt.ensure(currentLayout());
+const worldArt=createWorldArt(art,{desert:desertProps,egypt:egyptProps});await worldArt.ensure(stageEditor?defaultStage(1):(stageOverrides[saved.completedStages+1]||defaultStage(saved.completedStages+1)));
 const coinWallet=$('#coins').parentElement;coinWallet.classList.add('top-currency');
 const gemWallet=document.createElement('div');gemWallet.className='currency gem-currency';gemWallet.setAttribute('aria-label','Gems');gemWallet.innerHTML=gemIcon()+'<strong id="gems">0</strong>';frame.append(gemWallet);
 const wavePointer=document.createElement('span');wavePointer.className='wave-pointer';wavePointer.setAttribute('aria-hidden','true');wavePointer.innerHTML='<svg viewBox="0 0 40 40"><path d="M9 5L34 20L9 35Z"/></svg>';$('.wave-head').append(wavePointer);
@@ -189,7 +189,7 @@ async function finishBoot(){const overlay=$('#boot-loading'),shown=+$('#boot-log
 function advanceElapsed(seconds){let remaining=Math.max(0,seconds);while(remaining>1e-7){const dt=Math.min(1/30,remaining);tickVisuals(dt);tickSceneSplash(dt);if(!paused&&!sceneSplash){if(bossIntro){bossIntro.elapsed+=dt;if(bossIntro.elapsed>=introDuration)endBossIntro();}update(dt*(bossIntro?.12:1));}remaining-=dt;if(paused||(!sceneSplash&&scene!=='battle')||runResolved){if(!paused)time+=remaining;break;}}}
 function advanceFrame(now){if(now<=last)return;const elapsed=Math.max(0,(now-last)/1000);last=now;advanceElapsed(elapsed);}
 function loop(now){advanceFrame(now);tickRewardFlight(now);updateTutorial();if(bossIntro)$('#boss-cinematic').style.setProperty('--intro-opacity',String(introWeight()));if(messageUntil&&now>messageUntil){$('#game-message').classList.remove('visible');messageUntil=0;}updateUI();render();requestAnimationFrame(loop);}
-try{const clockWorker=new Worker(new URL('./background-clock.js?v=production-22',import.meta.url));clockWorker.onmessage=()=>{if(document.hidden)advanceFrame(performance.now());};}catch{setInterval(()=>{if(document.hidden)advanceFrame(performance.now());},250);}
+try{const clockWorker=new Worker(new URL('./background-clock.js?v=production-23',import.meta.url));clockWorker.onmessage=()=>{if(document.hidden)advanceFrame(performance.now());};}catch{setInterval(()=>{if(document.hidden)advanceFrame(performance.now());},250);}
 $('.production-track').setAttribute('role','progressbar');$('.production-track').setAttribute('aria-label','Charging next sunlight');$('.production-track').setAttribute('aria-valuemin','0');$('.production-track').setAttribute('aria-valuemax','100');applyTheme();buildCards();setScene(new URLSearchParams(location.search).get('screen')==='plants'?'plants':'home');updateUI();render();requestAnimationFrame(loop);await finishBoot();
 
 
