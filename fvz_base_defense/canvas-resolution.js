@@ -2,9 +2,10 @@
 export function observeWorldResolution(canvas, width, height, onScale) {
   const resize = () => {
     const rect = canvas.getBoundingClientRect();
-    if (!rect.width) return;
+    const displayWidth=canvas.clientWidth||rect.width;
+    if (!displayWidth) return;
     // A 4096px backing width covers full-HD Retina without unbounded allocations.
-    const scale = Math.min(4096 / width, Math.max(.5, rect.width * (devicePixelRatio || 1) / width));
+    const scale = Math.min(4096 / width, Math.max(.5, displayWidth * (devicePixelRatio || 1) / width));
     const pixelWidth = Math.round(width * scale), pixelHeight = Math.round(height * scale);
     if (canvas.width !== pixelWidth || canvas.height !== pixelHeight) {
       canvas.width = pixelWidth;

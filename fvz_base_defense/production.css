@@ -223,3 +223,14 @@ body.production[data-ui-theme=bold] #boss-cinematic.desert-art .boss-title{backg
 
 body.production #production-dialog .result-panel .victory-cup{width:8.5cqw!important;height:7.5cqw!important;flex:none}body.production #production-dialog .result-panel button>span{font:inherit!important;position:static;display:inline;background:none;filter:none;padding:0;margin:0;width:auto;height:auto;color:inherit;-webkit-text-stroke:.1em #142431;paint-order:stroke fill}
 body.production[data-ui-theme=bold] #boss-cinematic.desert-art .boss-title{clip-path:none}
+
+/* Rotate the entire play surface, including boot UI, without an OS orientation lock. */
+#game-shell{--game-rotation:0deg;--play-width:100vw;--play-height:100vh;--play-height:100dvh;position:fixed;left:50%;top:50%;width:var(--play-width);height:var(--play-height);transform:translate(-50%,-50%) rotate(var(--game-rotation));overflow:hidden}
+body.production #game-shell main{display:grid;place-items:center;width:100%;height:100%;padding:0}
+body.production.stage-focus #game-shell .game-frame{width:min(var(--play-width),calc(var(--play-height) * 2));height:auto;aspect-ratio:2;max-height:none}
+#game-shell #boot-loading{position:absolute;inset:0}
+#game-shell #boot-logo{width:min(calc(var(--play-width) * .42),428px);max-height:calc(var(--play-height) * .65)}
+body.production #boot-loading.boot-notice #boot-status{display:block!important;max-width:80%;text-align:center;font:clamp(12px,2vw,18px) system-ui,sans-serif}
+#boot-retry{border:2px solid #e8dfab;border-radius:12px;padding:10px 20px;color:#173829;background:#d6efb2;font:bold 16px system-ui,sans-serif}
+#boot-retry[hidden]{display:none}
+@media(orientation:portrait){#game-shell{--game-rotation:90deg;--play-width:100vh;--play-width:100dvh;--play-height:100vw}}
