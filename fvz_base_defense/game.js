@@ -1,28 +1,33 @@
-import {validateMotions,motionCharacters,motionActions,allyMotionState} from './motion-config.js?v=production-30';
-import {terrainCamera,advanceTerrainCamera} from './scene-camera.js?v=production-30';
-import {createWorldArt,worldThemes,drawEnemyLayers} from './world-themes.js?v=production-30';
-import {upgradeValue} from './ui-markup.js?v=production-30';
-import {paintSand,paintMapProps} from './map-scenery.js?v=production-30';
-import {defaultStage,validateStage,propPieces,layoutObstacles,sceneryCamera} from './stage-layout.js?v=production-30';
+import {mergeAppliedStages} from './stage-persistence.js?v=production-31';
+import {validateMotions,motionCharacters,motionActions,allyMotionState} from './motion-config.js?v=production-31';
+import {terrainCamera,advanceTerrainCamera} from './scene-camera.js?v=production-31';
+import {createWorldArt,worldThemes,drawEnemyLayers} from './world-themes.js?v=production-31';
+import {upgradeValue} from './ui-markup.js?v=production-31';
+import {paintSand,paintMapProps} from './map-scenery.js?v=production-31';
+import {defaultStage,validateStage,propPieces,layoutObstacles,sceneryCamera} from './stage-layout.js?v=production-31';
 import {observeWorldResolution} from './canvas-resolution.js';
-import {rules} from './config.js?v=production-30';
-import {loadProgress,persistProgress} from './storage.js?v=production-30';
-import {chapterFor,costFor,increaseStat,countForWave,kindForSpawn,spawnInterval,killReward,mergeHealth,encounterScale} from './systems.js?v=production-30';
-import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-30';
+import {rules} from './config.js?v=production-31';
+import {loadProgress,persistProgress} from './storage.js?v=production-31';
+import {chapterFor,costFor,increaseStat,countForWave,kindForSpawn,spawnInterval,killReward,mergeHealth,encounterScale} from './systems.js?v=production-31';
+import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-31';
 import {loadUiSkins} from './library/art-directions/cartoon-v5/ui-skins.js';
-import {spawnOutside,stageObstacles,moveEnemy} from './library/art-directions/cartoon-v5/navigation.js?v=production-30';
+import {spawnOutside,stageObstacles,moveEnemy} from './library/art-directions/cartoon-v5/navigation.js?v=production-31';
 import {loadPopupArt} from './popup-art.js';
 import {createLoadingWallpaper} from './loading-wallpaper.js';
 const $=s=>document.querySelector(s),uiSkins=await loadUiSkins();createLoadingWallpaper(uiSkins);const popupArt=await loadPopupArt();const sprout=$('.pause-sprout'),popupSprout=document.createElement('img');popupSprout.className='pause-sprout';popupSprout.src=popupArt.sprout;popupSprout.alt='';sprout.replaceWith(popupSprout);for(const [id,key,label]of [['resume-battle','resume','Resume'],['pause-to-home','home','Home']]){const b=$('#'+id);b.classList.add('asset-button');b.innerHTML='<span class="sr-only">'+label+'</span>';b.setAttribute('aria-label',label);b.style.setProperty('--button-art',`url("${popupArt[key]}")`);}const rigs=await loadRigs();
 let editorMotion=null;
 const stageEditor=new URLSearchParams(location.search).get('editor')==='stage'&&window.parent!==window;
 let stageOverrides={};try{stageOverrides=(await fetch(new URL('./data/stage-layouts.json',import.meta.url)).then(r=>r.json())).stages||{};if(location.hostname.endsWith('.chatgpt.site')){const r=await fetch('/api/stage-layouts');if(r.ok)stageOverrides={...stageOverrides,...(await r.json()).stages};}}catch{}
+if(!location.hostname.endsWith('.chatgpt.site'))stageOverrides=mergeAppliedStages(stageOverrides);
+const requestedPreview=Number(new URLSearchParams(location.search).get('layout-preview'));
+const layoutPreview=Number.isInteger(requestedPreview)&&requestedPreview>=1&&requestedPreview<=999?requestedPreview:0;
 let editorLayout=null,editorStage=1;
 function currentLayout(){const n=stageEditor?editorStage:stageNumber();return editorLayout||stageOverrides[n]||defaultStage(n);}
 const bakedObstacles=()=>['dune','oasis','noon','ember','frost','coral','hollow'].includes(previewStage)?[]:stageObstacles(previewStage);
 const currentObstacles=()=>layoutObstacles(currentLayout(),bakedObstacles());
 for(const [n,layout]of Object.entries(stageOverrides)){try{stageOverrides[n]=validateStage(layout,Number(n));}catch{delete stageOverrides[n];}}
 let saved=stageEditor?{...loadProgress(),tutorial:true,sound:false}:loadProgress();
+if(layoutPreview){saved={...saved,completedStages:layoutPreview-1,chapter:(layoutPreview-1)%rules.chapters.length,tutorial:true,sound:false};}
 let runReward=null,rewardFlight=null,runChapter=null,runStage=0;
 const gemIcon=()=>'<svg viewBox="300 210 650 840" aria-hidden="true"><image href="../../../assets/cartoon-v5-gem-user-v20.png" width="1254" height="1254"/></svg>';
 
@@ -74,7 +79,7 @@ canvas.addEventListener('wheel',e=>{if(scene!=='battle'||paused||bossIntro||scen
 const visualPosition=u=>({x:u.vx??position(u.slot).x,y:u.vy??position(u.slot).y});
 function tickVisuals(dt){cameraBlend=advanceTerrainCamera(cameraBlend,scene==='battle',dt,reducedMotion());if(!paused)tickBossTrails(dt);zoom+=(zoomTarget-zoom)*(1-Math.exp(-dt*10));for(const u of units){const p=position(u.slot),k=reducedMotion()?1:1-Math.exp(-dt*24);if(u!==drag?.unit){u.vx=(u.vx??p.x)+(p.x-(u.vx??p.x))*k;u.vy=(u.vy??p.y)+(p.y-(u.vy??p.y))*k;}if(!paused){u.age=(u.age||0)+dt;u.levelUp=Math.max(0,(u.levelUp||0)-dt);}}if(drag){if(drag.fromCard){const travel=Math.hypot(drag.x-drag.originX,drag.y-drag.originY);if(travel>=100)drag.cardDismissed=true;const t=Math.max(0,Math.min(1,(travel-35)/65)),target=drag.cardDismissed?0:1-t*t*(3-2*t);drag.cardAlpha+=(target-drag.cardAlpha)*(reducedMotion()?1:1-Math.exp(-dt*22));}const k=reducedMotion()?1:1-Math.exp(-dt*45);drag.sx+=(drag.x-drag.sx)*k;drag.sy+=(drag.y-drag.sy)*k;}if(rangePreview){rangePreview.life-=dt;if(rangePreview.life<=0)rangePreview=null;}if(!paused){for(const e of effects)if(e.kind==='merge')e.life-=dt;effects=effects.filter(e=>e.life>0);}}
 
-const save=()=>{if(stageEditor)return true;coins=saved.coins;const ok=persistProgress(saved);if(!ok)notify('Progress could not be saved in this browser.');return ok;};
+const save=()=>{if(stageEditor||layoutPreview)return true;coins=saved.coins;const ok=persistProgress(saved);if(!ok)notify('Progress could not be saved in this browser.');return ok;};
 const chapter=()=>scene==='battle'&&runChapter?runChapter:chapterFor(saved),stageNumber=()=>scene==='battle'&&runStage?runStage:saved.completedStages+1;
 function notify(message){const box=$('#game-message');if(box.textContent===message&&box.classList.contains('visible'))return;box.textContent=message;box.classList.add('visible');messageUntil=performance.now()+1100;}
 function applyTheme(){previewStage=(stageEditor?currentLayout().theme:stageOverrides[stageNumber()]?.theme)||chapter().artStage||'green';rigs.theme=({green:'forest',dune:'desert',camp:'night',moon:'night',oasis:'desert',noon:'desert'})[previewStage]||'forest';frame.dataset.world=previewStage;worldArt.ensure(currentLayout()).then(()=>render()).catch(e=>{console.error(e);notify('Map art could not load. Please refresh.');});baseTier=Math.min(4,[60,120,200,300].filter(n=>saved.health>=n).length);baseMaxHp=saved.health;}
@@ -192,7 +197,7 @@ async function finishBoot(){const overlay=$('#boot-loading'),shown=+$('#boot-log
 function advanceElapsed(seconds){let remaining=Math.max(0,seconds);while(remaining>1e-7){const dt=Math.min(1/30,remaining);tickVisuals(dt);tickSceneSplash(dt);if(!paused&&!sceneSplash){if(bossIntro){bossIntro.elapsed+=dt;if(bossIntro.elapsed>=introDuration)endBossIntro();}update(dt*(bossIntro?.12:1));}remaining-=dt;if(paused||(!sceneSplash&&scene!=='battle')||runResolved){if(!paused)time+=remaining;break;}}}
 function advanceFrame(now){if(now<=last)return;const elapsed=Math.max(0,(now-last)/1000);last=now;advanceElapsed(elapsed);}
 function loop(now){advanceFrame(now);tickRewardFlight(now);updateTutorial();if(bossIntro)$('#boss-cinematic').style.setProperty('--intro-opacity',String(introWeight()));if(messageUntil&&now>messageUntil){$('#game-message').classList.remove('visible');messageUntil=0;}updateUI();render();requestAnimationFrame(loop);}
-try{const clockWorker=new Worker(new URL('./background-clock.js?v=production-30',import.meta.url));clockWorker.onmessage=()=>{if(document.hidden)advanceFrame(performance.now());};}catch{setInterval(()=>{if(document.hidden)advanceFrame(performance.now());},250);}
+try{const clockWorker=new Worker(new URL('./background-clock.js?v=production-31',import.meta.url));clockWorker.onmessage=()=>{if(document.hidden)advanceFrame(performance.now());};}catch{setInterval(()=>{if(document.hidden)advanceFrame(performance.now());},250);}
 $('.production-track').setAttribute('role','progressbar');$('.production-track').setAttribute('aria-label','Charging next sunlight');$('.production-track').setAttribute('aria-valuemin','0');$('.production-track').setAttribute('aria-valuemax','100');applyTheme();buildCards();setScene(new URLSearchParams(location.search).get('screen')==='plants'?'plants':'home');updateUI();render();requestAnimationFrame(loop);await finishBoot();
 
 
@@ -202,10 +207,18 @@ $('.production-track').setAttribute('role','progressbar');$('.production-track')
 // Editor messages are accepted only in the explicit same-origin preview iframe.
 if(stageEditor){
  document.body.classList.add('stage-editor-preview');
- window.addEventListener('message',e=>{if(e.origin!==location.origin||e.source!==parent||e.data?.type!=='fvz-stage-preview')return;try{const next=validateStage(e.data.layout);bossIntro=null;$('#boss-cinematic').hidden=true;frame.classList.remove('boss-focus');editorLayout=next;editorStage=next.stage;saved.chapter=(editorStage-1)%rules.chapters.length;saved.completedStages=editorStage-1;runChapter=null;runStage=0;applyTheme();setScene(e.data.scene==='battle'?'battle':'home');paused=true;runResolved=true;document.body.classList.toggle('map-only',!e.data.showUI);if(scene==='battle'){units=[{id:100,type:0,slot:1,level:1,hp:50,maxHp:50,age:9,recoil:0}];enemies=[['shambler',775,200],['courier',920,140],['bruiser',1025,270],['elite',300,300],['boss',940,450]].map(([kind,x,y])=>({kind:kind==='elite'?'courier':kind,artId:worldThemes[previewStage]?'skin-'+previewStage+'-'+kind:kind==='elite'?'elite':kind,x,y,phase:0,hit:0,recoil:0,hp:100,maxHp:100,introduced:true}));}for(const e of enemies){e.path=null;e.navAge=0;}render();parent.postMessage({type:'fvz-stage-applied',stage:editorStage,props:next.props.length},location.origin);}catch(error){parent.postMessage({type:'fvz-stage-error',error:error.message},location.origin);}});
+ window.addEventListener('message',e=>{if(e.origin!==location.origin||e.source!==parent||e.data?.type!=='fvz-stage-preview')return;try{const next=validateStage(e.data.layout);bossIntro=null;$('#boss-cinematic').hidden=true;frame.classList.remove('boss-focus');editorLayout=next;editorStage=next.stage;saved={...(e.data.progressMode==='fresh'?structuredClone(rules.defaults):loadProgress()),tutorial:true,sound:false};saved.chapter=(editorStage-1)%rules.chapters.length;saved.completedStages=editorStage-1;runChapter=null;runStage=0;applyTheme();setScene(e.data.scene==='battle'?'battle':'home');paused=true;runResolved=true;document.body.classList.toggle('map-only',!e.data.showUI);if(scene==='battle'){units=[{id:100,type:0,slot:1,level:1,hp:50,maxHp:50,age:9,recoil:0}];enemies=[['shambler',775,200],['courier',920,140],['bruiser',1025,270],['elite',300,300],['boss',940,450]].map(([kind,x,y])=>({kind:kind==='elite'?'courier':kind,artId:worldThemes[previewStage]?'skin-'+previewStage+'-'+kind:kind==='elite'?'elite':kind,x,y,phase:0,hit:0,recoil:0,hp:100,maxHp:100,introduced:true}));}for(const e of enemies){e.path=null;e.navAge=0;}render();parent.postMessage({type:'fvz-stage-applied',stage:editorStage,props:next.props.length},location.origin);}catch(error){parent.postMessage({type:'fvz-stage-error',error:error.message},location.origin);}});
  parent.postMessage({type:'fvz-stage-ready'},location.origin);
 }
 
 if(stageEditor)window.addEventListener('message',async e=>{if(e.origin!==location.origin||e.source!==parent||e.data?.type!=='fvz-boss-preview')return;await worldArt.ensure(currentLayout());setScene('battle');document.body.classList.remove('map-only');paused=false;runResolved=true;countdown=0;const boss={kind:'boss',artId:'boss',x:820,y:365,phase:0,hit:0,recoil:0,hp:chapter().bossHp,maxHp:chapter().bossHp,introduced:true};enemies=[boss];startBossIntro(boss);});
 
 if(stageEditor)window.addEventListener('message',e=>{if(e.origin!==location.origin||e.source!==parent||e.data?.type!=='fvz-motion-preview')return;try{const p=e.data;if(!motionCharacters.includes(p.character)||!motionActions.includes(p.action)||!Number.isFinite(p.time)||!Number.isInteger(p.star)||p.star<1||p.star>10)throw Error('모션 미리보기 값을 확인해 주세요.');editorMotion={config:validateMotions(p.config),character:p.character,action:p.action,star:p.star,time:p.time};if(scene!=='battle'){setScene('battle');paused=true;runResolved=true;document.body.classList.add('map-only');}parent.postMessage({type:'fvz-motion-applied'},location.origin);}catch(error){parent.postMessage({type:'fvz-motion-error',error:error.message},location.origin);}});
+
+// Explicit publication updates open games; editor drafts never enter this path.
+let refreshingStage=false;
+async function refreshPublishedStage(){if(stageEditor||refreshingStage)return;refreshingStage=true;try{let next;if(location.hostname.endsWith('.chatgpt.site')){const response=await fetch('/api/stage-layouts',{cache:'no-store'});if(!response.ok)return;next=(await response.json()).stages||{};}else{const response=await fetch(new URL('./data/stage-layouts.json',import.meta.url),{cache:'no-store'});next=mergeAppliedStages(response.ok?(await response.json()).stages||{}:{});}for(const [n,row]of Object.entries(next)){try{next[n]=validateStage(row,Number(n));}catch{delete next[n];}}if(JSON.stringify(next)===JSON.stringify(stageOverrides))return;stageOverrides=next;applyTheme();for(const enemy of enemies){enemy.path=null;enemy.navAge=0;}render();}catch{}finally{refreshingStage=false;}}
+try{const stageLiveChannel=new BroadcastChannel('fvz-stage-live');stageLiveChannel.onmessage=refreshPublishedStage;}catch{}
+window.addEventListener('storage',e=>{if(e.key?.startsWith('fvz-stage-applied-v1-'))refreshPublishedStage();});
+window.addEventListener('focus',refreshPublishedStage);
+if(!stageEditor&&location.hostname.endsWith('.chatgpt.site'))setInterval(()=>{if(!document.hidden)refreshPublishedStage();},5000);
