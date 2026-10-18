@@ -26,5 +26,5 @@ export function assignedMotion(config,id,action){const row=config?.assignments.c
 export function allyMotionState(config,id,attackAge){const m=assignedMotion(config,id,'attack');return m&&Number.isFinite(attackAge)&&attackAge>=0&&attackAge<m.duration?{action:'attack',motionTime:attackAge}:{action:'idle'};}
 export function applyMotionPose(pose,config,id,action,time,hit=0){const m=assignedMotion(config,id,action);if(!m)return pose;const f=sampleMotion(m,time),hurt=Math.sin(Math.min(1,hit)*Math.PI);return {...pose,shift:f.x+hurt*2,hop:-f.y+hurt*5,tilt:f.rotation*Math.PI/180+hurt*.075,sx:f.scaleX+hurt*.05,sy:f.scaleY+hurt*.06,shadowScale:Math.max(.5,1+f.y*.025),shadowAlpha:Math.max(.06,.19+f.y*.006)};}
 export async function loadMotionConfig(){
- let config=defaultMotions();try{const release=await(await import('./live-release.js?v=production-38')).readLiveRelease();if(release.settings.motion)config=validateMotions(release.settings.motion);}catch(e){console.warn('기본 모션을 사용합니다.',e.message);}return config;
+ let config=defaultMotions();try{const release=await(await import('./live-release.js?v=production-39')).readLiveRelease();if(release.settings.motion)config=validateMotions(release.settings.motion);}catch(e){console.warn('기본 모션을 사용합니다.',e.message);}return config;
 }

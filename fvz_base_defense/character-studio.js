@@ -1,8 +1,8 @@
-import {publicationBar} from './publication-ui.js?v=production-38';
-import {copyGrowthSettings} from './editor-batch.js?v=production-38';
-import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-38';
-import {growthCharacters,hatNames,defaultGrowth,validateGrowth} from './character-growth.js?v=production-38';
-import {tierFor} from './library/art-directions/cartoon-v5/growth-style.js?v=production-38';
+import {publicationBar} from './publication-ui.js?v=production-39';
+import {copyGrowthSettings} from './editor-batch.js?v=production-39';
+import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-39';
+import {growthCharacters,hatNames,defaultGrowth,validateGrowth} from './character-growth.js?v=production-39';
+import {tierFor} from './library/art-directions/cartoon-v5/growth-style.js?v=production-39';
 const $=s=>document.querySelector(s),clone=x=>JSON.parse(JSON.stringify(x)),draftKey='fvz-character-growth-draft-v1';
 const rigs=await loadRigs(),baselineConfig=clone(rigs.growth.config);let config=clone(baselineConfig),id='poppy',star=2,cloud=false,version=0,history=[],busy=false,dirty=false;const undos=[];
 function status(s,error=false){$('#status').textContent=s;$('#status').classList.toggle('error',error);}
@@ -37,4 +37,4 @@ let tick=0;function animate(t){if($('#motion').checked&&t-tick>30){draw(cv,id,st
 
 async function draftSave(){store();if(cloud){if(!await save())throw Error('서버 저장이 완료되지 않았습니다. 브라우저 초안은 유지됩니다.');}else status('이 브라우저에 초안을 저장했습니다.');}
 $('#save').closest('.savebar').hidden=true;
-publicationBar({label:'캐릭터 · 모자',saveDraft:draftSave,kind:'growth',getSnapshot:()=>validateGrowth(config)});
+publicationBar({label:'캐릭터 · 모자',saveDraft:draftSave,kind:'growth',getSnapshot:()=>validateGrowth(config),previewSnapshot:snapshot=>{const previous=config;config=validateGrowth(snapshot);render();return()=>{config=previous;render();};}});

@@ -1,9 +1,9 @@
-import {readLiveRelease} from './live-release.js?v=production-38';
-import {publicationBar} from './publication-ui.js?v=production-38';
-import {createPlantPersonalityPack,personalityDraftKey,plantMotionPersonalities} from './plant-motion-personalities.js?v=production-38';
-import {defaultMotions,validateMotions,motionCharacters,motionActions,motionFrameLimits,motionFrame,sampleMotion} from './motion-config.js?v=production-38';
-import {growthCharacters} from './character-growth.js?v=production-38';
-import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-38';
+import {readLiveRelease} from './live-release.js?v=production-39';
+import {publicationBar} from './publication-ui.js?v=production-39';
+import {createPlantPersonalityPack,personalityDraftKey,plantMotionPersonalities} from './plant-motion-personalities.js?v=production-39';
+import {defaultMotions,validateMotions,motionCharacters,motionActions,motionFrameLimits,motionFrame,sampleMotion} from './motion-config.js?v=production-39';
+import {growthCharacters} from './character-growth.js?v=production-39';
+import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-39';
 const proposalParams=new URLSearchParams(location.search),packMode=proposalParams.get('pack')==='personality-v28';
 const $=s=>document.querySelector(s),copy=v=>structuredClone(v),cloud=location.hostname.endsWith('.chatgpt.site'),draftKey=personalityDraftKey(packMode),draftRoute=packMode?'motion-personality-drafts':'motion-drafts',liveKey='fvz-motion-live-v1';
 let config=defaultMotions(),saved=defaultMotions(),rigs,selected='gentle',frameIndex=0,clock=0,playing=!matchMedia('(prefers-reduced-motion: reduce)').matches,previous=0,lastPost=0,liveVersion=0,draftVersion=0,ready=false,busy=false,undo=[];
@@ -62,5 +62,5 @@ requestAnimationFrame(animate);
 try{const release=await readLiveRelease();saved=validateMotions(release.settings.motion||defaultMotions());liveVersion=release.settingsVersions.motion||0;updateRevision();}catch{}
 const draftSave=async()=>{const snapshot=validateMotions(config);if(cloud){const r=await api(draftRoute,{config:snapshot,expectedVersion:draftVersion});draftVersion=r.version;}stash();};
 $('#save-live').hidden=$('#save-draft').hidden=true;
-const publishControls=publicationBar({label:packMode?'성격별 모션':'모션 만들기',saveDraft:draftSave,kind:'motion',getSnapshot:()=>validateMotions(config),onPublished:r=>{liveVersion=r.version;saved=validateMotions(r.config);stash();refresh();}});
+const publishControls=publicationBar({label:packMode?'성격별 모션':'모션 만들기',saveDraft:draftSave,kind:'motion',getSnapshot:()=>validateMotions(config),previewSnapshot:snapshot=>{const previousConfig=config,previousSelected=selected;config=validateMotions(snapshot);selected=config.motions[0].id;refresh();return()=>{config=previousConfig;selected=previousSelected;refresh();};},onPublished:r=>{liveVersion=r.version;saved=validateMotions(r.config);stash();refresh();}});
 $('#storage-note').textContent='초안 저장은 LIVE OPS 작업용입니다. 라이브 게시를 확인하면 모든 이용자의 게임에 모션이 반영됩니다.';
