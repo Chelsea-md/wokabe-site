@@ -1,6 +1,6 @@
-import {defaultStage,themes,themeNames} from './stage-layout.js?v=production-23';
-import {createWorldArt,worldThemes,drawEnemyLayers} from './world-themes.js?v=production-23';
-import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-23';
+import {defaultStage,themes,themeNames} from './stage-layout.js?v=production-24';
+import {createWorldArt,worldThemes,drawEnemyLayers} from './world-themes.js?v=production-24';
+import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-24';
 const $=s=>document.querySelector(s),art={},world=createWorldArt(art),rigsPromise=loadRigs();let rigs;
 let stage=Math.max(1,Math.min(themes.length,Number(new URLSearchParams(location.search).get('stage'))||7)),scene='home',ready=false,serial=0;
 themes.forEach((t,i)=>$('#chapter').add(new Option('STAGE '+(i+1)+' · '+themeNames[i],i+1)));
