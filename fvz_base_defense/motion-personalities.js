@@ -1,6 +1,7 @@
-import {plantMotionPersonalities,createPlantPersonalityPack} from './plant-motion-personalities.js?v=production-37';
-import {assignedMotion} from './motion-config.js?v=production-37';
-import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-37';
+import {publicationBar} from './publication-ui.js?v=production-38';
+import {plantMotionPersonalities,createPlantPersonalityPack} from './plant-motion-personalities.js?v=production-38';
+import {assignedMotion} from './motion-config.js?v=production-38';
+import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-38';
 const $=s=>document.querySelector(s),pack=createPlantPersonalityPack(),cards=[];let action='idle',playing=!matchMedia('(prefers-reduced-motion: reduce)').matches,clock=0,previous=0,rigs;
 for(let i=1;i<=10;i++)$('#gallery-star').add(new Option(i+'성',String(i)));$('#gallery-star').value='3';
 const observer=new IntersectionObserver(entries=>{for(const entry of entries){const row=cards.find(c=>c.canvas===entry.target);if(row)row.visible=entry.isIntersecting;}},{rootMargin:'100px'});
@@ -9,3 +10,5 @@ for(const p of plantMotionPersonalities){const card=document.createElement('arti
 document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>{action=b.dataset.action;clock=0;refresh();});$('#gallery-star').onchange=refresh;$('#gallery-play').onclick=()=>{playing=!playing;refresh();};
 function draw(now){const dt=previous?Math.min(.1,(now-previous)/1000):0;previous=now;if(playing&&!document.hidden)clock+=dt*Number($('#speed').value);if(rigs)for(const row of cards){if(!row.visible)continue;const g=row.canvas.getContext('2d'),compare=$('#compare-saved').checked,m=assignedMotion(pack,row.p.id,action),t=action==='attack'?clock%(m.duration+.65):clock;g.clearRect(0,0,600,340);g.strokeStyle='#d0d9bd';g.beginPath();g.moveTo(35,290);g.lineTo(565,290);g.stroke();const settings={time:t,action,star:+$('#gallery-star').value};drawRig(g,{...rigs,growth:rigs.growth,equipment:rigs.equipment,theme:rigs.theme,motion:pack},row.p.id,compare?175:300,286,compare?175:218,settings);if(compare)drawRig(g,rigs,row.p.id,435,286,175,settings);g.fillStyle='#708064';g.font='600 15px system-ui';g.textAlign='center';g.fillText(compare?'성격 초안':'성격 모션 초안',compare?175:300,325);if(compare)g.fillText('게임 저장본',435,325);}requestAnimationFrame(draw);}
 refresh();requestAnimationFrame(draw);try{rigs=await loadRigs();$('#load-status').textContent='30개 모션 초안 준비됨 · 게임 저장본은 변경하지 않습니다.';}catch(e){$('#load-status').textContent='불러오지 못했습니다: '+e.message+' · 새로고침으로 다시 시도해 주세요.';}
+
+publicationBar({label:'성격별 모션 제안 · 편집 화면에서 저장·게시',editorUrl:()=>'motion-studio.html?pack=personality-v28'});

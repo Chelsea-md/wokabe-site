@@ -1,18 +1,19 @@
-import {bossNames} from './boss-names.js?v=production-37';
-import {readLiveRelease} from './live-release.js?v=production-37';
-import {validateMotions,motionCharacters,motionActions,allyMotionState} from './motion-config.js?v=production-37';
-import {terrainCamera,advanceTerrainCamera} from './scene-camera.js?v=production-37';
-import {createWorldArt,worldThemes,drawEnemyLayers} from './world-themes.js?v=production-37';
-import {upgradeValue} from './ui-markup.js?v=production-37';
-import {paintSand,paintMapProps} from './map-scenery.js?v=production-37';
-import {defaultStage,validateStage,propPieces,layoutObstacles,sceneryCamera} from './stage-layout.js?v=production-37';
+import {validateGrowth} from './character-growth.js?v=production-38';
+import {bossNames} from './boss-names.js?v=production-38';
+import {readLiveRelease,publishedAsset} from './live-release.js?v=production-38';
+import {validateMotions,motionCharacters,motionActions,allyMotionState} from './motion-config.js?v=production-38';
+import {terrainCamera,advanceTerrainCamera} from './scene-camera.js?v=production-38';
+import {createWorldArt,worldThemes,drawEnemyLayers} from './world-themes.js?v=production-38';
+import {upgradeValue} from './ui-markup.js?v=production-38';
+import {paintSand,paintMapProps} from './map-scenery.js?v=production-38';
+import {defaultStage,validateStage,propPieces,layoutObstacles,sceneryCamera} from './stage-layout.js?v=production-38';
 import {observeWorldResolution} from './canvas-resolution.js';
-import {rules} from './config.js?v=production-37';
-import {loadProgress,persistProgress} from './storage.js?v=production-37';
-import {chapterFor,costFor,increaseStat,countForWave,kindForSpawn,spawnInterval,killReward,mergeHealth,encounterScale} from './systems.js?v=production-37';
-import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-37';
-import {loadUiSkins} from './library/art-directions/cartoon-v5/ui-skins.js?v=production-37';
-import {spawnOutside,stageObstacles,moveEnemy} from './library/art-directions/cartoon-v5/navigation.js?v=production-37';
+import {rules} from './config.js?v=production-38';
+import {loadProgress,persistProgress} from './storage.js?v=production-38';
+import {chapterFor,costFor,increaseStat,countForWave,kindForSpawn,spawnInterval,killReward,mergeHealth,encounterScale} from './systems.js?v=production-38';
+import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-38';
+import {loadUiSkins} from './library/art-directions/cartoon-v5/ui-skins.js?v=production-38';
+import {spawnOutside,stageObstacles,moveEnemy} from './library/art-directions/cartoon-v5/navigation.js?v=production-38';
 import {loadPopupArt} from './popup-art.js';
 import {createLoadingWallpaper} from './loading-wallpaper.js';
 const $=s=>document.querySelector(s),uiSkins=await loadUiSkins();createLoadingWallpaper(uiSkins);const popupArt=await loadPopupArt();const sprout=$('.pause-sprout'),popupSprout=document.createElement('img');popupSprout.className='pause-sprout';popupSprout.src=popupArt.sprout;popupSprout.alt='';sprout.replaceWith(popupSprout);for(const [id,key,label]of [['resume-battle','resume','Resume'],['pause-to-home','home','Home']]){const b=$('#'+id);b.classList.add('asset-button');b.innerHTML='<span class="sr-only">'+label+'</span>';b.setAttribute('aria-label',label);b.style.setProperty('--button-art',`url("${popupArt[key]}")`);}const rigs=await loadRigs();
@@ -42,7 +43,7 @@ const names=['poppy','bellflower','marigold','sunflower'],costs=rules.troops.map
 let scene='home',previewStage='green',previewStar=1,time=0,last=performance.now(),sun=0,coins=saved.coins,units=[],enemies=[],shots=[],effects=[],drag=null,rangePreview=null,paused=false,bossIntro=null,sceneSplash=null,messageUntil=0;
 let baseTier=0,baseMaxHp=saved.health,baseHp=saved.health,baseHitUntil=0,wave=1,countdown=10,spawnClock=0,spawned=0,waveKilled=0,earned=0,runResolved=true,unitSerial=0;
 const baseHeights=[53,55,60,70,100],baseBounds=[[29,387,218,251],[274,346,315,299],[611,284,399,372],[1036,248,566,410],[1630,37,764,662]];
-async function loadImage(src){const im=new Image();im.src=src;await im.decode();return im;}
+async function loadImage(src){const im=new Image();im.crossOrigin='anonymous';im.src=await publishedAsset(src,document.baseURI);await im.decode();return im;}
 const [baseAtlas,combatVfx,homeField,sproutPattern]=await Promise.all(['garden-base','combat-vfx','home-field','plants-sprout-transparent'].map(n=>loadImage('../../../assets/cartoon-v5-'+n+'.png')));
 const dragCardSkin=await loadImage(uiSkins.card),dragSunIcon=await loadImage(uiSkins.sun);
 const moonField=await loadImage('../../../assets/cartoon-v5-moon-field.png');
@@ -200,7 +201,7 @@ async function finishBoot(){const overlay=$('#boot-loading'),shown=+$('#boot-log
 function advanceElapsed(seconds){let remaining=Math.max(0,seconds);while(remaining>1e-7){const dt=Math.min(1/30,remaining);tickVisuals(dt);tickSceneSplash(dt);if(!paused&&!sceneSplash){if(bossIntro){bossIntro.elapsed+=dt;if(bossIntro.elapsed>=introDuration)endBossIntro();}update(dt*(bossIntro?.12:1));}remaining-=dt;if(paused||(!sceneSplash&&scene!=='battle')||runResolved){if(!paused)time+=remaining;break;}}}
 function advanceFrame(now){if(now<=last)return;const elapsed=Math.max(0,(now-last)/1000);last=now;advanceElapsed(elapsed);}
 function loop(now){advanceFrame(now);tickRewardFlight(now);updateTutorial();if(bossIntro)$('#boss-cinematic').style.setProperty('--intro-opacity',String(introWeight()));if(messageUntil&&now>messageUntil){$('#game-message').classList.remove('visible');messageUntil=0;}updateUI();render();requestAnimationFrame(loop);}
-try{const clockWorker=new Worker(new URL('./background-clock.js?v=production-37',import.meta.url));clockWorker.onmessage=()=>{if(document.hidden)advanceFrame(performance.now());};}catch{setInterval(()=>{if(document.hidden)advanceFrame(performance.now());},250);}
+try{const clockWorker=new Worker(new URL('./background-clock.js?v=production-38',import.meta.url));clockWorker.onmessage=()=>{if(document.hidden)advanceFrame(performance.now());};}catch{setInterval(()=>{if(document.hidden)advanceFrame(performance.now());},250);}
 $('.production-track').setAttribute('role','progressbar');$('.production-track').setAttribute('aria-label','Charging next sunlight');$('.production-track').setAttribute('aria-valuemin','0');$('.production-track').setAttribute('aria-valuemax','100');applyTheme();buildCards();setScene(new URLSearchParams(location.search).get('screen')==='plants'?'plants':'home');updateUI();render();requestAnimationFrame(loop);await finishBoot();
 
 
@@ -220,7 +221,7 @@ if(stageEditor)window.addEventListener('message',e=>{if(e.origin!==location.orig
 
 // Explicit publication updates open games; editor drafts never enter this path.
 let refreshingStage=false;
-async function refreshPublishedStage(){if(stageEditor||refreshingStage)return;refreshingStage=true;try{const release=await readLiveRelease(),next=release.stages;liveVersions=release.versions;if(JSON.stringify(next)===JSON.stringify(stageOverrides))return;stageOverrides=next;await worldArt.ensure(currentLayout());applyTheme();for(const enemy of enemies){enemy.path=null;enemy.navAge=0;}render();}catch{}finally{refreshingStage=false;}}
+async function refreshPublishedStage(){if(stageEditor||refreshingStage)return;refreshingStage=true;try{const release=await readLiveRelease(true),next=release.stages;if(release.settings.growth)rigs.growth.config=validateGrowth(release.settings.growth);if(release.settings.motion)rigs.motion=validateMotions(release.settings.motion);liveVersions=release.versions;if(JSON.stringify(next)===JSON.stringify(stageOverrides))return;stageOverrides=next;await worldArt.ensure(currentLayout());applyTheme();for(const enemy of enemies){enemy.path=null;enemy.navAge=0;}render();}catch{}finally{refreshingStage=false;}}
 try{const stageLiveChannel=new BroadcastChannel('fvz-stage-live');stageLiveChannel.onmessage=refreshPublishedStage;}catch{}
 window.addEventListener('storage',e=>{if(e.key?.startsWith('fvz-stage-applied-v1-'))refreshPublishedStage();});
 window.addEventListener('focus',refreshPublishedStage);

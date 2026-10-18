@@ -1,6 +1,7 @@
-import {bossNames} from './boss-names.js?v=production-37';
-import {separateSprites} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-37';
-import {propAtlas} from './stage-layout.js?v=production-37';
+import {publishedAsset} from './live-release.js?v=production-38';
+import {bossNames} from './boss-names.js?v=production-38';
+import {separateSprites} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-38';
+import {propAtlas} from './stage-layout.js?v=production-38';
 export const worldThemes={
  moon:{name:'Moonlight',subtitle:'Whispering Grove',boss:bossNames.moon,color:'#d9b6ff',projectile:'#f4dfae'},
  camp:{name:'Night Camp',subtitle:'Moonlit Clearing',boss:bossNames.camp,color:'#ffc75a',projectile:'#ffd56a'},
@@ -24,7 +25,7 @@ export function drawEnemyLayers(ctx,row,x,y,height,{attack=0}={}){
 }
 export function createWorldArt(art,props={}){
  const grounds={},pending=new Map();
- async function image(file){const im=new Image();im.src=new URL('./assets/'+file,import.meta.url);await im.decode();return im;}
+ async function image(file){const im=new Image();im.crossOrigin='anonymous';im.src=await publishedAsset('./assets/'+file,import.meta.url);await im.decode();return im;}
  function once(key,fn){if(!pending.has(key))pending.set(key,fn().catch(e=>{pending.delete(key);throw e;}));return pending.get(key);}
  async function ensure(layout){const theme=layout.theme,ground=theme==='noon'?'dune':theme,tasks=[];
   if(['dune','oasis',...Object.keys(worldThemes)].includes(ground))tasks.push(once('ground-'+theme,async()=>{grounds[theme]=await image('cartoon-v5-'+ground+'-ground-'+(ground==='moon'?'v35':ground==='camp'?'v32':'v19')+'.png');}));

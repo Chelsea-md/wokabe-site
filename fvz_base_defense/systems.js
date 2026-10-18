@@ -1,4 +1,4 @@
-import { rules } from "./config.js?v=production-37";
+import { rules } from "./config.js?v=production-38";
 
 export function chapterFor(save) {
   return rules.chapters[

@@ -1,6 +1,7 @@
-import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-37';
-import {tierFor} from './library/art-directions/cartoon-v5/growth-style.js?v=production-37';
-import {growthCharacters} from './character-growth.js?v=production-37';
+import {publicationBar} from './publication-ui.js?v=production-38';
+import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-38';
+import {tierFor} from './library/art-directions/cartoon-v5/growth-style.js?v=production-38';
+import {growthCharacters} from './character-growth.js?v=production-38';
 const $=s=>document.querySelector(s);
 try{
  const rigs=await loadRigs();
@@ -8,3 +9,5 @@ try{
  for(const p of growthCharacters){const b=document.createElement('button');b.textContent=p.name;b.dataset.id=p.id;b.onclick=()=>show(p.id);$('#classes').append(b);}show('poppy');
  for(const p of growthCharacters.filter(p=>p.bounds)){const c=document.createElement('article');c.className='card';c.innerHTML=`<canvas width="360" height="320" role="img" aria-label="${p.name}"></canvas><b>${p.name}</b>`;drawRig(c.querySelector('canvas').getContext('2d'),rigs,p.id,180,280,220,{star:1});$('#friends').append(c);}
 }catch(e){$('#error').textContent='이미지를 불러오지 못했습니다. 새로고침해 주세요.';console.error(e);}
+
+publicationBar({label:'성장 갤러리 · 편집 화면에서 저장·게시',editorUrl:()=>'character-studio.html'});

@@ -1,3 +1,5 @@
+import {publicationBar} from '../publication-ui.js?v=production-38';
+import {adminOrigin,privateEditor} from '../live-release.js?v=production-38';
 import { rules, assetCatalog } from "../config.js";
 import { documents, openQuestions } from "./content.js?v=20261018-survivors-v5";
 
@@ -308,6 +310,8 @@ function renderInspector() {
     });
     $("#meta-hint").textContent = "저장 전";
   });
+  const actions=document.createElement('div');actions.className='form-actions';actions.innerHTML='<button type="button" data-resource-draft>초안 저장</button><button type="button" class="primary" data-resource-publish>라이브 게시</button><small>초안은 게임에 반영되지 않습니다. 라이브 게시 후 게임을 다시 열면 적용됩니다.</small>';$('#inspector-error').before(actions);
+  $('[data-resource-draft]').onclick=()=>libraryControls.draft();$('[data-resource-publish]').onclick=()=>libraryControls.publish();
   $("#meta-form").addEventListener("submit", saveMeta);
   $("#replace-file")?.addEventListener("change", prepareReplacement);
 }
@@ -541,3 +545,7 @@ $("#connection").textContent = library.writable
   : "보기 전용";
 $("#nav-count").textContent = library.assets.length;
 route();
+
+async function saveResourceDraft(){if(!selected)throw Error('리소스 목록에서 편집할 이미지를 선택해 주세요.');if(!library.writable)throw Error('관리자 화면에서 리소스를 편집해 주세요.');const draft=draftFor(selected);let value=await callApi('assets/'+selected.id+'/meta',{...draft,tags:draft.tags.split(',').map(s=>s.trim()).filter(Boolean)});updateAsset(value);selected=value.asset;if(replacement){value=await callApi('assets/'+selected.id+'/replace',{dataUrl:replacement.dataUrl});updateAsset(value);selected=value.asset;replacement=null;}renderInspector();renderAssetGrid();toast('리소스 초안을 저장했습니다. 게임에는 반영되지 않습니다.');}
+async function publishResource(){if(!selected)throw Error('게시할 리소스 이미지를 선택해 주세요.');if(!library.writable)throw Error('관리자 화면에서 게시해 주세요.');if(replacement||$('#meta-notes')?.value!==draftFor(selected).notes)throw Error('먼저 초안 저장을 눌러 현재 수정을 보관해 주세요.');const id=selected.id,sourceVersion=metaFor(id).version||0,r=await fetch('../api/live-resources/'+id,{cache:'no-store'}),current=await r.json();if(!r.ok)throw Error(current.error||'게시 정보를 읽지 못했습니다.');const dialog=document.createElement('dialog');dialog.className='publication-confirm';dialog.innerHTML='<form method="dialog"><h2>라이브로 게시할까요?</h2><p>선택한 PNG 이미지를 wokabe.xyz의 모든 이용자에게 게시합니다. 게임을 다시 열면 교체한 이미지가 적용됩니다. 연결되지 않은 리소스는 게임에서 사용하도록 지정해야 표시됩니다.</p><menu><button value="cancel">취소</button><button value="publish">확인 · 라이브 게시</button></menu></form>';document.body.append(dialog);const yes=await new Promise(resolve=>{dialog.onclose=()=>resolve(dialog.returnValue==='publish');dialog.showModal();});dialog.remove();if(!yes)return;await callApi('live-resources/'+id,{sourceVersion,expectedVersion:current.version});toast('라이브 게시 완료 · 모든 이용자에게 적용됩니다.');}
+const libraryControls=publicationBar({label:'리소스 라이브러리 · 선택한 이미지',onStatus:toast,...(privateEditor()?{saveDraft:saveResourceDraft,publish:publishResource}:{editorUrl:()=>adminOrigin+'/library/'+location.hash})});

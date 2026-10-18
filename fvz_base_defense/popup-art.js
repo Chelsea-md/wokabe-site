@@ -1,8 +1,9 @@
+import {publishedAsset} from './live-release.js?v=production-38';
 // Runtime crops preserve the user-supplied transparent PNGs unchanged.
 export async function loadPopupArt() {
   const images = await Promise.all(['cartoon-v5-popup-sprout.png','cartoon-v5-pause-controls.png'].map(async name => {
     const im = new Image();
-    im.src = new URL('assets/' + name, import.meta.url).href;
+    im.crossOrigin='anonymous';im.src=await publishedAsset('assets/'+name,import.meta.url);
     await im.decode();
     return im;
   }));

@@ -1,7 +1,8 @@
-import {bossNames} from './boss-names.js?v=production-37';
-import {defaultStage,themes,themeNames} from './stage-layout.js?v=production-37';
-import {createWorldArt,worldThemes,drawEnemyLayers} from './world-themes.js?v=production-37';
-import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-37';
+import {publicationBar} from './publication-ui.js?v=production-38';
+import {bossNames} from './boss-names.js?v=production-38';
+import {defaultStage,themes,themeNames} from './stage-layout.js?v=production-38';
+import {createWorldArt,worldThemes,drawEnemyLayers} from './world-themes.js?v=production-38';
+import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-38';
 const $=s=>document.querySelector(s),art={},world=createWorldArt(art),rigsPromise=loadRigs();let rigs;
 let stage=Math.max(1,Math.min(themes.length,Number(new URLSearchParams(location.search).get('stage'))||7)),scene='home',ready=false,serial=0;
 themes.forEach((t,i)=>$('#chapter').add(new Option('STAGE '+(i+1)+' · '+themeNames[i],i+1)));
@@ -10,3 +11,5 @@ async function show(){const token=++serial,layout=defaultStage(stage),theme=layo
 $('#chapter').onchange=()=>{stage=+$('#chapter').value;show();};for(const mode of ['home','battle'])$('#'+mode).onclick=()=>{scene=mode;for(const m of ['home','battle'])$('#'+m).setAttribute('aria-pressed',String(mode===m));send();};
 $('#boss').onclick=()=>{scene='battle';for(const m of ['home','battle'])$('#'+m).setAttribute('aria-pressed',String(m==='battle'));send();$('#game').contentWindow.postMessage({type:'fvz-boss-preview'},location.origin);};
 window.addEventListener('message',e=>{if(e.origin!==location.origin||e.source!==$('#game').contentWindow)return;if(e.data?.type==='fvz-stage-ready'){ready=true;send();$('#boss').disabled=false;}if(e.data?.type==='fvz-stage-error')$('#status').textContent=e.data.error;});await show();
+
+publicationBar({label:'챕터 · 몬스터 · 편집 화면에서 저장·게시',editorUrl:()=>'live-ops.html?stage='+stage});
