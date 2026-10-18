@@ -1,20 +1,20 @@
-import {defaultSizes,validateSizes,characterSize,sizeCatalog} from './character-sizes.js?v=production-41';
-import {validateGrowth} from './character-growth.js?v=production-41';
-import {bossNames} from './boss-names.js?v=production-41';
-import {readLiveRelease,publishedAsset} from './live-release.js?v=production-41';
-import {validateMotions,motionCharacters,motionActions,allyMotionState} from './motion-config.js?v=production-41';
-import {terrainCamera,advanceTerrainCamera} from './scene-camera.js?v=production-41';
-import {createWorldArt,worldThemes,drawEnemyLayers} from './world-themes.js?v=production-41';
-import {upgradeValue} from './ui-markup.js?v=production-41';
-import {paintSand,paintMapProps} from './map-scenery.js?v=production-41';
-import {defaultStage,validateStage,propPieces,layoutObstacles,sceneryCamera} from './stage-layout.js?v=production-41';
+import {defaultSizes,validateSizes,characterSize,sizeCatalog} from './character-sizes.js?v=production-42';
+import {validateGrowth} from './character-growth.js?v=production-42';
+import {bossNames} from './boss-names.js?v=production-42';
+import {readLiveRelease,publishedAsset} from './live-release.js?v=production-42';
+import {validateMotions,motionCharacters,motionActions,allyMotionState} from './motion-config.js?v=production-42';
+import {terrainCamera,advanceTerrainCamera} from './scene-camera.js?v=production-42';
+import {createWorldArt,worldThemes,drawEnemyLayers} from './world-themes.js?v=production-42';
+import {upgradeValue} from './ui-markup.js?v=production-42';
+import {paintSand,paintMapProps} from './map-scenery.js?v=production-42';
+import {defaultStage,validateStage,propPieces,layoutObstacles,sceneryCamera} from './stage-layout.js?v=production-42';
 import {observeWorldResolution} from './canvas-resolution.js';
-import {rules} from './config.js?v=production-41';
-import {loadProgress,persistProgress} from './storage.js?v=production-41';
-import {chapterFor,costFor,increaseStat,countForWave,kindForSpawn,spawnInterval,killReward,mergeHealth,encounterScale} from './systems.js?v=production-41';
-import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-41';
-import {loadUiSkins} from './library/art-directions/cartoon-v5/ui-skins.js?v=production-41';
-import {spawnOutside,stageObstacles,moveEnemy} from './library/art-directions/cartoon-v5/navigation.js?v=production-41';
+import {rules} from './config.js?v=production-42';
+import {loadProgress,persistProgress} from './storage.js?v=production-42';
+import {chapterFor,costFor,increaseStat,countForWave,kindForSpawn,spawnInterval,killReward,mergeHealth,encounterScale} from './systems.js?v=production-42';
+import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-42';
+import {loadUiSkins} from './library/art-directions/cartoon-v5/ui-skins.js?v=production-42';
+import {spawnOutside,stageObstacles,moveEnemy} from './library/art-directions/cartoon-v5/navigation.js?v=production-42';
 import {loadPopupArt} from './popup-art.js';
 import {createLoadingWallpaper} from './loading-wallpaper.js';
 const $=s=>document.querySelector(s),uiSkins=await loadUiSkins();createLoadingWallpaper(uiSkins);const popupArt=await loadPopupArt();const sprout=$('.pause-sprout'),popupSprout=document.createElement('img');popupSprout.className='pause-sprout';popupSprout.src=popupArt.sprout;popupSprout.alt='';sprout.replaceWith(popupSprout);for(const [id,key,label]of [['resume-battle','resume','Resume'],['pause-to-home','home','Home']]){const b=$('#'+id);b.classList.add('asset-button');b.innerHTML='<span class="sr-only">'+label+'</span>';b.setAttribute('aria-label',label);b.style.setProperty('--button-art',`url("${popupArt[key]}")`);}const rigs=await loadRigs();
@@ -107,7 +107,7 @@ function rememberBossTrail(e,dt){if(e.kind!=='boss'||!e.moving||bossIntro||reduc
 function tickBossTrails(dt){for(const e of enemies){if(!e.walkTrail)continue;for(const p of e.walkTrail)p.life-=dt;e.walkTrail=e.walkTrail.filter(p=>p.life>0);}}
 function drawBossTrails(){if(bossIntro||reducedMotion())return;const color=({green:'#ffc93f',dune:'#42e9dc',camp:'#bc80ff',moon:'#80cdff',oasis:'#44e7b2',noon:'#ffa34b',ember:'#ff822f',frost:'#78dbff',coral:'#4ee1d1',hollow:'#8d9aff'})[previewStage]||'#ffcf61';g.save();g.lineCap='round';for(const e of enemies){if(e.kind!=='boss')continue;const points=e.walkTrail||[];for(let i=0;i<points.length;i++){const p=points[i],t=p.life/p.max;g.globalAlpha=t*t*.25;ellipse(p.x,p.y+6,25*(.55+t*.45),8*(.55+t*.45),color);if(i){g.strokeStyle=color;g.lineWidth=11*t;g.beginPath();g.moveTo(points[i-1].x,points[i-1].y+5);g.lineTo(p.x,p.y+5);g.stroke();}g.globalAlpha=t*.42;ellipse(p.x+(i%2?12:-12),p.y+2,1.5,1.5,'#fff8be');}}g.restore();}
 function drawBoss(e,size=150){const sizeId=worldThemes[previewStage]?'skin-'+previewStage+'-boss':'boss';size*=currentLayout().actors.boss*characterSize(sizeConfig,sizeId);const desert=['dune','oasis','noon'].includes(previewStage),themed=!!worldThemes[previewStage];sprite(themed?'skin-'+previewStage+'-boss'+(e.recoil>0?'-attack':''):desert?'pharaoh':e.artId||'boss',e.x,e.y+8+Math.sin(time*5+e.phase)*1.8,size,{isBoss:true,sizeApplied:true,flip:e.flip,phase:e.phase,hit:e.hit/.26,recoil:Math.sin(e.recoil/.2*Math.PI)*3,action:e.moving?'walk':e.recoil>0?'attack':'idle'});if(desert||themed)return;g.save();g.translate(e.x,e.y+8);g.scale((e.flip?-1:1)*size/150,size/150);g.translate(31,-32);g.rotate(-.3-Math.sin(Math.max(0,e.recoil)/.2*Math.PI)*1.25);g.lineJoin='round';g.lineCap='round';g.beginPath();g.moveTo(0,-4);g.quadraticCurveTo(21,-27,28,-66);g.quadraticCurveTo(43,-23,10,5);g.closePath();g.fillStyle='#fff2b1';g.strokeStyle='#18221d';g.lineWidth=5;g.fill();g.stroke();g.beginPath();g.moveTo(9,-5);g.quadraticCurveTo(28,-30,28,-56);g.strokeStyle='#e2b23c';g.lineWidth=3;g.stroke();g.beginPath();g.moveTo(-6,2);g.lineTo(15,7);g.strokeStyle='#17221c';g.lineWidth=10;g.stroke();g.strokeStyle='#ffc939';g.lineWidth=5;g.stroke();g.beginPath();g.moveTo(4,6);g.lineTo(0,20);g.strokeStyle='#17221c';g.lineWidth=10;g.stroke();g.strokeStyle='#8d4a35';g.lineWidth=5;g.stroke();g.restore();}
-function startBossIntro(boss){cancelDrag();boss.introduced=true;bossIntro={elapsed:0,boss};const name=bossNames[previewStage]||bossNames.green;$('#boss-name').textContent=name;$('#boss-cinematic').classList.add('zombie-boss');$('#boss-cinematic').style.setProperty('--boss-name-size',Math.min(3.7,62/name.length)+'cqw');$('#boss-cinematic').classList.toggle('brass-art',previewStage==='green');$('#boss-cinematic').classList.toggle('desert-art',['dune','oasis','noon'].includes(previewStage));$('#boss-cinematic').classList.toggle('themed-art',!!worldThemes[previewStage]);$('#boss-cinematic').style.setProperty('--world-aura',worldThemes[previewStage]?.color||'#ffcf61');$('#boss-cinematic').hidden=false;frame.classList.add('boss-focus');}
+function startBossIntro(boss){cancelDrag();boss.introduced=true;bossIntro={elapsed:0,boss};const name=bossNames[previewStage]||bossNames.green;$('#boss-name').textContent=name;$('#boss-cinematic').classList.add('zombie-boss');$('#boss-cinematic').style.setProperty('--boss-name-size',Math.min(4.1,68/name.length)+'cqw');$('#boss-cinematic').classList.toggle('brass-art',previewStage==='green');$('#boss-cinematic').classList.toggle('desert-art',['dune','oasis','noon'].includes(previewStage));$('#boss-cinematic').classList.toggle('themed-art',!!worldThemes[previewStage]);$('#boss-cinematic').style.setProperty('--world-aura',worldThemes[previewStage]?.color||'#ffcf61');$('#boss-cinematic').hidden=false;frame.classList.add('boss-focus');}
 function endBossIntro(){bossIntro=null;$('#boss-cinematic').hidden=true;frame.classList.remove('boss-focus');}
 function introWeight(){if(!bossIntro)return 0;const t=bossIntro.elapsed,s=n=>{n=Math.max(0,Math.min(1,n));return n*n*(3-2*n);};return s(t/.65)*(1-s((t-3.2)/1));}
 function startRun(){runStage=saved.completedStages+1;runChapter=chapterFor(saved);applyTheme();runReward=null;rewardFlight=null;$('#reward-flight')?.remove();zoom=zoomTarget=1;waveKilled=0;wave=1;countdown=10;spawnClock=0;spawned=0;earned=0;sun=0;baseHp=saved.health;baseMaxHp=saved.health;units=[];enemies=[];shots=[];effects=[];runResolved=false;paused=false;saved.played=true;save();buildCards();if(!saved.tutorial)notify('Drag a plant onto a glowing tile.');}
@@ -203,7 +203,7 @@ async function finishBoot(){const overlay=$('#boot-loading'),shown=+$('#boot-log
 function advanceElapsed(seconds){let remaining=Math.max(0,seconds);while(remaining>1e-7){const dt=Math.min(1/30,remaining);tickVisuals(dt);tickSceneSplash(dt);if(!paused&&!sceneSplash){if(bossIntro){bossIntro.elapsed+=dt;if(bossIntro.elapsed>=introDuration)endBossIntro();}update(dt*(bossIntro?.12:1));}remaining-=dt;if(paused||(!sceneSplash&&scene!=='battle')||runResolved){if(!paused)time+=remaining;break;}}}
 function advanceFrame(now){if(now<=last)return;const elapsed=Math.max(0,(now-last)/1000);last=now;advanceElapsed(elapsed);}
 function loop(now){advanceFrame(now);tickRewardFlight(now);updateTutorial();if(bossIntro)$('#boss-cinematic').style.setProperty('--intro-opacity',String(introWeight()));if(messageUntil&&now>messageUntil){$('#game-message').classList.remove('visible');messageUntil=0;}updateUI();render();requestAnimationFrame(loop);}
-try{const clockWorker=new Worker(new URL('./background-clock.js?v=production-41',import.meta.url));clockWorker.onmessage=()=>{if(document.hidden)advanceFrame(performance.now());};}catch{setInterval(()=>{if(document.hidden)advanceFrame(performance.now());},250);}
+try{const clockWorker=new Worker(new URL('./background-clock.js?v=production-42',import.meta.url));clockWorker.onmessage=()=>{if(document.hidden)advanceFrame(performance.now());};}catch{setInterval(()=>{if(document.hidden)advanceFrame(performance.now());},250);}
 $('.production-track').setAttribute('role','progressbar');$('.production-track').setAttribute('aria-label','Charging next sunlight');$('.production-track').setAttribute('aria-valuemin','0');$('.production-track').setAttribute('aria-valuemax','100');applyTheme();buildCards();setScene(new URLSearchParams(location.search).get('screen')==='plants'?'plants':'home');updateUI();render();requestAnimationFrame(loop);await finishBoot();
 
 

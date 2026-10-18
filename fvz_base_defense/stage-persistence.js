@@ -1,4 +1,4 @@
-import {validateStage} from './stage-layout.js?v=production-41';
+import {validateStage} from './stage-layout.js?v=production-42';
 const key=n=>'fvz-stage-applied-v1-'+n;
 // Applied layouts are separate from automatically retained editor drafts.
 export function readAppliedStage(stage,storage=globalThis.localStorage){try{return validateStage(JSON.parse(storage.getItem(key(stage))),stage);}catch{return null;}}

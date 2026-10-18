@@ -1,9 +1,9 @@
-import {sizeAllies,sizeCatalog,sizeThemes,defaultSizes,validateSizes,characterSize} from './character-sizes.js?v=production-41';
-import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-41';
-import {createWorldArt,drawEnemyLayers} from './world-themes.js?v=production-41';
-import {defaultStage,themeNames} from './stage-layout.js?v=production-41';
-import {readLiveRelease,publishedAsset,privateEditor} from './live-release.js?v=production-41';
-import {publicationBar} from './publication-ui.js?v=production-41';
+import {sizeAllies,sizeCatalog,sizeThemes,defaultSizes,validateSizes,characterSize} from './character-sizes.js?v=production-42';
+import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-42';
+import {createWorldArt,drawEnemyLayers} from './world-themes.js?v=production-42';
+import {defaultStage,themeNames} from './stage-layout.js?v=production-42';
+import {readLiveRelease,publishedAsset,privateEditor} from './live-release.js?v=production-42';
+import {publicationBar} from './publication-ui.js?v=production-42';
 const $=s=>document.querySelector(s),clone=x=>structuredClone(x),key='fvz-character-sizes-draft-v1',art={},world=createWorldArt(art),undos=[],frames=new Set();
 let config=defaultSizes(),saved=defaultSizes(),selected='poppy',stage=1,star=1,draftVersion=0,rigs,ready=false,previewTimer,rows=[],release={stages:{}},loadSerial=0;
 const status=message=>$('#status').textContent=message;
