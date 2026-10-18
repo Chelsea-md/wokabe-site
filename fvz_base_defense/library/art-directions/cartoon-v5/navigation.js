@@ -33,11 +33,11 @@ export function findRoute(from,to,obstacles,padding=14){
 export function moveEnemy(enemy,target,dt,speed,stop,obstacles){
   const padding=enemy.kind==='boss'?25:enemy.kind==='bruiser'?20:14,solid=bodyObstacles(enemy,obstacles);
   // Recover safely if scenery changes or an earlier position was already obstructed.
-  for(let pass=0;pass<4;pass++)for(const[cx,cy,rx,ry]of solid){const ax=rx+padding+1,ay=ry+padding+1,dx=enemy.x-cx,dy=enemy.y-cy,n=Math.hypot(dx/ax,dy/ay);if(n<1){enemy.x=cx+(n?dx/n:ax);enemy.y=cy+(n?dy/n:0);enemy.path=null;}}
+  for(let pass=0;pass<4;pass++)for(const[cx,cy,rx,ry]of solid){const ax=rx+padding,ay=ry+padding,dx=enemy.x-cx,dy=enemy.y-cy,n=Math.hypot(dx/ax,dy/ay);if(n<1-1e-7){enemy.x=cx+(n?dx/n:ax)*1.01;enemy.y=cy+(n?dy/n:0)*1.01;enemy.path=null;}}
   if(Math.hypot(target.x-enemy.x,target.y-enemy.y)<=stop)return false;
   enemy.navAge=(enemy.navAge||0)-dt;
   if(!enemy.path||enemy.navAge<=0||!enemy.navTarget||Math.hypot(enemy.navTarget.x-target.x,enemy.navTarget.y-target.y)>40){enemy.path=findRoute(enemy,target,solid,padding);enemy.navTarget={...target};enemy.navAge=1.5;while(enemy.path.length&&segmentBlocked(enemy,enemy.path[0],solid,padding)){if(enemy.path.length>1&&!segmentBlocked(enemy,enemy.path[1],solid,padding))enemy.path.shift();else{enemy.path=[];break;}}}
-  while(enemy.path.length&&Math.hypot(enemy.path[0].x-enemy.x,enemy.path[0].y-enemy.y)<4)enemy.path.shift();
+  while(enemy.path.length&&Math.hypot(enemy.path[0].x-enemy.x,enemy.path[0].y-enemy.y)<.05)enemy.path.shift();
   if(!enemy.path.length)return false;
   const p=enemy.path[0],dx=p.x-enemy.x,dy=p.y-enemy.y,d=Math.hypot(dx,dy),step=Math.min(speed*dt,d);
   if(!d)return false;const next={x:enemy.x+dx/d*step,y:enemy.y+dy/d*step};if(segmentBlocked(enemy,next,solid,padding)){enemy.path=null;enemy.navAge=0;return false;}enemy.x=next.x;enemy.y=next.y;return true;

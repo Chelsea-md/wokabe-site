@@ -2306,6 +2306,22 @@
       "width": 1312,
       "height": 1199,
       "bytes": 824390
+    },
+    {
+      "id": "cartoon-v5-egypt-props",
+      "file": "cartoon-v5-egypt-props-v16.png",
+      "name": "이집트 유적 장식 10종 · 사용자 제공",
+      "category": "props",
+      "origin": "사용자 제공 컨셉 아트 · 2026-10-18",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "Sun Temple",
+        "LIVE OPS 스테이지 편집"
+      ],
+      "width": 1983,
+      "height": 793,
+      "bytes": 1151883
     }
   ]
 }

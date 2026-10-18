@@ -1,7 +1,7 @@
-import {defaultStage,validateStage,themes,themeNames,propNames,propBounds} from './stage-layout.js';
+import {defaultStage,validateStage,themes,themeNames,propNames,propBounds} from './stage-layout.js?v=production-16';
 const $=s=>document.querySelector(s),clone=x=>JSON.parse(JSON.stringify(x)),key=n=>'fvz-liveops-draft-v1-'+n;
 let loaded=false;
-let stage=2,layout=defaultStage(stage),selected=null,scene='home',cloud=false,version=0,history=[],ready=false,dirty=false,loading=false;
+let stage=Math.max(1,Math.min(999,Number(new URLSearchParams(location.search).get('stage'))||2)),layout=defaultStage(stage),selected=null,scene='home',cloud=false,version=0,history=[],ready=false,dirty=false,loading=false;
 const undos=new Map(),drafts=new Map();
 function status(message,error=false){$('#status').textContent=message;$('#status').classList.toggle('error',error);}
 function store(){drafts.set(stage,clone(layout));try{localStorage.setItem(key(stage),JSON.stringify(layout));}catch{status('브라우저 초안 보관 공간이 부족합니다. JSON으로 내보내 주세요.',true);}}
@@ -19,7 +19,7 @@ function renderObjects(){
  $('#stage-list').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.stage===stage)));$('#theme').value=layout.theme;
  $('#baked-note').textContent=['green','camp','moon'].includes(layout.theme)?'통이미지 배경입니다. 배경 전체는 이동·확대할 수 있고, 장식은 새 레이어로 추가할 수 있습니다. 그려진 나무 자체는 분리할 수 없습니다.':'배경과 장식이 분리된 맵입니다. 개별 아이템을 자유롭게 조절하세요.';
 }
-function select(id){selected=id;renderObjects();renderInspector();}
+function select(id){selected=id;renderObjects();renderInspector();$('.inspector').scrollTop=0;}
 function renderInspector(){const i=layout.props.findIndex(p=>p.id===selected),p=layout.props[i];$('#selection-title').textContent=p?propNames[p.asset]:'장식을 선택하세요';$('#duplicate').disabled=!p||layout.props.length>=60;$('#remove').disabled=!p;
  $('#prop-controls').innerHTML=p?`<div class="field-row">${field('X 위치',`props.${i}.x`,-100,1300)}${field('Y 위치 (발)',`props.${i}.y`,-100,700)}</div>${field('이미지 높이',`props.${i}.height`,10,300)}<div class="field-row">${field('그림자 폭 배율',`props.${i}.shadow.width`,0,2,.01)}${field('그림자 높이',`props.${i}.shadow.height`,0,60,.5)}</div>${field('그림자 진하기',`props.${i}.shadow.opacity`,0,.8,.01)}<div class="field-row">${field('그림자 X',`props.${i}.shadow.x`,-100,100)}${field('그림자 Y',`props.${i}.shadow.y`,-100,100)}</div><label class="check"><input data-bool="visible" type="checkbox" ${p.visible?'checked':''}>장식 표시</label><label class="check"><input data-bool="solid" type="checkbox" ${p.solid?'checked':''}>적이 피해 가는 장식</label>`:'<p class="hint">왼쪽 목록이나 미리보기의 장식을 선택하세요.</p>';
  $('#background-controls').innerHTML=field('배경 전체 크기','background.scale',.7,1.6,.01)+`<div class="field-row">${field('배경 X','background.x',-300,300)}${field('배경 Y','background.y',-200,200)}</div>`+field('배경 밝기','background.brightness',.3,1.8,.01)+field('기지 주변 빛 크기','glow.scale',.3,2,.01)+field('기지 주변 빛 진하기','glow.opacity',0,2,.01);
