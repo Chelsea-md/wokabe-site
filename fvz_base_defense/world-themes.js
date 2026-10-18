@@ -1,6 +1,6 @@
-import {bossNames} from './boss-names.js?v=production-33';
-import {separateSprites} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-33';
-import {propAtlas} from './stage-layout.js?v=production-33';
+import {bossNames} from './boss-names.js?v=production-34';
+import {separateSprites} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-34';
+import {propAtlas} from './stage-layout.js?v=production-34';
 export const worldThemes={
  camp:{name:'Night Camp',subtitle:'Moonlit Clearing',boss:bossNames.camp,color:'#ffc75a',projectile:'#ffd56a'},
  dune:{name:'Dune Loop',subtitle:'Dusty Desert',boss:bossNames.dune,color:'#ffc364',projectile:'#ffe1a5'},

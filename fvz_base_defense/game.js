@@ -1,25 +1,25 @@
-import {bossNames} from './boss-names.js?v=production-33';
-import {mergeAppliedStages} from './stage-persistence.js?v=production-33';
-import {validateMotions,motionCharacters,motionActions,allyMotionState} from './motion-config.js?v=production-33';
-import {terrainCamera,advanceTerrainCamera} from './scene-camera.js?v=production-33';
-import {createWorldArt,worldThemes,drawEnemyLayers} from './world-themes.js?v=production-33';
-import {upgradeValue} from './ui-markup.js?v=production-33';
-import {paintSand,paintMapProps} from './map-scenery.js?v=production-33';
-import {defaultStage,validateStage,propPieces,layoutObstacles,sceneryCamera} from './stage-layout.js?v=production-33';
+import {bossNames} from './boss-names.js?v=production-34';
+import {readLiveRelease} from './live-release.js?v=production-34';
+import {validateMotions,motionCharacters,motionActions,allyMotionState} from './motion-config.js?v=production-34';
+import {terrainCamera,advanceTerrainCamera} from './scene-camera.js?v=production-34';
+import {createWorldArt,worldThemes,drawEnemyLayers} from './world-themes.js?v=production-34';
+import {upgradeValue} from './ui-markup.js?v=production-34';
+import {paintSand,paintMapProps} from './map-scenery.js?v=production-34';
+import {defaultStage,validateStage,propPieces,layoutObstacles,sceneryCamera} from './stage-layout.js?v=production-34';
 import {observeWorldResolution} from './canvas-resolution.js';
-import {rules} from './config.js?v=production-33';
-import {loadProgress,persistProgress} from './storage.js?v=production-33';
-import {chapterFor,costFor,increaseStat,countForWave,kindForSpawn,spawnInterval,killReward,mergeHealth,encounterScale} from './systems.js?v=production-33';
-import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-33';
+import {rules} from './config.js?v=production-34';
+import {loadProgress,persistProgress} from './storage.js?v=production-34';
+import {chapterFor,costFor,increaseStat,countForWave,kindForSpawn,spawnInterval,killReward,mergeHealth,encounterScale} from './systems.js?v=production-34';
+import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-34';
 import {loadUiSkins} from './library/art-directions/cartoon-v5/ui-skins.js';
-import {spawnOutside,stageObstacles,moveEnemy} from './library/art-directions/cartoon-v5/navigation.js?v=production-33';
+import {spawnOutside,stageObstacles,moveEnemy} from './library/art-directions/cartoon-v5/navigation.js?v=production-34';
 import {loadPopupArt} from './popup-art.js';
 import {createLoadingWallpaper} from './loading-wallpaper.js';
 const $=s=>document.querySelector(s),uiSkins=await loadUiSkins();createLoadingWallpaper(uiSkins);const popupArt=await loadPopupArt();const sprout=$('.pause-sprout'),popupSprout=document.createElement('img');popupSprout.className='pause-sprout';popupSprout.src=popupArt.sprout;popupSprout.alt='';sprout.replaceWith(popupSprout);for(const [id,key,label]of [['resume-battle','resume','Resume'],['pause-to-home','home','Home']]){const b=$('#'+id);b.classList.add('asset-button');b.innerHTML='<span class="sr-only">'+label+'</span>';b.setAttribute('aria-label',label);b.style.setProperty('--button-art',`url("${popupArt[key]}")`);}const rigs=await loadRigs();
 let editorMotion=null;
 const stageEditor=new URLSearchParams(location.search).get('editor')==='stage'&&window.parent!==window;
-let stageOverrides={};try{stageOverrides=(await fetch(new URL('./data/stage-layouts.json',import.meta.url)).then(r=>r.json())).stages||{};if(location.hostname.endsWith('.chatgpt.site')){const r=await fetch('/api/stage-layouts');if(r.ok)stageOverrides={...stageOverrides,...(await r.json()).stages};}}catch{}
-if(!location.hostname.endsWith('.chatgpt.site'))stageOverrides=mergeAppliedStages(stageOverrides);
+let stageOverrides={},liveVersions={};try{stageOverrides=(await fetch(new URL('./data/stage-layouts.json',import.meta.url)).then(r=>r.json())).stages||{};}catch{}
+try{const release=await readLiveRelease();stageOverrides={...stageOverrides,...release.stages};liveVersions=release.versions;}catch{}
 const requestedPreview=Number(new URLSearchParams(location.search).get('layout-preview'));
 const layoutPreview=Number.isInteger(requestedPreview)&&requestedPreview>=1&&requestedPreview<=999?requestedPreview:0;
 let editorLayout=null,editorStage=1;
@@ -83,7 +83,7 @@ function tickVisuals(dt){cameraBlend=advanceTerrainCamera(cameraBlend,scene==='b
 const save=()=>{if(stageEditor||layoutPreview)return true;coins=saved.coins;const ok=persistProgress(saved);if(!ok)notify('Progress could not be saved in this browser.');return ok;};
 const chapter=()=>scene==='battle'&&runChapter?runChapter:chapterFor(saved),stageNumber=()=>scene==='battle'&&runStage?runStage:saved.completedStages+1;
 function notify(message){const box=$('#game-message');if(box.textContent===message&&box.classList.contains('visible'))return;box.textContent=message;box.classList.add('visible');messageUntil=performance.now()+1100;}
-function applyTheme(){previewStage=(stageEditor?currentLayout().theme:stageOverrides[stageNumber()]?.theme)||chapter().artStage||'green';rigs.theme=({green:'forest',dune:'desert',camp:'night',moon:'night',oasis:'desert',noon:'desert'})[previewStage]||'forest';frame.dataset.world=previewStage;worldArt.ensure(currentLayout()).then(()=>render()).catch(e=>{console.error(e);notify('Map art could not load. Please refresh.');});baseTier=Math.min(4,[60,120,200,300].filter(n=>saved.health>=n).length);baseMaxHp=saved.health;}
+function applyTheme(){previewStage=(stageEditor?currentLayout().theme:stageOverrides[stageNumber()]?.theme)||chapter().artStage||'green';rigs.theme=({green:'forest',dune:'desert',camp:'night',moon:'night',oasis:'desert',noon:'desert'})[previewStage]||'forest';frame.dataset.world=previewStage;frame.dataset.liveVersion=String(liveVersions[stageNumber()]||0);worldArt.ensure(currentLayout()).then(()=>render()).catch(e=>{console.error(e);notify('Map art could not load. Please refresh.');});baseTier=Math.min(4,[60,120,200,300].filter(n=>saved.health>=n).length);baseMaxHp=saved.health;}
 function money(n){return n<1000?String(Math.floor(n)):(n/1000).toFixed(1).replace('.0','')+'K';}
 function icon(name){return `<img class="ui-raster" src="${uiSkins[name]}" alt="" aria-hidden="true">`;}
 function syncHome(){applyTheme();$('#coins').textContent=money(displayBalance('coins'));$('#gems').textContent=money(displayBalance('gems'));$('.chapter-title strong').textContent=scene==='plants'?'PLANTS':chapter().name.toUpperCase();$('#stage-number').textContent='STAGE '+stageNumber();for(const key of ['health','rate','income']){const b=$('[data-upgrade="'+key+'"]'),next=+(saved[key]+rules.economy.increments[key]).toFixed(2),cost=costFor(saved,key),free=saved.coins<cost&&!saved.freeUsed[key];$('#stat-'+key).innerHTML=upgradeValue(saved[key],next);b.querySelector('b').innerHTML=(free?icon('video'):icon('coin'))+'<span>'+(free?'FREE':money(cost))+'</span>';b.classList.toggle('free-invite',free);b.disabled=!upgradeAvailable(saved,key);b.setAttribute('aria-disabled',String(b.disabled));b.setAttribute('aria-label','Upgrade '+key+' '+(free?'free bonus':cost+' coins'));}if(scene==='plants')renderPlants();}
@@ -198,7 +198,7 @@ async function finishBoot(){const overlay=$('#boot-loading'),shown=+$('#boot-log
 function advanceElapsed(seconds){let remaining=Math.max(0,seconds);while(remaining>1e-7){const dt=Math.min(1/30,remaining);tickVisuals(dt);tickSceneSplash(dt);if(!paused&&!sceneSplash){if(bossIntro){bossIntro.elapsed+=dt;if(bossIntro.elapsed>=introDuration)endBossIntro();}update(dt*(bossIntro?.12:1));}remaining-=dt;if(paused||(!sceneSplash&&scene!=='battle')||runResolved){if(!paused)time+=remaining;break;}}}
 function advanceFrame(now){if(now<=last)return;const elapsed=Math.max(0,(now-last)/1000);last=now;advanceElapsed(elapsed);}
 function loop(now){advanceFrame(now);tickRewardFlight(now);updateTutorial();if(bossIntro)$('#boss-cinematic').style.setProperty('--intro-opacity',String(introWeight()));if(messageUntil&&now>messageUntil){$('#game-message').classList.remove('visible');messageUntil=0;}updateUI();render();requestAnimationFrame(loop);}
-try{const clockWorker=new Worker(new URL('./background-clock.js?v=production-33',import.meta.url));clockWorker.onmessage=()=>{if(document.hidden)advanceFrame(performance.now());};}catch{setInterval(()=>{if(document.hidden)advanceFrame(performance.now());},250);}
+try{const clockWorker=new Worker(new URL('./background-clock.js?v=production-34',import.meta.url));clockWorker.onmessage=()=>{if(document.hidden)advanceFrame(performance.now());};}catch{setInterval(()=>{if(document.hidden)advanceFrame(performance.now());},250);}
 $('.production-track').setAttribute('role','progressbar');$('.production-track').setAttribute('aria-label','Charging next sunlight');$('.production-track').setAttribute('aria-valuemin','0');$('.production-track').setAttribute('aria-valuemax','100');applyTheme();buildCards();setScene(new URLSearchParams(location.search).get('screen')==='plants'?'plants':'home');updateUI();render();requestAnimationFrame(loop);await finishBoot();
 
 
@@ -218,8 +218,8 @@ if(stageEditor)window.addEventListener('message',e=>{if(e.origin!==location.orig
 
 // Explicit publication updates open games; editor drafts never enter this path.
 let refreshingStage=false;
-async function refreshPublishedStage(){if(stageEditor||refreshingStage)return;refreshingStage=true;try{let next;if(location.hostname.endsWith('.chatgpt.site')){const response=await fetch('/api/stage-layouts',{cache:'no-store'});if(!response.ok)return;next=(await response.json()).stages||{};}else{const response=await fetch(new URL('./data/stage-layouts.json',import.meta.url),{cache:'no-store'});next=mergeAppliedStages(response.ok?(await response.json()).stages||{}:{});}for(const [n,row]of Object.entries(next)){try{next[n]=validateStage(row,Number(n));}catch{delete next[n];}}if(JSON.stringify(next)===JSON.stringify(stageOverrides))return;stageOverrides=next;applyTheme();for(const enemy of enemies){enemy.path=null;enemy.navAge=0;}render();}catch{}finally{refreshingStage=false;}}
+async function refreshPublishedStage(){if(stageEditor||refreshingStage)return;refreshingStage=true;try{const release=await readLiveRelease(),next=release.stages;liveVersions=release.versions;if(JSON.stringify(next)===JSON.stringify(stageOverrides))return;stageOverrides=next;await worldArt.ensure(currentLayout());applyTheme();for(const enemy of enemies){enemy.path=null;enemy.navAge=0;}render();}catch{}finally{refreshingStage=false;}}
 try{const stageLiveChannel=new BroadcastChannel('fvz-stage-live');stageLiveChannel.onmessage=refreshPublishedStage;}catch{}
 window.addEventListener('storage',e=>{if(e.key?.startsWith('fvz-stage-applied-v1-'))refreshPublishedStage();});
 window.addEventListener('focus',refreshPublishedStage);
-if(!stageEditor&&location.hostname.endsWith('.chatgpt.site'))setInterval(()=>{if(!document.hidden)refreshPublishedStage();},5000);
+if(!stageEditor)setInterval(()=>{if(!document.hidden)refreshPublishedStage();},5000);
