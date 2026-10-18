@@ -1,4 +1,4 @@
-import {motionFrame,validateMotions} from './motion-config.js?v=production-39';
+import {motionFrame,validateMotions} from './motion-config.js?v=production-40';
 // Proposal library only. The game never imports this pack or its assignments.
 export const plantMotionPersonalities=[
  {id:'poppy',name:'고추 · CHILI',tone:'성급한 행동파',color:'#f1735b',note:'가만히 있어도 작은 박자가 빠르고, 공격 반동은 짧고 날카롭게.',idle:'짧은 들썩임',walk:'다급한 두 박자',attack:'톡 쏘는 반동'},
