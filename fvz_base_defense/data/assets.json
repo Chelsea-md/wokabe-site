@@ -2210,6 +2210,102 @@
       "height": 1286,
       "bytes": 830994,
       "transparent": true
+    },
+    {
+      "id": "cartoon-v5-ally-mint",
+      "file": "cartoon-v5-ally-mint-v15.png",
+      "name": "MINT · 새 동료 시안",
+      "category": "plants",
+      "origin": "imagegen 기본 내장 도구 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "PLANTS 캐릭터 시안",
+        "신규 동료 디자인"
+      ],
+      "width": 1299,
+      "height": 1211,
+      "bytes": 1111019
+    },
+    {
+      "id": "cartoon-v5-ally-mushroom",
+      "file": "cartoon-v5-ally-mushroom-v15.png",
+      "name": "MUSHROOM · 새 동료 시안",
+      "category": "plants",
+      "origin": "imagegen 기본 내장 도구 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "PLANTS 캐릭터 시안",
+        "신규 동료 디자인"
+      ],
+      "width": 1312,
+      "height": 1199,
+      "bytes": 860206
+    },
+    {
+      "id": "cartoon-v5-ally-cactus",
+      "file": "cartoon-v5-ally-cactus-v15.png",
+      "name": "CACTUS · 새 동료 시안",
+      "category": "plants",
+      "origin": "imagegen 기본 내장 도구 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "PLANTS 캐릭터 시안",
+        "신규 동료 디자인"
+      ],
+      "width": 1414,
+      "height": 1112,
+      "bytes": 979593
+    },
+    {
+      "id": "cartoon-v5-ally-clover",
+      "file": "cartoon-v5-ally-clover-v15.png",
+      "name": "CLOVER · 새 동료 시안",
+      "category": "plants",
+      "origin": "imagegen 기본 내장 도구 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "PLANTS 캐릭터 시안",
+        "신규 동료 디자인"
+      ],
+      "width": 1312,
+      "height": 1199,
+      "bytes": 992472
+    },
+    {
+      "id": "cartoon-v5-ally-bamboo",
+      "file": "cartoon-v5-ally-bamboo-v15.png",
+      "name": "BAMBOO · 새 동료 시안",
+      "category": "plants",
+      "origin": "imagegen 기본 내장 도구 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "PLANTS 캐릭터 시안",
+        "신규 동료 디자인"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1219263
+    },
+    {
+      "id": "cartoon-v5-ally-starfruit",
+      "file": "cartoon-v5-ally-starfruit-v15.png",
+      "name": "STARFRUIT · 새 동료 시안",
+      "category": "plants",
+      "origin": "imagegen 기본 내장 도구 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "PLANTS 캐릭터 시안",
+        "신규 동료 디자인"
+      ],
+      "width": 1312,
+      "height": 1199,
+      "bytes": 824390
     }
   ]
 }

@@ -1350,3 +1350,5 @@ export const openQuestions = [
 ];
 
 // LIVE OPS uses actual production rendering; cloud saves are owner-private.
+
+// Production 15: four shared growth rigs, ten rank materials, six equipped concept allies.

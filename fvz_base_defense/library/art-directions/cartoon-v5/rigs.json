@@ -361,6 +361,85 @@
         ],
         "method": "Ten complete fitted character/weapon/outfit drawings. No generic overlay accessories."
       }
+    },
+    "sunflower": {
+      "name": "SUNFLOWER",
+      "class": "scout",
+      "skill": "SUN BURST",
+      "atlas": "../../../assets/cartoon-v5-sunflower-growth.png",
+      "source": [
+        53,
+        44,
+        361,
+        359
+      ],
+      "evolution": {
+        "atlas": "../../../assets/cartoon-v5-sunflower-growth.png",
+        "extract": "frames",
+        "frames": [
+          [
+            53,
+            44,
+            361,
+            359
+          ],
+          [
+            430,
+            45,
+            738,
+            360
+          ],
+          [
+            801,
+            40,
+            1120,
+            360
+          ],
+          [
+            1173,
+            33,
+            1522,
+            361
+          ],
+          [
+            1570,
+            30,
+            1938,
+            378
+          ],
+          [
+            42,
+            398,
+            375,
+            733
+          ],
+          [
+            422,
+            391,
+            774,
+            737
+          ],
+          [
+            789,
+            383,
+            1171,
+            743
+          ],
+          [
+            1190,
+            382,
+            1551,
+            749
+          ],
+          [
+            1556,
+            378,
+            1973,
+            768
+          ]
+        ],
+        "anchor": 0.44
+      }
     }
   },
   "enemies": {

@@ -64,7 +64,7 @@
     {
       "id": "pea",
       "name": "CHILI",
-      "sourceName": "\uae30\ubcf8 \ubcd1\ub825",
+      "sourceName": "기본 병력",
       "attack": 7.5,
       "hp": 50,
       "cost": 3,
@@ -81,7 +81,7 @@
     {
       "id": "cabbage",
       "name": "ACORN",
-      "sourceName": "\uad81\uc218",
+      "sourceName": "궁수",
       "attack": 18.75,
       "hp": 40,
       "cost": 7,
@@ -98,7 +98,7 @@
     {
       "id": "cactus",
       "name": "PINECONE",
-      "sourceName": "\uc7a5\ucd1d \ubcd1\ub825",
+      "sourceName": "장총 병력",
       "attack": 35,
       "hp": 20,
       "cost": 12,
@@ -397,37 +397,79 @@
       "name": "MINT",
       "stage": 6,
       "role": "FROST / SLOW",
-      "status": "concept"
+      "status": "concept",
+      "art": "assets/cartoon-v5-ally-mint-v15.png",
+      "bounds": [
+        53,
+        53,
+        1253,
+        1161
+      ]
     },
     {
       "name": "MUSHROOM",
       "stage": 9,
       "role": "POISON",
-      "status": "concept"
+      "status": "concept",
+      "art": "assets/cartoon-v5-ally-mushroom-v15.png",
+      "bounds": [
+        123,
+        77,
+        1230,
+        1070
+      ]
     },
     {
       "name": "CACTUS",
       "stage": 12,
       "role": "TANK / THORNS",
-      "status": "concept"
+      "status": "concept",
+      "art": "assets/cartoon-v5-ally-cactus-v15.png",
+      "bounds": [
+        98,
+        74,
+        1384,
+        1033
+      ]
     },
     {
       "name": "CLOVER",
       "stage": 15,
       "role": "HEAL / SUPPORT",
-      "status": "concept"
+      "status": "concept",
+      "art": "assets/cartoon-v5-ally-clover-v15.png",
+      "bounds": [
+        87,
+        77,
+        1260,
+        1123
+      ]
     },
     {
       "name": "BAMBOO",
       "stage": 18,
       "role": "ARMOR PIERCE",
-      "status": "concept"
+      "status": "concept",
+      "art": "assets/cartoon-v5-ally-bamboo-v15.png",
+      "bounds": [
+        56,
+        25,
+        1526,
+        957
+      ]
     },
     {
       "name": "STARFRUIT",
       "stage": 21,
       "role": "CHAIN LIGHTNING",
-      "status": "concept"
+      "status": "concept",
+      "art": "assets/cartoon-v5-ally-starfruit-v15.png",
+      "bounds": [
+        61,
+        80,
+        1293,
+        1122
+      ]
     }
   ]
 }

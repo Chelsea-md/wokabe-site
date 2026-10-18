@@ -34,3 +34,5 @@ body.production .recruit-kicker,body.production #recruit-name{color:#fff8e4;-web
 body.production .game-frame:not(.plants) #plants-grid{display:none}
 
 .stage-editor-preview.map-only #game-frame>*:not(canvas){visibility:hidden!important}.stage-editor-preview #boot-loading{display:none!important}
+
+body.production[data-ui-theme=bold] #plants-grid .future-plant .plant-select{background-color:#b4dedd;background-blend-mode:normal}body.production #plants-grid .future-plant .plant-select::after{display:block}.future-plant .collection-character{filter:none}
