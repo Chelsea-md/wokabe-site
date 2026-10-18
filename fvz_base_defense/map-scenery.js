@@ -1,4 +1,4 @@
-import {propPieces,propAtlas} from './stage-layout.js?v=production-32';
+import {propPieces,propAtlas} from './stage-layout.js?v=production-33';
 export const sandPalettes={
  dune:{base:'#e7b17b',light:'#f5cda0',edge:'#d89a64',dune:'#cc8e5c',grain:'#b58251',paving:'#bd9e70'},
  oasis:{base:'#e3d3a8',light:'#f3e4be',edge:'#ceba8b',dune:'#c7b181',grain:'#b49b69',paving:'#bba176'},

@@ -1,14 +1,15 @@
-import {separateSprites} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-32';
-import {propAtlas} from './stage-layout.js?v=production-32';
+import {bossNames} from './boss-names.js?v=production-33';
+import {separateSprites} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-33';
+import {propAtlas} from './stage-layout.js?v=production-33';
 export const worldThemes={
- camp:{name:'Night Camp',subtitle:'Moonlit Clearing',boss:'NIGHT RANGER',color:'#ffc75a',projectile:'#ffd56a'},
- dune:{name:'Dune Loop',subtitle:'Dusty Desert',boss:'DUNE SULTAN',color:'#ffc364',projectile:'#ffe1a5'},
- oasis:{name:'Sun Temple',subtitle:'Ancient Sands',boss:'SUN PHARAOH',color:'#ffd34d',projectile:'#ffe289'},
- noon:{name:'Sunset Dunes',subtitle:'Sunset Sands',boss:'DUNE SULTAN',color:'#ffae65',projectile:'#ffe1a5'},
- ember:{name:'Ember Valley',subtitle:'Volcanic Wastes',boss:'MAGMA MARSHAL',color:'#ff822f',projectile:'#ff993d'},
- frost:{name:'Frost Garden',subtitle:'Frozen Fields',boss:'FROST REGENT',color:'#78dbff',projectile:'#b9f0ff'},
- coral:{name:'Coral Coast',subtitle:'Sunlit Shore',boss:'TIDAL ADMIRAL',color:'#4ee1d1',projectile:'#64e4dd'},
- hollow:{name:'Blue Hollow',subtitle:'Cursed Graveyard',boss:'HOLLOW WARDEN',color:'#8d9aff',projectile:'#a8baff'}
+ camp:{name:'Night Camp',subtitle:'Moonlit Clearing',boss:bossNames.camp,color:'#ffc75a',projectile:'#ffd56a'},
+ dune:{name:'Dune Loop',subtitle:'Dusty Desert',boss:bossNames.dune,color:'#ffc364',projectile:'#ffe1a5'},
+ oasis:{name:'Sun Temple',subtitle:'Ancient Sands',boss:bossNames.oasis,color:'#ffd34d',projectile:'#ffe289'},
+ noon:{name:'Sunset Dunes',subtitle:'Sunset Sands',boss:bossNames.noon,color:'#ffae65',projectile:'#ffe1a5'},
+ ember:{name:'Ember Valley',subtitle:'Volcanic Wastes',boss:bossNames.ember,color:'#ff822f',projectile:'#ff993d'},
+ frost:{name:'Frost Garden',subtitle:'Frozen Fields',boss:bossNames.frost,color:'#78dbff',projectile:'#b9f0ff'},
+ coral:{name:'Coral Coast',subtitle:'Sunlit Shore',boss:bossNames.coral,color:'#4ee1d1',projectile:'#64e4dd'},
+ hollow:{name:'Blue Hollow',subtitle:'Cursed Graveyard',boss:bossNames.hollow,color:'#8d9aff',projectile:'#a8baff'}
 };
 // Body pixels remain unchanged. Each supplied weapon pivots independently at its grip.
 export function drawEnemyLayers(ctx,row,x,y,height,{attack=0}={}){
