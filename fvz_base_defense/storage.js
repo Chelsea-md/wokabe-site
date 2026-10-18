@@ -1,4 +1,4 @@
-import { rules } from "./config.js?v=production-36";
+import { rules } from "./config.js?v=production-37";
 
 const fresh = () => structuredClone(rules.defaults);
 const number = (value, fallback, minimum, maximum) =>
