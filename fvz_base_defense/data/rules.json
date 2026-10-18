@@ -390,5 +390,44 @@
     "routePolicy": "preserve-existing-three-then-observed-expansion",
     "repeatDifficultyIncrement": 0.18,
     "verification": "new-game-design-not-exact-source-measurement"
-  }
+  },
+  "plantRosterCapacity": 10,
+  "plantRoadmap": [
+    {
+      "name": "MINT",
+      "stage": 6,
+      "role": "FROST / SLOW",
+      "status": "concept"
+    },
+    {
+      "name": "MUSHROOM",
+      "stage": 9,
+      "role": "POISON",
+      "status": "concept"
+    },
+    {
+      "name": "CACTUS",
+      "stage": 12,
+      "role": "TANK / THORNS",
+      "status": "concept"
+    },
+    {
+      "name": "CLOVER",
+      "stage": 15,
+      "role": "HEAL / SUPPORT",
+      "status": "concept"
+    },
+    {
+      "name": "BAMBOO",
+      "stage": 18,
+      "role": "ARMOR PIERCE",
+      "status": "concept"
+    },
+    {
+      "name": "STARFRUIT",
+      "stage": 21,
+      "role": "CHAIN LIGHTNING",
+      "status": "concept"
+    }
+  ]
 }

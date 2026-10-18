@@ -10,7 +10,7 @@ export function stageObstacles(stage){
   return [[360,116,73,86],[970,225,60,43],[438,433,52,38],[865,497,53,66]];
 }
 export function blocked(x,y,obstacles,padding=14){return obstacles.some(([cx,cy,rx,ry])=>((x-cx)/(rx+padding))**2+((y-cy)/(ry+padding))**2<1);}
-export function bodyObstacles(enemy,obstacles){const height=enemy.kind==='boss'?150:enemy.kind==='bruiser'?85:60,lift=height*.48;return obstacles.map(([x,y,rx,ry])=>[x,y+lift,rx,ry+lift]);}
+export function bodyObstacles(enemy,obstacles){const height=(enemy.kind==='boss'?150:enemy.kind==='bruiser'?85:60)*(enemy.visualScale||1),lift=height*.48;return obstacles.map(([x,y,rx,ry])=>[x,y+lift,rx,ry+lift]);}
 export function segmentBlocked(from,to,obstacles,padding=14){const steps=Math.max(1,Math.ceil(Math.hypot(to.x-from.x,to.y-from.y)/4));for(let i=0;i<=steps;i++){const t=i/steps;if(blocked(from.x+(to.x-from.x)*t,from.y+(to.y-from.y)*t,obstacles,padding))return true;}return false;}
 export function findRoute(from,to,obstacles,padding=14){
   const size=20,ox=-100,oy=-100,cols=71,rows=41;

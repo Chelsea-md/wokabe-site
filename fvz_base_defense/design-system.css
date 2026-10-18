@@ -1,0 +1,36 @@
+/* Authoritative presentation tokens shared by Home and Plants. v14 */
+:root{--ds-ink:#10151b;--ds-cream:#fff8d9;--ds-panel:#14232d;--ds-cyan:#00c8df;--ds-lilac:#b8afe3;--ds-gold:#ffd141;--ds-card-radius:1.25cqw;--ds-control-radius:.9cqw;--ds-outline-extra:.083333cqw;--ds-outline:calc(.13em + var(--ds-outline-extra));--ds-header-left:34%;--ds-header-width:32%;--ds-header-top:2.5%;--ds-header-height:15%;--ds-idle-duration:3.2s;--ds-shadow-opacity:.25}
+body.production[data-ui-theme=bold] .chapter-title,body.production[data-ui-theme=bold] .game-frame.plants .chapter-title{left:var(--ds-header-left);width:var(--ds-header-width);top:var(--ds-header-top);height:var(--ds-header-height);padding-bottom:1cqw}
+body.production[data-ui-theme=bold] .chapter-title strong,body.production[data-ui-theme=bold] .game-frame.plants .chapter-title strong{font-size:3.2cqw;-webkit-text-stroke:var(--ds-outline) var(--ds-ink);paint-order:stroke fill}
+body.production[data-ui-theme=bold] .upgrades>button,body.production[data-ui-theme=bold] .upgrades>button:first-child{background-image:var(--skin-cyan);border-radius:var(--ds-card-radius)}
+body.production[data-ui-theme=bold] .upgrades b{background:linear-gradient(#9aff30,#32d719);border:.25cqw solid var(--ds-ink);border-radius:var(--ds-control-radius);box-shadow:inset 0 .18cqw #edff9b,inset 0 -.3cqw #078832,0 .2cqw #14232d}
+body.production[data-ui-theme=bold] .upgrade-label,body.production[data-ui-theme=bold] .upgrades strong,body.production[data-ui-theme=bold] .upgrades b,body.production[data-ui-theme=bold] .bottom-nav button span{-webkit-text-stroke:var(--ds-outline) var(--ds-ink);paint-order:stroke fill}
+body.production #plants-grid{left:18%;right:18%;top:22%;height:60.5%;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:1cqw 1cqw;align-items:stretch}
+body.production #plants-grid .plant-collection-card{height:100%;min-height:0;grid-template-rows:70% 30%;border-radius:var(--ds-card-radius);filter:drop-shadow(0 .18cqw #101820)}
+body.production[data-ui-theme=bold] #plants-grid .plant-select{border-radius:var(--ds-card-radius);background-image:var(--skin-cyan);isolation:isolate}
+body.production[data-ui-theme=bold] #plants-grid .locked .plant-select{background-image:var(--skin-cyan);background-color:var(--ds-lilac);background-blend-mode:luminosity}
+body.production[data-ui-theme=bold] #plants-grid .plant-select>strong{left:4%;width:92%;bottom:0;height:1.55cqw;border-radius:.65cqw;border-width:.18cqw;font-size:.98cqw;z-index:3}
+body.production[data-ui-theme=bold] #plants-grid .plant-collection-footer{border-radius:0 0 var(--ds-card-radius) var(--ds-card-radius);border-width:.2cqw;border-top:0;padding:.2cqw .65cqw}
+body.production[data-ui-theme=bold] #plants-grid .locked .plant-collection-footer{padding:.16cqw}
+body.production #plants-grid .plant-stat{gap:.5cqw}body.production #plants-grid .plant-stat b{font-size:1.3cqw;-webkit-text-stroke:calc(.1em + var(--ds-outline-extra)) var(--ds-ink);paint-order:stroke fill}
+body.production #plants-grid .plant-stat img,body.production #plants-grid .plant-stat svg{width:1.5cqw;height:1.5cqw;min-height:0}
+body.production #plants-grid .unlock-plant{border-radius:.8cqw;border-width:.18cqw;gap:0;padding:.08cqw!important}
+body.production #plants-grid .unlock-plant strong{font-size:1.1cqw;-webkit-text-stroke:calc(.1em + var(--ds-outline-extra)) var(--ds-ink);paint-order:stroke fill;line-height:1.05}
+body.production #plants-grid .unlock-plant b{font-size:1.25cqw;-webkit-text-stroke:calc(.1em + var(--ds-outline-extra)) var(--ds-ink);line-height:1.05}
+body.production #plants-grid .unlock-plant span img{width:1.25cqw;height:1.25cqw}body.production #plants-grid .unlock-plant small{font-size:.59cqw;min-height:.65cqw;line-height:1.05;-webkit-text-stroke:.1em var(--ds-ink)}
+body.production[data-ui-theme=bold] #plants-grid .plant-select .collection-character{left:10%;top:8%;width:80%;height:73%;z-index:1;filter:none;animation:ds-collection-idle var(--ds-idle-duration) var(--idle-delay,0s) ease-in-out infinite}
+body.production[data-ui-theme=bold] #plants-grid .unaffordable .collection-character{filter:grayscale(1) brightness(.78)}
+body.production #plants-grid .plant-select::after{left:25%;bottom:14%;width:50%;height:16%;border-radius:50%;background:#132c24;opacity:var(--ds-shadow-opacity);filter:none;z-index:0;animation:ds-collection-shadow var(--ds-idle-duration) var(--idle-delay,0s) ease-in-out infinite}
+body.production #plants-grid .collection-lock{width:20%;height:22%;z-index:4}
+body.production[data-ui-theme=bold] #plants-grid .future-plant .plant-select{background-color:#a5b3be;background-blend-mode:luminosity}
+body.production #plants-grid .future-plant .plant-select::after{display:none}
+.concept-symbol{position:absolute;left:30%;top:20%;width:40%;height:43%;object-fit:contain;opacity:.68;filter:grayscale(1)}
+body.production #plants-grid .future-plant .plant-collection-footer{align-items:center;text-align:center;gap:.2cqw;background:#24323c}
+.future-plant .plant-collection-footer>b{font:.72cqw GameChunk;color:#d5e4d3;line-height:1.15;white-space:nowrap}.future-plant .plant-collection-footer>small{font:.69cqw GameChunk;color:#b4c8b8;line-height:1.2;min-height:0}
+body.production .recruit-kicker,body.production #recruit-name{color:#fff8e4;-webkit-text-stroke:calc(.12em + var(--ds-outline-extra)) var(--ds-ink);paint-order:stroke fill;text-shadow:0 .12cqw #182a22}
+@keyframes ds-collection-idle{0%,100%{transform:translateY(0) rotate(-.35deg) scale(1)}50%{transform:translateY(-.15cqw) rotate(.35deg) scale(1.012,1.02)}}
+@keyframes ds-collection-shadow{0%,100%{transform:scale(1);opacity:var(--ds-shadow-opacity)}50%{transform:translateY(.04cqw) scale(.9,.88);opacity:.2}}
+@media(prefers-reduced-motion:reduce){body.production[data-ui-theme=bold] #plants-grid .plant-select .collection-character,body.production #plants-grid .plant-select::after{animation:none!important;will-change:auto}}
+body.production .game-frame:not(.plants) #plants-grid{display:none}
+
+.stage-editor-preview.map-only #game-frame>*:not(canvas){visibility:hidden!important}.stage-editor-preview #boot-loading{display:none!important}

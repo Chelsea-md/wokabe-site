@@ -539,6 +539,23 @@ export const documents = {
     "meta": "설계 버전0.3 · 기준 해상도824×419 · 데스크톱과 터치 입력",
     "sections": [
 {
+  "title": "production-14 홈·PLANTS 공통 디자인 시스템 · 2026-10-18",
+  "blocks": [
+    {
+      "type": "p",
+      "text": "둥근 카드, 버튼, 흰색 글자·굵은 외곽선, 동일한 제목 리본 위치·크기를 design-system.css의 토큰으로 관리한다. Castle Health도 같은 둥근 cyan 카드로 바꾼다. PLANTS 그림자는 블러 없는 넓은 타원이며 캐릭터보다 아래에서 같은 박자로 숨쉰다."
+    },
+    {
+      "type": "p",
+      "text": "PLANTS는 5열 2행의 10자리다. 기본 4명의 구매 조건을 유지하고, 민트(6)·버섯(9)·선인장(12)·클로버(15)·대나무(18)·스타프루트(21)는 역할 다양화를 위한 후보로 표시한다. 후보는 CONCEPT 상태이며 실제 구매·전투 캐릭터는 아직 4명이다."
+    },
+    {
+      "type": "p",
+      "text": "보스는 걸을 때만 맵에 맞는 짧은 컬러 흔적을 남긴다. 정지 후 약 0.8초에 사라지고 보스당 12개로 제한한다. 컷씬·동작 줄이기 환경에서는 새 흔적을 만들지 않는다."
+    }
+  ]
+},
+{
   "title": "production-13 승리 보상과 사막 연출 · 2026-10-18",
   "blocks": [
     {
@@ -1331,3 +1348,5 @@ export const openQuestions = [
     "priority": "중간"
   }
 ];
+
+// LIVE OPS uses actual production rendering; cloud saves are owner-private.
