@@ -3015,6 +3015,91 @@
       "width": 1536,
       "height": 1024,
       "bytes": 1127589
+    },
+    {
+      "id": "cartoon-v5-moon-props-v35",
+      "file": "cartoon-v5-moon-props-v35.png",
+      "name": "Moonlight · props",
+      "category": "props",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "Moonlight",
+        "LIVE OPS",
+        "챕터 갤러리"
+      ],
+      "width": 1774,
+      "height": 887,
+      "bytes": 1214375
+    },
+    {
+      "id": "cartoon-v5-moon-reference-v35",
+      "file": "cartoon-v5-moon-reference-v35.png",
+      "name": "Moonlight · reference",
+      "category": "backgrounds",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "reference",
+      "preload": false,
+      "usedIn": [
+        "Moonlight",
+        "LIVE OPS",
+        "챕터 갤러리"
+      ],
+      "width": 1774,
+      "height": 887,
+      "bytes": 2301429
+    },
+    {
+      "id": "cartoon-v5-moon-ground-v35",
+      "file": "cartoon-v5-moon-ground-v35.png",
+      "name": "Moonlight · ground",
+      "category": "backgrounds",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "Moonlight",
+        "LIVE OPS",
+        "챕터 갤러리"
+      ],
+      "width": 1774,
+      "height": 887,
+      "bytes": 1789589
+    },
+    {
+      "id": "cartoon-v5-moon-monsters-user-v35",
+      "file": "cartoon-v5-moon-monsters-user-v35.png",
+      "name": "Moonlight · monsters-user",
+      "category": "enemies",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "Moonlight",
+        "LIVE OPS",
+        "챕터 갤러리"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1384940
+    },
+    {
+      "id": "cartoon-v5-moon-weapons-user-v35",
+      "file": "cartoon-v5-moon-weapons-user-v35.png",
+      "name": "Moonlight · weapons-user",
+      "category": "enemies",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "Moonlight",
+        "LIVE OPS",
+        "챕터 갤러리"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1063104
     }
   ]
 }

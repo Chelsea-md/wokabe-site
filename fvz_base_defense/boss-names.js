@@ -1,1 +1,1 @@
-export const bossNames=Object.freeze({green:'ZOMBIE COMMANDER',dune:'ZOMBIE SULTAN',camp:'RANGER ZOMBIE',moon:'VAMPIRE ZOMBIE',oasis:'ZOMBIE PHARAOH',noon:'DESERT ZOMBIE KING',ember:'MAGMA ZOMBIE KING',frost:'FROST ZOMBIE KING',coral:'PIRATE ZOMBIE KING',hollow:'VAMPIRE ZOMBIE LORD'});
+export const bossNames=Object.freeze({green:'ZOMBIE COMMANDER',dune:'ZOMBIE SULTAN',camp:'RANGER ZOMBIE',moon:'MOON ZOMBIE KING',oasis:'ZOMBIE PHARAOH',noon:'DESERT ZOMBIE KING',ember:'MAGMA ZOMBIE KING',frost:'FROST ZOMBIE KING',coral:'PIRATE ZOMBIE KING',hollow:'VAMPIRE ZOMBIE LORD'});
