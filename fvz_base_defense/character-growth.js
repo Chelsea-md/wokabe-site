@@ -17,7 +17,7 @@ export function validateGrowth(input){
 export async function loadGrowthAssets(){
  const image=async file=>{const im=new Image();im.src=new URL('./assets/'+file,import.meta.url);await im.decode();return im;};
  const [hats,characters]=await Promise.all([image('cartoon-v5-growth-hats-v18.png'),image('cartoon-v5-extra-characters-v18.png')]);
- let config=defaultGrowth();try{const r=await fetch(new URL('./data/character-growth.json?v=production-20',import.meta.url));if(r.ok)config=validateGrowth(await r.json());if(location.hostname.endsWith('.chatgpt.site')){const response=await fetch('/api/character-growth');if(response.ok)config=validateGrowth((await response.json()).config);}}catch(e){console.warn('성장 설정 기본값을 사용합니다.',e.message);}
+ let config=defaultGrowth();try{const r=await fetch(new URL('./data/character-growth.json?v=production-21',import.meta.url));if(r.ok)config=validateGrowth(await r.json());if(location.hostname.endsWith('.chatgpt.site')){const response=await fetch('/api/character-growth');if(response.ok)config=validateGrowth((await response.json()).config);}}catch(e){console.warn('성장 설정 기본값을 사용합니다.',e.message);}
  return {hats,characters,config};
 }
 // Body-space positions follow the same flip, breathing and attack transform as the character.
