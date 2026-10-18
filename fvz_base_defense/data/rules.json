@@ -213,7 +213,7 @@
         "decrease": 0.13,
         "min": 1
       },
-      "bossAt": 0.6,
+      "bossAt": 0.45,
       "bossHp": 3200,
       "coinsAtObservedIncome": {
         "income": 15,
@@ -246,7 +246,7 @@
         "decrease": 0.055,
         "min": 0.9
       },
-      "bossAt": 0.2,
+      "bossAt": 0.45,
       "bossHp": 4500,
       "coinsAtObservedIncome": {
         "income": 17,
@@ -279,7 +279,7 @@
         "decrease": 0.06,
         "min": 0.78
       },
-      "bossAt": 0.2,
+      "bossAt": 0.45,
       "bossHp": 4500,
       "verification": "observed-theme-ranged-pressure-calibrated-wave-counts",
       "artStage": "camp",
@@ -309,7 +309,7 @@
         "decrease": 0.05,
         "min": 0.65
       },
-      "bossAt": 0.5,
+      "bossAt": 0.45,
       "bossHp": 5000,
       "hpFactor": 1.7,
       "verification": "observed-theme-provisional-route-and-calibrated-combat"
@@ -338,7 +338,7 @@
         "decrease": 0.05,
         "min": 0.65
       },
-      "bossAt": 0.5,
+      "bossAt": 0.45,
       "bossHp": 4800,
       "hpFactor": 1.3,
       "verification": "observed-theme-provisional-route-and-calibrated-combat"
@@ -367,7 +367,7 @@
         "decrease": 0.05,
         "min": 0.65
       },
-      "bossAt": 0.5,
+      "bossAt": 0.45,
       "bossHp": 4800,
       "hpFactor": 1.4,
       "verification": "observed-theme-provisional-route-and-calibrated-combat"
