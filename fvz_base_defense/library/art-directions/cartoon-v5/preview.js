@@ -1,14 +1,14 @@
-import {upgradeValue} from '../../../ui-markup.js?v=production-17';
-import {paintSand,paintMapProps} from '../../../map-scenery.js?v=production-17';
-import {defaultStage,layoutObstacles} from '../../../stage-layout.js?v=production-17';
+import {upgradeValue} from '../../../ui-markup.js?v=production-18';
+import {paintSand,paintMapProps} from '../../../map-scenery.js?v=production-18';
+import {defaultStage,layoutObstacles} from '../../../stage-layout.js?v=production-18';
 import {observeWorldResolution} from '../../../canvas-resolution.js';
-import {createPlantsRoster} from './plants-roster.js?v=production-17';
+import {createPlantsRoster} from './plants-roster.js?v=production-18';
 import {spawnOutside,stageObstacles as oldStageObstacles,moveEnemy} from './navigation.js?v=plants-entry';
 import {loadUiSkins} from './ui-skins.js?v=combat-refinement';
 const uiSkins=await loadUiSkins();
-import {loadRigs,drawRig,drawExploded} from "./rig-renderer.js?v=production-17";
+import {loadRigs,drawRig,drawExploded} from "./rig-renderer.js?v=production-18";
 const stagePreset=s=>defaultStage(({green:1,dune:2,camp:3,moon:4,oasis:5,noon:6})[s]||1);const stageObstacles=s=>layoutObstacles(stagePreset(s),['dune','oasis','noon'].includes(s)?[]:oldStageObstacles(s));const [desertProps,egyptProps]=await Promise.all(['cartoon-v5-desert-props.png','cartoon-v5-egypt-props-v16.png'].map(src=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=reject;im.src='../../../assets/'+src;})));
-const rigs=await loadRigs();const rosterRules=await fetch('../../../data/rules.json?v=production-17').then(r=>r.json());
+const rigs=await loadRigs();const rosterRules=await fetch('../../../data/rules.json?v=production-18').then(r=>r.json());
 let previewStar=1,previewStage='green';
 const portraitCache=new Map();
 const playerNames=['PEPPER SCOUT','ACORN MARKSMAN','PINECONE GUNNER'];
@@ -37,7 +37,7 @@ const homeField=new Image();homeField.src="../../../assets/cartoon-v5-home-field
 const baseBounds=[[29,387,218,251],[274,346,315,299],[611,284,399,372],[1036,248,566,410],[1630,37,764,662]];
 const sproutPattern=new Image();sproutPattern.src='../../../assets/cartoon-v5-plants-sprout-transparent.png';await sproutPattern.decode();
 function neutralPlant(source){const cv=document.createElement('canvas');cv.width=300;cv.height=300;const b=source,w=b[2]-b[0],h=b[3]-b[1],z=Math.min(280/w,280/h);cv.getContext('2d').drawImage(rigs.poppy.image,b[0],b[1],w,h,150-w*z/2,290-h*z,w*z,h*z);return cv.toDataURL('image/png');}
-const plantRoster=createPlantsRoster({root:$('#plants-grid'),portraits:{chili:portrait('poppy',1),sunflower:portrait('sunflower',1),acorn:portrait('bellflower',1),pinecone:portrait('marigold',1)},concepts:rosterRules.plantRoadmap,skins:uiSkins,getCoins:()=>coins,spendCoins:amount=>{if(coins<amount)return false;coins-=amount;$('#coins').textContent=coins;return true;},onSelect:id=>{const cls=({chili:'poppy',acorn:'bellflower',pinecone:'marigold',sunflower:'sunflower'})[id];if(cls){$('#player-class').value=cls;updateEvolution();}}});
+const plantRoster=createPlantsRoster({root:$('#plants-grid'),portraits:{chili:portrait('poppy',1),sunflower:portrait('sunflower',1),acorn:portrait('bellflower',1),pinecone:portrait('marigold',1)},concepts:rosterRules.plantRoadmap.map(p=>({...p,portrait:portrait(p.id)})),skins:uiSkins,getCoins:()=>coins,spendCoins:amount=>{if(coins<amount)return false;coins-=amount;$('#coins').textContent=coins;return true;},onSelect:id=>{const cls=({chili:'poppy',acorn:'bellflower',pinecone:'marigold',sunflower:'sunflower'})[id];if(cls){$('#player-class').value=cls;updateEvolution();}}});
 function showSceneSplash(next,{resetBattle=false,label=null}={}){endBossIntro();drag=null;selected=null;sceneSplash={next,resetBattle,elapsed:0,switched:false};const logo=previewStage==="camp"?"logoNight":previewStage==="dune"||previewStage==="oasis"?"logoDesert":"logoForest";$("#splash-logo").src=uiSkins[logo];$("#splash-label").textContent=label||(next==="battle"?"PREPARE YOUR DEFENSE":"BACK TO THE GARDEN");$("#scene-splash").hidden=false;frame.classList.add("scene-changing");}
 function tickSceneSplash(dt){if(!sceneSplash)return;const t=sceneSplash; t.elapsed+=dt;if(t.elapsed>=.42&&!t.switched){t.switched=true;setScene(t.next);if(t.resetBattle){reset();endBossIntro();}}if(t.elapsed>=1.15){sceneSplash=null;$("#scene-splash").hidden=true;frame.classList.remove("scene-changing");if(t.resetBattle){setPaused(false);}}}
 

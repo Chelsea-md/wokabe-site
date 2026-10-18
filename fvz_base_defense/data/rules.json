@@ -394,7 +394,7 @@
   "plantRosterCapacity": 10,
   "plantRoadmap": [
     {
-      "name": "MINT",
+      "name": "CRYSTAL",
       "stage": 6,
       "role": "FROST / SLOW",
       "status": "concept",
@@ -404,7 +404,8 @@
         53,
         1253,
         1161
-      ]
+      ],
+      "id": "mint"
     },
     {
       "name": "MUSHROOM",
@@ -417,10 +418,11 @@
         77,
         1230,
         1070
-      ]
+      ],
+      "id": "mushroom"
     },
     {
-      "name": "CACTUS",
+      "name": "MOSS GOLEM",
       "stage": 12,
       "role": "TANK / THORNS",
       "status": "concept",
@@ -430,10 +432,11 @@
         74,
         1384,
         1033
-      ]
+      ],
+      "id": "cactus"
     },
     {
-      "name": "CLOVER",
+      "name": "LILY",
       "stage": 15,
       "role": "HEAL / SUPPORT",
       "status": "concept",
@@ -443,10 +446,11 @@
         77,
         1260,
         1123
-      ]
+      ],
+      "id": "clover"
     },
     {
-      "name": "BAMBOO",
+      "name": "LEAF",
       "stage": 18,
       "role": "ARMOR PIERCE",
       "status": "concept",
@@ -456,10 +460,11 @@
         25,
         1526,
         957
-      ]
+      ],
+      "id": "bamboo"
     },
     {
-      "name": "STARFRUIT",
+      "name": "HOLLY",
       "stage": 21,
       "role": "CHAIN LIGHTNING",
       "status": "concept",
@@ -469,7 +474,8 @@
         80,
         1293,
         1122
-      ]
+      ],
+      "id": "starfruit"
     }
   ]
 }

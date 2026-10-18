@@ -2337,6 +2337,40 @@
       "width": 1510,
       "height": 1041,
       "bytes": 434386
+    },
+    {
+      "id": "cartoon-v5-extra-characters",
+      "file": "cartoon-v5-extra-characters-v18.png",
+      "name": "추가 식물 캐릭터 6명 · 사용자 원화",
+      "category": "plants",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "캐릭터 성장 시트",
+        "LIVE OPS 모자 편집",
+        "PLANTS"
+      ],
+      "width": 1432,
+      "height": 678,
+      "bytes": 418866
+    },
+    {
+      "id": "cartoon-v5-growth-hats",
+      "file": "cartoon-v5-growth-hats-v18.png",
+      "name": "성장 모자 10종 · 사용자 원화",
+      "category": "ui",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": true,
+      "usedIn": [
+        "캐릭터 성장 시트",
+        "LIVE OPS 모자 편집",
+        "PLANTS"
+      ],
+      "width": 1983,
+      "height": 793,
+      "bytes": 949609
     }
   ]
 }
