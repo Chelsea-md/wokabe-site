@@ -1,4 +1,4 @@
-import { rules } from "./config.js?v=campaign-8";
+import { rules } from "./config.js?v=production-13";
 
 const fresh = () => structuredClone(rules.defaults);
 const number = (value, fallback, minimum, maximum) =>
@@ -16,6 +16,7 @@ export function loadProgress(storage) {
       number(data.chapter, 0, 0, rules.chapters.length - 1),
     );
     result.completedStages = Math.floor(number(data.completedStages, result.chapter, 0, 100000));
+    result.gems = Math.floor(number(data.gems, 0, 0, 1e12));
     result.coins = Math.floor(number(data.coins, 0, 0, 1e12));
     result.health = number(data.health, result.health, 10, 1e8);
     result.rate = number(data.rate, result.rate, 0.01, 1e5);

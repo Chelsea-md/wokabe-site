@@ -6,7 +6,7 @@ export function spawnOutside(index,width=1200,height=600,random=Math.random){
 export function stageObstacles(stage){
   // Full visible scenery bounds, not only the trunk or ground contact.
   if(stage==='moon')return [[367,135,77,76],[956,220,48,35],[446,449,55,28],[875,467,46,72]];
-  if(['dune','oasis','noon'].includes(stage))return [[183,151,28,26],[1018,211,28,26],[263,506,28,26],[943,501,28,26]];
+  if(['dune','oasis','noon'].includes(stage))return [[145,150,40,55],[1030,150,60,70],[260,445,67,40],[970,450,42,55],[80,358,25,23],[1125,380,27,27],[825,105,27,22],[315,77,23,20]];
   return [[360,116,73,86],[970,225,60,43],[438,433,52,38],[865,497,53,66]];
 }
 export function blocked(x,y,obstacles,padding=14){return obstacles.some(([cx,cy,rx,ry])=>((x-cx)/(rx+padding))**2+((y-cy)/(ry+padding))**2<1);}

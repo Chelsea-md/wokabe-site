@@ -57,7 +57,8 @@
     "played": false,
     "sound": true,
     "freeUsed": {},
-    "completedStages": 0
+    "completedStages": 0,
+    "gems": 0
   },
   "troops": [
     {
@@ -179,7 +180,8 @@
     },
     "killBaseBonus": 4,
     "adDurationMs": 5000,
-    "adProvider": "local-simulation"
+    "adProvider": "local-simulation",
+    "gemsPerVictory": 10
   },
   "merge": {
     "attackGrowth": 2,

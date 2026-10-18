@@ -2162,6 +2162,54 @@
       "height": 887,
       "bytes": 2170075,
       "transparent": false
+    },
+    {
+      "id": "cartoon-v5-gem",
+      "file": "cartoon-v5-gem.png",
+      "name": "Emerald currency",
+      "category": "ui",
+      "origin": "User supplied",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "production-13"
+      ],
+      "width": 1254,
+      "height": 1254,
+      "bytes": 242788,
+      "transparent": true
+    },
+    {
+      "id": "cartoon-v5-desert-props",
+      "file": "cartoon-v5-desert-props.png",
+      "name": "Desert scenery atlas",
+      "category": "environment",
+      "origin": "User supplied",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "production-13"
+      ],
+      "width": 1774,
+      "height": 887,
+      "bytes": 987365,
+      "transparent": true
+    },
+    {
+      "id": "cartoon-v5-pharaoh-armed",
+      "file": "cartoon-v5-pharaoh-armed.png",
+      "name": "Armed Dune Pharaoh",
+      "category": "enemy",
+      "origin": "Built-in imagegen",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "production-13"
+      ],
+      "width": 1223,
+      "height": 1286,
+      "bytes": 830994,
+      "transparent": true
     }
   ]
 }
