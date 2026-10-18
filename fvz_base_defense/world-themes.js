@@ -1,5 +1,5 @@
-import {separateSprites} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-25';
-import {propAtlas} from './stage-layout.js?v=production-25';
+import {separateSprites} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-26';
+import {propAtlas} from './stage-layout.js?v=production-26';
 export const worldThemes={
  dune:{name:'Dune Loop',subtitle:'Dusty Desert',boss:'DUNE SULTAN',color:'#ffc364',projectile:'#ffe1a5'},
  oasis:{name:'Sun Temple',subtitle:'Ancient Sands',boss:'SUN PHARAOH',color:'#ffd34d',projectile:'#ffe289'},
