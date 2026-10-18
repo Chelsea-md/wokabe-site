@@ -2371,6 +2371,440 @@
       "width": 1983,
       "height": 793,
       "bytes": 949609
+    },
+    {
+      "id": "cartoon-v5-coral-enemies-v19",
+      "file": "cartoon-v5-coral-enemies-v19.png",
+      "name": "Coral 몬스터 4종 · 보스 2자세",
+      "category": "enemies",
+      "origin": "imagegen · built-in · 2026-10-18",
+      "usage": "stored",
+      "preload": false,
+      "usedIn": [
+        "보관한 제작 초안 · 사용자 원화로 교체"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2360697
+    },
+    {
+      "id": "cartoon-v5-coral-ground-v19",
+      "file": "cartoon-v5-coral-ground-v19.png",
+      "name": "Coral 지면 배경",
+      "category": "backgrounds",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "챕터 게임",
+        "LIVE OPS",
+        "챕터 갤러리"
+      ],
+      "width": 1774,
+      "height": 887,
+      "bytes": 1540097
+    },
+    {
+      "id": "cartoon-v5-coral-props-v19",
+      "file": "cartoon-v5-coral-props-v19.png",
+      "name": "Coral 장식 10종",
+      "category": "props",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "챕터 게임",
+        "LIVE OPS",
+        "챕터 갤러리"
+      ],
+      "width": 1983,
+      "height": 793,
+      "bytes": 1390039
+    },
+    {
+      "id": "cartoon-v5-dune-ground-v19",
+      "file": "cartoon-v5-dune-ground-v19.png",
+      "name": "Dune 지면 배경",
+      "category": "backgrounds",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "챕터 게임",
+        "LIVE OPS",
+        "챕터 갤러리"
+      ],
+      "width": 1774,
+      "height": 887,
+      "bytes": 1563996
+    },
+    {
+      "id": "cartoon-v5-ember-enemies-v19",
+      "file": "cartoon-v5-ember-enemies-v19.png",
+      "name": "Ember 몬스터 4종 · 보스 2자세",
+      "category": "enemies",
+      "origin": "imagegen · built-in · 2026-10-18",
+      "usage": "stored",
+      "preload": false,
+      "usedIn": [
+        "보관한 제작 초안 · 사용자 원화로 교체"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2054598
+    },
+    {
+      "id": "cartoon-v5-ember-ground-v19",
+      "file": "cartoon-v5-ember-ground-v19.png",
+      "name": "Ember 지면 배경",
+      "category": "backgrounds",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "챕터 게임",
+        "LIVE OPS",
+        "챕터 갤러리"
+      ],
+      "width": 1774,
+      "height": 887,
+      "bytes": 1936573
+    },
+    {
+      "id": "cartoon-v5-ember-props-v19",
+      "file": "cartoon-v5-ember-props-v19.png",
+      "name": "Ember 장식 10종",
+      "category": "props",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "챕터 게임",
+        "LIVE OPS",
+        "챕터 갤러리"
+      ],
+      "width": 1983,
+      "height": 793,
+      "bytes": 1083800
+    },
+    {
+      "id": "cartoon-v5-frost-enemies-v19",
+      "file": "cartoon-v5-frost-enemies-v19.png",
+      "name": "Frost 몬스터 4종 · 보스 2자세",
+      "category": "enemies",
+      "origin": "imagegen · built-in · 2026-10-18",
+      "usage": "stored",
+      "preload": false,
+      "usedIn": [
+        "보관한 제작 초안 · 사용자 원화로 교체"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2211394
+    },
+    {
+      "id": "cartoon-v5-frost-ground-v19",
+      "file": "cartoon-v5-frost-ground-v19.png",
+      "name": "Frost 지면 배경",
+      "category": "backgrounds",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "챕터 게임",
+        "LIVE OPS",
+        "챕터 갤러리"
+      ],
+      "width": 1774,
+      "height": 887,
+      "bytes": 1648248
+    },
+    {
+      "id": "cartoon-v5-frost-props-v19",
+      "file": "cartoon-v5-frost-props-v19.png",
+      "name": "Frost 장식 10종",
+      "category": "props",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "챕터 게임",
+        "LIVE OPS",
+        "챕터 갤러리"
+      ],
+      "width": 1983,
+      "height": 793,
+      "bytes": 1179196
+    },
+    {
+      "id": "cartoon-v5-hollow-enemies-v19",
+      "file": "cartoon-v5-hollow-enemies-v19.png",
+      "name": "Hollow 몬스터 4종 · 보스 2자세",
+      "category": "enemies",
+      "origin": "imagegen · built-in · 2026-10-18",
+      "usage": "stored",
+      "preload": false,
+      "usedIn": [
+        "보관한 제작 초안 · 사용자 원화로 교체"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2171668
+    },
+    {
+      "id": "cartoon-v5-hollow-ground-v19",
+      "file": "cartoon-v5-hollow-ground-v19.png",
+      "name": "Hollow 지면 배경",
+      "category": "backgrounds",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "챕터 게임",
+        "LIVE OPS",
+        "챕터 갤러리"
+      ],
+      "width": 1774,
+      "height": 887,
+      "bytes": 1867785
+    },
+    {
+      "id": "cartoon-v5-hollow-props-v19",
+      "file": "cartoon-v5-hollow-props-v19.png",
+      "name": "Hollow 장식 10종",
+      "category": "props",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "챕터 게임",
+        "LIVE OPS",
+        "챕터 갤러리"
+      ],
+      "width": 1774,
+      "height": 887,
+      "bytes": 1474851
+    },
+    {
+      "id": "cartoon-v5-oasis-ground-v19",
+      "file": "cartoon-v5-oasis-ground-v19.png",
+      "name": "Oasis 지면 배경",
+      "category": "backgrounds",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "챕터 게임",
+        "LIVE OPS",
+        "챕터 갤러리"
+      ],
+      "width": 1774,
+      "height": 887,
+      "bytes": 1912875
+    },
+    {
+      "id": "cartoon-v5-coral-monsters-user-v19",
+      "file": "cartoon-v5-coral-monsters-user-v19.png",
+      "name": "Coral 몬스터·보스 5종",
+      "category": "enemies",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "테마 몬스터·보스",
+        "챕터 게임",
+        "챕터 갤러리"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1520612
+    },
+    {
+      "id": "cartoon-v5-coral-weapons-user-v19",
+      "file": "cartoon-v5-coral-weapons-user-v19.png",
+      "name": "Coral 별도 무기 스티커 5종",
+      "category": "ui",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "테마 몬스터·보스",
+        "챕터 게임",
+        "챕터 갤러리"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1469218
+    },
+    {
+      "id": "cartoon-v5-dune-monsters-user-v19",
+      "file": "cartoon-v5-dune-monsters-user-v19.png",
+      "name": "Dune 몬스터·보스 5종",
+      "category": "enemies",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "테마 몬스터·보스",
+        "챕터 게임",
+        "챕터 갤러리"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1630277
+    },
+    {
+      "id": "cartoon-v5-dune-weapons-user-v19",
+      "file": "cartoon-v5-dune-weapons-user-v19.png",
+      "name": "Dune 별도 무기 스티커 5종",
+      "category": "ui",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "테마 몬스터·보스",
+        "챕터 게임",
+        "챕터 갤러리"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1352940
+    },
+    {
+      "id": "cartoon-v5-ember-monsters-user-v19",
+      "file": "cartoon-v5-ember-monsters-user-v19.png",
+      "name": "Ember 몬스터·보스 5종",
+      "category": "enemies",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "테마 몬스터·보스",
+        "챕터 게임",
+        "챕터 갤러리"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1485952
+    },
+    {
+      "id": "cartoon-v5-ember-weapons-user-v19",
+      "file": "cartoon-v5-ember-weapons-user-v19.png",
+      "name": "Ember 별도 무기 스티커 5종",
+      "category": "ui",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "테마 몬스터·보스",
+        "챕터 게임",
+        "챕터 갤러리"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1307954
+    },
+    {
+      "id": "cartoon-v5-frost-monsters-user-v19",
+      "file": "cartoon-v5-frost-monsters-user-v19.png",
+      "name": "Frost 몬스터·보스 5종",
+      "category": "enemies",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "테마 몬스터·보스",
+        "챕터 게임",
+        "챕터 갤러리"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1634255
+    },
+    {
+      "id": "cartoon-v5-frost-weapons-user-v19",
+      "file": "cartoon-v5-frost-weapons-user-v19.png",
+      "name": "Frost 별도 무기 스티커 5종",
+      "category": "ui",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "테마 몬스터·보스",
+        "챕터 게임",
+        "챕터 갤러리"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1463169
+    },
+    {
+      "id": "cartoon-v5-hollow-monsters-user-v19",
+      "file": "cartoon-v5-hollow-monsters-user-v19.png",
+      "name": "Hollow 몬스터·보스 5종",
+      "category": "enemies",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "테마 몬스터·보스",
+        "챕터 게임",
+        "챕터 갤러리"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1452927
+    },
+    {
+      "id": "cartoon-v5-hollow-weapons-user-v19",
+      "file": "cartoon-v5-hollow-weapons-user-v19.png",
+      "name": "Hollow 별도 무기 스티커 5종",
+      "category": "ui",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "테마 몬스터·보스",
+        "챕터 게임",
+        "챕터 갤러리"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1396538
+    },
+    {
+      "id": "cartoon-v5-oasis-monsters-user-v19",
+      "file": "cartoon-v5-oasis-monsters-user-v19.png",
+      "name": "Oasis 몬스터·보스 5종",
+      "category": "enemies",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "테마 몬스터·보스",
+        "챕터 게임",
+        "챕터 갤러리"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1519962
+    },
+    {
+      "id": "cartoon-v5-oasis-weapons-user-v19",
+      "file": "cartoon-v5-oasis-weapons-user-v19.png",
+      "name": "Oasis 별도 무기 스티커 5종",
+      "category": "ui",
+      "origin": "사용자 제공 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "테마 몬스터·보스",
+        "챕터 게임",
+        "챕터 갤러리"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1378330
     }
   ]
 }

@@ -373,6 +373,122 @@
       "bossHp": 4800,
       "hpFactor": 1.4,
       "verification": "observed-theme-provisional-route-and-calibrated-combat"
+    },
+    {
+      "id": "ember-valley",
+      "name": "Ember Valley",
+      "waves": 10,
+      "theme": "ember",
+      "artStage": "ember",
+      "ribbon": "noon-ribbon",
+      "waveCounts": [
+        8,
+        14,
+        20,
+        24,
+        28,
+        30,
+        34,
+        38,
+        42,
+        30
+      ],
+      "spawn": {
+        "base": 1.5,
+        "decrease": 0.05,
+        "min": 0.65
+      },
+      "bossAt": 0.45,
+      "bossHp": 5300,
+      "hpFactor": 1.5,
+      "verification": "new-theme-integration-provisional-balance"
+    },
+    {
+      "id": "frost-garden",
+      "name": "Frost Garden",
+      "waves": 10,
+      "theme": "frost",
+      "artStage": "frost",
+      "ribbon": "noon-ribbon",
+      "waveCounts": [
+        8,
+        14,
+        20,
+        24,
+        28,
+        30,
+        34,
+        38,
+        42,
+        30
+      ],
+      "spawn": {
+        "base": 1.47,
+        "decrease": 0.05,
+        "min": 0.65
+      },
+      "bossAt": 0.45,
+      "bossHp": 5600,
+      "hpFactor": 1.6,
+      "verification": "new-theme-integration-provisional-balance"
+    },
+    {
+      "id": "coral-coast",
+      "name": "Coral Coast",
+      "waves": 10,
+      "theme": "coral",
+      "artStage": "coral",
+      "ribbon": "noon-ribbon",
+      "waveCounts": [
+        8,
+        14,
+        20,
+        24,
+        28,
+        30,
+        34,
+        38,
+        42,
+        30
+      ],
+      "spawn": {
+        "base": 1.44,
+        "decrease": 0.05,
+        "min": 0.65
+      },
+      "bossAt": 0.45,
+      "bossHp": 5900,
+      "hpFactor": 1.7,
+      "verification": "new-theme-integration-provisional-balance"
+    },
+    {
+      "id": "blue-hollow",
+      "name": "Blue Hollow",
+      "waves": 10,
+      "theme": "hollow",
+      "artStage": "hollow",
+      "ribbon": "noon-ribbon",
+      "waveCounts": [
+        8,
+        14,
+        20,
+        24,
+        28,
+        30,
+        34,
+        38,
+        42,
+        30
+      ],
+      "spawn": {
+        "base": 1.41,
+        "decrease": 0.05,
+        "min": 0.65
+      },
+      "bossAt": 0.45,
+      "bossHp": 6200,
+      "hpFactor": 1.8,
+      "verification": "new-theme-integration-provisional-balance"
     }
   ],
   "web": {

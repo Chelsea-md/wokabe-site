@@ -41,3 +41,5 @@ body.production[data-ui-theme=bold] #plants-grid .future-plant .plant-select{bac
 .game-frame.plants #plants-grid{transform:scale(.94);transform-origin:50% 0}
 .upgrades strong:has(.upgrade-arrow){display:flex;align-items:center;justify-content:center;gap:.18cqw;white-space:nowrap}
 .upgrades strong .upgrade-arrow{display:inline-block!important;width:1.65cqw!important;height:1.3cqw!important;position:static!important;flex:0 0 1.65cqw;overflow:visible;filter:none!important}
+
+#boss-cinematic.themed-art{background:radial-gradient(ellipse at 70% 45%,transparent 15%,#0b182745 80%)}#boss-cinematic.themed-art .boss-title{border-color:var(--world-aura);text-shadow:0 .15cqw #15212c}#boss-cinematic.themed-art .boss-title>span{color:var(--world-aura)}

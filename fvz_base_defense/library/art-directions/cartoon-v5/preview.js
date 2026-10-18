@@ -1,14 +1,16 @@
-import {upgradeValue} from '../../../ui-markup.js?v=production-18';
-import {paintSand,paintMapProps} from '../../../map-scenery.js?v=production-18';
-import {defaultStage,layoutObstacles} from '../../../stage-layout.js?v=production-18';
+import {createWorldArt} from '../../../world-themes.js?v=production-19';
+import {upgradeValue} from '../../../ui-markup.js?v=production-19';
+import {paintSand,paintMapProps} from '../../../map-scenery.js?v=production-19';
+import {defaultStage,layoutObstacles} from '../../../stage-layout.js?v=production-19';
 import {observeWorldResolution} from '../../../canvas-resolution.js';
-import {createPlantsRoster} from './plants-roster.js?v=production-18';
+import {createPlantsRoster} from './plants-roster.js?v=production-19';
 import {spawnOutside,stageObstacles as oldStageObstacles,moveEnemy} from './navigation.js?v=plants-entry';
 import {loadUiSkins} from './ui-skins.js?v=combat-refinement';
 const uiSkins=await loadUiSkins();
-import {loadRigs,drawRig,drawExploded} from "./rig-renderer.js?v=production-18";
+import {loadRigs,drawRig,drawExploded} from "./rig-renderer.js?v=production-19";
 const stagePreset=s=>defaultStage(({green:1,dune:2,camp:3,moon:4,oasis:5,noon:6})[s]||1);const stageObstacles=s=>layoutObstacles(stagePreset(s),['dune','oasis','noon'].includes(s)?[]:oldStageObstacles(s));const [desertProps,egyptProps]=await Promise.all(['cartoon-v5-desert-props.png','cartoon-v5-egypt-props-v16.png'].map(src=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=reject;im.src='../../../assets/'+src;})));
-const rigs=await loadRigs();const rosterRules=await fetch('../../../data/rules.json?v=production-18').then(r=>r.json());
+const worldPreview=createWorldArt({}, {desert:desertProps,egypt:egyptProps});await Promise.all([worldPreview.ensure(defaultStage(2)),worldPreview.ensure(defaultStage(5))]);
+const rigs=await loadRigs();const rosterRules=await fetch('../../../data/rules.json?v=production-19').then(r=>r.json());
 let previewStar=1,previewStage='green';
 const portraitCache=new Map();
 const playerNames=['PEPPER SCOUT','ACORN MARKSMAN','PINECONE GUNNER'];
@@ -116,7 +118,7 @@ function drawLabs(){for(const [id,rigId] of [['poppy',$('#player-class').value],
 
 document.body.dataset.uiTheme="bold";
 
-function drawStageBackground(){if(scene==='plants'){g.fillStyle='#bacd91';g.fillRect(0,0,W,H);g.save();g.globalCompositeOperation='multiply';g.globalAlpha=.11;for(let y=-30;y<H+70;y+=95)for(let x=-35;x<W+70;x+=112){g.save();g.translate(x+(Math.floor(y/95)%2)*45,y);g.rotate(((Math.floor(x/112)+Math.floor(y/95))%3-1)*.3);g.drawImage(sproutPattern,-28,-23,56,46);g.restore();}g.restore();return;}if(previewStage==='dune'||previewStage==='oasis'){paintSand(g,previewStage,W,H);paintMapProps(g,stagePreset(previewStage),{desert:desertProps,egypt:egyptProps});}else{g.save();if(previewStage==='camp')g.filter='brightness(.56) saturate(.6)';g.drawImage(scene==='home'?homeField:art.forest.image,0,0,W,H);g.restore();if(previewStage==='camp'){g.fillStyle='#273c582e';g.fillRect(0,0,W,H);}}}
+function drawStageBackground(){if(scene==='plants'){g.fillStyle='#bacd91';g.fillRect(0,0,W,H);g.save();g.globalCompositeOperation='multiply';g.globalAlpha=.11;for(let y=-30;y<H+70;y+=95)for(let x=-35;x<W+70;x+=112){g.save();g.translate(x+(Math.floor(y/95)%2)*45,y);g.rotate(((Math.floor(x/112)+Math.floor(y/95))%3-1)*.3);g.drawImage(sproutPattern,-28,-23,56,46);g.restore();}g.restore();return;}if(previewStage==='dune'||previewStage==='oasis'){g.drawImage(worldPreview.grounds[previewStage],0,0,W,H);paintMapProps(g,stagePreset(previewStage),{desert:desertProps,egypt:egyptProps});}else{g.save();if(previewStage==='camp')g.filter='brightness(.56) saturate(.6)';g.drawImage(scene==='home'?homeField:art.forest.image,0,0,W,H);g.restore();if(previewStage==='camp'){g.fillStyle='#273c582e';g.fillRect(0,0,W,H);}}}
 function updateEvolution(){const id=$('#player-class').value;$('#player-lab-name').textContent=rigs[id].name;$('#class-skill').textContent=rigs[id].skill;const grid=$('#evolution-grid');grid.innerHTML=Array.from({length:10},(_,i)=>'<button data-rank="'+(i+1)+'" aria-pressed="'+(previewStar===i+1)+'"><span>★ '+(i+1)+'</span><img alt="'+rigs[id].name+' '+(i+1)+' star equipment" src="'+portrait(id,i+1)+'"><b>'+(['BASIC','IMPROVED','REINFORCED','TACTICAL','ELITE','HEAVY','ADVANCED','ENERGY','PLASMA','LEGEND'][i])+'</b></button>').join('');grid.querySelectorAll('[data-rank]').forEach(button=>button.onclick=()=>setRank(Number(button.dataset.rank)));}
 function setRank(n){previewStar=n;$('#star-level').value=String(n);$('#star-label').textContent=n+(n===1?' STAR':' STARS');units.forEach(u=>u.level=n);refreshPortraits();updateEvolution();render();}
 function setStage(key){previewStage=key;rigs.theme=({green:'forest',dune:'desert',camp:'night',oasis:'desert'})[key];const name=({green:'GREEN BLOCK',dune:'DUNE LOOP',camp:'FOREST CAMP',oasis:'SUN TEMPLE'})[key];document.querySelector('.wave-head>span').textContent=name;document.querySelector('.chapter-title strong').textContent=name;document.querySelector('.wave-head small').textContent='/ '+(key==='green'?6:10);document.querySelector('#start small').textContent=name+' · '+(key==='green'?6:10)+' WAVES';document.querySelectorAll('.asset-card[data-rigid]').forEach(card=>{if(rigs[card.dataset.rigid])card.querySelectorAll('img').forEach(im=>im.src=portrait(card.dataset.rigid));});reset();endBossIntro();setPaused(true);setScene(scene);updateEvolution();}

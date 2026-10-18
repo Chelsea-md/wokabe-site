@@ -1,4 +1,4 @@
-import {defaultStage,validateStage,themes,themeNames,propNames,propBounds} from './stage-layout.js?v=production-18';
+import {defaultStage,validateStage,themes,themeNames,propNames,propBounds} from './stage-layout.js?v=production-19';
 const $=s=>document.querySelector(s),clone=x=>JSON.parse(JSON.stringify(x)),key=n=>'fvz-liveops-draft-v1-'+n;
 let loaded=false;
 let stage=Math.max(1,Math.min(999,Number(new URLSearchParams(location.search).get('stage'))||2)),layout=defaultStage(stage),selected=null,scene='home',cloud=false,version=0,history=[],ready=false,dirty=false,loading=false;
@@ -33,7 +33,7 @@ async function load(n,{discard=false}={}){if(loading){$('#stage-number').value=s
  let draft=drafts.get(n);if(!draft)try{draft=validateStage(JSON.parse(localStorage.getItem(key(n))),n);}catch{}
  layout=discard?base:draft||base;dirty=!!draft&&!discard;loading=false;$('#stage-number').disabled=false;$('#stage-list').querySelectorAll('button').forEach(b=>b.disabled=false);loaded=true;store();status(dirty?'브라우저에 보관한 초안을 불러왔습니다.':cloud?'작업 공간 저장본을 불러왔습니다.':'브라우저 초안 모드 · JSON 저장을 사용할 수 있습니다.');render();}
 $('#stage-number').onchange=()=>{const n=Number($('#stage-number').value);if(Number.isInteger(n)&&n>=1&&n<=999)load(n);};
-for(let n=1;n<=6;n++){const b=document.createElement('button');b.textContent=n;b.dataset.stage=n;b.onclick=()=>load(n);$('#stage-list').append(b);}
+for(let n=1;n<=themes.length;n++){const b=document.createElement('button');b.textContent=n;b.dataset.stage=n;b.onclick=()=>load(n);$('#stage-list').append(b);}
 themes.forEach((t,i)=>$('#theme').add(new Option(themeNames[i],t)));propNames.forEach((t,i)=>$('#asset').add(new Option(t,i)));
 $('#theme').onchange=()=>update('theme',$('#theme').value);
 $('#add').onclick=()=>{if(layout.props.length>=60){status('장식은 최대 60개까지 배치할 수 있습니다.',true);return;}remember();const p={id:'prop-'+crypto.randomUUID(),asset:Number($('#asset').value),x:600,y:300,height:90,visible:true,solid:true,shadow:{width:.74,height:10,opacity:.18,x:0,y:-2}};layout.props.push(p);selected=p.id;changed();renderInspector();};
