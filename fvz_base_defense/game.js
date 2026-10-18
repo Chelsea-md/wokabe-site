@@ -1,16 +1,16 @@
-import {validateMotions,motionCharacters,motionActions,allyMotionState} from './motion-config.js?v=production-26';
-import {terrainCamera,advanceTerrainCamera} from './scene-camera.js?v=production-26';
-import {createWorldArt,worldThemes,drawEnemyLayers} from './world-themes.js?v=production-26';
-import {upgradeValue} from './ui-markup.js?v=production-26';
-import {paintSand,paintMapProps} from './map-scenery.js?v=production-26';
-import {defaultStage,validateStage,propPieces,layoutObstacles} from './stage-layout.js?v=production-26';
+import {validateMotions,motionCharacters,motionActions,allyMotionState} from './motion-config.js?v=production-27';
+import {terrainCamera,advanceTerrainCamera} from './scene-camera.js?v=production-27';
+import {createWorldArt,worldThemes,drawEnemyLayers} from './world-themes.js?v=production-27';
+import {upgradeValue} from './ui-markup.js?v=production-27';
+import {paintSand,paintMapProps} from './map-scenery.js?v=production-27';
+import {defaultStage,validateStage,propPieces,layoutObstacles,sceneryCamera} from './stage-layout.js?v=production-27';
 import {observeWorldResolution} from './canvas-resolution.js';
-import {rules} from './config.js?v=production-26';
-import {loadProgress,persistProgress} from './storage.js?v=production-26';
-import {chapterFor,costFor,increaseStat,countForWave,kindForSpawn,spawnInterval,killReward,mergeHealth,encounterScale} from './systems.js?v=production-26';
-import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-26';
+import {rules} from './config.js?v=production-27';
+import {loadProgress,persistProgress} from './storage.js?v=production-27';
+import {chapterFor,costFor,increaseStat,countForWave,kindForSpawn,spawnInterval,killReward,mergeHealth,encounterScale} from './systems.js?v=production-27';
+import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-27';
 import {loadUiSkins} from './library/art-directions/cartoon-v5/ui-skins.js';
-import {spawnOutside,stageObstacles,moveEnemy} from './library/art-directions/cartoon-v5/navigation.js?v=production-26';
+import {spawnOutside,stageObstacles,moveEnemy} from './library/art-directions/cartoon-v5/navigation.js?v=production-27';
 import {loadPopupArt} from './popup-art.js';
 import {createLoadingWallpaper} from './loading-wallpaper.js';
 const $=s=>document.querySelector(s),uiSkins=await loadUiSkins();createLoadingWallpaper(uiSkins);const popupArt=await loadPopupArt();const sprout=$('.pause-sprout'),popupSprout=document.createElement('img');popupSprout.className='pause-sprout';popupSprout.src=popupArt.sprout;popupSprout.alt='';sprout.replaceWith(popupSprout);for(const [id,key,label]of [['resume-battle','resume','Resume'],['pause-to-home','home','Home']]){const b=$('#'+id);b.classList.add('asset-button');b.innerHTML='<span class="sr-only">'+label+'</span>';b.setAttribute('aria-label',label);b.style.setProperty('--button-art',`url("${popupArt[key]}")`);}const rigs=await loadRigs();
@@ -60,7 +60,7 @@ function upgradeAvailable(progress,key){const cost=costFor(progress,key);return 
 function rememberTrail(shot){shot.trail??=[];shot.trail.push({x:shot.x,y:shot.y});if(shot.trail.length>9)shot.trail.shift();}
 function drawShotTail(shot){const points=[...(shot.trail||[]),{x:shot.x,y:shot.y}];if(shot.enemy){const angle=shot.heading??Math.atan2(shot.ty-shot.y,shot.tx-shot.x),length=Math.min(46,Math.hypot(shot.x-shot.sx,shot.y-shot.sy));if(length>1&&(!points.length||Math.hypot(points[0].x-shot.x,points[0].y-shot.y)<length*.7))points.unshift({x:shot.x-Math.cos(angle)*length,y:shot.y-Math.sin(angle)*length});}g.save();g.lineCap='round';g.strokeStyle=shot.enemy?(worldThemes[previewStage]?.projectile||'#ead2ff'):shot.type===1?'#e8f7c6':shot.type===2?'#f9bf6e':'#f0ed8a';for(let i=1;i<points.length;i++){g.globalAlpha=(shot.enemy?.16:.06)+(shot.enemy?.65:.38)*i/points.length;g.lineWidth=(shot.enemy?1.2:.7)+(shot.enemy?2.2:1.5)*i/points.length;g.beginPath();g.moveTo(points[i-1].x,points[i-1].y);g.lineTo(points[i].x,points[i].y);g.stroke();}g.restore();}
 // Mirror the field at its edges so modest zoom-out reveals terrain instead of flat bands.
-function drawExtendedField(image){g.save();g.beginPath();g.rect(-80,-80,W+160,H+160);g.clip();for(let row=-1;row<=1;row++)for(let col=-1;col<=1;col++){g.save();g.translate(col*W+(col?W:0),row*H+(row?H:0));g.scale(col?-1:1,row?-1:1);g.drawImage(image,0,0,W,H);g.restore();}g.restore();}
+function drawExtendedField(image){g.save();g.beginPath();g.rect(-W,-H,W*3,H*3);g.clip();for(let row=-1;row<=1;row++)for(let col=-1;col<=1;col++){g.save();g.translate(col*W+(col?W:0),row*H+(row?H:0));g.scale(col?-1:1,row?-1:1);g.drawImage(image,0,0,W,H);g.restore();}g.restore();}
 // Shared mouse, touch and keyboard compression feedback; disabled buttons stay still.
 const pressedButtons=new Set();function pressButton(button){if(!button||button.disabled||button.getAttribute('aria-disabled')==='true')return;button.classList.add('pressed');pressedButtons.add(button);}
 function releaseButtons(){setTimeout(()=>{for(const b of pressedButtons)b.classList.remove('pressed');pressedButtons.clear();},110);}
@@ -149,7 +149,7 @@ for(const effect of effects){const a=effect.life/effect.max;if(effect.kind==='so
 drawMergeReady();g.restore();if(focus){g.fillStyle=`rgba(10,21,18,${focus*.24})`;g.fillRect(0,0,W,H);const boss=bossIntro.boss,z=1+focus*.75;g.save();g.translate(center.x,center.y);g.scale(zoom,zoom);g.translate(-center.x,-center.y);g.translate(W/2+W*.06*focus,H*.49);g.scale(z,z);g.translate(-(W/2+(boss.x-W/2)*focus),-(H*.49+(boss.y-65-H*.49)*focus));drawBoss(boss,200);g.restore();}}
 
 function drawDesertProps(){paintMapProps(g,currentLayout(),worldArt.props);}
-function drawStageBackground(){if(scene==='plants'){drawRawStageBackground();return;}const b=currentLayout().background,camera=terrainCamera(cameraBlend);g.save();g.translate(600+camera.x,300+camera.y);g.scale(camera.scale,camera.scale);g.translate(-600,-300);g.save();g.translate(600+b.x,300+b.y);g.scale(b.scale,b.scale);g.translate(-600,-300);g.filter='brightness('+b.brightness+')';drawRawStageBackground();g.restore();drawDesertProps();g.restore();if(stageEditor){const key=[camera.scale.toFixed(4),camera.x.toFixed(2),camera.y.toFixed(2)].join(',');if(key!==lastCameraMessage){lastCameraMessage=key;parent.postMessage({type:'fvz-stage-camera',camera},location.origin);}}}
+function drawStageBackground(){if(scene==='plants'){drawRawStageBackground();return;}const b=currentLayout().background,propsCamera=sceneryCamera(cameraBlend),camera=['green','camp','moon'].includes(previewStage)?terrainCamera(cameraBlend):propsCamera;g.save();g.translate(600+camera.x,300+camera.y);g.scale(camera.scale,camera.scale);g.translate(-600,-300);g.translate(600+b.x,300+b.y);g.scale(b.scale,b.scale);g.translate(-600,-300);g.filter='brightness('+b.brightness+')';drawRawStageBackground();g.restore();g.save();g.translate(600+propsCamera.x,300+propsCamera.y);g.scale(propsCamera.scale,propsCamera.scale);g.translate(-600,-300);drawDesertProps();g.restore();if(stageEditor){const key=[propsCamera.scale.toFixed(4),propsCamera.x.toFixed(2),propsCamera.y.toFixed(2)].join(',');if(key!==lastCameraMessage){lastCameraMessage=key;parent.postMessage({type:'fvz-stage-camera',camera:propsCamera},location.origin);}}}
 function drawRawStageBackground(){if(scene==='plants'){g.fillStyle='#bacd91';g.fillRect(0,0,W,H);g.save();g.globalCompositeOperation='multiply';g.globalAlpha=.14;const factor=W/canvas.getBoundingClientRect().width,clock=window.matchMedia('(prefers-reduced-motion: reduce)').matches?0:performance.now()/75000,dx=(clock%1)*600,dy=(clock%1)*400;g.scale(factor,factor);g.translate(dx,dy);g.fillStyle=g.createPattern(wallpaperTile,'repeat');g.fillRect(-600,-400,W/factor+1200,H/factor+800);g.restore();return;}if(worldArt.grounds[previewStage]){g.save();if(previewStage==='noon')g.filter='brightness(1.1) saturate(.8)';drawExtendedField(worldArt.grounds[previewStage]);g.restore();return;}if(previewStage==='moon'){drawExtendedField(moonField);return;}if(['dune','oasis','noon'].includes(previewStage)){g.save();if(previewStage==='noon')g.filter='brightness('+(1.13*currentLayout().background.brightness)+') saturate(.72)';if(previewStage==='oasis')g.filter='brightness('+currentLayout().background.brightness+') saturate(1.15)';paintSand(g,previewStage,W,H);g.restore();}else{g.save();if(previewStage==='camp'||previewStage==='moon')g.filter=previewStage==='moon'?'brightness(.42) saturate(.42) hue-rotate(30deg)':'brightness('+(.56*currentLayout().background.brightness)+') saturate(.6)';if(cameraBlend<1)drawExtendedField(homeField);if(cameraBlend>0){g.globalAlpha=cameraBlend;drawExtendedField(art.forest.image);}g.restore();if(previewStage==='camp'||previewStage==='moon'){g.fillStyle='#273c582e';g.fillRect(0,0,W,H);}}}
 
 function update(dt){time+=dt;if(scene!=='battle'||runResolved)return;sun=Math.min(999,sun+saved.rate*dt);
@@ -192,7 +192,7 @@ async function finishBoot(){const overlay=$('#boot-loading'),shown=+$('#boot-log
 function advanceElapsed(seconds){let remaining=Math.max(0,seconds);while(remaining>1e-7){const dt=Math.min(1/30,remaining);tickVisuals(dt);tickSceneSplash(dt);if(!paused&&!sceneSplash){if(bossIntro){bossIntro.elapsed+=dt;if(bossIntro.elapsed>=introDuration)endBossIntro();}update(dt*(bossIntro?.12:1));}remaining-=dt;if(paused||(!sceneSplash&&scene!=='battle')||runResolved){if(!paused)time+=remaining;break;}}}
 function advanceFrame(now){if(now<=last)return;const elapsed=Math.max(0,(now-last)/1000);last=now;advanceElapsed(elapsed);}
 function loop(now){advanceFrame(now);tickRewardFlight(now);updateTutorial();if(bossIntro)$('#boss-cinematic').style.setProperty('--intro-opacity',String(introWeight()));if(messageUntil&&now>messageUntil){$('#game-message').classList.remove('visible');messageUntil=0;}updateUI();render();requestAnimationFrame(loop);}
-try{const clockWorker=new Worker(new URL('./background-clock.js?v=production-26',import.meta.url));clockWorker.onmessage=()=>{if(document.hidden)advanceFrame(performance.now());};}catch{setInterval(()=>{if(document.hidden)advanceFrame(performance.now());},250);}
+try{const clockWorker=new Worker(new URL('./background-clock.js?v=production-27',import.meta.url));clockWorker.onmessage=()=>{if(document.hidden)advanceFrame(performance.now());};}catch{setInterval(()=>{if(document.hidden)advanceFrame(performance.now());},250);}
 $('.production-track').setAttribute('role','progressbar');$('.production-track').setAttribute('aria-label','Charging next sunlight');$('.production-track').setAttribute('aria-valuemin','0');$('.production-track').setAttribute('aria-valuemax','100');applyTheme();buildCards();setScene(new URLSearchParams(location.search).get('screen')==='plants'?'plants':'home');updateUI();render();requestAnimationFrame(loop);await finishBoot();
 
 

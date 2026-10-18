@@ -1,6 +1,6 @@
-import {defaultMotions,validateMotions,motionCharacters,motionActions,motionFrameLimits,motionFrame,sampleMotion} from './motion-config.js?v=production-26';
-import {growthCharacters} from './character-growth.js?v=production-26';
-import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-26';
+import {defaultMotions,validateMotions,motionCharacters,motionActions,motionFrameLimits,motionFrame,sampleMotion} from './motion-config.js?v=production-27';
+import {growthCharacters} from './character-growth.js?v=production-27';
+import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-27';
 const $=s=>document.querySelector(s),copy=v=>structuredClone(v),cloud=location.hostname.endsWith('.chatgpt.site'),draftKey='fvz-motion-draft-v1',liveKey='fvz-motion-live-v1';
 let config=defaultMotions(),saved=defaultMotions(),rigs,selected='gentle',frameIndex=0,clock=0,playing=!matchMedia('(prefers-reduced-motion: reduce)').matches,previous=0,lastPost=0,liveVersion=0,draftVersion=0,ready=false,busy=false,undo=[];
 const names=Object.fromEntries(growthCharacters.map(c=>[c.id,c.name])),labels={x:'X 위치',y:'Y 위치',rotation:'회전 (°)',scaleX:'가로 크기',scaleY:'세로 크기'};

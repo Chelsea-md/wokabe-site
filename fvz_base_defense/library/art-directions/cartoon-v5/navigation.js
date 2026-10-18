@@ -13,7 +13,7 @@ export function blocked(x,y,obstacles,padding=14){return obstacles.some(([cx,cy,
 export function bodyObstacles(enemy,obstacles){const height=(enemy.kind==='boss'?150:enemy.kind==='bruiser'?85:60)*(enemy.visualScale||1),lift=height*.48;return obstacles.map(([x,y,rx,ry])=>[x,y+lift,rx,ry+lift]);}
 export function segmentBlocked(from,to,obstacles,padding=14){const steps=Math.max(1,Math.ceil(Math.hypot(to.x-from.x,to.y-from.y)/4));for(let i=0;i<=steps;i++){const t=i/steps;if(blocked(from.x+(to.x-from.x)*t,from.y+(to.y-from.y)*t,obstacles,padding))return true;}return false;}
 export function findRoute(from,to,obstacles,padding=14){
-  const size=20,ox=-100,oy=-100,cols=71,rows=41;
+  const size=20,ox=-300,oy=-300,cols=91,rows=61;
   const cell=p=>[Math.max(0,Math.min(cols-1,Math.round((p.x-ox)/size))),Math.max(0,Math.min(rows-1,Math.round((p.y-oy)/size)))];
   const startCell=p=>{const[cx,cy]=cell(p);let best=null,distance=Infinity;for(let dy=-3;dy<=3;dy++)for(let dx=-3;dx<=3;dx++){const x=cx+dx,y=cy+dy,q={x:ox+x*size,y:oy+y*size},d=Math.hypot(q.x-p.x,q.y-p.y);if(x<0||y<0||x>=cols||y>=rows||d>=distance||blocked(q.x,q.y,obstacles,padding)||segmentBlocked(p,q,obstacles,padding))continue;best=[x,y];distance=d;}return best||cell(p);};
   const [sx,sy]=startCell(from),[tx,ty]=cell(to),key=(x,y)=>y*cols+x,start=key(sx,sy),goal=key(tx,ty),open=[start],cost=new Map([[start,0]]),parent=new Map(),closed=new Set();
@@ -31,12 +31,15 @@ export function findRoute(from,to,obstacles,padding=14){
   return [];
 }
 export function moveEnemy(enemy,target,dt,speed,stop,obstacles){
-  const padding=enemy.kind==='boss'?25:enemy.kind==='bruiser'?20:14,solid=bodyObstacles(enemy,obstacles);
+  const padding=enemy.kind==='boss'?25:enemy.kind==='bruiser'?20:14,solid=bodyObstacles(enemy,obstacles),obstructedStart=blocked(enemy.x,enemy.y,solid,padding),origin={x:enemy.x,y:enemy.y};
   // Recover safely if scenery changes or an earlier position was already obstructed.
   for(let pass=0;pass<4;pass++)for(const[cx,cy,rx,ry]of solid){const ax=rx+padding,ay=ry+padding,dx=enemy.x-cx,dy=enemy.y-cy,n=Math.hypot(dx/ax,dy/ay);if(n<1-1e-7){enemy.x=cx+(n?dx/n:ax)*1.01;enemy.y=cy+(n?dy/n:0)*1.01;enemy.path=null;}}
   if(Math.hypot(target.x-enemy.x,target.y-enemy.y)<=stop)return false;
   enemy.navAge=(enemy.navAge||0)-dt;
   if(!enemy.path||enemy.navAge<=0||!enemy.navTarget||Math.hypot(enemy.navTarget.x-target.x,enemy.navTarget.y-target.y)>40){enemy.path=findRoute(enemy,target,solid,padding);enemy.navTarget={...target};enemy.navAge=1.5;while(enemy.path.length&&segmentBlocked(enemy,enemy.path[0],solid,padding)){if(enemy.path.length>1&&!segmentBlocked(enemy,enemy.path[1],solid,padding))enemy.path.shift();else{enemy.path=[];break;}}}
+  // A camera can reveal overlapping edge props around a spawn. Recover to
+  // the nearest clear grid point with a clear approach, rather than a sealed pocket.
+  if(obstructedStart&&(!enemy.path.length||blocked(enemy.x,enemy.y,solid,padding))){const candidates=[];for(let dy=-15;dy<=15;dy++)for(let dx=-15;dx<=15;dx++){const p={x:Math.round(origin.x/20)*20+dx*20,y:Math.round(origin.y/20)*20+dy*20};if(p.x< -300||p.x>1500||p.y< -300||p.y>900||blocked(p.x,p.y,solid,padding)||segmentBlocked(p,target,solid,padding))continue;candidates.push(p);}candidates.sort((a,b)=>Math.hypot(a.x-origin.x,a.y-origin.y)-Math.hypot(b.x-origin.x,b.y-origin.y));if(candidates.length){const p=candidates[0];enemy.x=p.x;enemy.y=p.y;enemy.path=findRoute(enemy,target,solid,padding);}}
   while(enemy.path.length&&Math.hypot(enemy.path[0].x-enemy.x,enemy.path[0].y-enemy.y)<.05)enemy.path.shift();
   if(!enemy.path.length)return false;
   const p=enemy.path[0],dx=p.x-enemy.x,dy=p.y-enemy.y,d=Math.hypot(dx,dy),step=Math.min(speed*dt,d);
