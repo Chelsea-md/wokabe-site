@@ -1,3 +1,4 @@
+export const growthAtlases={"mint":"cartoon-v5-growth-mint-armed-v22.png","mushroom":"cartoon-v5-growth-mushroom-armed-v22.png","cactus":"cartoon-v5-growth-cactus-armed-v22.png","clover":"cartoon-v5-growth-clover-armed-v22.png","bamboo":"cartoon-v5-growth-bamboo-armed-v22.png","starfruit":"cartoon-v5-growth-starfruit-armed-v22.png"};
 export const growthCharacters=[
  {id:'poppy',name:'CHILI'}, {id:'bellflower',name:'ACORN'}, {id:'marigold',name:'PINECONE'}, {id:'sunflower',name:'SUNFLOWER'},
  {id:'mint',name:'CRYSTAL',bounds:[29,71,283,341]}, {id:'mushroom',name:'MUSHROOM',bounds:[316,95,565,338]},
@@ -17,7 +18,7 @@ export function validateGrowth(input){
 export async function loadGrowthAssets(){
  const image=async file=>{const im=new Image();im.src=new URL('./assets/'+file,import.meta.url);await im.decode();return im;};
  const [hats,characters]=await Promise.all([image('cartoon-v5-growth-hats-v18.png'),image('cartoon-v5-extra-characters-v18.png')]);
- let config=defaultGrowth();try{const r=await fetch(new URL('./data/character-growth.json?v=production-21',import.meta.url));if(r.ok)config=validateGrowth(await r.json());if(location.hostname.endsWith('.chatgpt.site')){const response=await fetch('/api/character-growth');if(response.ok)config=validateGrowth((await response.json()).config);}}catch(e){console.warn('성장 설정 기본값을 사용합니다.',e.message);}
+ let config=defaultGrowth();try{const r=await fetch(new URL('./data/character-growth.json?v=production-22',import.meta.url));if(r.ok)config=validateGrowth(await r.json());if(location.hostname.endsWith('.chatgpt.site')){const response=await fetch('/api/character-growth');if(response.ok)config=validateGrowth((await response.json()).config);}}catch(e){console.warn('성장 설정 기본값을 사용합니다.',e.message);}
  return {hats,characters,config};
 }
 // Body-space positions follow the same flip, breathing and attack transform as the character.

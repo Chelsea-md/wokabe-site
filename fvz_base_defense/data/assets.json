@@ -2822,6 +2822,114 @@
       "width": 1254,
       "height": 1254,
       "bytes": 226608
+    },
+    {
+      "id": "cartoon-v5-growth-mint-armed-v22",
+      "file": "cartoon-v5-growth-mint-armed-v22.png",
+      "name": "CRYSTAL · 무기 장착 1~10성",
+      "category": "players",
+      "origin": "imagegen · built-in · 사용자 원화 기반 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "캐릭터 성장 10단계",
+        "LIVE OPS 모자 편집",
+        "PLANTS 도감",
+        "PNG 시트 저장"
+      ],
+      "width": 1983,
+      "height": 793,
+      "bytes": 1677807
+    },
+    {
+      "id": "cartoon-v5-growth-mushroom-armed-v22",
+      "file": "cartoon-v5-growth-mushroom-armed-v22.png",
+      "name": "MUSHROOM · 무기 장착 1~10성",
+      "category": "players",
+      "origin": "imagegen · built-in · 사용자 원화 기반 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "캐릭터 성장 10단계",
+        "LIVE OPS 모자 편집",
+        "PLANTS 도감",
+        "PNG 시트 저장"
+      ],
+      "width": 1983,
+      "height": 793,
+      "bytes": 1540318
+    },
+    {
+      "id": "cartoon-v5-growth-cactus-armed-v22",
+      "file": "cartoon-v5-growth-cactus-armed-v22.png",
+      "name": "MOSS GOLEM · 무기 장착 1~10성",
+      "category": "players",
+      "origin": "imagegen · built-in · 사용자 원화 기반 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "캐릭터 성장 10단계",
+        "LIVE OPS 모자 편집",
+        "PLANTS 도감",
+        "PNG 시트 저장"
+      ],
+      "width": 1983,
+      "height": 793,
+      "bytes": 1567286
+    },
+    {
+      "id": "cartoon-v5-growth-clover-armed-v22",
+      "file": "cartoon-v5-growth-clover-armed-v22.png",
+      "name": "LILY · 무기 장착 1~10성",
+      "category": "players",
+      "origin": "imagegen · built-in · 사용자 원화 기반 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "캐릭터 성장 10단계",
+        "LIVE OPS 모자 편집",
+        "PLANTS 도감",
+        "PNG 시트 저장"
+      ],
+      "width": 1983,
+      "height": 793,
+      "bytes": 1496849
+    },
+    {
+      "id": "cartoon-v5-growth-bamboo-armed-v22",
+      "file": "cartoon-v5-growth-bamboo-armed-v22.png",
+      "name": "LEAF · 무기 장착 1~10성",
+      "category": "players",
+      "origin": "imagegen · built-in · 사용자 원화 기반 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "캐릭터 성장 10단계",
+        "LIVE OPS 모자 편집",
+        "PLANTS 도감",
+        "PNG 시트 저장"
+      ],
+      "width": 1983,
+      "height": 793,
+      "bytes": 1452303
+    },
+    {
+      "id": "cartoon-v5-growth-starfruit-armed-v22",
+      "file": "cartoon-v5-growth-starfruit-armed-v22.png",
+      "name": "HOLLY · 무기 장착 1~10성",
+      "category": "players",
+      "origin": "imagegen · built-in · 사용자 원화 기반 · 2026-10-18",
+      "usage": "active",
+      "preload": false,
+      "usedIn": [
+        "캐릭터 성장 10단계",
+        "LIVE OPS 모자 편집",
+        "PLANTS 도감",
+        "PNG 시트 저장"
+      ],
+      "width": 1983,
+      "height": 793,
+      "bytes": 1418338
     }
   ]
 }
