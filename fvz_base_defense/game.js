@@ -1,22 +1,22 @@
-import {loadGameImage} from './game-image.js?v=production-48';
-import {gamePoint,gameBounds} from './game-viewport.js?v=production-48';
-import {defaultSizes,validateSizes,characterSize,sizeCatalog} from './character-sizes.js?v=production-48';
-import {validateGrowth,growthCharacters} from './character-growth.js?v=production-48';
-import {bossNames} from './boss-names.js?v=production-48';
-import {readLiveRelease,publishedAsset} from './live-release.js?v=production-48';
-import {validateMotions,motionCharacters,motionActions,allyMotionState} from './motion-config.js?v=production-48';
-import {terrainCamera,advanceTerrainCamera} from './scene-camera.js?v=production-48';
-import {createWorldArt,worldThemes,drawEnemyLayers} from './world-themes.js?v=production-48';
-import {upgradeValue} from './ui-markup.js?v=production-48';
-import {paintSand,paintMapProps} from './map-scenery.js?v=production-48';
-import {defaultStage,validateStage,propPieces,layoutObstacles,sceneryCamera} from './stage-layout.js?v=production-48';
+import {loadGameImage} from './game-image.js?v=production-49';
+import {gamePoint,gameBounds} from './game-viewport.js?v=production-49';
+import {defaultSizes,validateSizes,characterSize,sizeCatalog} from './character-sizes.js?v=production-49';
+import {validateGrowth,growthCharacters} from './character-growth.js?v=production-49';
+import {bossNames} from './boss-names.js?v=production-49';
+import {readLiveRelease,publishedAsset} from './live-release.js?v=production-49';
+import {validateMotions,motionCharacters,motionActions,allyMotionState} from './motion-config.js?v=production-49';
+import {terrainCamera,advanceTerrainCamera} from './scene-camera.js?v=production-49';
+import {createWorldArt,worldThemes,drawEnemyLayers} from './world-themes.js?v=production-49';
+import {upgradeValue} from './ui-markup.js?v=production-49';
+import {paintSand,paintMapProps} from './map-scenery.js?v=production-49';
+import {defaultStage,validateStage,propPieces,layoutObstacles,sceneryCamera} from './stage-layout.js?v=production-49';
 import {observeWorldResolution} from './canvas-resolution.js';
-import {rules} from './config.js?v=production-48';
-import {loadProgress,persistProgress,reconcileRoster,toggleLoadout} from './storage.js?v=production-48';
-import {chapterFor,costFor,increaseStat,countForWave,kindForSpawn,spawnInterval,killReward,mergeHealth,encounterScale,stageBeat} from './systems.js?v=production-48';
-import {loadRigs,drawRig,ensureConceptRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-48';
-import {loadUiSkins} from './library/art-directions/cartoon-v5/ui-skins.js?v=production-48';
-import {spawnOutside,stageObstacles,moveEnemy} from './library/art-directions/cartoon-v5/navigation.js?v=production-48';
+import {rules} from './config.js?v=production-49';
+import {loadProgress,persistProgress,reconcileRoster,toggleLoadout} from './storage.js?v=production-49';
+import {chapterFor,costFor,increaseStat,countForWave,kindForSpawn,spawnInterval,killReward,mergeHealth,encounterScale,stageBeat} from './systems.js?v=production-49';
+import {loadRigs,drawRig,ensureConceptRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-49';
+import {loadUiSkins} from './library/art-directions/cartoon-v5/ui-skins.js?v=production-49';
+import {spawnOutside,stageObstacles,moveEnemy} from './library/art-directions/cartoon-v5/navigation.js?v=production-49';
 import {loadPopupArt} from './popup-art.js';
 import {createLoadingWallpaper} from './loading-wallpaper.js';
 const markBoot=stage=>{window.fvzBootStage=stage;};markBoot('ui');
@@ -98,19 +98,16 @@ function collectionPortrait(type){const id=typeof type==='string'?type:names[typ
 function renderPlants(){
  const root=$('#plants-grid');
  root.innerHTML=rules.plantDisplayOrder.map(type=>{
-  const p=rules.troops[type],open=saved.unlocks[type],eligible=saved.completedStages>=p.unlockStage,enough=saved.coins>=p.unlockCost,selected=saved.loadout.includes(type);
+  const p=rules.troops[type],open=saved.unlocks[type],eligible=saved.completedStages>=p.unlockStage,enough=saved.coins>=p.unlockCost;
   const footer=open
-   ?`<button class="roster-select" data-select="${type}" aria-pressed="${selected}" aria-label="${selected?'Remove':'Add'} ${p.name} ${selected?'from':'to'} battle deck"><strong>${selected?'IN DECK':'SELECT'}</strong><small>${p.role||'ATTACK'} · ${p.attack} ATK</small></button>`
-   :type>=4?`<b>${p.role}</b><small>UNLOCKS AT STAGE ${p.unlockStage+1}</small>`
-   :`<button class="unlock-plant" data-unlock="${type}" ${eligible&&enough?'':'disabled'} aria-label="Unlock ${p.name} for ${p.unlockCost} coins"><strong>UNLOCK</strong><span>${icon('coin')}<b>${p.unlockCost}</b></span><small>${eligible?(enough?'':'Not enough coins'):'Reach stage '+(p.unlockStage+1)}</small></button>`;
-  return `<article style="--idle-delay:-${type*.8}s" class="plant-collection-card ${open?'unlocked':'locked'} ${type>=4?'future-plant':''} ${selected?'in-deck':''} ${!open&&(!eligible||!enough)?'unaffordable':''}" aria-label="${p.name}. ${open?(p.role||'Attack'):(type>=4?'Unlocks at stage '+(p.unlockStage+1):'Locked')}"><div class="plant-select">${!open?`<img class="collection-lock" src="${uiSkins.lock}" alt="Locked">`:''}<img class="collection-character" style="${collectionSizeStyle(type)}" src="${collectionPortrait(type)}" alt="${p.name}"><strong>${p.name}</strong></div><div class="plant-collection-footer">${footer}</div></article>`;
+   ?`<div class="collection-owned"><strong>OWNED</strong><small>${p.role||'ATTACK'} · ${icon('sun')}${p.cost}</small></div>`
+   :`<button class="unlock-plant" data-unlock="${type}" ${eligible&&enough?'':'disabled'} aria-label="Unlock ${p.name} for ${p.unlockCost} coins${eligible?'':' after stage '+p.unlockStage}"><strong>UNLOCK</strong><span>${icon('coin')}<b>${p.unlockCost}</b></span><small>${eligible?(enough?'':'Not enough coins'):'Reach stage '+(p.unlockStage+1)}</small></button>`;
+  return `<article style="--idle-delay:-${type*.8}s" class="plant-collection-card ${open?'unlocked':'locked'} ${type>=4?'future-plant':''} ${!open&&(!eligible||!enough)?'unaffordable':''}" aria-label="${p.name}. ${open?'Owned. Battle cost '+p.cost+' sunlight. '+(p.role||'Attack'):'Unlock for '+p.unlockCost+' coins'+(eligible?'':' after stage '+p.unlockStage)}"><div class="plant-select">${!open?`<img class="collection-lock" src="${uiSkins.lock}" alt="Locked">`:''}<img class="collection-character" style="${collectionSizeStyle(type)}" src="${collectionPortrait(type)}" alt="${p.name}"><strong>${p.name}</strong></div><div class="plant-collection-footer">${footer}</div></article>`;
  }).join('');
- root.querySelectorAll('[data-unlock]').forEach(b=>b.onclick=()=>unlockPlant(+b.dataset.unlock));
- root.querySelectorAll('[data-select]').forEach(b=>b.onclick=async()=>{
-  const type=+b.dataset.select;
-  if(type>=4&&!rigs[names[type]]){b.disabled=true;b.querySelector('strong').textContent='LOADING';try{await ensureConceptRig(rigs,names[type]);portraitCache.delete('equipped-start-'+names[type]);for(let star=1;star<=10;star++)portraitCache.delete(names[type]+star);}catch(error){console.error(error);notify('Character art could not load. Please retry.');b.disabled=false;return;}}
-  if(toggleLoadout(saved,type)){save();buildCards();renderPlants();}else notify('Keep at least one plant in your deck.');
- });
+ let pager=frame.querySelector('#plant-carousel-controls');
+ if(!pager){pager=document.createElement('nav');pager.id='plant-carousel-controls';pager.setAttribute('aria-label','Browse plant collection');pager.innerHTML='<button type="button" data-scroll="-1" aria-label="Previous plants">PREV</button><button type="button" data-scroll="1" aria-label="More plants">NEXT</button>';frame.append(pager);pager.querySelectorAll('button').forEach(b=>b.onclick=()=>root.scrollBy({left:+b.dataset.scroll*root.clientWidth*.82,behavior:reducedMotion()?'instant':'smooth'}));root.addEventListener('scroll',()=>{pager.querySelector('[data-scroll="-1"]').disabled=root.scrollLeft<8;pager.querySelector('[data-scroll="1"]').disabled=root.scrollLeft+root.clientWidth>=root.scrollWidth-8;},{passive:true});}
+ requestAnimationFrame(()=>{pager.querySelector('[data-scroll="-1"]').disabled=root.scrollLeft<8;pager.querySelector('[data-scroll="1"]').disabled=root.scrollLeft+root.clientWidth>=root.scrollWidth-8;});
+ root.querySelectorAll('[data-unlock]').forEach(b=>b.onclick=async()=>{const type=+b.dataset.unlock;if(type>=4&&!rigs[names[type]]){b.disabled=true;try{await ensureConceptRig(rigs,names[type]);portraitCache.delete('equipped-start-'+names[type]);for(let star=1;star<=10;star++)portraitCache.delete(names[type]+star);}catch(error){console.error(error);notify('Character art could not load. Please retry.');b.disabled=false;return;}}unlockPlant(type);});
 }
 function unlockPlant(type){const p=rules.troops[type];if(!p||saved.unlocks[type]||saved.completedStages<p.unlockStage||saved.coins<p.unlockCost)return false;saved.coins-=p.unlockCost;saved.unlocks[type]=true;toggleLoadout(saved,type);save();syncHome();buildCards();celebrateRecruit(type);return true;}
 let recruitTimer=0;
@@ -202,8 +199,8 @@ function showDialog(title,body,actions){const box=$('#production-dialog');box.in
 function hideDialog(){$('#production-dialog').hidden=true;}
 function timedBonus(title,body,claim,cancel){bonusReady=performance.now()+rules.economy.adDurationMs;showDialog(title,body,[{label:'CONTINUE IN 5',disabled:true,action:()=>{if(!bonusReady||performance.now()<bonusReady)return;bonusReady=0;claim();}}]);const close=document.createElement('button');close.className='bonus-close';close.setAttribute('aria-label','Close bonus');close.textContent='×';close.onclick=()=>{bonusReady=0;cancel();};$('#production-dialog section').append(close);}
 function claimDoubleReward(){if(!runReward||runReward.doubled)return false;runReward.doubled=true;saved.coins+=earned;runReward.coins+=earned;save();return true;}
-function resultDialog(win,finishedStage,doubled=false){const leave=()=>{hideDialog();paused=false;prepareRewardFlight();showSceneSplash('home');launchRewardFlight();};const actions=[];if(earned>0&&!runReward?.doubled)actions.push({label:'CLAIM ×2',action:()=>timedBonus('BONUS REWARD','Double your coin reward.',()=>{claimDoubleReward();resultDialog(win,finishedStage,true);},()=>resultDialog(win,finishedStage))});actions.push({label:win?'NEXT STAGE':'HOME',action:leave});const ally=runReward?.arrivals?.at(-1);showDialog(win?'VICTORY!':'TRY AGAIN',`Stage ${finishedStage} complete`,actions);decorateResult(win,finishedStage);if(ally!==undefined)$('#production-dialog section p').insertAdjacentHTML('beforeend',`<small class="ally-arrival">${rules.troops[ally].name} JOINS YOUR DECK!</small>`);}
-function finish(win){if(runResolved)return;runResolved=true;paused=true;cancelDrag();endBossIntro();const gems=win?rules.economy.gemsPerVictory:0;runReward={coins:earned,gems,doubled:false};saved.coins+=earned;saved.gems=(saved.gems||0)+gems;saved.freeUsed={};const finishedStage=stageNumber();if(win){saved.completedStages++;saved.chapter=saved.completedStages%rules.chapters.length;runReward.arrivals=reconcileRoster(saved);}save();resultDialog(win,finishedStage);}
+function resultDialog(win,finishedStage,doubled=false){const leave=()=>{hideDialog();paused=false;prepareRewardFlight();showSceneSplash('home');launchRewardFlight();};const actions=[];if(earned>0&&!runReward?.doubled)actions.push({label:'CLAIM ×2',action:()=>timedBonus('BONUS REWARD','Double your coin reward.',()=>{claimDoubleReward();resultDialog(win,finishedStage,true);},()=>resultDialog(win,finishedStage))});actions.push({label:win?'NEXT STAGE':'HOME',action:leave});const available=runReward?.available;showDialog(win?'VICTORY!':'TRY AGAIN',`Stage ${finishedStage} complete`,actions);decorateResult(win,finishedStage);if(available>=0)$('#production-dialog section p').insertAdjacentHTML('beforeend',`<small class="ally-arrival">${rules.troops[available].name} NOW AVAILABLE IN PLANTS</small>`);}
+function finish(win){if(runResolved)return;runResolved=true;paused=true;cancelDrag();endBossIntro();const gems=win?rules.economy.gemsPerVictory:0;runReward={coins:earned,gems,doubled:false};saved.coins+=earned;saved.gems=(saved.gems||0)+gems;saved.freeUsed={};const finishedStage=stageNumber();if(win){saved.completedStages++;saved.chapter=saved.completedStages%rules.chapters.length;reconcileRoster(saved);runReward.available=rules.troops.findIndex((p,index)=>index>=3&&p.unlockStage===saved.completedStages&&!saved.unlocks[index]);}save();resultDialog(win,finishedStage);}
 function rewardConfetti(){return '<div class="victory-confetti" aria-hidden="true">'+Array.from({length:42},(_,i)=>`<i style="--i:${i};--x:${i*43%100}%;--h:${[42,120,180,285,335][i%5]}"></i>`).join('')+'</div>';}
 function decorateResult(win,stage){const box=$('#production-dialog'),panel=box.querySelector('section');panel.classList.add('result-panel');if(win){panel.classList.add('victory-panel');panel.querySelector('h2').innerHTML='<svg class="victory-cup" viewBox="0 0 120 105" aria-hidden="true"><path d="M28 16H10V37Q10 57 39 57M92 16H110V37Q110 57 81 57" fill="none" stroke="#20261b" stroke-width="12"/><path d="M28 16H10V37Q10 57 39 57M92 16H110V37Q110 57 81 57" fill="none" stroke="#ffd84a" stroke-width="7"/><path d="M28 7H92L86 43Q82 66 65 71V86H84V98H36V86H55V71Q38 66 34 43Z" fill="#ffc72d" stroke="#23271c" stroke-width="5"/><path d="M36 15H84L80 27H39Z" fill="#fff2a3"/><path d="M59 31L64 41L76 43L67 51L69 62L59 57L49 62L51 51L43 43L55 41Z" fill="#fff2b0"/></svg><b>STAGE CLEAR!</b>';box.insertAdjacentHTML('beforeend',rewardConfetti());tone(660);setTimeout(()=>tone(880),140);setTimeout(()=>tone(1320),300);}panel.querySelector('p').innerHTML=`<small>STAGE ${stage} ${win?'COMPLETE':'REWARDS'}</small><div class="result-rewards"><div>${icon('coin')}<strong>+${(runReward?.coins||0).toLocaleString()}</strong></div>${runReward?.gems?`<div>${gemIcon()}<strong>+${runReward.gems}</strong></div>`:''}</div>`;const double=panel.querySelector('[data-action="0"]');if(double&&double.textContent==='CLAIM ×2')double.innerHTML=icon('video')+icon('coin')+'<span>CLAIM ×2</span>';}
 function prepareRewardFlight(){if(!runReward)return;rewardFlight={...runReward,start:performance.now(),progress:0,particles:[]};}
@@ -230,7 +227,7 @@ async function finishBoot(){const overlay=$('#boot-loading'),shown=+$('#boot-log
 function advanceElapsed(seconds){let remaining=Math.max(0,seconds);while(remaining>1e-7){const dt=Math.min(1/30,remaining);tickVisuals(dt);tickSceneSplash(dt);if(!paused&&!sceneSplash){if(bossIntro){bossIntro.elapsed+=dt;if(bossIntro.elapsed>=introDuration)endBossIntro();}update(dt*(bossIntro?.12:1));}remaining-=dt;if(paused||(!sceneSplash&&scene!=='battle')||runResolved){if(!paused)time+=remaining;break;}}}
 function advanceFrame(now){if(now<=last)return;const elapsed=Math.max(0,(now-last)/1000);last=now;advanceElapsed(elapsed);}
 function loop(now){advanceFrame(now);tickRewardFlight(now);updateTutorial();if(bossIntro)$('#boss-cinematic').style.setProperty('--intro-opacity',String(introWeight()));if(messageUntil&&now>messageUntil){$('#game-message').classList.remove('visible');messageUntil=0;}updateUI();render();requestAnimationFrame(loop);}
-try{const clockWorker=new Worker(new URL('./background-clock.js?v=production-48',import.meta.url));clockWorker.onmessage=()=>{if(document.hidden)advanceFrame(performance.now());};}catch{setInterval(()=>{if(document.hidden)advanceFrame(performance.now());},250);}
+try{const clockWorker=new Worker(new URL('./background-clock.js?v=production-49',import.meta.url));clockWorker.onmessage=()=>{if(document.hidden)advanceFrame(performance.now());};}catch{setInterval(()=>{if(document.hidden)advanceFrame(performance.now());},250);}
 markBoot('start');$('.production-track').setAttribute('role','progressbar');$('.production-track').setAttribute('aria-label','Charging next sunlight');$('.production-track').setAttribute('aria-valuemin','0');$('.production-track').setAttribute('aria-valuemax','100');applyTheme();buildCards();setScene(new URLSearchParams(location.search).get('screen')==='plants'?'plants':'home');updateUI();render();requestAnimationFrame(loop);await finishBoot();
 
 

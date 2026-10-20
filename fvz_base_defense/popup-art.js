@@ -1,5 +1,5 @@
-import {loadGameImage} from './game-image.js?v=production-48';
-import {publishedAsset} from './live-release.js?v=production-48';
+import {loadGameImage} from './game-image.js?v=production-49';
+import {publishedAsset} from './live-release.js?v=production-49';
 // Runtime crops preserve the user-supplied transparent PNGs unchanged.
 export async function loadPopupArt() {
   const images=await Promise.all(['cartoon-v5-popup-sprout.png','cartoon-v5-pause-controls.png'].map(name=>loadGameImage('assets/'+name,import.meta.url)));
