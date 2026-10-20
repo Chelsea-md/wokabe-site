@@ -1,4 +1,4 @@
-import { rules } from "./config.js?v=production-46";
+import { rules } from "./config.js?v=production-48";
 
 export function chapterFor(save) {
   return rules.chapters[
@@ -33,6 +33,20 @@ export function increaseStat(save, stat) {
 
 export function encounterScale(save){return 1+Math.floor((save.completedStages||0)/rules.chapters.length)*(rules.campaign?.repeatDifficultyIncrement||.18);}
 
+export function stageBeat(save) {
+  const stage=(save.completedStages||0)+1;
+  const beats=[
+    {stage:6,ally:'CRYSTAL',threat:'fast couriers',pattern:[2,0,2,1]},
+    {stage:9,ally:'MUSHROOM',threat:'durable bruisers',pattern:[1,0,1,2]},
+    {stage:12,ally:'MOSS GOLEM',threat:'close-range pressure',pattern:[0,1,0,4]},
+    {stage:15,ally:'LILY',threat:'sustained attacks',pattern:[2,1,2,0]},
+    {stage:18,ally:'LEAF',threat:'armored elites',pattern:[4,1,4,0]},
+    {stage:21,ally:'HOLLY',threat:'crowded waves',pattern:[0,2,0,2,1]},
+  ];
+  const beat=beats.find(item=>stage>=item.stage-1&&stage<=item.stage+1);
+  return beat?{...beat,phase:stage===beat.stage-1?'preview':stage===beat.stage?'spotlight':'mix'}:null;
+}
+
 export function countForWave(save, wave) {
   return Math.ceil((chapterFor(save).waveCounts[wave - 1] || 15)*encounterScale(save));
 }
@@ -41,6 +55,12 @@ export function kindForSpawn(save, wave, index, total) {
   const chapter = chapterFor(save);
   if (wave === chapter.waves && index === Math.floor(total * chapter.bossAt))
     return 3;
+  const beat=stageBeat(save);
+  if(beat&&wave>=2){
+    if(beat.phase==='preview')return beat.pattern[index%beat.pattern.length];
+    if(beat.phase==='spotlight')return beat.pattern[(index+1)%beat.pattern.length];
+    return [...beat.pattern,0,1][index%(beat.pattern.length+2)];
+  }
   if (chapter.id==='forest-camp'&&wave>=3)return [0,2,2,4,1][index%5];
   if (chapter.id==='moonblock'&&(wave===3||wave===5))return [1,1,0,2][index%4];
   if (!save.chapter) return wave === 1 ? 0 : wave === 2 ? index % 2 : index % 3;

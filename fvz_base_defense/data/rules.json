@@ -51,8 +51,15 @@
       true,
       false,
       false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
       false
     ],
+    "loadout": [0, 1, 2, 3],
     "tutorial": false,
     "played": false,
     "sound": true,
@@ -122,6 +129,36 @@
       "range": 145,
       "unlockCost": 100,
       "unlockStage": 2
+    },
+    {
+      "id": "crystal", "rigId": "mint", "name": "CRYSTAL", "role": "FROST / SLOW",
+      "ability": "slow", "attack": 9, "hp": 42, "cost": 6, "cooldown": 1.15,
+      "range": 160, "unlockCost": 0, "unlockStage": 5
+    },
+    {
+      "id": "mushroom", "rigId": "mushroom", "name": "MUSHROOM", "role": "POISON",
+      "ability": "poison", "attack": 6, "hp": 38, "cost": 7, "cooldown": 1.35,
+      "range": 155, "unlockCost": 0, "unlockStage": 8
+    },
+    {
+      "id": "moss-golem", "rigId": "cactus", "name": "MOSS GOLEM", "role": "TANK / THORNS",
+      "ability": "thorns", "attack": 9, "hp": 180, "cost": 9, "cooldown": 1.45,
+      "range": 95, "unlockCost": 0, "unlockStage": 11
+    },
+    {
+      "id": "lily", "rigId": "clover", "name": "LILY", "role": "HEAL / SUPPORT",
+      "ability": "heal", "attack": 5, "hp": 48, "cost": 8, "cooldown": 1.4,
+      "range": 145, "unlockCost": 0, "unlockStage": 14
+    },
+    {
+      "id": "leaf", "rigId": "bamboo", "name": "LEAF", "role": "ARMOR PIERCE",
+      "ability": "pierce", "attack": 24, "hp": 34, "cost": 10, "cooldown": 1.6,
+      "range": 180, "unlockCost": 0, "unlockStage": 17
+    },
+    {
+      "id": "holly", "rigId": "starfruit", "name": "HOLLY", "role": "CHAIN LIGHTNING",
+      "ability": "chain", "attack": 15, "hp": 38, "cost": 11, "cooldown": 1.8,
+      "range": 170, "unlockCost": 0, "unlockStage": 20
     }
   ],
   "economy": {
@@ -500,7 +537,13 @@
     0,
     1,
     2,
-    3
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
   ],
   "campaign": {
     "routePolicy": "preserve-existing-three-then-observed-expansion",
@@ -513,7 +556,7 @@
       "name": "CRYSTAL",
       "stage": 6,
       "role": "FROST / SLOW",
-      "status": "concept",
+      "status": "playable",
       "art": "assets/cartoon-v5-ally-mint-v15.png",
       "bounds": [
         53,
@@ -527,7 +570,7 @@
       "name": "MUSHROOM",
       "stage": 9,
       "role": "POISON",
-      "status": "concept",
+      "status": "playable",
       "art": "assets/cartoon-v5-ally-mushroom-v15.png",
       "bounds": [
         123,
@@ -541,7 +584,7 @@
       "name": "MOSS GOLEM",
       "stage": 12,
       "role": "TANK / THORNS",
-      "status": "concept",
+      "status": "playable",
       "art": "assets/cartoon-v5-ally-cactus-v15.png",
       "bounds": [
         98,
@@ -555,7 +598,7 @@
       "name": "LILY",
       "stage": 15,
       "role": "HEAL / SUPPORT",
-      "status": "concept",
+      "status": "playable",
       "art": "assets/cartoon-v5-ally-clover-v15.png",
       "bounds": [
         87,
@@ -569,7 +612,7 @@
       "name": "LEAF",
       "stage": 18,
       "role": "ARMOR PIERCE",
-      "status": "concept",
+      "status": "playable",
       "art": "assets/cartoon-v5-ally-bamboo-v15.png",
       "bounds": [
         56,
@@ -583,7 +626,7 @@
       "name": "HOLLY",
       "stage": 21,
       "role": "CHAIN LIGHTNING",
-      "status": "concept",
+      "status": "playable",
       "art": "assets/cartoon-v5-ally-starfruit-v15.png",
       "bounds": [
         61,
