@@ -1,25 +1,26 @@
-import {loadGameImage} from './game-image.js?v=production-45';
-import {gamePoint,gameBounds} from './game-viewport.js?v=production-45';
-import {defaultSizes,validateSizes,characterSize,sizeCatalog} from './character-sizes.js?v=production-45';
-import {validateGrowth,growthCharacters} from './character-growth.js?v=production-45';
-import {bossNames} from './boss-names.js?v=production-45';
-import {readLiveRelease,publishedAsset} from './live-release.js?v=production-45';
-import {validateMotions,motionCharacters,motionActions,allyMotionState} from './motion-config.js?v=production-45';
-import {terrainCamera,advanceTerrainCamera} from './scene-camera.js?v=production-45';
-import {createWorldArt,worldThemes,drawEnemyLayers} from './world-themes.js?v=production-45';
-import {upgradeValue} from './ui-markup.js?v=production-45';
-import {paintSand,paintMapProps} from './map-scenery.js?v=production-45';
-import {defaultStage,validateStage,propPieces,layoutObstacles,sceneryCamera} from './stage-layout.js?v=production-45';
+import {loadGameImage} from './game-image.js?v=production-46';
+import {gamePoint,gameBounds} from './game-viewport.js?v=production-46';
+import {defaultSizes,validateSizes,characterSize,sizeCatalog} from './character-sizes.js?v=production-46';
+import {validateGrowth,growthCharacters} from './character-growth.js?v=production-46';
+import {bossNames} from './boss-names.js?v=production-46';
+import {readLiveRelease,publishedAsset} from './live-release.js?v=production-46';
+import {validateMotions,motionCharacters,motionActions,allyMotionState} from './motion-config.js?v=production-46';
+import {terrainCamera,advanceTerrainCamera} from './scene-camera.js?v=production-46';
+import {createWorldArt,worldThemes,drawEnemyLayers} from './world-themes.js?v=production-46';
+import {upgradeValue} from './ui-markup.js?v=production-46';
+import {paintSand,paintMapProps} from './map-scenery.js?v=production-46';
+import {defaultStage,validateStage,propPieces,layoutObstacles,sceneryCamera} from './stage-layout.js?v=production-46';
 import {observeWorldResolution} from './canvas-resolution.js';
-import {rules} from './config.js?v=production-45';
-import {loadProgress,persistProgress} from './storage.js?v=production-45';
-import {chapterFor,costFor,increaseStat,countForWave,kindForSpawn,spawnInterval,killReward,mergeHealth,encounterScale} from './systems.js?v=production-45';
-import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-45';
-import {loadUiSkins} from './library/art-directions/cartoon-v5/ui-skins.js?v=production-45';
-import {spawnOutside,stageObstacles,moveEnemy} from './library/art-directions/cartoon-v5/navigation.js?v=production-45';
+import {rules} from './config.js?v=production-46';
+import {loadProgress,persistProgress} from './storage.js?v=production-46';
+import {chapterFor,costFor,increaseStat,countForWave,kindForSpawn,spawnInterval,killReward,mergeHealth,encounterScale} from './systems.js?v=production-46';
+import {loadRigs,drawRig} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-46';
+import {loadUiSkins} from './library/art-directions/cartoon-v5/ui-skins.js?v=production-46';
+import {spawnOutside,stageObstacles,moveEnemy} from './library/art-directions/cartoon-v5/navigation.js?v=production-46';
 import {loadPopupArt} from './popup-art.js';
 import {createLoadingWallpaper} from './loading-wallpaper.js';
-const $=s=>document.querySelector(s),gameParams=new URLSearchParams(location.search),stageEditor=gameParams.get('editor')==='stage'&&window.parent!==window,uiSkins=await loadUiSkins();createLoadingWallpaper(uiSkins);const popupArt=await loadPopupArt();const sprout=$('.pause-sprout'),popupSprout=document.createElement('img');popupSprout.className='pause-sprout';popupSprout.src=popupArt.sprout;popupSprout.alt='';sprout.replaceWith(popupSprout);for(const [id,key,label]of [['resume-battle','resume','Resume'],['pause-to-home','home','Home']]){const b=$('#'+id);b.classList.add('asset-button');b.innerHTML='<span class="sr-only">'+label+'</span>';b.setAttribute('aria-label',label);b.style.setProperty('--button-art',`url("${popupArt[key]}")`);}const rigs=await loadRigs({includeConcepts:stageEditor});
+const markBoot=stage=>{window.fvzBootStage=stage;};markBoot('ui');
+const $=s=>document.querySelector(s),gameParams=new URLSearchParams(location.search),stageEditor=gameParams.get('editor')==='stage'&&window.parent!==window,uiSkins=await loadUiSkins();createLoadingWallpaper(uiSkins);markBoot('popup');const popupArt=await loadPopupArt();const sprout=$('.pause-sprout'),popupSprout=document.createElement('img');popupSprout.className='pause-sprout';popupSprout.src=popupArt.sprout;popupSprout.alt='';sprout.replaceWith(popupSprout);for(const [id,key,label]of [['resume-battle','resume','Resume'],['pause-to-home','home','Home']]){const b=$('#'+id);b.classList.add('asset-button');b.innerHTML='<span class="sr-only">'+label+'</span>';b.setAttribute('aria-label',label);b.style.setProperty('--button-art',`url("${popupArt[key]}")`);}markBoot('rigs');const rigs=await loadRigs({includeConcepts:stageEditor});
 let editorMotion=null,editorSizePreview=null,sizeConfig=defaultSizes();
 let stageOverrides={},liveVersions={};try{stageOverrides=(await fetch(new URL('./data/stage-layouts.json',import.meta.url)).then(r=>r.json())).stages||{};}catch{}
 try{const release=await readLiveRelease();stageOverrides={...stageOverrides,...release.stages};liveVersions=release.versions;if(release.settings.sizes)sizeConfig=validateSizes(release.settings.sizes);}catch{}
@@ -46,11 +47,11 @@ let scene='home',previewStage='green',previewStar=1,time=0,last=performance.now(
 let baseTier=0,baseMaxHp=saved.health,baseHp=saved.health,baseHitUntil=0,wave=1,countdown=10,spawnClock=0,spawned=0,waveKilled=0,earned=0,runResolved=true,unitSerial=0;
 const baseHeights=[53,55,60,70,100],baseBounds=[[29,387,218,251],[274,346,315,299],[611,284,399,372],[1036,248,566,410],[1630,37,764,662]];
 const loadImage=src=>loadGameImage(src,document.baseURI);
-const [baseAtlas,combatVfx,homeField,sproutPattern]=await Promise.all(['garden-base','combat-vfx','home-field','plants-sprout-transparent'].map(n=>loadImage('../../../assets/cartoon-v5-'+n+'.png')));
+markBoot('field');const [baseAtlas,combatVfx,homeField,sproutPattern]=await Promise.all(['garden-base','combat-vfx','home-field','plants-sprout-transparent'].map(n=>loadImage('../../../assets/cartoon-v5-'+n+'.png')));
 const dragCardSkin=await loadImage(uiSkins.card),dragSunIcon=await loadImage(uiSkins.sun);
 const moonField=await loadImage('../../../assets/cartoon-v5-moon-field.png');
 const wallpaperTile=await loadImage('../../../assets/cartoon-v5-wallpaper-tile.png');
-const manifest=await fetch('assets.json').then(r=>r.json()),art={};
+markBoot('assets');const manifest=await fetch('assets.json').then(r=>r.json()),art={};
 await Promise.all(manifest.filter(row=>!rigs[row.id]).map(async row=>art[row.id]={...row,image:await loadImage(row.file)}));
 // Sunflower uses its approved neutral sprite until a dedicated equipped sheet exists.
 const sunflower=document.createElement('canvas');sunflower.width=300;sunflower.height=320;
@@ -60,7 +61,7 @@ const sunflowerStyled=rigs.sunflower.evolution.sprites.map(s=>s.image);
 const chapterEnemies=await loadImage('../../../assets/cartoon-v5-chapter-enemies.png');
 for(const [id,b] of Object.entries({ghost:[25,103,477,524],vampire:[553,87,460,557],reaper:[1082,102,569,542],elite:[1646,96,513,548]})){const cv=document.createElement('canvas');cv.width=b[2];cv.height=b[3];const c=cv.getContext('2d');c.drawImage(chapterEnemies,...b,0,0,b[2],b[3]);if(id==='reaper')c.clearRect(b[2]-5,400-b[1],5,b[3]);if(id==='elite')c.clearRect(0,0,5,400-b[1]);art[id]={image:cv,bounds:[0,0,cv.width,cv.height]};}
 const [desertProps,egyptProps,pharaohImage]=await Promise.all(['cartoon-v5-desert-props.png','cartoon-v5-egypt-props-v16.png','cartoon-v5-pharaoh-armed.png'].map(n=>loadImage('../../../assets/'+n)));art.pharaoh={image:pharaohImage,bounds:[41,47,1177,1238]};
-const worldArt=createWorldArt(art,{desert:desertProps,egypt:egyptProps});await worldArt.ensure(stageEditor?defaultStage(1):(stageOverrides[saved.completedStages+1]||defaultStage(saved.completedStages+1)));
+markBoot('world');const worldArt=createWorldArt(art,{desert:desertProps,egypt:egyptProps});await worldArt.ensure(stageEditor?defaultStage(1):(stageOverrides[saved.completedStages+1]||defaultStage(saved.completedStages+1)));
 const coinWallet=$('#coins').parentElement;coinWallet.classList.add('top-currency');
 const gemWallet=document.createElement('div');gemWallet.className='currency gem-currency';gemWallet.setAttribute('aria-label','Gems');gemWallet.innerHTML=gemIcon()+'<strong id="gems">0</strong>';frame.append(gemWallet);
 const wavePointer=document.createElement('span');wavePointer.className='wave-pointer';wavePointer.setAttribute('aria-hidden','true');wavePointer.innerHTML='<svg viewBox="0 0 40 40"><path d="M9 5L34 20L9 35Z"/></svg>';$('.wave-head').append(wavePointer);
@@ -197,15 +198,15 @@ const soundButton=document.createElement('button');soundButton.id='sound-toggle'
 window.addEventListener('keydown',e=>{if(e.key==='Escape'){if($('#recruit-celebration')){closeRecruit();return;}if(!$('#production-dialog').hidden)return;if(!$('#return-home-overlay').hidden){$('#cancel-home').click();return;}if(bossIntro){endBossIntro();return;}if(!$('#pause-overlay').hidden){$('#resume-battle').click();return;}openPause();}if(e.key==='Tab'){const box=[$('#recruit-celebration'),$('#production-dialog'),$('#return-home-overlay'),$('#pause-overlay')].find(n=>n&&!n.hidden);if(!box)return;const buttons=[...box.querySelectorAll('button:not(:disabled)')].filter(b=>!b.hidden),first=buttons[0],last=buttons.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}});
 function updateUI(){canvas.dataset.zoom=zoom.toFixed(3);canvas.removeAttribute('title');const waveTotal=countForWave(saved,wave),track=$('.wave-track');track.setAttribute('role','progressbar');track.setAttribute('aria-label','Enemies defeated this wave');track.setAttribute('aria-valuemin','0');track.setAttribute('aria-valuemax',String(waveTotal));track.setAttribute('aria-valuenow',String(waveKilled));track.querySelector('i').style.width=(Math.min(waveTotal,waveKilled)/waveTotal*100)+'%';$('.wave-head').style.setProperty('--wave-progress',(waveProgress(waveKilled,waveTotal)*100)+'%');wavePointer.hidden=countdown>0;wavePointer.style.left=(3+waveProgress(waveKilled,waveTotal)*94)+'%';if(bonusReady){const b=$('#production-dialog [data-action="0"]'),remain=Math.max(0,Math.ceil((bonusReady-performance.now())/1000));if(b){b.disabled=remain>0;b.textContent=remain?'CONTINUE IN '+remain:'CLAIM';const close=$('#production-dialog .bonus-close');if(close)close.hidden=remain===0;}}$('#coins').textContent=money(scene==='battle'?earned:displayBalance('coins'));$('#gems').textContent=money(displayBalance('gems'));gemWallet.setAttribute('aria-label','Gems '+(saved.gems||0));$('#sun-count').textContent=Math.floor(sun);$('.wave-number').innerHTML=wave+' <small>/ '+chapter().waves+'</small>';$('#wave-countdown').textContent=scene==='battle'&&countdown>0?'Wave starts in '+Math.ceil(countdown):'';$('#production-fill').style.width=(sun>=999?100:sun%1*100)+'%';$('.sun-stock').style.setProperty('--sun-progress',(sun>=999?100:sun%1*100)+'%');$('.production-track').setAttribute('aria-valuenow',String(sun>=999?100:Math.floor(sun%1*100)));$('.sun-stock').setAttribute('aria-label','Sunlight '+Math.floor(sun)+' of 999');document.querySelectorAll('.troop-card').forEach(b=>{const enough=sun>=costs[+b.dataset.type];b.classList.toggle('unaffordable',!enough);b.setAttribute('aria-disabled',String(!enough));});$('#unit-inspector').hidden=true;$('#placement-tip').hidden=true;canvas.setAttribute('aria-label',scene==='battle'?`Stage ${stageNumber()}, wave ${wave} of ${chapter().waves}. Sunlight ${Math.floor(sun)}. Base health ${Math.ceil(baseHp)} of ${baseMaxHp}. Plants ${units.length}. Enemies ${enemies.length}. ${paused?'Paused.':''}`:`${scene}. Stage ${stageNumber()}. Coins ${saved.coins}.`);}
 
-const tutorial=document.createElement('div');tutorial.id='merge-tutorial';tutorial.className='battle-only';tutorial.setAttribute('role','status');tutorial.innerHTML='<img alt=""><span></span>';frame.append(tutorial);const hintAtlas=await loadImage('../../../assets/cartoon-v5-tutorial-hand.png'),hintCanvas=document.createElement('canvas');hintCanvas.width=345;hintCanvas.height=255;hintCanvas.getContext('2d').drawImage(hintAtlas,143,600,345,255,0,0,345,255);tutorial.querySelector('img').src=hintCanvas.toDataURL();
+markBoot('tutorial');const tutorial=document.createElement('div');tutorial.id='merge-tutorial';tutorial.className='battle-only';tutorial.setAttribute('role','status');tutorial.innerHTML='<img alt=""><span></span>';frame.append(tutorial);const hintAtlas=await loadImage('../../../assets/cartoon-v5-tutorial-hand.png'),hintCanvas=document.createElement('canvas');hintCanvas.width=345;hintCanvas.height=255;hintCanvas.getContext('2d').drawImage(hintAtlas,143,600,345,255,0,0,345,255);tutorial.querySelector('img').src=hintCanvas.toDataURL();
 function updateTutorial(){tutorial.hidden=scene!=='battle'||saved.tutorial||paused||!!bossIntro||!!sceneSplash;if(tutorial.hidden)return;const pair=units.some(u=>units.some(v=>u!==v&&u.type===v.type&&u.level===v.level&&u.level<10));tutorial.querySelector('span').textContent=!units.length?'Drag a plant onto a tile':pair?'Drag matching plants together':'Add one more matching plant';const anchor=units.length?visualPosition(units[0]):{x:600,y:410};tutorial.style.left=(50+(anchor.x-600)*zoom/W*100)+'%';tutorial.style.top=(units.length?Math.min(67,(center.y+(anchor.y-center.y)*zoom+45)/H*100):70)+'%';}
 async function finishBoot(){const overlay=$('#boot-loading'),shown=+$('#boot-logo').dataset.shownAt||performance.now(),remaining=reducedMotion()?0:Math.max(0,1800+shown-performance.now());if(remaining)await new Promise(resolve=>setTimeout(resolve,remaining));document.body.classList.add('ready');overlay.classList.add('leaving');if(!reducedMotion())await new Promise(resolve=>setTimeout(resolve,200));overlay.hidden=true;last=performance.now();}
 // Fixed simulation steps preserve combat while browser rendering is throttled.
 function advanceElapsed(seconds){let remaining=Math.max(0,seconds);while(remaining>1e-7){const dt=Math.min(1/30,remaining);tickVisuals(dt);tickSceneSplash(dt);if(!paused&&!sceneSplash){if(bossIntro){bossIntro.elapsed+=dt;if(bossIntro.elapsed>=introDuration)endBossIntro();}update(dt*(bossIntro?.12:1));}remaining-=dt;if(paused||(!sceneSplash&&scene!=='battle')||runResolved){if(!paused)time+=remaining;break;}}}
 function advanceFrame(now){if(now<=last)return;const elapsed=Math.max(0,(now-last)/1000);last=now;advanceElapsed(elapsed);}
 function loop(now){advanceFrame(now);tickRewardFlight(now);updateTutorial();if(bossIntro)$('#boss-cinematic').style.setProperty('--intro-opacity',String(introWeight()));if(messageUntil&&now>messageUntil){$('#game-message').classList.remove('visible');messageUntil=0;}updateUI();render();requestAnimationFrame(loop);}
-try{const clockWorker=new Worker(new URL('./background-clock.js?v=production-45',import.meta.url));clockWorker.onmessage=()=>{if(document.hidden)advanceFrame(performance.now());};}catch{setInterval(()=>{if(document.hidden)advanceFrame(performance.now());},250);}
-$('.production-track').setAttribute('role','progressbar');$('.production-track').setAttribute('aria-label','Charging next sunlight');$('.production-track').setAttribute('aria-valuemin','0');$('.production-track').setAttribute('aria-valuemax','100');applyTheme();buildCards();setScene(new URLSearchParams(location.search).get('screen')==='plants'?'plants':'home');updateUI();render();requestAnimationFrame(loop);await finishBoot();
+try{const clockWorker=new Worker(new URL('./background-clock.js?v=production-46',import.meta.url));clockWorker.onmessage=()=>{if(document.hidden)advanceFrame(performance.now());};}catch{setInterval(()=>{if(document.hidden)advanceFrame(performance.now());},250);}
+markBoot('start');$('.production-track').setAttribute('role','progressbar');$('.production-track').setAttribute('aria-label','Charging next sunlight');$('.production-track').setAttribute('aria-valuemin','0');$('.production-track').setAttribute('aria-valuemax','100');applyTheme();buildCards();setScene(new URLSearchParams(location.search).get('screen')==='plants'?'plants':'home');updateUI();render();requestAnimationFrame(loop);await finishBoot();
 
 
 
