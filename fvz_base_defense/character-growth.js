@@ -16,9 +16,9 @@ export function validateGrowth(input){
  return out;
 }
 export async function loadGrowthAssets(){
- const image=async file=>(await import('./game-image.js?v=production-44')).loadGameImage('./assets/'+file,import.meta.url);
+ const image=async file=>(await import('./game-image.js?v=production-45')).loadGameImage('./assets/'+file,import.meta.url);
  const [hats,characters]=await Promise.all([image('cartoon-v5-growth-hats-v18.png'),image('cartoon-v5-extra-characters-v18.png')]);
- let config=defaultGrowth();try{const r=await fetch(new URL('./data/character-growth.json?v=production-44',import.meta.url));if(r.ok)config=validateGrowth(await r.json());const release=await(await import('./live-release.js?v=production-44')).readLiveRelease();if(release.settings.growth)config=validateGrowth(release.settings.growth);}catch(e){console.warn('성장 설정 기본값을 사용합니다.',e.message);}
+ let config=defaultGrowth();try{const r=await fetch(new URL('./data/character-growth.json?v=production-45',import.meta.url));if(r.ok)config=validateGrowth(await r.json());const release=await(await import('./live-release.js?v=production-45')).readLiveRelease();if(release.settings.growth)config=validateGrowth(release.settings.growth);}catch(e){console.warn('성장 설정 기본값을 사용합니다.',e.message);}
  return {hats,characters,config};
 }
 // Body-space positions follow the same flip, breathing and attack transform as the character.
