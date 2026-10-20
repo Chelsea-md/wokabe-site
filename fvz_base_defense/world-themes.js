@@ -1,8 +1,8 @@
-import {loadGameImage} from './game-image.js?v=production-48';
-import {publishedAsset} from './live-release.js?v=production-48';
-import {bossNames} from './boss-names.js?v=production-48';
-import {separateSprites} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-48';
-import {propAtlas} from './stage-layout.js?v=production-48';
+import {loadGameImage} from './game-image.js?v=production-49';
+import {publishedAsset} from './live-release.js?v=production-49';
+import {bossNames} from './boss-names.js?v=production-49';
+import {separateSprites} from './library/art-directions/cartoon-v5/rig-renderer.js?v=production-49';
+import {propAtlas} from './stage-layout.js?v=production-49';
 export const worldThemes={
  moon:{name:'Moonlight',subtitle:'Whispering Grove',boss:bossNames.moon,color:'#d9b6ff',projectile:'#f4dfae'},
  camp:{name:'Night Camp',subtitle:'Moonlit Clearing',boss:bossNames.camp,color:'#ffc75a',projectile:'#ffd56a'},

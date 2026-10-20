@@ -1,4 +1,4 @@
-import { rules } from "./config.js?v=production-48";
+import { rules } from "./config.js?v=production-49";
 
 const fresh = () => structuredClone(rules.defaults);
 const number = (value, fallback, minimum, maximum) =>
@@ -8,19 +8,12 @@ const number = (value, fallback, minimum, maximum) =>
 
 export function reconcileRoster(progress) {
   const old = Array.isArray(progress.unlocks) ? progress.unlocks : [];
-  progress.unlocks = rules.troops.map((troop, index) =>
-    index === 0 || (index < 4 ? !!old[index] : progress.completedStages >= troop.unlockStage));
+  progress.unlocks = rules.troops.map((troop, index) => index === 0 || !!old[index]);
   const requested = Array.isArray(progress.loadout) ? progress.loadout : rules.defaults.loadout;
   progress.loadout = [...new Set(requested.filter(index =>
     Number.isInteger(index) && index >= 0 && index < rules.troops.length && progress.unlocks[index]))].slice(0, 4);
   if (!progress.loadout.length) progress.loadout = [0];
-  const arrivals = rules.troops.map((_, index) => index).filter(index =>
-    index >= 4 && progress.unlocks[index] && !old[index]);
-  if (arrivals.length) {
-    const newest = arrivals.at(-1);
-    progress.loadout = [...progress.loadout.filter(index => index !== newest).slice(0, 3), newest];
-  }
-  return arrivals;
+  return [];
 }
 
 export function toggleLoadout(progress, index) {

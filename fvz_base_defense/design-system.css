@@ -46,6 +46,35 @@ body.production #plants-grid .in-deck .roster-select{background:#ffdf75}
 body.production #plants-grid .future-plant.locked .plant-select{filter:grayscale(.7)}
 body.production #plants-grid .future-plant.unlocked .plant-select{filter:none}
 body.production #plants-grid .in-deck{outline:.28cqw solid #fff1a4;outline-offset:.06cqw}
+body.production #plants-grid .collection-owned{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.25cqw;color:#e6f6df;text-align:center}
+body.production #plants-grid .collection-owned strong{font:1.05cqw GameChunk,sans-serif;color:#fff5c2;line-height:1.1}
+body.production #plants-grid .collection-owned small{display:flex;align-items:center;justify-content:center;gap:.2cqw;min-height:0;font:.67cqw GameChunk,sans-serif;line-height:1.1;white-space:nowrap}
+body.production #plants-grid .collection-owned img{width:.95cqw;height:.95cqw;object-fit:contain}
+body.production #plants-grid .future-plant.locked .plant-collection-footer{background:#24323c}
+body.production #plants-grid .future-plant.locked .unlock-plant{width:100%;height:100%}
+#plant-carousel-controls{display:none}
+@media(max-width:1100px),(max-height:650px){
+ body.production .game-frame.plants{touch-action:pan-x}
+ body.production .game-frame.plants #plants-grid{left:12%;right:8%;top:19%;height:64%;display:flex;flex-wrap:nowrap;gap:1.4cqw;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding-inline:1cqw;overscroll-behavior-inline:contain;touch-action:pan-x;-webkit-overflow-scrolling:touch;transform:none;padding:.3cqw .4cqw 1.6cqw;align-items:stretch;scrollbar-width:thin;scrollbar-color:#829a77 transparent}
+ body.production #plants-grid .plant-collection-card{flex:0 0 calc((100% - 4.2cqw)/4);min-width:0;height:100%;scroll-snap-align:start;grid-template-rows:68% 32%}
+ body.production[data-ui-theme=bold] #plants-grid .plant-select>strong{height:2.35cqw;font-size:1.27cqw}
+ body.production #plants-grid .collection-lock{width:24%;height:25%}
+ body.production #plants-grid .plant-collection-footer{padding:.25cqw!important}
+ body.production #plants-grid .unlock-plant{gap:.12cqw;padding:.25cqw!important}
+ body.production #plants-grid .unlock-plant strong{font-size:1.38cqw}
+ body.production #plants-grid .unlock-plant b{font-size:1.65cqw}
+ body.production #plants-grid .unlock-plant span img{width:1.6cqw;height:1.6cqw}
+ body.production #plants-grid .unlock-plant small{font-size:.86cqw;min-height:0;line-height:1.1}
+ body.production #plants-grid .collection-owned strong{font-size:1.35cqw}
+ body.production #plants-grid .collection-owned small{font-size:.8cqw;white-space:normal}
+ body.production #plants-grid .collection-owned img{width:1.2cqw;height:1.2cqw}
+ body.production .game-frame.plants #plant-carousel-controls{position:absolute;left:2%;right:1%;top:42%;height:13%;z-index:8;display:flex;justify-content:space-between;pointer-events:none}
+ body.production #plant-carousel-controls button{width:8.2%;min-height:100%;padding:0;border:.22cqw solid #111b21;border-radius:.75cqw;background:#fee279;color:#17262c;box-shadow:0 .25cqw #935d20;font:1.1cqw GameChunk,sans-serif;pointer-events:auto;touch-action:manipulation}
+ body.production #plant-carousel-controls button:disabled{opacity:.25;pointer-events:none}
+ body.production #merge-tutorial{font-size:1.45cqw;gap:.5cqw}
+ body.production #merge-tutorial>span{padding:.4cqw .7cqw;border:.1cqw solid #fff4ca88;border-radius:.65cqw;background:#173a2de8;white-space:normal;max-width:29cqw;line-height:1.2;text-align:center}
+ body.production #game-message{font-size:1.5cqw;line-height:1.25;background:#173a2de8;border:.1cqw solid #fff4ca88;border-radius:.6cqw;padding:.3cqw .65cqw}
+}
 .upgrades strong:has(.upgrade-arrow){display:flex;align-items:center;justify-content:center;gap:.18cqw;white-space:nowrap}
 .upgrades strong .upgrade-arrow{display:inline-block!important;width:1.65cqw!important;height:1.3cqw!important;position:static!important;flex:0 0 1.65cqw;overflow:visible;filter:none!important}
 
