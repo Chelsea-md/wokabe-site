@@ -22,4 +22,4 @@
 </main></div><script>
 const bootWatch=setTimeout(()=>{if(!document.body.classList.contains('ready')){document.querySelector('#boot-loading').classList.add('boot-notice');document.querySelector('#boot-status').textContent='게임을 불러오고 있습니다. 잠시만 기다려 주세요.';}},15000);
 function bootFailed(error){clearTimeout(bootWatch);console.error(error);const overlay=document.querySelector('#boot-loading');overlay.hidden=false;overlay.classList.remove('leaving');overlay.classList.add('boot-notice');const stage=window.fvzBootStage||'modules',detail=String(error?.message||error||'Unknown error').slice(0,120);document.querySelector('#boot-status').textContent='게임을 불러오지 못했습니다. 다시 시도해 주세요.\n진단: '+stage+' / '+detail;document.querySelector('#boot-retry').hidden=false;}
-</script><script type="module">import('../../../game.js?v=production-46').catch(bootFailed);</script></body></html>
+</script><script type="module">import(new URL('../../../game.js?v=production-46',document.baseURI).href).catch(bootFailed);</script></body></html>
