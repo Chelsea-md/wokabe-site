@@ -20,10 +20,28 @@ function spriteGrounding(spr){if(spr.grounding)return spr.grounding;const cv=doc
 export function plantShadow(spr,pose,flip=false){const z=Math.min(120/spr.image.width,72/spr.image.height),feet=spr.grounding,dx=(feet.center-spr.anchor[0])*spr.image.width*z*(pose.sx??1),dy=((feet.y??1)-1)*spr.image.height*z,tilt=pose.tilt||0;return {x:(dx*Math.cos(tilt)-dy*Math.sin(tilt)+(pose.shift||0))*(flip?-1:1),y:dy+1,radius:feet.span*spr.image.width*z*.62};}
 // Isolate each connected sprite at runtime so close atlas neighbors never bleed into portraits.
 export function separateSprites(image,expected=10){const cv=document.createElement('canvas');cv.width=image.width;cv.height=image.height;const ctx=cv.getContext('2d',{willReadFrequently:true});ctx.drawImage(image,0,0);const pixels=ctx.getImageData(0,0,cv.width,cv.height),w=cv.width,h=cv.height,n=w*h,ids=new Int16Array(n),queue=new Int32Array(n),parts=[];let serial=0;for(let seed=0;seed<n;seed++){if(ids[seed]||pixels.data[seed*4+3]<=225)continue;const id=++serial;let tail=1,head=0,x0=w,y0=h,x1=0,y1=0;queue[0]=seed;ids[seed]=id;while(head<tail){const k=queue[head++],x=k%w,y=(k/w)|0;x0=Math.min(x0,x);y0=Math.min(y0,y);x1=Math.max(x1,x);y1=Math.max(y1,y);for(const at of [x?k-1:-1,x<w-1?k+1:-1,y?k-w:-1,y<h-1?k+w:-1])if(at>=0&&!ids[at]&&pixels.data[at*4+3]>225){ids[at]=id;queue[tail++]=at;}}if(tail>1000)parts.push({id,b:[Math.max(0,x0-1),Math.max(0,y0-1),Math.min(w,x1+2),Math.min(h,y1+2)]});}parts.sort((a,b)=>Math.floor((a.b[1]+a.b[3])/h)-Math.floor((b.b[1]+b.b[3])/h)||a.b[0]-b.b[0]);if(parts.length!==expected)throw Error('Expected '+expected+' isolated sprites; found '+parts.length);const sprites=parts.map(({id,b})=>{const out=document.createElement('canvas');out.width=b[2]-b[0];out.height=b[3]-b[1];const oc=out.getContext('2d'),data=oc.createImageData(out.width,out.height);let hx0=w,hx1=0;for(let y=b[1];y<b[3];y++)for(let x=b[0];x<b[2];x++){const k=y*w+x;let own=ids[k]===id;if(!own)for(let dy=-1;dy<=1&&!own;dy++)for(let dx=-1;dx<=1&&!own;dx++){const nx=x+dx,ny=y+dy;if(nx>=0&&nx<w&&ny>=0&&ny<h&&ids[ny*w+nx]===id)own=true;}if(own){const at=((y-b[1])*out.width+x-b[0])*4;data.data.set(pixels.data.subarray(k*4,k*4+4),at);if(y<b[1]+out.height*.43){hx0=Math.min(hx0,x);hx1=Math.max(hx1,x);}}}oc.putImageData(data,0,0);return{image:out,source:b,grounding:footGrounding(data.data,out.width,out.height),anchor:[((hx0+hx1)/2-b[0])/out.width,1]};});cv.width=cv.height=0;return sprites;}
+function conceptSprites(id,atlas,baseAtlas){
+ const sprites=separateSprites(atlas).map((spr,i)=>{
+  if(i!==9)return spr;
+  const image=createGoldGrowthSprite(spr.image,spr.anchor[0]);
+  spr.image.width=spr.image.height=0;
+  return {...spr,image};
+ });
+ // Moss Golem is a tank: its base form uses the original unarmed character art.
+ // Later growth stages retain their equipped progression.
+ if(id==='cactus'&&baseAtlas){
+  const bounds=growthCharacters.find(character=>character.id===id).bounds;
+  const image=document.createElement('canvas');
+  image.width=bounds[2]-bounds[0];image.height=bounds[3]-bounds[1];
+  image.getContext('2d').drawImage(baseAtlas,bounds[0],bounds[1],image.width,image.height,0,0,image.width,image.height);
+  sprites[0]={image,source:bounds,anchor:[.5,1],grounding:spriteGrounding({image})};
+ }
+ return sprites;
+}
 export async function loadRigs({includeConcepts=true}={}){const m=await fetch(new URL('./rigs.json?v=production-49',import.meta.url)).then(r=>r.json()),cache=new Map();async function load(a){if(!cache.has(a))cache.set(a,loadGameImage(a,import.meta.url));return cache.get(a);}
 const atlases=[...new Set([...Object.values(m.players).flatMap(p=>[p.atlas,p.evolution?.atlas]),...(includeConcepts?Object.values(growthAtlases).map(a=>'../../../assets/'+a):[]),...Object.values(m.enemies).flatMap(theme=>Object.values(theme).map(p=>p.atlas)),...Object.values(m.equipment).map(e=>e.atlas)].filter(Boolean))];
 for(let i=0;i<atlases.length;i+=6)await Promise.all(atlases.slice(i,i+6).map(load));
-const rigs={};const growth=await loadGrowthAssets();Object.defineProperty(rigs,'motion',{value:await loadMotionConfig(),writable:true});Object.defineProperty(rigs,'growth',{value:growth});for(const[id,p]of Object.entries(m.players)){rigs[id]={...p,image:await load(p.atlas),player:true};if(p.evolution){const image=await load(p.evolution.atlas);rigs[id].evolution={...p.evolution,image,sprites:(p.evolution.extract==='frames'?p.evolution.frames.map(b=>{const cv=document.createElement('canvas');cv.width=b[2]-b[0];cv.height=b[3]-b[1];cv.getContext('2d').drawImage(image,...[b[0],b[1],cv.width,cv.height],0,0,cv.width,cv.height);return{image:cv,source:b,anchor:[p.evolution.anchor||.5,1]};}):separateSprites(image)).map((spr,i)=>{const grounding=spriteGrounding(spr),image=createGrowthSprite(spr.image,i+1,id,spr.anchor[0]);spr.image.width=spr.image.height=0;return {...spr,grounding,image};})};}}if(includeConcepts)for(const p of growthCharacters.filter(p=>p.bounds)){const atlas=await load('../../../assets/'+growthAtlases[p.id]),sprites=separateSprites(atlas).map((spr,i)=>{if(i!==9)return spr;const image=createGoldGrowthSprite(spr.image,spr.anchor[0]);spr.image.width=spr.image.height=0;return {...spr,image};}),image=sprites[0].image;rigs[p.id]={name:p.name,player:true,image,source:[0,0,image.width,image.height],evolution:{atlas:growthAtlases[p.id],sprites}};}for(const id of ['shambler','courier','bruiser','boss']){rigs[id]={player:false,variants:{}};for(const theme of ['forest','desert','night']){const p=m.enemies[theme][id];rigs[id].variants[theme]={...p,image:await load(p.atlas)};}}for(const e of Object.values(m.equipment))e.image=await load(e.atlas);Object.defineProperty(rigs,'equipment',{value:m.equipment});Object.defineProperty(rigs,'theme',{value:'forest',writable:true});return rigs;}
+const rigs={};const growth=await loadGrowthAssets();Object.defineProperty(rigs,'motion',{value:await loadMotionConfig(),writable:true});Object.defineProperty(rigs,'growth',{value:growth});for(const[id,p]of Object.entries(m.players)){rigs[id]={...p,image:await load(p.atlas),player:true};if(p.evolution){const image=await load(p.evolution.atlas);rigs[id].evolution={...p.evolution,image,sprites:(p.evolution.extract==='frames'?p.evolution.frames.map(b=>{const cv=document.createElement('canvas');cv.width=b[2]-b[0];cv.height=b[3]-b[1];cv.getContext('2d').drawImage(image,...[b[0],b[1],cv.width,cv.height],0,0,cv.width,cv.height);return{image:cv,source:b,anchor:[p.evolution.anchor||.5,1]};}):separateSprites(image)).map((spr,i)=>{const grounding=spriteGrounding(spr),image=createGrowthSprite(spr.image,i+1,id,spr.anchor[0]);spr.image.width=spr.image.height=0;return {...spr,grounding,image};})};}}if(includeConcepts)for(const p of growthCharacters.filter(p=>p.bounds)){const atlas=await load('../../../assets/'+growthAtlases[p.id]),sprites=conceptSprites(p.id,atlas,growth.characters),image=sprites[0].image;rigs[p.id]={name:p.name,player:true,image,source:[0,0,image.width,image.height],evolution:{atlas:growthAtlases[p.id],sprites}};}for(const id of ['shambler','courier','bruiser','boss']){rigs[id]={player:false,variants:{}};for(const theme of ['forest','desert','night']){const p=m.enemies[theme][id];rigs[id].variants[theme]={...p,image:await load(p.atlas)};}}for(const e of Object.values(m.equipment))e.image=await load(e.atlas);Object.defineProperty(rigs,'equipment',{value:m.equipment});Object.defineProperty(rigs,'theme',{value:'forest',writable:true});return rigs;}
 function piece(g,image,b,x,y,h,w,anchor=[.5,1]){const sw=b[2]-b[0],sh=b[3]-b[1],s=Math.min(w/sw,h/sh),dw=sw*s,dh=sh*s;g.drawImage(image,b[0],b[1],sw,sh,x-dw*anchor[0],y-dh*anchor[1],dw,dh);}
 const conceptLoads = new Map();
 export async function ensureConceptRig(rigs, id) {
@@ -31,12 +49,7 @@ export async function ensureConceptRig(rigs, id) {
  if (!growthAtlases[id]) throw Error('Unknown ally art: '+id);
  if (!conceptLoads.has(id)) conceptLoads.set(id,(async()=>{
   const image=await loadGameImage('../../../assets/'+growthAtlases[id],import.meta.url);
-  const sprites=separateSprites(image).map((spr,i)=>{
-   if(i!==9)return spr;
-   const gold=createGoldGrowthSprite(spr.image,spr.anchor[0]);
-   spr.image.width=spr.image.height=0;
-   return {...spr,image:gold};
-  });
+  const sprites=conceptSprites(id,image,rigs.growth?.characters);
   const first=sprites[0].image;
   return rigs[id]={name:growthCharacters.find(p=>p.id===id)?.name||id,player:true,image:first,source:[0,0,first.width,first.height],evolution:{atlas:growthAtlases[id],sprites}};
  })().catch(error=>{conceptLoads.delete(id);throw error;}));

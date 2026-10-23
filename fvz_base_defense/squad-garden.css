@@ -1,0 +1,48 @@
+/* Garden training courtyard: interactive actors on raster plinths, not portrait cards. */
+.squad-garden{display:none;position:absolute;inset:0;z-index:1;pointer-events:none;background:url('./assets/squad-garden.webp') center/cover no-repeat}
+.game-frame.squad .squad-garden{display:block}
+.game-frame.squad .squad-garden{z-index:-1}
+.game-frame.squad #world{visibility:hidden}
+.game-frame.squad .menu-surface[data-menu-surface=squad]{left:3.5%;right:3.5%;top:24%;bottom:15.5%;padding:0;border:0;border-radius:0;box-shadow:none;background:none;overflow:visible;gap:.8cqw}
+.game-frame.squad .squad-slots{margin:0 8%;padding:0;gap:1.2cqw;flex:1;min-height:0}
+.game-frame.squad .squad-slot{position:relative;display:block;margin-top:-6px;padding:0;border:0;background:none;box-shadow:none;overflow:visible;outline:none!important;filter:none;transform:none;animation:none!important}
+.game-frame.squad .squad-slot::before{content:'';position:absolute;bottom:0;left:-4%;width:108%;aspect-ratio:2;background:url('./assets/squad-plinth.webp') center/contain no-repeat;pointer-events:none}
+.game-frame.squad .squad-portrait{position:absolute;bottom:calc(4.8cqw + 3px);left:12%;width:76%;height:10.7cqw;border:0;border-radius:0;background:none;box-shadow:none;overflow:visible;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;transition:transform .3s cubic-bezier(.22,.8,.25,1)}
+.game-frame.squad .squad-portrait img{display:block;width:100%;height:100%;max-height:none;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 .25cqw .12cqw #162d3055)}
+.game-frame.squad .squad-slot[data-actor="cactus"] .squad-portrait{left:3%;width:94%;height:12.4cqw}
+.game-frame.squad .squad-nameplate{position:absolute;left:20%;width:60%;bottom:2cqw;height:2.6cqw;min-height:0;padding:.12cqw;border:0;border-radius:0;box-shadow:none;background:url('./assets/squad-nameplate.webp') center/100% 100% no-repeat;transition:filter .35s ease,transform .35s ease;pointer-events:none}
+.game-frame.squad .squad-nameplate strong{font:1.2cqw/1 GameChunk,sans-serif;color:#201d12;-webkit-text-stroke:0;text-shadow:none;white-space:nowrap}
+.game-frame.squad .squad-nameplate small{display:none}
+.game-frame.squad .squad-slot.empty .squad-portrait{opacity:.25}
+.game-frame.squad .squad-roster-arrow{position:absolute;bottom:4.4cqw;width:3.5cqw;height:3cqw;padding:.4cqw;border:.16cqw solid #172b29;border-radius:.6cqw;background:#ffe4a0;z-index:3}
+.game-frame.squad .squad-roster-arrow img{width:100%;height:100%;object-fit:contain;pointer-events:none}
+.game-frame.squad .squad-roster-arrow.previous{left:.3cqw}
+.game-frame.squad .squad-roster-arrow.next{right:.3cqw}
+.game-frame.squad .squad-roster-arrow.previous img{transform:rotate(180deg)}
+.game-frame.squad .squad-roster{flex:0 0 11.4cqw;align-items:stretch;justify-content:safe center;gap:.6cqw;margin:0;padding:1.1cqw 1.6cqw .8cqw;border:.3cqw solid #101c20;border-radius:1.5cqw;background:#203638;box-shadow:inset 0 .35cqw #748f86,inset 0 -.35cqw #101c20;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;scrollbar-color:#f6d47f #203638}
+.game-frame.squad .squad-choice{position:relative;flex:0 0 10.1cqw;min-width:0;padding:.25cqw .25cqw 2.4cqw;border:.18cqw solid #172b29;border-radius:.75cqw;background:#95dbba url('./assets/plants-rays-owned.png') center/cover no-repeat;box-shadow:inset 0 .24cqw #ecffd8,inset 0 -.2cqw #5a8070;outline:none!important;transform:none;animation:none!important;filter:none}
+.game-frame.squad .squad-choice img{width:7.5cqw;height:7.3cqw;max-height:100%;object-fit:contain;pointer-events:none}
+.game-frame.squad .squad-choice[data-plant="6"] img{width:8.5cqw;height:8.2cqw}
+.game-frame.squad .squad-choice>strong{position:absolute;bottom:.15cqw;left:1%;width:98%;height:2.4cqw;max-width:none;display:grid;place-items:center;padding:.15cqw .3cqw;box-sizing:border-box;font:1cqw/1 GameChunk,sans-serif;white-space:nowrap;color:#201d12;background:url('./assets/squad-nameplate.webp') center/100% 100% no-repeat;pointer-events:none;transition:filter .35s ease,transform .35s ease}
+/* All selection affordances live on the name tags, never the portrait/card border. */
+.game-frame.squad .squad-nameplate::after,.game-frame.squad .squad-choice>strong::after{content:'';position:absolute;inset:-.12cqw;border:.12cqw solid #ffe36b;border-radius:.52cqw;box-shadow:0 0 .45cqw #ffdc5c,inset 0 0 .2cqw #fff0a0;opacity:0;pointer-events:none;transition:opacity .35s ease}
+.game-frame.squad :is(.squad-selected,.squad-drop-target,:focus-visible) .squad-nameplate,
+.game-frame.squad :is(.squad-selected,.squad-drop-target,:focus-visible)>strong{filter:sepia(.23) saturate(1.3) brightness(1.12)}
+.game-frame.squad :is(.choosing-slot,.squad-dragging) .squad-slot:not(.squad-selected) .squad-nameplate,
+.game-frame.squad .choosing-plant .squad-choice:not(.squad-selected):not(.squad-current)>strong{filter:sepia(.35) saturate(1.5) brightness(1.13)}
+.game-frame.squad :is(.choosing-slot,.squad-dragging) .squad-slot:not(.squad-selected) .squad-nameplate::after,
+.game-frame.squad .choosing-plant .squad-choice:not(.squad-selected):not(.squad-current)>strong::after{opacity:.6;animation:squad-soft-beacon 2.8s ease-in-out infinite}
+.game-frame.squad .squad-drop-target .squad-nameplate{filter:sepia(.28) saturate(1.5) brightness(1.2)}
+.game-frame.squad .squad-drop-target .squad-nameplate::after{animation:none;opacity:1;border-color:#caff70;box-shadow:0 0 .65cqw #b9ff6c}
+.game-frame.squad .squad-slot:not(.squad-selected):not(.squad-drop-target):hover .squad-nameplate,.game-frame.squad .squad-choice:not(.squad-selected):not(.squad-current):hover>strong{filter:sepia(.3) saturate(1.45) brightness(1.15)}
+.game-frame.squad .squad-slot:not(.squad-selected):not(.squad-drop-target):hover .squad-nameplate::after,.game-frame.squad .squad-choice:not(.squad-selected):not(.squad-current):hover>strong::after{opacity:.8}
+.game-frame.squad .squad-selected .squad-portrait{transform:translateY(-.5cqw)}
+.game-frame.squad .squad-choice img{transition:transform .3s cubic-bezier(.22,.8,.25,1)}
+.game-frame.squad .squad-choice.squad-selected img{transform:translateY(-.35cqw)}
+.game-frame.squad .squad-selected .squad-nameplate,.game-frame.squad .squad-choice.squad-selected>strong{transform:scale(1.035);filter:sepia(.35) saturate(1.6) brightness(1.16)}
+.game-frame.squad .squad-selected .squad-nameplate::after,.game-frame.squad .squad-choice.squad-selected>strong::after{animation:none;opacity:.9}
+.game-frame.squad .squad-landed .squad-portrait{animation:squad-arrive .4s ease-out}
+.game-frame.squad .squad-drag-source .squad-portrait img,.game-frame.squad .squad-choice.squad-drag-source>img{opacity:.25}
+@keyframes squad-soft-beacon{0%,100%{opacity:.44}50%{opacity:.85}}
+@keyframes squad-arrive{0%{transform:translateY(-.8cqw) scale(1.06)}65%{transform:translateY(.15cqw) scale(.98)}100%{transform:none}}
+@media(prefers-reduced-motion:reduce){.game-frame.squad .squad-nameplate,.game-frame.squad .squad-choice>strong,.game-frame.squad .squad-portrait,.game-frame.squad .squad-nameplate::after,.game-frame.squad .squad-choice>strong::after{animation:none!important;transition:none}.game-frame.squad :is(.choosing-slot,.squad-dragging) .squad-slot:not(.squad-selected) .squad-nameplate::after,.game-frame.squad .choosing-plant .squad-choice:not(.squad-selected):not(.squad-current)>strong::after{opacity:.7}}

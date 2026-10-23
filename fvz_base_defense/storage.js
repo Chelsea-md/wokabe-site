@@ -1,4 +1,5 @@
 import { rules } from "./config.js?v=production-49";
+import {normalizeTraining} from './plant-progression.js';
 
 const fresh = () => structuredClone(rules.defaults);
 const number = (value, fallback, minimum, maximum) =>
@@ -7,12 +8,16 @@ const number = (value, fallback, minimum, maximum) =>
     : fallback;
 
 export function reconcileRoster(progress) {
+  normalizeTraining(progress,rules.troops.length);
   const old = Array.isArray(progress.unlocks) ? progress.unlocks : [];
   progress.unlocks = rules.troops.map((troop, index) => index === 0 || !!old[index]);
   const requested = Array.isArray(progress.loadout) ? progress.loadout : rules.defaults.loadout;
   progress.loadout = [...new Set(requested.filter(index =>
     Number.isInteger(index) && index >= 0 && index < rules.troops.length && progress.unlocks[index]))].slice(0, 4);
   if (!progress.loadout.length) progress.loadout = [0];
+  const upgrades = Array.isArray(progress.plantUpgrades) ? progress.plantUpgrades : [];
+  progress.plantUpgrades = rules.troops.map((_, index) => Math.max(0, Math.min(3, Math.floor(Number(upgrades[index]) || 0))));
+  progress.selectedStage = Math.max(1, Math.min(progress.completedStages + 1, Math.floor(Number(progress.selectedStage) || progress.completedStages + 1)));
   return [];
 }
 
@@ -45,6 +50,9 @@ export function loadProgress(storage) {
     result.income = Math.floor(number(data.income, result.income, 1, 1e8));
     if (Array.isArray(data.unlocks)) result.unlocks = data.unlocks;
     if (Array.isArray(data.loadout)) result.loadout = data.loadout;
+    if (Array.isArray(data.plantUpgrades)) result.plantUpgrades = data.plantUpgrades;
+    if (Array.isArray(data.plantTraining)) result.plantTraining = data.plantTraining;
+    if (Number.isInteger(data.selectedStage)) result.selectedStage = data.selectedStage;
     for (const key of ["tutorial", "played", "sound"])
       if (typeof data[key] === "boolean") result[key] = data[key];
     if (data.freeUsed && typeof data.freeUsed === "object") {

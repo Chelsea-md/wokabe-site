@@ -1,10 +1,25 @@
-import {propPieces,propAtlas} from './stage-layout.js?v=production-49';
+import {propPieces,propAtlas} from './stage-layout.js?v=camp-3';
 export const sandPalettes={
  dune:{base:'#e7b17b',light:'#f5cda0',edge:'#d89a64',dune:'#cc8e5c',grain:'#b58251',paving:'#bd9e70'},
  oasis:{base:'#e3d3a8',light:'#f3e4be',edge:'#ceba8b',dune:'#c7b181',grain:'#b49b69',paving:'#bba176'},
  noon:{base:'#eac593',light:'#f7ddb4',edge:'#d4ab77',dune:'#cda36b',grain:'#b89362',paving:'#bda27b'}
 };
 const terrainCache=new Map();
+// Ground-only treatment: no new obstacles, animation, or actor tint.
+export function paintCampGround(g,layout){
+ if(layout.theme!=='camp')return;
+ g.save();g.fillStyle='#123b5940';g.fillRect(-1800,-1200,4800,3000);
+ for(const p of layout.props.filter(p=>p.visible)){
+  const fire=p.asset===62||p.asset===63;
+  const radius=fire?p.height*2:p.height*.8;
+  g.save();g.translate(p.x,p.y);g.scale(1,.48);
+  const patch=g.createRadialGradient(0,0,0,0,0,radius);
+  patch.addColorStop(0,fire?'#ffd06666':'#25352b38');
+  patch.addColorStop(.45,fire?'#efad3930':'#4a452820');patch.addColorStop(1,'#40342200');
+  g.fillStyle=patch;g.fillRect(-radius,-radius,radius*2,radius*2);g.restore();
+ }
+ g.restore();
+}
 function randomFor(seed){let n=seed;return()=>{n=(n*1664525+1013904223)>>>0;return n/4294967296;};}
 export function paintSand(g,theme,width=1200,height=600){
  const palette=sandPalettes[theme]||sandPalettes.dune,key=theme+width+'x'+height;let cv=terrainCache.get(key);

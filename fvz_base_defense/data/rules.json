@@ -218,7 +218,7 @@
     "killBaseBonus": 4,
     "adDurationMs": 5000,
     "adProvider": "local-simulation",
-    "gemsPerVictory": 10
+    "gemsPerVictory": 1000
   },
   "merge": {
     "attackGrowth": 2,

@@ -1,4 +1,4 @@
-import {validateStage} from './stage-layout.js?v=production-49';
+import {validateStage} from './stage-layout.js?v=camp-2';
 export const adminOrigin='https://fvz-design-workspace.chelsea-here.chatgpt.site';
 export const deliveryOrigin='https://fvz-live-delivery.chelsea-here.chatgpt.site';
 export const privateEditor=()=>location.origin===adminOrigin;

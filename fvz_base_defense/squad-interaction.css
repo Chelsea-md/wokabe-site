@@ -1,0 +1,12 @@
+.squad-slot,.squad-choice{touch-action:none;user-select:none;cursor:grab;transition:transform .18s ease,filter .18s ease,outline-color .18s ease;outline:3px solid transparent;outline-offset:-3px}
+.squad-slot:hover,.squad-choice:hover{filter:brightness(1.08)}
+.squad-slot:focus-visible,.squad-choice:focus-visible{outline:3px solid #fff8bf}
+.squad-selected{outline:4px solid #fff49a!important;filter:brightness(1.12);transform:translateY(-.35cqw)}
+.choosing-slot .squad-slot,.choosing-plant .squad-choice,.squad-dragging .squad-slot{animation:squad-beacon 1.5s ease-in-out infinite}
+.squad-drop-target{outline:5px solid #a5ff65!important;filter:brightness(1.18);transform:scale(1.035);animation:none!important}
+.squad-landed{animation:squad-land .4s ease-out!important}
+.squad-drag-ghost{position:fixed;pointer-events:none;z-index:99999;width:86px;height:86px;object-fit:contain;transform:translate(-50%,-65%);filter:drop-shadow(0 8px 5px #0007)}
+.squad-a11y-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@keyframes squad-beacon{0%,100%{outline-color:#ffe68166}50%{outline-color:#fff5a8;filter:brightness(1.1)}}
+@keyframes squad-land{0%{transform:scale(.94)}55%{transform:scale(1.035);outline-color:#afff70}100%{transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.squad-slot,.squad-choice{animation:none!important;transition:none}.choosing-slot .squad-slot,.choosing-plant .squad-choice,.squad-dragging .squad-slot{outline-color:#fff5a8}}

@@ -75,6 +75,36 @@ body.production #plants-grid .future-plant.locked .unlock-plant{width:100%;heigh
  body.production #merge-tutorial>span{padding:.4cqw .7cqw;border:.1cqw solid #fff4ca88;border-radius:.65cqw;background:#173a2de8;white-space:normal;max-width:29cqw;line-height:1.2;text-align:center}
  body.production #game-message{font-size:1.5cqw;line-height:1.25;background:#173a2de8;border:.1cqw solid #fff4ca88;border-radius:.6cqw;padding:.3cqw .65cqw}
 }
+
+/* Isolated concept preview: animated diagonal bands accent the game's existing card art. */
+body.production[data-ui-theme=bold] #plants-grid .plant-select::before{
+ content:"";
+ position:absolute;
+ inset:-45%;
+ z-index:0;
+ background-image:url("assets/plants-stripes-owned-v2.png");
+ background-position:center;
+ background-size:100% 100%;
+ opacity:.3;
+ pointer-events:none;
+ animation:plants-preview-card-stripes 9s linear infinite alternate;
+ will-change:transform;
+}
+body.production[data-ui-theme=bold] #plants-grid .locked .plant-select::before{
+ background-image:url("assets/plants-stripes-locked-v2.png");
+ opacity:.22;
+ filter:saturate(.65) brightness(.9);
+ animation-duration:11s;
+}
+body.production[data-ui-theme=bold] #plants-grid .plant-collection-card:nth-child(2n) .plant-select::before{animation-delay:-3.2s}
+body.production[data-ui-theme=bold] #plants-grid .plant-collection-card:nth-child(3n) .plant-select::before{animation-delay:-5.4s}
+@keyframes plants-preview-card-stripes{
+ from{transform:translate3d(-16%,16%,0)}
+ to{transform:translate3d(16%,-16%,0)}
+}
+@media(prefers-reduced-motion:reduce){
+ body.production[data-ui-theme=bold] #plants-grid .plant-select::before{animation:none!important;transform:none!important;will-change:auto}
+}
 .upgrades strong:has(.upgrade-arrow){display:flex;align-items:center;justify-content:center;gap:.18cqw;white-space:nowrap}
 .upgrades strong .upgrade-arrow{display:inline-block!important;width:1.65cqw!important;height:1.3cqw!important;position:static!important;flex:0 0 1.65cqw;overflow:visible;filter:none!important}
 
@@ -93,11 +123,16 @@ body.production[data-ui-theme=bold] #boss-cinematic.zombie-boss .boss-title smal
 /* Plants collection polish: one locked-card treatment and portraits contained inside cards. */
 body.production .game-frame.plants #plants-grid{left:14%;right:14%;top:22%;height:60%;transform:none}
 body.production #plants-grid .plant-collection-card{grid-template-rows:65% 35%}
-body.production[data-ui-theme=bold] .game-frame.plants .chapter-title{left:32%;width:36%;top:1%;height:18%;padding-bottom:.7cqw;background-position:center;background-size:contain;overflow:visible}
-body.production[data-ui-theme=bold] .game-frame.plants .chapter-title strong{font-size:3cqw;line-height:1}
+body.production[data-ui-theme=bold] .game-frame .chapter-title,body.production[data-ui-theme=bold] .game-frame.plants .chapter-title{left:32%;width:36%;top:1%;height:18%;padding-bottom:.7cqw;background-position:center;background-size:contain;overflow:visible}
+body.production[data-ui-theme=bold] .game-frame .chapter-title strong,body.production[data-ui-theme=bold] .game-frame.plants .chapter-title strong{font-size:var(--ribbon-title-size,3.8cqw);line-height:1;white-space:nowrap;max-width:76%;align-self:center;text-align:center}
+body.production .game-frame:not(.plants) #stage-number{top:19%}
 body.production[data-ui-theme=bold] #plants-grid .plant-select{overflow:hidden}
+body.production[data-ui-theme=bold] #plants-grid .plant-select{outline:.22cqw solid #101820;outline-offset:-.22cqw}
 body.production[data-ui-theme=bold] #plants-grid .locked .plant-select,
 body.production[data-ui-theme=bold] #plants-grid .future-plant.locked .plant-select{background:var(--skin-purple) center/100% 100% no-repeat;filter:none}
+body.production[data-ui-theme=bold] #plants-grid .unlocked .plant-select{background:#00c8df url("assets/plants-rays-owned.png") center/125% 125% no-repeat}
+body.production[data-ui-theme=bold] #plants-grid .locked .plant-select,
+body.production[data-ui-theme=bold] #plants-grid .future-plant.locked .plant-select{background:#a9a0d5 url("assets/plants-rays-locked.png") center/125% 125% no-repeat}
 body.production[data-ui-theme=bold] #plants-grid .plant-select .collection-character{max-width:100%;max-height:78%;object-fit:contain}
 body.production[data-ui-theme=bold] #plants-grid .unlock-plant{gap:.22cqw}
 body.production[data-ui-theme=bold] #plants-grid .unlock-plant strong{font-size:1.25cqw}
@@ -116,8 +151,92 @@ body.production #plants-grid .collection-owned small{font-size:.85cqw}
  body.production[data-ui-theme=bold] #plants-grid .unlock-plant span img{width:1.8cqw;height:1.8cqw}
  body.production[data-ui-theme=bold] #plants-grid .unlock-plant small{font-size:1.2cqw;line-height:1.1;min-height:0}
  body.production .game-frame.plants #plant-carousel-controls{left:1.4%;right:1.4%;top:43%;height:15%}
- body.production #plant-carousel-controls button{display:flex;flex-direction:column;align-items:center;justify-content:center;width:9.5%;padding:.2cqw;border-width:.25cqw;border-radius:1cqw;background:linear-gradient(#fff0a4,#ffd660);box-shadow:inset 0 .18cqw #fff8ce,0 .3cqw #8f6527;font:800 1.45cqw/1 system-ui,sans-serif;letter-spacing:.02em}
- body.production #plant-carousel-controls button::before{content:'←';font:800 2.4cqw/.9 system-ui,sans-serif}
- body.production #plant-carousel-controls button[data-scroll='1']::before{content:'→'}
+ body.production #plant-carousel-controls button{display:flex;align-items:center;justify-content:center;width:7.5%;padding:.2cqw;border-width:.25cqw;border-radius:1cqw;background:linear-gradient(#fff0a4,#ffd660);box-shadow:inset 0 .18cqw #fff8ce,0 .3cqw #8f6527}
+ body.production #plant-carousel-controls button img{display:block;width:5cqw;height:5cqw;object-fit:contain;pointer-events:none}
+ body.production #plant-carousel-controls button[data-scroll='-1'] img{transform:rotate(180deg)}
  body.production #plant-carousel-controls button:disabled{opacity:.45}
+}
+
+/* Keep the game's familiar garden wallpaper; its movement is separate from the cards. */
+body.production .game-frame.plants #world{
+ transform-origin:50% 50%;
+ animation:plants-preview-garden-breathe 12s ease-in-out infinite alternate;
+ will-change:transform;
+}
+@keyframes plants-preview-garden-breathe{
+ 0%{transform:translate(-1.8%,-1.1%) scale(1.075)}
+ 50%{transform:translate(.2%,.55%) scale(1.095)}
+ 100%{transform:translate(1.8%,-.75%) scale(1.075)}
+}
+@media(prefers-reduced-motion:reduce){
+ body.production .game-frame.plants #world{animation:none!important;transform:none!important;will-change:auto}
+}
+
+/* The owned footer carries the same visual weight as a purchase button. */
+body.production[data-ui-theme=bold] #plants-grid .unlocked .plant-collection-footer{
+ background:#24323c;
+}
+body.production[data-ui-theme=bold] #plants-grid .collection-owned{
+ gap:.12cqw;
+ padding:.22cqw .25cqw;
+ box-sizing:border-box;
+ border:.16cqw solid #14232d;
+ border-radius:.75cqw;
+ background:linear-gradient(#75a684,#446c58);
+ box-shadow:inset 0 .3cqw #a8ceab,inset 0 -.35cqw #2d503e;
+}
+body.production[data-ui-theme=bold] #plants-grid .collection-owned strong{
+ display:block;
+ width:100%;
+ font:1.55cqw/1.05 GameChunk,sans-serif;
+ color:#fff8e4;
+ -webkit-text-stroke:.11cqw #18291f;
+ paint-order:stroke fill;
+ text-shadow:0 .12cqw #294937;
+}
+body.production[data-ui-theme=bold] #plants-grid .collection-owned small{
+ min-height:0;
+ font:800 1.1cqw/1.1 system-ui,sans-serif;
+ color:#f3f7e9;
+ text-shadow:0 .1cqw #294937;
+}
+body.production[data-ui-theme=bold] #plants-grid .collection-owned .owned-cost-value{
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ gap:.2cqw;
+ width:100%;
+ min-height:2.2cqw;
+ color:#fff7cb;
+}
+body.production[data-ui-theme=bold] #plants-grid .collection-owned .owned-cost-value img{
+ width:1.55cqw;
+ height:1.55cqw;
+}
+body.production[data-ui-theme=bold] #plants-grid .collection-owned .owned-cost-value b{
+ font:2cqw/1 GameChunk,sans-serif;
+ color:#fff8e4;
+ -webkit-text-stroke:.14cqw #18291f;
+ paint-order:stroke fill;
+}
+
+/* Shared raised-card finish, using the same inlaid face as Squad. */
+.plant-card-rim{position:absolute;inset:0;z-index:2;border-radius:inherit;box-shadow:inset 0 .32cqw #efffe3,inset .2cqw 0 #f1f9da,inset -.18cqw 0 #5b8e8a,inset 0 -.25cqw #447779;pointer-events:none}
+body.production #plants-grid .plant-collection-card{padding:.38cqw;background:#40575b;border:.24cqw solid #101820;border-radius:1.25cqw;box-shadow:inset 0 .32cqw #94aaa5,inset 0 -.32cqw #243a3d;filter:drop-shadow(0 .25cqw #101820)}
+body.production[data-ui-theme=bold] #plants-grid .plant-select{border:.2cqw solid #132931;border-radius:.9cqw;outline:.18cqw solid #ebf9d4;outline-offset:-.45cqw;box-shadow:inset 0 .3cqw #efffdc,inset 0 -.32cqw #2b7478}
+body.production[data-ui-theme=bold] #plants-grid .plant-select>strong{left:3%;width:94%;bottom:2%;border-radius:.55cqw;box-shadow:inset 0 .15cqw #fffdf0,inset 0 -.18cqw #cab980}
+body.production[data-ui-theme=bold] #plants-grid .plant-collection-footer{padding:.35cqw .1cqw .02cqw!important;background:transparent!important;border:0}
+body.production[data-ui-theme=bold] #plants-grid .unlock-plant{box-shadow:inset 0 .3cqw #e4e8e8,inset .16cqw 0 #d2d7d7,inset 0 -.35cqw #5d7478,0 .15cqw #122b31;border:.18cqw solid #172b32}
+@media(min-width:1101px) and (min-height:651px){
+ body.production #plants-grid .plant-collection-card{grid-template-rows:62% 38%}
+ body.production[data-ui-theme=bold] #plants-grid .collection-owned{gap:.05cqw;padding:.15cqw}
+ body.production[data-ui-theme=bold] #plants-grid .collection-owned strong{font-size:1.1cqw}
+ body.production[data-ui-theme=bold] #plants-grid .collection-owned .owned-cost-value{min-height:1.5cqw}
+ body.production[data-ui-theme=bold] #plants-grid .collection-owned .owned-cost-value b{font-size:1.35cqw}
+ body.production[data-ui-theme=bold] #plants-grid .collection-owned .owned-cost-value img{width:1.1cqw;height:1.1cqw}
+ body.production[data-ui-theme=bold] #plants-grid .collection-owned small{font-size:.68cqw;line-height:1.15}
+ body.production[data-ui-theme=bold] #plants-grid .unlock-plant{gap:.07cqw}
+ body.production[data-ui-theme=bold] #plants-grid .unlock-plant strong{font-size:1cqw}
+ body.production[data-ui-theme=bold] #plants-grid .unlock-plant b{font-size:1.25cqw}
+ body.production[data-ui-theme=bold] #plants-grid .unlock-plant small{font-size:.67cqw}
 }

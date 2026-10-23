@@ -1,0 +1,346 @@
+@import url('./plants-shop.css?v=shop-12');
+@import url('./battle-prep.css?v=prep-6');
+@import url('./squad-interaction.css?v=1');
+@import url('./squad-garden.css?v=7');
+/* Local five-menu concept. Navigation icons come from the user's supplied atlas. */
+.menu-sprite{display:inline-block;flex:none;width:4cqw;height:4cqw;background-image:url("assets/menu-icons-user.png");background-repeat:no-repeat;background-size:400% 300%;vertical-align:middle}
+.icon-watering{background-position:0 0}.icon-helmet{background-position:33.333% 0}.icon-swords{background-position:66.667% 0}.icon-home{background-position:100% 0}
+.icon-shop{background-position:0 50%}.icon-book{background-position:33.333% 50%}.icon-clipboard{background-position:66.667% 50%}.icon-trophy{background-position:100% 50%}
+.icon-chest{background-position:0 100%}.icon-map{background-position:33.333% 100%}.icon-gear{background-position:66.667% 100%}.icon-sun{background-position:100% 100%}
+.icon-helmet,.icon-swords,.icon-shop,.icon-book,.icon-map{background-position:center;background-size:contain;clip-path:none}
+.icon-helmet{background-image:url("assets/menu-helmet-full.png")}
+.icon-swords{background-image:url("assets/menu-swords-full.png")}
+.icon-shop{background-image:url("assets/menu-shop-full.png")}
+.icon-book{background-image:url("assets/menu-book-full.png")}
+.icon-map{background-image:url("assets/menu-map-full.png")}
+body.production[data-ui-theme=bold] .bottom-nav{padding:0 12%;gap:.2cqw}
+body.production[data-ui-theme=bold] .bottom-nav button{position:relative;min-width:0;gap:.05cqw;padding-top:.15cqw}
+body.production[data-ui-theme=bold] .bottom-nav button .menu-sprite{width:4.35cqw;height:4.35cqw;filter:drop-shadow(0 .16cqw .1cqw #10182088)}
+body.production[data-ui-theme=bold] .bottom-nav button>span:not(.menu-sprite){font:1.27cqw/1 GameChunk,sans-serif;color:#fff8df;white-space:nowrap;-webkit-text-stroke:.17cqw #111820;paint-order:stroke fill;text-shadow:0 .1cqw #111820}
+body.production[data-ui-theme=bold] .bottom-nav .menu-locked .menu-sprite{filter:grayscale(1) brightness(.66);opacity:.76}
+body.production[data-ui-theme=bold] .bottom-nav .menu-locked>span:not(.menu-sprite){color:#c0c9ca}
+body.production[data-ui-theme=bold] .bottom-nav .menu-lock{display:none;position:absolute;width:2.35cqw;height:2.35cqw;right:19%;top:9%;filter:drop-shadow(0 .1cqw #101820)}
+body.production[data-ui-theme=bold] .bottom-nav .menu-locked .menu-lock{display:block}
+body.production .game-frame.journey .battle-only,body.production .game-frame.squad .battle-only,body.production .game-frame.plant-upgrades .battle-only{display:none!important}
+body.production .game-frame.journey .home-actions,body.production .game-frame.squad .home-actions,body.production .game-frame.plant-upgrades .home-actions,
+body.production .game-frame.journey .home-caption,body.production .game-frame.squad .home-caption,body.production .game-frame.plant-upgrades .home-caption,
+body.production .game-frame.journey #stage-number,body.production .game-frame.squad #stage-number,body.production .game-frame.plant-upgrades #stage-number{display:none!important}
+.menu-surface{display:none;position:absolute;z-index:4;left:12%;right:12%;top:20.5%;bottom:17.4%;padding:1.1cqw 1.5cqw;background:#182b35ee;border:.3cqw solid #101820;border-radius:1.55cqw;box-shadow:inset 0 .45cqw #496572,0 .5cqw #101820a8;color:#fff8da;overflow:hidden}
+.game-frame.journey .menu-surface[data-menu-surface=journey],.game-frame.squad .menu-surface[data-menu-surface=squad],.game-frame.plant-upgrades .menu-surface[data-menu-surface=upgrades]{display:flex;flex-direction:column;gap:.6cqw}
+.menu-surface-head{display:flex;align-items:center;gap:.7cqw;flex:none;height:5.1cqw;border-bottom:.16cqw solid #7793917a;padding-bottom:.55cqw}
+.menu-surface-head>.menu-sprite{width:4.8cqw;height:4.8cqw}
+.menu-surface-head>div{display:flex;flex-direction:column;gap:.22cqw;min-width:0}
+.menu-surface-head strong{font:1.85cqw/1 GameChunk,sans-serif;color:#fff5ca;-webkit-text-stroke:.16cqw #111820;paint-order:stroke fill}
+.menu-surface-head small{font:700 1.05cqw/1.1 system-ui,sans-serif;color:#cce1d9}
+.menu-count{margin-left:auto;white-space:nowrap;padding:.5cqw .9cqw;border:.16cqw solid #101820;border-radius:.8cqw;background:#ffe073;color:#182b35;font:1.25cqw/1 GameChunk,sans-serif}
+.menu-footnote{margin:auto 0 0;flex:none;min-height:2cqw;font:700 1.02cqw/1.3 system-ui,sans-serif;color:#d4e3d9;text-align:center}
+.journey-head>.journey-page-controls{display:flex;flex-direction:row;align-items:center;gap:.45cqw;margin-left:auto;white-space:nowrap}
+.journey-page-controls span{min-width:10cqw;text-align:center;font:1.1cqw/1 GameChunk,sans-serif;color:#ffe9a1}
+.journey-page-controls button{display:grid;place-items:center;width:3.1cqw;height:3.1cqw;border:.2cqw solid #101820;border-radius:.6cqw;background:#ffe078;box-shadow:inset 0 .22cqw #fff4af;color:#162a32;touch-action:manipulation}
+.journey-page-controls button:disabled{filter:grayscale(.85);opacity:.5}
+.journey-page-controls img{width:70%;height:70%;object-fit:contain}
+.journey-page-controls [data-chapter="-1"] img{transform:rotate(180deg)}
+.journey-content{display:flex;flex-direction:column;gap:.5cqw;flex:1;min-height:0;padding-top:.15cqw}
+.journey-carousel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.85fr) minmax(0,1fr);align-items:stretch;gap:.7cqw;flex:1;min-height:0;touch-action:none}
+.journey-neighbor,.journey-feature{position:relative;display:flex;flex-direction:column;min-width:0;min-height:0;overflow:hidden;border:.22cqw solid #0b1820;border-radius:.85cqw;background:#526e67;box-shadow:inset 0 .22cqw #e8f2cc78,0 .2cqw #101820}
+.journey-neighbor{padding:0;color:#fff6d9;text-align:left;touch-action:manipulation;transform:scale(.94);transition:transform .18s ease,filter .18s ease}
+.journey-neighbor:hover,.journey-neighbor:focus-visible{transform:scale(1);outline:.2cqw solid #ffe079}
+.journey-neighbor.empty{visibility:hidden}
+.journey-neighbor-art,.journey-feature-art{position:relative;display:block;flex:1;min-height:0;overflow:hidden;background:#526e67}
+.journey-neighbor-art img,.journey-feature-art img{display:block;width:100%;height:100%;object-fit:cover}
+.journey-neighbor-art img{object-position:center;filter:saturate(.95)}
+.journey-neighbor.locked .journey-neighbor-art img{filter:saturate(.65) brightness(.78)}
+.journey-neighbor-label{display:flex;flex-direction:column;justify-content:center;gap:.15cqw;flex:none;height:4.25cqw;padding:.4cqw .75cqw;background:#1b343c;color:#fff6d7}
+.journey-neighbor-label b{font:1.1cqw/1 GameChunk,sans-serif}
+.journey-neighbor-label small{font:800 .9cqw/1 system-ui,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.journey-neighbor-lock{position:absolute;top:.5cqw;right:.5cqw;width:2.3cqw;height:2.3cqw;filter:drop-shadow(0 .12cqw .15cqw #101820)}
+.journey-feature{border:.28cqw solid #ffe079;box-shadow:inset 0 .22cqw #e8f2cc78,0 .25cqw #101820,0 0 0 .2cqw #101820}
+.journey-feature.locked{border-color:#92a8a5}
+.journey-feature-lock{position:absolute;top:.6cqw;left:.6cqw;width:3cqw;height:3cqw;filter:drop-shadow(0 .12cqw .15cqw #101820)}
+.journey-boss{position:absolute;top:.45cqw;right:.65cqw;display:grid;place-items:center;width:8.2cqw;height:8.2cqw;overflow:hidden;border:.23cqw solid #101820;border-radius:50%;background:#213943eb;box-shadow:0 0 0 .18cqw #ffe079,0 .2cqw .4cqw #101820bb;pointer-events:none}
+.journey-boss img{display:block;width:84%;height:84%;object-fit:contain;transform:translateY(-.42cqw)}
+.journey-boss img:not([src]){visibility:hidden}
+.journey-boss span{position:absolute;bottom:0;left:0;right:0;padding:.22cqw .1cqw .28cqw;background:#182b35e6;color:#fff3c7;text-align:center;font:.73cqw/1 GameChunk,sans-serif;letter-spacing:.03em}
+.journey-boss.secret{box-shadow:0 0 0 .18cqw #9eafb5,0 .2cqw .4cqw #101820bb}
+.journey-boss.secret img{filter:brightness(0) invert(.76);opacity:.88}
+.journey-feature-caption{display:grid;grid-template-columns:auto 1fr;align-items:center;column-gap:.6cqw;row-gap:.18cqw;flex:none;min-height:4.25cqw;padding:.4cqw .8cqw;background:#1b343c;color:#fff6d7}
+.journey-feature-caption span{grid-row:span 2;padding:.38cqw .52cqw;border:.15cqw solid #111820;border-radius:.35cqw;background:#ffe078;color:#263530;font:1.08cqw/1 GameChunk,sans-serif;white-space:nowrap}
+.journey-feature-caption strong{font:1.45cqw/1 GameChunk,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.journey-feature-caption small{font:800 .8cqw/1 system-ui,sans-serif;color:#c4e5d5;white-space:nowrap}
+.journey-map-loading{position:absolute;inset:0;display:grid;place-items:center;background:#526e67;color:#fff6ca;font:1.2cqw/1 GameChunk,sans-serif}
+.loaded>.journey-map-loading{display:none}
+.journey-trail{position:relative;display:flex;align-items:center;justify-content:space-between;gap:.3cqw;flex:none;min-height:3cqw;padding:0 .55cqw}
+.journey-trail:before{content:"";position:absolute;left:1.7cqw;right:1.7cqw;top:50%;height:.32cqw;background:#718f86;transform:translateY(-50%)}
+.journey-trail-stop,.journey-trail-placeholder{position:relative;z-index:1;display:grid;place-items:center;width:2.7cqw;height:2.7cqw;flex:none;border:.18cqw solid #101820;border-radius:50%;background:#cbdcbb;box-shadow:inset 0 .18cqw #f6ffe0;color:#1c362d;font:1cqw/1 GameChunk,sans-serif;touch-action:manipulation}
+.journey-trail-stop.next{background:#fee38a}
+.journey-trail-stop.locked{background:#819295;color:#243139;box-shadow:inset 0 .18cqw #b0bdbe}
+.journey-trail-stop.focused{outline:.25cqw solid #ffe46f;outline-offset:.1cqw;transform:scale(1.1)}
+.journey-trail-stop:hover,.journey-trail-stop:focus-visible{outline:.25cqw solid #fff7ba;outline-offset:.1cqw}
+.journey-trail-placeholder{visibility:hidden}
+.journey-action{display:flex;align-items:center;gap:1cqw;flex:none;min-height:3.6cqw}
+.journey-visit{display:flex;align-items:center;justify-content:center;gap:.45cqw;flex:none;min-height:3.6cqw;border:.22cqw solid #101820;border-radius:.75cqw;background:#ffe078;box-shadow:inset 0 .28cqw #fff4af,0 .18cqw #101820;color:#1c342e;font:1.24cqw/1 GameChunk,sans-serif;touch-action:manipulation}
+.journey-action .journey-visit{width:42%}
+.journey-visit .menu-sprite{width:2.5cqw;height:2.5cqw}
+.journey-visit:disabled{filter:grayscale(.85);opacity:.8}
+.journey-action p{margin:0;color:#d6e8d8;text-align:left;font:700 .9cqw/1.2 system-ui,sans-serif}
+.squad-slots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.9cqw;flex:1;min-height:0}
+.squad-slot{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.05cqw;min-width:0;min-height:0;border:.23cqw solid #101820;border-radius:1cqw;background:#85dfe1 url("assets/plants-rays-owned.png") center/125% 125% no-repeat;box-shadow:inset 0 .3cqw #e5ffdc,0 .18cqw #101820;touch-action:manipulation}
+.squad-slot img{display:block;width:74%;height:69%;min-height:0;object-fit:contain}
+.squad-slot strong{font:1.18cqw/1 GameChunk,sans-serif;color:#fff8e1;-webkit-text-stroke:.16cqw #14232d;paint-order:stroke fill;white-space:nowrap}
+.squad-slot small{font:800 .78cqw/1 system-ui,sans-serif;color:#19342d}
+.squad-slot.empty{background:#52666c;border-style:dashed;box-shadow:inset 0 .3cqw #788e90;color:#e6efdd}
+.squad-slot.empty .menu-sprite{width:5cqw;height:5cqw;opacity:.45;filter:grayscale(1)}
+.squad-slot.empty strong,.squad-slot.empty small{color:#e6efdd}
+.squad-slot.replace-ready{outline:.26cqw solid #ffe078}
+.squad-roster,.upgrade-roster{display:flex;gap:.55cqw;min-height:0;flex:0 0 27%;overflow-x:auto;padding:.15cqw .2cqw .4cqw;scrollbar-width:thin;scrollbar-color:#ffc53d #334b54}
+.squad-choice,.upgrade-choice{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;flex:0 0 14%;min-width:7.9cqw;min-height:0;padding:.1cqw .25cqw;border:.18cqw solid #101820;border-radius:.7cqw;background:#d7e6d2;color:#18342d;touch-action:manipulation}
+.squad-choice img,.upgrade-choice img{width:4.3cqw;height:4.3cqw;object-fit:contain}
+.squad-choice strong,.upgrade-choice strong{max-width:100%;font:.89cqw/1 GameChunk,sans-serif;white-space:nowrap}
+.squad-choice.equipped,.upgrade-choice.selected{background:#ffe078}
+.squad-choice.pending{outline:.24cqw solid #fff8db}
+.upgrade-feature{display:grid;grid-template-columns:31% 1fr;gap:1.1cqw;flex:1;min-height:0}
+.upgrade-portrait{min-height:0;border:.23cqw solid #101820;border-radius:1cqw;background:#8bdde1 url("assets/plants-rays-owned.png") center/125% 125% no-repeat;box-shadow:inset 0 .3cqw #e6ffdc}
+.upgrade-portrait img{display:block;width:100%;height:100%;object-fit:contain}
+.upgrade-detail{display:flex;flex-direction:column;align-items:flex-start;gap:.32cqw;min-height:0}
+.upgrade-detail>strong{font:2.1cqw/1 GameChunk,sans-serif;color:#fff7d5}
+.upgrade-detail>span{font:1.25cqw/1 GameChunk,sans-serif;color:#a6edc5}
+.upgrade-detail p{margin:0;font:700 1.05cqw/1.2 system-ui,sans-serif;color:#d7e5da}
+.upgrade-pips{display:flex;gap:.5cqw;margin:auto 0 .1cqw}
+.upgrade-pips i{display:block;width:2.7cqw;height:.9cqw;border:.18cqw solid #0f2028;border-radius:.5cqw;background:#667b77}
+.upgrade-pips i.filled{background:#36dc70}
+.upgrade-buy{display:flex;align-items:center;justify-content:center;gap:.4cqw;width:100%;min-height:3.8cqw;border:.23cqw solid #101820;border-radius:.75cqw;background:#ffe078;box-shadow:inset 0 .3cqw #fff4ae,0 .23cqw #936b2e;color:#17242c;font:1.35cqw/1 GameChunk,sans-serif;touch-action:manipulation}
+.upgrade-buy svg{width:2.2cqw;height:2.2cqw;flex:none}
+.upgrade-buy:disabled{filter:grayscale(.65);opacity:.75}
+.upgrade-roster{flex-basis:23%}
+@media(max-width:1100px),(max-height:650px){
+ .menu-surface{left:10%;right:10%;top:21%;bottom:17.8%;padding:1.1cqw 1.4cqw}
+ .menu-surface-head{height:5.6cqw}
+ .squad-roster,.upgrade-roster{flex-basis:29%}
+ body.production[data-ui-theme=bold] .bottom-nav button>span:not(.menu-sprite){font-size:1.35cqw}
+}
+@media(prefers-reduced-motion:reduce){.menu-surface *,body.production .bottom-nav .menu-sprite{animation:none!important;transition:none!important}}
+
+/* Centered travel journal. One book spread is one chapter. */
+.game-frame.journey .menu-surface[data-menu-surface=journey]{
+ left:8%;right:8%;top:19%;bottom:17%;display:grid;place-items:center;
+ padding:0;border:0;border-radius:0;background:none;box-shadow:none;overflow:visible;
+}
+.journey-book{position:relative;height:100%;aspect-ratio:1796/865;width:auto;max-width:100%;background:url("assets/journey-book-blank-v1.png") center/contain no-repeat;filter:drop-shadow(0 .4cqw .16cqw #26382b55);touch-action:none;outline:none;user-select:none}
+.journey-book:focus-visible{outline:.18cqw solid #fff1a4;outline-offset:.3cqw;border-radius:2cqw}
+.book-spread{position:absolute;inset:0;perspective:100cqw;pointer-events:none}
+.book-spread[data-turning]{animation:book-page-arrive .32s cubic-bezier(.2,.7,.2,1) both}
+@keyframes book-page-arrive{from{opacity:.3;transform:translateX(calc(var(--page-direction) * 1.3cqw)) rotateY(calc(var(--page-direction) * 7deg))}to{opacity:1;transform:none}}
+.book-map-page{position:absolute;left:10.5%;top:13%;width:35.5%;height:69%;pointer-events:auto}
+.book-map{position:absolute;inset:0 0 12%;overflow:hidden;border:.24cqw solid #6b522e;border-radius:1.2cqw;background:#2e514d;box-shadow:0 .2cqw #a8894e,inset 0 0 0 .2cqw #f5e2a8}
+.book-map>img{width:100%;height:100%;display:block;object-fit:cover;object-position:32% center;filter:saturate(1.12) brightness(1.08)}
+.book-map .journey-map-loading{font:1.05cqw/1.1 GameChunk,sans-serif;background:#2e514d}
+.book-map.loaded>.journey-map-loading{display:none}
+.book-map-caption{position:absolute;bottom:-.3cqw;left:0;right:0;display:flex;align-items:center;justify-content:flex-start;gap:.4cqw;color:#5a5834;font:.8cqw/1.1 GameChunk,sans-serif}
+.book-map-caption .menu-sprite{width:2cqw;height:2cqw}
+.book-map-page .journey-boss{top:auto;bottom:8%;right:-4%;width:7cqw;height:7cqw;border:.28cqw solid #422b21;background:#944331;box-shadow:inset 0 .25cqw #e7925c,0 0 0 .18cqw #e5b057,0 .35cqw .18cqw #4c321966;overflow:hidden}
+.book-map-page .journey-boss img{width:83%;height:83%;transform:translateY(-.35cqw)}
+.book-map-page .journey-boss span{padding:.2cqw .2cqw .3cqw;background:#643927;color:#fff1c4;font:.72cqw/1 GameChunk,sans-serif}
+.book-map-page .journey-boss.secret{background:#585d57;border-color:#353f3e;box-shadow:inset 0 .2cqw #91998b,0 0 0 .18cqw #c6bc91,0 .35cqw .18cqw #4c321955}
+.book-map-page .journey-boss.secret span{background:#353f3e}
+.book-detail-page{position:absolute;left:54.5%;top:13%;width:33.5%;height:72%;display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:auto;color:#3b2c19}
+.book-chapter{display:flex;align-items:center;gap:.45cqw;font:1.15cqw/1 GameChunk,sans-serif;color:#79633d;letter-spacing:.07em}
+.book-chapter b{font:2.5cqw/1 GameChunk,sans-serif;color:#8b6227;letter-spacing:0}
+.book-detail-page h2{font:2.7cqw/1.04 GameChunk,sans-serif;color:#302716;margin:.5cqw 0 .65cqw;text-wrap:balance;text-transform:uppercase;max-width:100%}
+.book-status{display:flex;align-items:center;justify-content:center;gap:.35cqw;min-height:2.6cqw;color:#3e6944;font:1.05cqw/1 GameChunk,sans-serif}
+.book-status .menu-sprite,.book-status>img{width:2.3cqw;height:2.3cqw;object-fit:contain}
+.book-status.locked{color:#775b3b}
+.book-description{font:750 1.08cqw/1.45 system-ui,sans-serif;color:#66543b;white-space:pre-line;margin:.65cqw 0 auto;max-width:100%}
+.book-detail-page .journey-visit{width:100%;min-height:4.2cqw;flex:none;margin:.7cqw 0 .25cqw;border:.24cqw solid #2e271b;border-radius:1cqw;background:#ffd64d;box-shadow:inset 0 .35cqw #fff3a8,inset 0 -.4cqw #e9a32c,0 .3cqw #725128;gap:.65cqw;color:#fff8da;font:2cqw/1 GameChunk,sans-serif;-webkit-text-stroke:.17cqw #33291b;paint-order:stroke fill;text-shadow:0 .13cqw #33291b;cursor:pointer}
+.book-detail-page .journey-visit .menu-sprite,.book-detail-page .journey-visit>img{width:3cqw;height:3cqw;object-fit:contain}
+.book-detail-page .journey-visit:disabled{background:#c6c5a6;box-shadow:inset 0 .3cqw #e6e1c3,inset 0 -.3cqw #a7a58b,0 .25cqw #7f7e65;filter:none;opacity:1;font-size:1.15cqw;color:#f8f1da;-webkit-text-stroke:.1cqw #645c43;cursor:default}
+.book-footnote{margin-top:.4cqw;font:700 .76cqw/1.2 system-ui,sans-serif;color:#756344}
+.book-arrow{position:absolute;z-index:3;top:43%;display:grid;place-items:center;width:5.1cqw;height:5.7cqw;padding:.55cqw;border:.25cqw solid #3c3020;border-radius:1.3cqw;background:#ffdb61;box-shadow:inset 0 .3cqw #fff1a7,inset 0 -.3cqw #e9ad38,0 .25cqw #5b4527;cursor:pointer;touch-action:manipulation;transition:transform .15s,filter .15s}
+.book-arrow.previous{left:-3%}.book-arrow.next{right:-3%}
+.book-arrow img{width:100%;height:100%;object-fit:contain;pointer-events:none}
+.book-arrow.previous img{transform:rotate(180deg)}
+.book-arrow:disabled{opacity:.42;filter:saturate(.25);cursor:default}
+.book-arrow:not(:disabled):hover{transform:translateY(-.2cqw)}
+.book-arrow:not(:disabled):active,.book-detail-page .journey-visit:not(:disabled):active{transform:translateY(.2cqw)}
+.book-page-number{position:absolute;bottom:7%;left:49%;width:2%;text-align:center;font:.8cqw/1 GameChunk,sans-serif;color:#806942}
+.journey-book.is-locked .book-map>img{filter:grayscale(.7) brightness(.6)}
+.book-map img:not([src]){visibility:hidden}
+
+/* Raised toy-card faces: a dark shell, a bright inset rim, and a separate label. */
+.squad-slots{gap:1cqw;padding-bottom:.3cqw}
+.squad-slot{padding:.4cqw;gap:.35cqw;border:.24cqw solid #101820;background:#40575b;box-shadow:inset 0 .3cqw #8da9a5,inset 0 -.3cqw #203335,0 .24cqw #0b1c22;overflow:hidden}
+.squad-portrait{position:relative;display:grid;place-items:center;flex:1;min-height:0;width:100%;border:.18cqw solid #142d35;border-radius:.7cqw;background:#85dfe1 url("assets/plants-rays-owned.png") center/125% 125% no-repeat;box-shadow:inset 0 .32cqw #f1ffdf,inset .24cqw 0 #ddf8c7,inset -.24cqw 0 #4ca4a5,inset 0 -.35cqw #2e969a,0 .14cqw #14232d;overflow:hidden}
+.squad-portrait img{width:83%;height:88%;object-fit:contain;max-height:100%}
+.squad-nameplate{display:flex;flex:none;flex-direction:column;align-items:center;justify-content:center;gap:.2cqw;width:100%;min-height:3cqw;padding:.25cqw;border:.16cqw solid #172c2d;border-radius:.6cqw;background:#f5df96;box-shadow:inset 0 .2cqw #fff6cc,inset 0 -.23cqw #c1a86c}
+.squad-nameplate strong{font-size:1.13cqw;line-height:1.05;color:#fff7d7}
+.squad-nameplate small{font-size:.72cqw;color:#4b613e}
+.squad-slot.empty{border-style:solid;background:#40575b}
+.squad-slot.empty .squad-portrait{background:#6b8280;box-shadow:inset 0 .25cqw #a3b9aa,inset 0 -.25cqw #4d6665}
+.squad-slot.empty .squad-nameplate{background:#a3b8a6;box-shadow:inset 0 .2cqw #d5dfca,inset 0 -.2cqw #748e7e}
+.squad-slot.empty .squad-nameplate small{color:#30483e}
+.squad-choice,.upgrade-choice{box-shadow:inset 0 .28cqw #f4ffe9,inset .15cqw 0 #f4ffe9,inset 0 -.35cqw #9cae98,0 .16cqw #101820;padding:.35cqw .3cqw .5cqw}
+.squad-choice.equipped,.upgrade-choice.selected{box-shadow:inset 0 .28cqw #fff4bc,inset .15cqw 0 #fff4bc,inset 0 -.35cqw #d4a544,0 .16cqw #101820}
+.upgrade-portrait{padding:.6cqw;background:#40575b;box-shadow:inset 0 .3cqw #93ada7,inset 0 -.3cqw #243b3d,0 .2cqw #101820}
+.upgrade-portrait img{border:.2cqw solid #132b31;border-radius:.7cqw;padding:.6cqw;background:#85dfe1 url("assets/plants-rays-owned.png") center/125% 125% no-repeat;box-shadow:inset 0 .3cqw #ecffe1,inset .22cqw 0 #ddf8c7,inset 0 -.35cqw #389f9e}
+.game-frame.squad .menu-surface-head{height:4.5cqw}
+.game-frame.squad .menu-footnote{min-height:1.5cqw;font-size:.9cqw}
+.squad-roster{flex-basis:24%}
+.squad-choice,.upgrade-choice{flex:1 0 0;min-width:0}
+.squad-choice strong,.upgrade-choice strong{white-space:normal;text-align:center;font-size:.85cqw;line-height:1.1}
+.squad-nameplate{min-height:2.6cqw}
+.squad-nameplate strong{font-size:1.3cqw;color:#263c30;-webkit-text-stroke:0;text-shadow:none}
+.squad-nameplate small{font-size:.75cqw}
+@media(max-width:1100px),(max-height:650px){
+ .book-chapter{font-size:1.3cqw}.book-chapter b{font-size:2.8cqw}
+ .book-detail-page h2{font-size:3cqw}
+ .book-status{font-size:1.25cqw}
+ .book-description{font-size:1.25cqw;line-height:1.35}
+ .book-detail-page .journey-visit{min-height:4.8cqw;font-size:2.2cqw}
+ .book-detail-page .journey-visit:disabled{font-size:1.3cqw}
+ .book-footnote{display:none}
+ .book-map-caption{font-size:.95cqw}
+}
+
+/* Reference-matched journal: the art is separate from accessible live controls. */
+.game-frame.journey .menu-surface[data-menu-surface=journey]{top:18%;bottom:16%;left:6%;right:6%}
+.journey-book{aspect-ratio:1750/899;background-image:url("assets/journey-book-faithful.png")}
+.book-map-page{left:10%;top:13%;width:38%;height:73%}
+.book-map{inset:0;border:0;border-radius:0;background:none;box-shadow:none}
+.book-map>img{object-position:center;filter:none;border-radius:1cqw}
+.book-map.illustrated{inset:-2% -2% -2% -2%;overflow:visible}
+.book-map.illustrated>img{object-fit:fill;border-radius:0}
+.book-map-caption,.book-footnote,.book-page-number{display:none}
+.book-map-page .journey-boss,.book-map-page .journey-boss.secret{top:auto;bottom:-12%;right:-8%;width:52%;height:60%;border:0;border-radius:0;background:transparent url("assets/journey-wax-seal.png") center/contain no-repeat;box-shadow:none;overflow:visible}
+.book-map-page .journey-boss img{position:absolute;top:17.5%;left:18%;width:64%;height:56%;transform:none;object-fit:contain}
+.book-map-page .journey-boss span{display:none}
+.book-map-page .journey-boss.secret{filter:saturate(.35)}
+.book-detail-page{left:54%;top:17%;width:33%;height:68%;display:block}
+.book-chapter{display:block;font-size:0;height:27%;letter-spacing:0}
+.book-chapter b{display:block;font:7.1cqw/.9 GameChunk,sans-serif;color:#ffe16b;-webkit-text-stroke:.75cqw #141308;paint-order:stroke fill;letter-spacing:-.035em;text-shadow:0 .22cqw #141308}
+.book-detail-page h2{position:absolute;left:-4%;right:-4%;top:28%;margin:0;max-width:none;font:3.05cqw/1 GameChunk,sans-serif;text-transform:none;color:#322011;letter-spacing:-.025em;white-space:nowrap}
+.book-status{position:absolute;top:43%;left:0;right:0;min-height:0;font:1.35cqw/1.1 GameChunk,sans-serif;color:#2b683a;gap:.45cqw}
+.book-status>img{width:1.8cqw;height:1.8cqw}
+.book-description{position:absolute;top:54%;left:-4%;right:-4%;margin:0;font:500 1.2cqw/1.28 'Trebuchet MS',system-ui,sans-serif;color:#36291c}
+.book-detail-page .journey-visit,.book-detail-page .journey-visit:disabled{position:absolute;left:11%;bottom:-3%;width:78%;height:23%;min-height:0;margin:0;padding:0 0 .25cqw;border:0;border-radius:0;background:transparent url("assets/journey-enter-button.png") center/100% 100% no-repeat;box-shadow:none;font:2.65cqw/1 GameChunk,sans-serif;color:#fff7db;-webkit-text-stroke:.32cqw #322419;paint-order:stroke fill;text-shadow:0 .17cqw #322419}
+.book-detail-page .journey-visit:disabled{filter:grayscale(.8);opacity:.75}
+.book-arrow{top:39%;width:8%;height:27%;padding:0;border:0;border-radius:0;background:transparent url("assets/journey-page-arrow.png") center/contain no-repeat;box-shadow:none}
+.book-arrow.previous{left:2%;transform:scaleX(-1)}
+.book-arrow.next{right:1%}
+.book-arrow img{display:none}
+.book-arrow.previous:not(:disabled):hover{transform:scaleX(-1) translateY(-.2cqw)}
+.book-arrow.previous:not(:disabled):active{transform:scaleX(-1) translateY(.2cqw)}
+.book-arrow:disabled{opacity:.35}
+@media(prefers-reduced-motion:reduce){.book-spread[data-turning]{animation:none}}
+/* Upgrades: selected concept 3, original wallpaper remains visible. */
+.game-frame.plant-upgrades .menu-surface[data-menu-surface="upgrades"]{inset:19% 7% 17.5%;padding:0;border:0;box-shadow:none;background:none;display:grid;grid-template-columns:27% 73%;grid-template-rows:71% 27%;gap:2% 0;overflow:visible}
+.growth-hero{position:relative;min-height:0;display:flex;align-items:center;justify-content:center}
+.growth-plant{position:absolute;width:72%;height:80%;object-fit:contain;bottom:17%;z-index:2;filter:drop-shadow(0 5px 2px #142d2840)}
+.growth-pedestal{position:absolute;bottom:11%;width:98%;height:29%;object-fit:contain}
+.growth-hero>strong{position:absolute;bottom:2%;background:#fff0bb;border:3px solid #202c25;border-radius:9px;padding:2% 10%;font-size:1.7cqw;color:#172e28;z-index:3}
+.growth-panel{background:#203a3d;border:4px solid #142a2d;border-radius:18px;box-shadow:inset 0 3px #8fa698,0 5px #132a29;overflow:hidden;color:#fff6d2;min-width:0}
+.growth-tabs{display:flex;gap:1%;height:26%;padding:1.5% 2% 0}
+.growth-tabs button{flex:1;border:2px solid #102b2b;border-radius:10px 10px 3px 3px;background:#385859;color:#eff4da;display:grid;grid-template-columns:25% 75%;align-content:center;line-height:1.15}
+.growth-tabs button>span{grid-row:span 2;font-size:2.6cqw;color:#ffe273;align-self:center}
+.growth-tabs b{font-size:1.05cqw}.growth-tabs small{font-size:.95cqw}
+.growth-tabs button[aria-selected=true]{background:linear-gradient(#ffe98b,#efb83e);color:#24372f;border-color:#fff0ad;box-shadow:0 0 8px #ffd34c80}
+.growth-body{height:72%;display:grid;grid-template-columns:22% 47% 27%;gap:2%;padding:3%;align-items:center;box-sizing:border-box}
+.growth-emblem{aspect-ratio:1;border:3px solid #a5bc90;border-radius:14px;background:#3a6960 url('assets/plants-rays-owned.png') center/cover;display:grid;place-items:center;font:900 5.5cqw sans-serif;color:#ffe478;text-shadow:2px 3px #24332a}
+.growth-details h2{font-size:1.85cqw;margin:0 0 3%;line-height:1.1}.growth-details p{font:600 1cqw sans-serif;color:#cadbd2;margin:0 0 5%;line-height:1.3}
+.growth-details>b{font-size:1.2cqw}.growth-progress{height:.75cqw;border:2px solid #102c2c;border-radius:8px;background:#112a2b;margin:2% 0 4%;overflow:hidden}.growth-progress i{display:block;height:100%;background:linear-gradient(#d7ff8d,#76bc42);transition:width .3s ease}
+.growth-change{font-size:2.3cqw;color:#f7ecc6;line-height:1.1}.growth-change span{color:#c2f47d}.growth-details>small{font:600 .95cqw sans-serif;color:#c8d8ce}
+.growth-purchase{text-align:center}.growth-quantities{display:flex;gap:7%;margin-bottom:8%}.growth-quantities button{width:50%;padding:7% 0;background:#173436;border:2px solid #809b85;border-radius:8px;color:#fff2bc;font-size:1.4cqw}.growth-quantities button[aria-pressed=true]{background:#ffd465;color:#22352e;border-color:#fff2a9}
+.growth-buy{width:100%;min-height:6.5cqw;background:linear-gradient(#ffe571,#ffb516 45%,#ff8611);border:3px solid #152b27;border-radius:14px;box-shadow:inset 0 3px #fff6b7,0 3px #0e2425;color:#fff5d9;display:flex;flex-wrap:wrap;align-content:center;justify-content:center;align-items:center;font-size:1.8cqw;text-shadow:1px 2px #493319}
+.growth-buy svg{width:1.6cqw;height:2.1cqw;margin-right:5%}.growth-buy strong{width:100%;font-size:1.25cqw}.growth-buy:disabled{filter:saturate(.25);opacity:.72;cursor:default}.growth-purchase>small{display:block;font:600 .85cqw sans-serif;color:#c7d8ce;margin-top:6%}
+.growth-roster{grid-column:1/-1;display:flex;gap:1%;justify-content:safe center;overflow-x:auto;background:#203a3d;border:3px solid #132c2b;border-radius:14px;padding:.7%;box-shadow:inset 0 2px #829d8b;min-height:0}
+.growth-roster button{flex:0 0 12%;min-width:0;background:#b5edc9 url('assets/plants-rays-owned.png') center/cover;border:3px solid #526f59;border-radius:9px;display:flex;flex-direction:column;overflow:hidden;padding:0}
+.growth-roster img{height:73%;width:100%;object-fit:contain;min-height:0}.growth-roster strong{background:#ffefbc;border-top:2px solid #536545;color:#20342b;font-size:.95cqw;display:grid;place-items:center;flex:1;width:100%}
+.growth-roster button[aria-pressed=true]{border-color:#ffe270;box-shadow:0 0 0 2px #d38a1e,0 0 9px #ffe173}
+.growth-panel button,.growth-roster button{cursor:pointer;transition:filter .18s,background-color .18s}
+.growth-panel button:focus-visible,.growth-roster button:focus-visible{outline:3px solid #fff3a0;outline-offset:2px}
+.growth-stat-icon{display:block;width:100%;height:100%;background:url('assets/upgrade-stat-icons.png') var(--icon-position) center / 400% 100% no-repeat}
+.growth-tabs button>span{width:2.5cqw;height:3.3cqw;justify-self:center}
+.growth-emblem .growth-stat-icon{width:68%;height:90%}
+.growth-panel{border-width:5px;background:linear-gradient(120deg,#2c4248,#193036)}
+.growth-tabs button{border-width:3px;background:linear-gradient(#53636a,#344149);box-shadow:inset 0 4px #ffffff20}
+.growth-tabs button[aria-selected=true]{background:linear-gradient(#ffe676,#ffc332);box-shadow:inset 0 4px #fff6b4}
+.growth-emblem{border:5px solid #14282d;box-shadow:0 0 0 3px #789297,inset 0 0 0 4px #e5ffdd}
+.growth-change{border:2px solid #526b6d;border-radius:10px;text-align:center;padding:3% 0;font-size:2cqw;margin-top:3%;text-shadow:2px 2px #142628}
+.growth-progress{height:1.2cqw;border-radius:4px;background:repeating-linear-gradient(90deg,#3f555b 0 8%,#162b2e 8% 10%)}
+.growth-progress i{background:repeating-linear-gradient(90deg,#ffe26e 0 1.7cqw,#152b2e 1.7cqw 1.85cqw)}
+.growth-buy{border-width:5px;min-height:7.7cqw;font-size:2.7cqw;box-shadow:inset 0 5px #fff1a2,inset 0 -5px #dc7709,0 4px #10252a}
+.growth-buy svg{width:2.6cqw;height:3.1cqw}.growth-buy strong{font-size:1.7cqw;-webkit-text-stroke:1px #263026;paint-order:stroke fill}
+.growth-roster button{background:linear-gradient(#eff9e2,#c2d8c8);border-color:#172e2d;box-shadow:inset 0 3px #ffffffa0}
+.growth-roster strong{background:none;border:0}.growth-roster button[aria-pressed=true]{background:linear-gradient(#ffe97c,#f5b327)}
+@media(prefers-reduced-motion:reduce){.growth-progress i,.growth-panel button,.growth-roster button{transition:none}}
+.growth-body{padding:2% 3%;height:70%;align-items:center}
+.growth-details h2{font-size:1.65cqw;margin-bottom:1%}.growth-details p{margin-bottom:2%;font-size:.9cqw}
+.growth-change{padding:1% 0;font-size:1.8cqw;margin-top:1%}.growth-progress{margin:1% 0 2%}
+.growth-details>small{display:block;line-height:1.25;font-size:.85cqw;margin-top:2%}
+.growth-purchase>small{margin-top:3%;line-height:1.1}
+/* Selected woody parchment concept: original game assets and live controls. */
+.game-frame.plant-upgrades .menu-surface[data-menu-surface="upgrades"]{inset:16% 3% 15%;grid-template-columns:23% 77%;grid-template-rows:73% 27%;gap:0}
+.growth-panel{background:url('assets/upgrades-wood-panel.png') center/100% 100% no-repeat;border:0;border-radius:0;box-shadow:none;overflow:visible;color:#3c2a16;padding:2% 3% 1%;box-sizing:border-box}
+.growth-tabs{height:25%;gap:1.5%;padding:0 0 1%;box-sizing:border-box}
+.growth-tabs button{background:#fce7b5;border:8px solid transparent;border-image:url('assets/squad-nameplate.webp') 25 fill stretch;box-shadow:none;color:#372b19;border-radius:9px;grid-template-columns:24% 76%;padding:0}
+.growth-tabs button[aria-selected=true]{background:#ffd05b;border-image:url('assets/squad-nameplate.webp') 25 fill stretch;box-shadow:none;filter:sepia(.4) saturate(2.2)}
+.growth-tabs b{font-size:1.17cqw}.growth-tabs small{font-size:1.08cqw}.growth-tabs button>span{width:2.7cqw;height:3.6cqw}
+.growth-body{height:75%;padding:2.5% 2% 1.5%;grid-template-columns:23% 45% 28%;gap:2%}
+.growth-emblem{border-color:#604021;box-shadow:0 0 0 3px #b58a4b,inset 0 0 0 4px #fff0bf;align-self:center}
+.growth-details h2{color:#3a2818;font-size:2cqw;margin-bottom:2%}.growth-details p{color:#4a422d;font-size:.99cqw;margin-bottom:3%}
+.growth-details>b{font-size:1.5cqw}.growth-details>small{color:#76613e;text-align:center;font-size:.9cqw}
+.growth-progress{border-color:#a58a55;background:#ddc48f}.growth-progress i{background:#68cb3d}
+.growth-change{background:#efd49a;border-color:#cfb27a;color:#24532d;text-shadow:none;font-size:2cqw;margin-top:3%;padding:2% 0}.growth-change span{color:#24532d}
+.growth-quantities button{background:#f4da99;color:#493821;border-color:#8c7041;box-shadow:inset 0 2px #fff2c2}.growth-quantities button[aria-pressed=true]{background:#ffd05b;color:#302818;border-color:#7b4f13}
+.growth-buy{background:#ffba27;border-color:#332618;box-shadow:inset 0 5px #ffe994,inset 0 -5px #ef880b,0 3px #70502b;min-height:7.2cqw}.growth-purchase>small{color:#6c5734}
+.growth-hero{z-index:1}.growth-pedestal{content:url('assets/upgrades-wood-pedestal.png');width:110%;height:48%;bottom:0;object-fit:contain}
+.growth-plant{height:74%;width:80%;bottom:22%}.growth-hero>strong{bottom:8%;padding:0;background:none;border:0;box-shadow:none;width:58%;text-align:center;font-size:1.8cqw;color:#322818}
+.growth-roster{background:url('assets/upgrades-wood-shelf.png') center/100% 100% no-repeat;border:0;border-radius:0;box-shadow:none;padding:1.6% 4% 1.4%;gap:1%;overflow-y:hidden;align-items:stretch}
+.growth-roster button{flex-basis:13.2%;background:#dbe9bd;border:3px solid #3a3021;border-radius:11px;box-shadow:inset 0 3px #ffffdf}
+.growth-roster img{height:72%}.growth-roster strong{background:url('assets/squad-nameplate.webp') center/100% 100% no-repeat;color:#252c1e;font-size:1.1cqw}
+.growth-roster button[aria-pressed=true]{background:#ffd65e;border-color:#ffec83;box-shadow:0 0 0 2px #99651e,0 0 7px #ffe67f}
+.growth-panel{position:relative;padding:0}
+.growth-tabs{position:absolute;left:6%;top:12%;width:88%;height:21%;padding:0}
+.growth-body{position:absolute;left:6%;top:39%;width:88%;height:49%;padding:0;grid-template-columns:23% 45% 28%}
+.growth-emblem{width:86%;justify-self:center;max-height:100%;box-sizing:border-box}
+.growth-details h2{font-size:1.7cqw;margin:0 0 1%}.growth-details p{font-size:.86cqw;margin:0 0 2%}.growth-details>b{font-size:1.3cqw}
+.growth-change{font-size:1.65cqw;padding:1% 0;margin-top:2%}.growth-progress{height:.85cqw}.growth-details>small{font-size:.8cqw;margin-top:1%}
+.growth-buy{min-height:6cqw;font-size:2.3cqw}.growth-buy strong{font-size:1.5cqw}.growth-quantities{margin-bottom:4%}.growth-quantities button{padding:4% 0}.growth-purchase>small{font-size:.75cqw;margin-top:2%}
+.growth-hero>strong{bottom:11.5%;font-size:1.6cqw}
+.growth-roster{background-size:100% 225%;padding:1.8% 4% 1.7%}
+.growth-body{top:36%;height:54%}.growth-emblem{width:98%}
+.growth-details h2{font-size:1.9cqw}.growth-details p{font-size:.98cqw;margin-bottom:3%}.growth-details>b{font-size:1.5cqw}
+.growth-progress{height:1.2cqw;background:repeating-linear-gradient(90deg,#dcc58f 0 8%,#b99b62 8% 10%)}
+.growth-progress i{background:repeating-linear-gradient(90deg,#74d83c 0 1.7cqw,#386524 1.7cqw 1.85cqw)}
+.growth-change{font-size:1.9cqw}.growth-buy{min-height:7.3cqw;background:#ffb326}.growth-buy strong{font-size:1.65cqw}
+.growth-roster{padding:1.1% 4% 1%;background-size:100% 240%}
+.growth-details p{margin-bottom:1%;font-size:.9cqw}.growth-details h2{font-size:1.8cqw}.growth-change{margin-top:1%;padding:0}.growth-purchase>small{font-size:.7cqw;margin-top:0}
+.growth-quantities[hidden]{display:none}
+.growth-purchase.is-maxed .growth-buy:disabled{filter:none;opacity:1;color:#493518;text-shadow:none;font-size:2.2cqw;cursor:default}
+.growth-purchase.is-maxed .growth-buy:disabled{position:relative;isolation:isolate;overflow:hidden;flex-direction:column;flex-wrap:nowrap;gap:.12cqw;padding:.45cqw .7cqw;border:.28cqw solid #654017;border-radius:1.1cqw;background:linear-gradient(125deg,#fff1a3 0%,#f6cf52 24%,#ffe890 48%,#e9ac2c 76%,#ffdb6a 100%);box-shadow:inset 0 0 0 .18cqw #fff3b3,inset 0 -.45cqw .1cqw #bf7b18,0 .25cqw 0 #68421e,0 0 1.1cqw #eebc4855}
+.growth-maxed-trophy{width:4.4cqw;height:3cqw;object-fit:contain;filter:drop-shadow(0 .12cqw .06cqw #8b541b66)}
+.growth-maxed-label{font-size:2cqw;line-height:1.15;letter-spacing:.06em;color:#fff9db;-webkit-text-stroke:.24cqw #654017;paint-order:stroke fill;text-shadow:0 .18cqw #9b621d}
+.growth-purchase.is-maxed .growth-buy::after{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(115deg,transparent 25%,#fff9df88 43%,transparent 58%);pointer-events:none}
+.growth-purchase.is-maxed>small{font-size:.85cqw;margin-top:.5cqw;color:#35602e}
+.growth-complete-mark{color:#b17a12;text-shadow:0 1px #fff4b5}
+.growth-roster strong{display:flex;align-items:center;justify-content:center;gap:.3cqw}
+.game-frame.squad .squad-garden{display:block}
+.game-frame.squad #world{visibility:hidden}
+.game-frame.squad .squad-roster{background:url('./assets/upgrades-wood-shelf.png') center/100% 240% no-repeat;border:0;border-radius:0;box-shadow:none;padding:1.1cqw 3cqw}
+.game-frame.squad .squad-choice{background:#dbe9bd;box-shadow:inset 0 .2cqw #ffffdf}
+
+/* Menu-only idle: feet stay grounded; independent transforms preserve selection lifts. */
+:is(.shop-hero-character,.shop-character,.growth-plant,.growth-roster button>img),
+.game-frame.squad :is(.squad-portrait img,.squad-choice>img){
+ transform-origin:50% 92%;
+ animation:menu-plant-breathe 3.6s ease-in-out infinite;
+}
+.game-frame :is(.shop-card,.growth-roster button,.squad-slot,.squad-choice):nth-child(3n+2) img{animation-delay:-1.2s;animation-duration:4s}
+.game-frame :is(.shop-card,.growth-roster button,.squad-slot,.squad-choice):nth-child(3n) img{animation-delay:-2.5s;animation-duration:3.8s}
+.game-frame.squad :is(.squad-selected,.squad-drag-source,.squad-drop-target,.squad-landed) :is(.squad-portrait img,img){animation-play-state:paused}
+@keyframes menu-plant-breathe{
+ 0%,100%{scale:1 1;rotate:-.35deg}
+ 50%{scale:1.012 .978;rotate:.35deg}
+}
+@media(prefers-reduced-motion:reduce){
+ :is(.shop-hero-character,.shop-character,.growth-plant,.growth-roster button>img),
+ .game-frame.squad :is(.squad-portrait img,.squad-choice>img){animation:none}
+}

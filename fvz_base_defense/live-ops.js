@@ -1,15 +1,18 @@
 import {publicationBar} from './publication-ui.js?v=production-49';
+import {installNavigationReview} from './navigation-review.js?v=camp-1';
+import {addCampDecor} from './camp-decor.js';
 import {readLiveRelease,adminOrigin,privateEditor} from './live-release.js?v=production-49';
 import {copyStageShadows} from './editor-batch.js?v=production-49';
-import {defaultStage,validateStage,themes,themeNames,propNames,propBounds} from './stage-layout.js?v=production-49';
+import {defaultStage,validateStage,themes,themeNames,propNames,propBounds} from './stage-layout.js?v=camp-3';
 const $=s=>document.querySelector(s),clone=x=>JSON.parse(JSON.stringify(x)),key=n=>'fvz-liveops-draft-v1-'+n;
 let loaded=false;
 let stage=Math.max(1,Math.min(999,Number(new URLSearchParams(location.search).get('stage'))||2)),layout=defaultStage(stage),selected=null,scene='home',cloud=false,version=0,history=[],ready=false,dirty=false,loading=false;
 const draftVersions=new Map(),undos=new Map(),drafts=new Map(),shadowTargetSets=new Map();
+const navigationReview=installNavigationReview({getLayout:()=>layout,getScene:()=>scene,onBattle:()=>$('#battle').click(),onDecor:()=>{remember();layout=addCampDecor(layout);changed();renderInspector();}});
 function status(message,error=false){$('#status').textContent=message;$('#status').classList.toggle('error',error);}
 function store(){drafts.set(stage,clone(layout));try{localStorage.setItem(key(stage),JSON.stringify(layout));}catch{status('브라우저 초안 보관 공간이 부족합니다. JSON으로 내보내 주세요.',true);}}
 function remember(){const u=undos.get(stage)||[];u.push(clone(layout));if(u.length>80)u.shift();undos.set(stage,u);$('#undo').disabled=false;}
-function send(){if(ready)$('#game').contentWindow.postMessage({type:'fvz-stage-preview',layout,scene,showUI:$('#show-ui').checked,progressMode:$('#progress-mode').value},location.origin);}
+function send(){navigationReview.render();if(ready)$('#game').contentWindow.postMessage({type:'fvz-stage-preview',layout,scene,showUI:$('#show-ui').checked,progressMode:$('#progress-mode').value},location.origin);}
 function changed(){layout=validateStage(layout);dirty=true;store();status('미게시 초안 · 미리보기만 변경되었습니다. 라이브 게시 후 게임에 적용됩니다.');renderObjects();send();}
 function update(path,value){remember();const keys=path.split('.');let target=layout;for(const k of keys.slice(0,-1))target=target[k];const field=keys.at(-1),old=target[field];target[field]=value;try{changed();}catch(e){target[field]=old;undos.get(stage).pop();status(e.message,true);}}
 function field(label,path,min,max,step=1){const value=path.split('.').reduce((o,k)=>o?.[k],layout);return `<label>${label}<input data-path="${path}" type="number" min="${min}" max="${max}" step="${step}" value="${value}"></label>`;}

@@ -1,4 +1,5 @@
 // Shared by the renderer, LIVE OPS editor and private persistence validator.
+import {addCampDecor} from './camp-decor.js';
 export const themes=['green','dune','camp','moon','oasis','noon','ember','frost','coral','hollow'];
 export const themeNames=['Garden','Dune Loop','Night Camp','Moonlight','Sun Temple','High Noon','Ember Valley','Frost Garden','Coral Coast','Blue Hollow'];
 export const propNames=['큰 선인장','꽃 선인장','야자수','바위 무리','사암 기둥','마른 풀','마른 가지','통나무','작은 돌','붉은 바위','피라미드','오벨리스크','유적 기둥','신전 문','스카라브 비석','푸른 띠 항아리','사암 상자','이집트 야자수','유적 돌무더기','푸른 연꽃'];
@@ -18,6 +19,17 @@ export function upgradeStage(input){if(input?.theme==='moon'&&(input.layoutVersi
 
 const legacyPositions=[[0,145,205,110],[2,1030,220,140],[3,260,480,75],[4,970,500,105],[1,80,380,45],[5,465,520,34],[6,1125,405,50],[7,825,125,40],[8,705,475,28],[9,315,95,36]];
 export function defaultStage(stage=1){
+ const layout=baseStage(stage);
+ // The old crate overlapped the upper-right spawn after the scenery camera transform.
+ // Only fresh defaults change; published/custom layouts are never rewritten.
+ if(layout.theme==='camp'){
+  // Compact campsite clusters leave the central deployment area and all four approaches open.
+  const positions=[[245,145,104],[180,285,82],[230,365,52],[125,245,68],[975,165,64],[155,410,45],[170,365,42],[205,305,36],[940,475,45],[920,500,48]];
+  layout.props.forEach((p,i)=>{const [x,y,height]=positions[i];Object.assign(p,{x,y,height});p.shadow={width:.8,height:6,opacity:.22,x:0,y:-1};});
+ }
+ return addCampDecor(layout);
+}
+function baseStage(stage=1){
  const theme=themes[(stage-1)%themes.length],desert=['dune','oasis','noon'].includes(theme),extra=['ember','frost','coral','hollow'].indexOf(theme),extraPositions=[[0,110,255,100],[1,270,120,90],[2,90,415,120],[3,1100,160,100],[4,1020,490,90],[5,150,495,65],[6,850,145,65],[7,385,495,60],[8,765,500,45],[9,1120,350,65]];
  return {schemaVersion:1,stage,theme,background:{scale:1,x:0,y:0,brightness:1},glow:{scale:1,opacity:1},actors:{plant:1,enemy:1,boss:1,base:1,shadowWidth:1,shadowHeight:1,shadowOpacity:1},layoutVersion:theme==='moon'?4:theme==='camp'?3:2,props:(theme==='moon'?[[70,245,160,150],[71,475,120,105],[72,1110,140,125],[73,815,180,105],[74,870,345,110],[75,180,460,95],[76,275,495,75],[77,660,495,70],[78,165,335,100],[79,800,495,75]]:theme==='camp'?[[60,245,140,128],[61,190,270,115],[62,195,435,90],[63,780,155,105],[64,970,130,85],[65,180,535,80],[66,340,535,70],[67,195,320,65],[68,1100,115,80],[69,745,535,85]]:extra>=0?extraPositions.map(([asset,...r])=>[20+extra*10+asset,...r]):desert?(theme==='oasis'?templePositions:desertPositions):[]).map(([asset,x,y,height],i)=>({id:'prop-'+i,asset,x,y,height,visible:true,flipX:false,solid:![5,8,19,62,67,69,77,79].includes(asset),shadow:{width:.74,height:10,opacity:.14,x:0,y:-2}}))};
 }

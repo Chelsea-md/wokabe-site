@@ -1,0 +1,94 @@
+/* Selected nursery counter concept: live commerce on illustrated furniture. */
+.plants-shop{display:none;position:absolute;inset:0;z-index:3;background:url('assets/plants-shop-scene.webp') center/100% 100% no-repeat;color:#fff6d7}
+.game-frame.plants .plants-shop{display:block}
+.game-frame.plants{overflow:clip!important}
+body.production .game-frame.plants #plants-grid,body.production .game-frame.plants #plant-carousel-controls{display:none!important}
+body.production .game-frame.plants .chapter-title,body.production .game-frame.plants .game-settings,body.production .game-frame.plants .currency,body.production .game-frame.plants .gems-counter{z-index:8}
+/* Keep the shared charcoal navigation backing and raised active tab on every menu. */
+body.production .game-frame.plants .bottom-nav{z-index:9}
+.shop-feature{position:absolute;left:24.3%;top:24%;width:58.5%;height:32.5%;display:grid;grid-template-columns:35% 62%;gap:3%;align-items:stretch}
+.shop-hero{position:relative;min-width:0;min-height:0;background:#215c4d;border:.3cqw solid #1d231a;border-radius:1.8cqw;box-shadow:0 .3cqw #613b20,inset 0 .3cqw #e0edba;overflow:hidden}
+.shop-hero::before,.shop-portrait::before{content:'';position:absolute;inset:0;background:url('assets/plants-rays-owned.png') center/150% 150%;animation:shop-rays 12s ease-in-out infinite alternate;pointer-events:none}
+.shop-hero.locked::before,.shop-card.locked .shop-portrait::before{background-image:url('assets/plants-rays-locked.png')}
+.shop-hero-character{position:absolute;width:87%;height:87%;left:6.5%;top:3%;object-fit:contain;filter:drop-shadow(0 .3cqw .1cqw #183e2744)}
+.shop-hero.locked .shop-hero-character,.shop-card.locked .shop-character{filter:grayscale(1)}
+.shop-detail{min-width:0;min-height:0;box-sizing:border-box;position:relative;display:flex;align-items:center;flex-direction:column;justify-content:center;padding:1.5cqw 2.2cqw 1cqw;background:url('assets/plants-shop-placard.webp') center/100% 112% no-repeat;color:#302211;text-align:center}
+.shop-detail h2{margin:0 0 .3cqw;font:3.7cqw/1 GameChunk,sans-serif;color:#fff8df;-webkit-text-stroke:.5cqw #21180e;paint-order:stroke fill;white-space:nowrap}
+.shop-role{font:1.2cqw/1.2 GameChunk,sans-serif;color:#fff8df;background:#617444;border-radius:2cqw;padding:.2cqw 1.6cqw}
+.shop-detail p{font:1.25cqw/1.2 GameChunk,sans-serif;white-space:pre-line;margin:.45cqw 0 .4cqw}
+.shop-buy{display:flex;align-items:center;justify-content:center;gap:.6cqw;min-height:3.9cqw;width:75%;padding:.3cqw 1cqw;border:0;background:url('assets/journey-enter-button.png') center/100% 100% no-repeat;font:2.6cqw/1 GameChunk,sans-serif;color:#fff8df;-webkit-text-stroke:.24cqw #291e10;paint-order:stroke fill;cursor:pointer}
+.shop-buy.is-owned{background-image:url('assets/green-button.png');font-size:2cqw}
+.shop-buy:disabled:not(.is-owned){filter:grayscale(.8);cursor:default}
+.shop-buy.is-owned:disabled{opacity:1;cursor:default}
+.shop-coin,.shop-check{width:2cqw;height:2cqw;object-fit:contain;vertical-align:middle;flex:none}
+.shop-buy .shop-coin{width:2.6cqw;height:2.6cqw}
+.shop-requirement{font:.95cqw/1 GameChunk,sans-serif;min-height:.95cqw;margin-top:.1cqw;color:#50321b}
+.shop-requirement:empty{display:none}
+.shop-detail:has(.shop-requirement:not(:empty)) h2{font-size:3.15cqw}
+.shop-detail:has(.shop-requirement:not(:empty)) p{font-size:1.18cqw;margin:.25cqw 0}
+.shop-detail:has(.shop-requirement:not(:empty)) .shop-buy{min-height:3.3cqw;font-size:2.25cqw}
+.shop-browse{position:absolute;left:3.5%;right:3.5%;top:60%;height:24.5%;display:flex;align-items:center;gap:.6cqw}
+.shop-rail{display:flex;flex:1;min-width:0;height:100%;gap:.5cqw;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;scroll-snap-type:x proximity;padding:.3cqw .4cqw .5cqw;touch-action:none;overscroll-behavior:contain}
+.shop-rail::-webkit-scrollbar{display:none}
+.shop-card{position:relative;flex:0 0 calc((100% - 3cqw)/7);min-width:0;display:flex;flex-direction:column;padding:.35cqw;border:.23cqw solid #111e1d;border-radius:1.2cqw;background:#20473f;box-shadow:inset 0 .25cqw #83a18a,inset 0 -.22cqw #102e29;scroll-snap-align:start;cursor:pointer;color:#fff8dd;overflow:hidden}
+.shop-card-select{display:flex;flex:1;min-height:0;min-width:0;flex-direction:column;width:100%;padding:0;border:0;background:none;color:inherit;cursor:pointer}
+.shop-card.selected{border-color:#ffdb53;box-shadow:0 0 0 .18cqw #62390a,inset 0 .2cqw #ffe9a2;background:#8c5c19}
+.shop-portrait{position:relative;flex:1;min-height:0;overflow:hidden;border-radius:.7cqw .7cqw .2cqw .2cqw;border:.13cqw solid #0c2f24;box-shadow:inset 0 .24cqw #e8ffe4}
+.shop-character{position:absolute;top:0;left:11%;height:96%;width:78%;object-fit:contain}
+.shop-lock{position:absolute;top:4%;right:3%;width:18%;height:27%;object-fit:contain}
+.shop-card-select>strong{display:block;flex:none;width:100%;box-sizing:border-box;font:1.03cqw/1.15 GameChunk,sans-serif;background:#fff1c9;color:#1c251c;border:.12cqw solid #263328;border-radius:.45cqw;padding:.13cqw 0;white-space:nowrap;box-shadow:inset 0 -.15cqw #c7b583}
+.shop-card-state{display:flex;align-items:center;justify-content:center;gap:.3cqw;height:2.1cqw;flex:none;font:1.02cqw/1 GameChunk,sans-serif;margin-top:.15cqw;white-space:nowrap}
+.shop-card-state .shop-check,.shop-card-state .shop-coin,.shop-card-state>img{width:1.45cqw;height:1.45cqw;object-fit:contain}
+.shop-card-state.buyable{background:url('assets/journey-enter-button.png') center/100% 100% no-repeat;font-size:1.35cqw}
+.shop-card-state.locked{font-size:.77cqw;color:#e8e7e9}
+.shop-arrow{flex:0 0 4.7%;border:0;background:none;padding:0;cursor:pointer}
+.shop-arrow img{display:block;width:100%;height:auto;object-fit:contain}
+.shop-arrow.previous img{transform:scaleX(-1)}
+.shop-arrow:disabled{opacity:.35;cursor:default}
+.plants-shop button:focus-visible{outline:.25cqw solid #fff8cf;outline-offset:-.4cqw}
+.shop-card:hover .shop-character{transform:translateY(-2%)}
+@keyframes shop-rays{from{background-position:10% 20%}to{background-position:90% 80%}}
+@media(max-width:900px){
+ .shop-card{flex-basis:calc((100% - 2cqw)/5)}
+ .shop-card-select>strong{font-size:1.35cqw}.shop-card-state{font-size:1.25cqw}.shop-card-state.locked{font-size:1cqw}
+ .shop-detail h2{font-size:3.4cqw}.shop-detail p{font-size:1.35cqw}.shop-role{font-size:1.25cqw}
+}
+@media(prefers-reduced-motion:reduce){.shop-hero::before,.shop-portrait::before{animation:none}}
+
+/* Nursery polish: ground portraits and keep all action states at the same size. */
+.shop-hero::after,.shop-portrait::after{content:'';position:absolute;left:4%;right:4%;bottom:3%;height:20%;background:url('assets/shop-grass-footing.webp') center bottom/contain no-repeat;pointer-events:none;z-index:1}
+.shop-hero-character{z-index:2;top:1%;height:87%;object-position:center bottom}
+.shop-character{z-index:2;top:0;height:94%;object-position:center bottom}
+.shop-lock{z-index:3}
+.shop-ground-shadow{position:absolute;pointer-events:none;z-index:2;left:25%;bottom:9%;width:50%;height:7%;border-radius:50%;background:rgba(16,40,16,.29);filter:blur(.28cqw);transform:rotate(-2deg)}
+.shop-portrait .shop-ground-shadow{left:24%;bottom:8%;width:52%;height:8%;filter:blur(.13cqw);background:rgba(16,40,16,.27)}
+.shop-hero-character,.shop-character{z-index:3}
+.shop-lock{z-index:4}
+.shop-hero[data-actor="cactus"] .shop-hero-character{left:1%;width:98%;height:95%;top:-5%}
+.shop-card[data-shop-plant="6"] .shop-character{left:4%;width:92%;height:103%;top:-9%}
+.shop-hero.locked::after,.shop-card.locked .shop-portrait::after{filter:saturate(.3);opacity:.75}
+.shop-detail{padding:1.15cqw 2.2cqw 1.4cqw;justify-content:space-evenly;gap:0}
+.shop-detail h2,.shop-detail:has(.shop-requirement:not(:empty)) h2{font-size:3.4cqw;margin:0}
+.shop-role{font-size:1.25cqw;line-height:1.15;padding:.18cqw 1.6cqw}
+.shop-detail p,.shop-detail:has(.shop-requirement:not(:empty)) p{font-size:1.25cqw;line-height:1.2;margin:.15cqw 0}
+.shop-buy,.shop-detail:has(.shop-requirement:not(:empty)) .shop-buy{position:relative;isolation:isolate;box-sizing:border-box;flex:none;width:23cqw;height:4.2cqw;min-height:4.2cqw;max-width:86%;padding:.25cqw 1cqw .4cqw;border:0;background:none!important;border-radius:1cqw;box-shadow:none;filter:none!important;gap:.65cqw;font:2.35cqw/1 GameChunk,sans-serif;color:#fff8df;-webkit-text-stroke:.28cqw #1a1a13;paint-order:stroke fill;opacity:1}
+.shop-buy::before{content:'';position:absolute;inset:0;z-index:-1;background:url('assets/shop-purchase-face.webp') center/100% 100% no-repeat;pointer-events:none}
+.shop-buy.is-owned::before{filter:hue-rotate(65deg) saturate(.45) brightness(.75)}
+.shop-buy:disabled:not(.is-owned)::before{filter:grayscale(1) brightness(.8)}
+.shop-buy.is-owned{font-size:2cqw!important;-webkit-text-stroke:.2cqw #16372d}
+.shop-buy .shop-coin,.shop-buy .shop-check{width:2.65cqw;height:2.65cqw}
+.shop-requirement{min-height:.9cqw;height:.9cqw;font:.9cqw/1 GameChunk,sans-serif;margin:0;white-space:nowrap}
+.shop-requirement:empty{display:block;visibility:hidden}
+.shop-card-state{position:relative;isolation:isolate;box-sizing:border-box;height:2.5cqw;margin-top:.2cqw;font-size:1.15cqw;gap:.35cqw;border-radius:.6cqw}
+.shop-card-state.buyable{background:none;font-size:1.5cqw;color:#fff8df;-webkit-text-stroke:.18cqw #251b0e;paint-order:stroke fill}
+.shop-card-state.buyable{width:100%;padding:0;border:0;cursor:pointer}
+.shop-card-state.buyable:disabled{cursor:default;filter:grayscale(.75)}
+.shop-card-state.buyable::before{content:'';position:absolute;inset:0;z-index:-1;background:url('assets/shop-purchase-face.webp') center/100% 100% no-repeat}
+.shop-card-state .shop-check,.shop-card-state .shop-coin,.shop-card-state>img{width:1.7cqw;height:1.7cqw}
+.shop-card.selected .shop-card-state.owned{background:#244c40}
+@media(max-width:900px){
+ .shop-card-state{height:3cqw;font-size:1.35cqw}
+ .shop-card-state.buyable{font-size:1.6cqw}
+ .shop-card-state.locked{font-size:1cqw}
+ .shop-card-state .shop-check,.shop-card-state .shop-coin,.shop-card-state>img{width:1.9cqw;height:1.9cqw}
+}
