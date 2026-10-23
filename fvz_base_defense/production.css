@@ -247,3 +247,8 @@ body.production #boot-loading.boot-notice #boot-status{display:block!important;m
 @keyframes tap-feedback-out{0%{opacity:.95;transform:translate(-50%,-50%) scale(.35)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.65)}}
 @media(prefers-reduced-motion:reduce){body.production .tap-feedback{animation:tap-feedback-fade .16s linear both!important}}
 @keyframes tap-feedback-fade{from{opacity:.8;transform:translate(-50%,-50%) scale(.8)}to{opacity:0;transform:translate(-50%,-50%) scale(.8)}}
+/* Approved splash motion #5: centered breathing, 3 seconds, +/-5%. */
+@keyframes splash-breath-approved{0%,100%{transform:scale(.95)}50%{transform:scale(1.05)}}
+body.production #boot-logo.logo-ready,body.production #scene-splash .transition-logo{transform-origin:50% 50%;opacity:1;animation:splash-breath-approved 3s ease-in-out infinite!important;will-change:transform}
+@media(prefers-reduced-motion:reduce){body.production #boot-logo.logo-ready,body.production #scene-splash .transition-logo{animation:none!important;transform:none}}
+html.reduce-game-motion body.production #boot-logo.logo-ready,html.reduce-game-motion body.production #scene-splash .transition-logo{animation:none!important;transform:none}
