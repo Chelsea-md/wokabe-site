@@ -162,6 +162,10 @@ async function showSceneSplash(next,{resetBattle=false}={}){
  const transition=sceneSplash={next};overlay.hidden=false;
  try{await Promise.all([new Promise(r=>setTimeout(r,450)),...(resetBattle?saved.loadout.filter(i=>i>=4).map(i=>ensureConceptRig(rigs,names[i])):[])]);
  if(sceneSplash!==transition)return;setScene(next);if(resetBattle)startRun();
+ // Finish the hidden camera/background transition before revealing the scene.
+ // Otherwise the two paint frames below expose ~1 second of camera easing.
+ cameraBlend=next==='battle'?1:0;zoom=zoomTarget;
+ updateUI();render();
  await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
  }catch(error){console.error(error);notify('Character art could not load. Please retry.');}
  finally{if(sceneSplash===transition){sceneSplash=null;overlay.hidden=true;last=performance.now();}}
