@@ -1,0 +1,12 @@
+/* Keep the transition logo out of the generic 3cqw SVG icon sizing rule. */
+body.production #scene-splash svg.transition-logo{width:36%;height:65%;flex-shrink:0;overflow:hidden}
+body.production #scene-splash #splash-label,body.production #scene-splash .splash-dots{-webkit-text-stroke:1px #152219;paint-order:stroke fill}
+body.production .garden-book h2{-webkit-text-stroke-width:calc(.45cqw + 1px)}
+body.production .garden-book-left h3,body.production .garden-book-right .garden-action{-webkit-text-stroke-width:calc(.3cqw + 1px)}
+body.production .garden-book-left p{-webkit-text-stroke:1px #392713;paint-order:stroke fill}
+.game-tap-feedback{position:fixed;left:0;top:0;width:44px;height:44px;margin:-22px;z-index:2147483646;pointer-events:none!important;border-radius:50%;border:2px solid #ffe6a0;box-shadow:0 0 9px #ffbe4170,inset 0 0 6px #ffd76860;animation:game-tap-ring .44s cubic-bezier(.16,.7,.24,1) both}
+.game-tap-feedback::after{content:'';position:absolute;inset:8px;border-radius:50%;border:1px solid #fff5cd;opacity:.8}
+@keyframes game-tap-ring{0%{transform:scale(.24);opacity:.95}65%{opacity:.65}100%{transform:scale(1.2);opacity:0}}
+@media(prefers-reduced-motion:reduce){.game-tap-feedback{animation:game-tap-quiet .18s linear both}}
+html.reduce-game-motion .game-tap-feedback{animation:game-tap-quiet .18s linear both}
+@keyframes game-tap-quiet{from{opacity:.8;transform:scale(.6)}to{opacity:0;transform:scale(.6)}}
