@@ -1,4 +1,4 @@
-import {loadGameImage} from './game-image.js?v=production-49';
+import {loadGameImage} from './game-image.js?v=loading-2';
 import {gamePoint,gameBounds} from './game-viewport.js?v=production-49';
 import {defaultSizes,validateSizes,characterSize,sizeCatalog} from './character-sizes.js?v=production-49';
 import {validateGrowth,growthCharacters} from './character-growth.js?v=production-49';
@@ -25,7 +25,7 @@ import {createGameDialogs} from './game-dialogs.js?v=loading-2';
 import {warmStyles,warmUI} from './ui-preload.js';
 const sharedArtReady=Promise.all([warmStyles(new URL('./game-dialogs.css?v=loading-2',import.meta.url).href),warmUI(['music','sound','motion','shake','language','book'].map(name=>new URL('./assets/settings-'+name+'.png',import.meta.url).href))]);
 void warmStyles(new URL('./menus-preview.css?v=loading-2',import.meta.url).href);
-const dialogStyles=document.createElement('link');dialogStyles.rel='stylesheet';dialogStyles.href=new URL('./game-dialogs.css',import.meta.url).href;document.head.append(dialogStyles);
+const dialogStyles=document.createElement('link');dialogStyles.rel='stylesheet';dialogStyles.href=new URL('./game-dialogs.css?v=loading-2',import.meta.url).href;document.head.append(dialogStyles);
 const menuStyles=document.createElement('link');menuStyles.rel='stylesheet';menuStyles.href=new URL('./menus-preview.css?v=growth-1',import.meta.url).href;document.head.append(menuStyles);
 const markBoot=stage=>{window.fvzBootStage=stage;};markBoot('ui');
 const $=s=>document.querySelector(s),gameParams=new URLSearchParams(location.search),stageEditor=gameParams.get('editor')==='stage'&&window.parent!==window,menuDemo=gameParams.get('demo')==='menus',uiSkins=await loadUiSkins();createLoadingWallpaper(uiSkins);markBoot('popup');const popupArt=await loadPopupArt();const sprout=$('.pause-sprout'),popupSprout=document.createElement('img');popupSprout.className='pause-sprout';popupSprout.src=popupArt.sprout;popupSprout.alt='';sprout.replaceWith(popupSprout);for(const [id,key,label]of [['resume-battle','resume','Resume'],['pause-to-home','home','Home']]){const b=$('#'+id);b.classList.add('asset-button');b.innerHTML='<span class="sr-only">'+label+'</span>';b.setAttribute('aria-label',label);b.style.setProperty('--button-art',`url("${popupArt[key]}")`);}markBoot('rigs');const rigs=await loadRigs({includeConcepts:stageEditor});
