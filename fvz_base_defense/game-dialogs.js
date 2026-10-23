@@ -1,7 +1,7 @@
 // Shared modal shell: settings, pause, purchase and destructive confirmations.
 const asset=name=>new URL('./assets/'+name,import.meta.url).href;
 const esc=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-export function createGameDialogs({frame,skins,portrait,onFreeze,onResume,onRestart,onLeave,getBattle,onPreferences}){
+export function createGameDialogs({frame,skins,portrait,grownPortrait=portrait,onFreeze,onResume,onRestart,onLeave,getBattle,onPreferences}){
  const defaults={sfx:85,reducedMotion:false,screenShake:true};let prefs={...defaults};
  try{const p=JSON.parse(localStorage.getItem('fvz-ui-settings')||'{}');prefs={sfx:Number.isFinite(p.sfx)?Math.max(0,Math.min(100,p.sfx)):85,reducedMotion:p.reducedMotion===true,screenShake:p.screenShake!==false};}catch{}
  const overlay=document.createElement('div');overlay.className='garden-dialog-overlay';overlay.hidden=true;frame.append(overlay);
@@ -30,7 +30,7 @@ export function createGameDialogs({frame,skins,portrait,onFreeze,onResume,onRest
  function help(step=0,fromPause=false){
   const pages=[
    {title:'PLANT YOUR DEFENDERS',copy:'Collect sunlight, then drag a plant from your hand onto an empty battle tile.',tag:'1 / 3 · DEPLOY',art:`<img src="${skins.sun||asset('sun.png')}" alt="Sunlight"><img class="help-plant" src="${portrait(0)}" alt="Chili defender">`},
-   {title:'MATCH & GROW',copy:'Drag two identical plants of the same level together to make one stronger defender.',tag:'2 / 3 · MERGE',art:`<figure><img src="${portrait(0)}" alt="Chili"><figcaption>LEVEL 1</figcaption></figure><figure><img src="${portrait(0)}" alt="Matching Chili"><figcaption>LEVEL 1</figcaption></figure><figure class="help-grown"><img src="${portrait(0)}" alt="Stronger Chili"><figcaption>LEVEL 2</figcaption></figure>`},
+   {title:'MATCH & GROW',copy:'Drag two identical plants of the same level together to make one stronger defender.',tag:'2 / 3 · MERGE',art:`<figure><img src="${portrait(0)}" alt="Chili"><figcaption>LEVEL 1</figcaption></figure><figure><img src="${portrait(0)}" alt="Matching Chili"><figcaption>LEVEL 1</figcaption></figure><figure class="help-grown"><img src="${grownPortrait(0)}" alt="Merged level 2 Chili"><figcaption>LEVEL 2</figcaption></figure>`},
    {title:'PROTECT YOUR GARDEN',copy:'Plants attack automatically. Keep your base safe and survive every wave to clear the chapter.',tag:'3 / 3 · DEFEND',art:`<img src="${portrait(1)}" alt="Acorn defender"><img class="help-base" src="${asset('journey-green.webp')}" alt="Your garden">`}
   ],p=pages[step];
   shell('HOW TO PLAY',`<div class="garden-guide"><span class="guide-step">${p.tag}</span><div class="guide-art">${p.art}</div><h3>${p.title}</h3><p>${p.copy}</p></div>`,`${button('back',step?'BACK':'SETTINGS','neutral')}${button('next',step===2?'GOT IT':'NEXT')}`,{onCancel:()=>settings(fromPause)});

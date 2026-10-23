@@ -95,3 +95,5 @@
 .confirm-consequence>img{width:2.7cqw;height:2.7cqw;object-fit:contain}.confirm-consequence b{font-size:1.15cqw;color:#9b4025}.confirm-consequence p{font-size:1.2cqw;margin:.15cqw 0;color:#46321e}.confirm-consequence.kept{background:#e6ebc8;border-color:#a3ae75}.confirm-consequence.kept b{color:#49712d}
 .garden-battle-confirm footer .garden-action.neutral{background-image:url('./assets/pause-gray.png');filter:none;background-size:100% 140%;font-size:2cqw}
 .garden-battle-confirm footer .garden-action.danger{background-image:url('./assets/pause-red.png');filter:none;background-size:100% 140%;font-size:2cqw}
+.garden-setting input[type=range]::-webkit-slider-thumb{box-shadow:none!important;border-radius:50%;outline:none;filter:none;background-color:transparent;clip-path:circle(42%)}
+.garden-setting input[type=range]::-moz-range-thumb{box-shadow:none!important;border-radius:50%;outline:none;filter:none;background-color:transparent;clip-path:circle(42%)}
