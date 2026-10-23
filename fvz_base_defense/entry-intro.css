@@ -1,0 +1,11 @@
+#boot-loading.illustrated-entry{background:#142e26}
+#boot-loading.illustrated-entry::before{display:none}
+#boot-loading.illustrated-entry>#boot-logo{display:none}
+.entry-illustration{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(100%,calc(var(--play-height,100dvh) * 1.7787));aspect-ratio:1672/940;display:grid;place-items:center;pointer-events:none;opacity:0}
+.entry-illustration.loaded{opacity:1}
+.entry-background{position:absolute;width:100%;height:100%;object-fit:fill}
+.entry-logo-position{position:absolute;left:27.5%;top:calc(1.35% + 3px);width:44.5%}
+.entry-logo{display:block;width:100%;animation:splash-breath-approved 3s ease-in-out infinite;transform-origin:center;will-change:transform}
+#boot-loading.boot-notice #boot-status,#boot-loading.boot-notice #boot-retry{z-index:2;background:#142e26ed;padding:12px;border-radius:12px}
+@media(prefers-reduced-motion:reduce){.entry-logo{animation:none}}
+html.reduce-game-motion .entry-logo{animation:none}
