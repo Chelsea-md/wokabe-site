@@ -179,6 +179,8 @@ body.production[data-ui-theme=bold] .wave-head>strong,body.production[data-ui-th
 /* A brief, transparent text hint sits above the entire card silhouette. */
 body.production #game-message{top:73%;bottom:auto;left:50%;right:auto;max-width:70%;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;font:1.05cqw/1.3 GameChunk,sans-serif;color:#fff9de;-webkit-text-stroke:.12em #173229;paint-order:stroke fill;text-shadow:0 .12cqw .22cqw #10291f88;opacity:0;transform:translate(-50%,.35cqw);transition:opacity .18s ease,transform .24s cubic-bezier(.2,.7,.2,1);pointer-events:none}
 body.production #game-message.visible{opacity:1;transform:translate(-50%,0)}
+/* Shared notices must sit above every menu surface and modal artwork. */
+body.production #game-message{position:absolute;z-index:400;pointer-events:none;padding:.45cqw 1cqw;border:.12cqw solid #fff4ca88;border-radius:.7cqw;background:#173a2df2;font-size:1.4cqw;box-shadow:0 .2cqw .6cqw #10291f55}
 body.production #merge-tutorial{font-size:1.05cqw;gap:.4cqw}
 body.production #merge-tutorial>span{padding:0;border:0;background:transparent;-webkit-text-stroke:.12em #173229;paint-order:stroke fill;text-shadow:0 .12cqw .22cqw #10291f88}
 body.production #merge-tutorial img{width:3cqw;height:2.6cqw}

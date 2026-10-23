@@ -105,7 +105,7 @@ function tickVisuals(dt){cameraBlend=advanceTerrainCamera(cameraBlend,scene==='b
 const save=()=>{if(stageEditor||layoutPreview||menuDemo)return true;coins=saved.coins;const ok=persistProgress(saved);if(!ok)notify('Progress could not be saved in this browser.');return ok;};
 const chapter=()=>scene==='battle'&&runChapter?runChapter:rules.chapters[(selectedStage-1)%rules.chapters.length],stageNumber=()=>scene==='battle'&&runStage?runStage:selectedStage;
 const plantGrowth=type=>1+.04*(saved.plantUpgrades?.[type]||0);
-function notify(message){const box=$('#game-message');if(box.textContent===message&&box.classList.contains('visible'))return;box.textContent=message;box.classList.add('visible');messageUntil=performance.now()+1100;}
+function notify(message){const box=$('#game-message');box.textContent=message;box.classList.add('visible');messageUntil=performance.now()+2200;}
 function applyTheme(){previewStage=(stageEditor?currentLayout().theme:stageOverrides[stageNumber()]?.theme)||chapter().artStage||'green';rigs.theme=({green:'forest',dune:'desert',camp:'night',moon:'night',oasis:'desert',noon:'desert'})[previewStage]||'forest';frame.dataset.world=previewStage;frame.dataset.liveVersion=String(liveVersions[stageNumber()]||0);worldArt.ensure(currentLayout()).then(()=>render()).catch(e=>{console.error(e);notify('Map art could not load. Please refresh.');});baseTier=Math.min(4,[60,120,200,300].filter(n=>saved.health>=n).length);baseMaxHp=saved.health;}
 function money(n){return n<1000?String(Math.floor(n)):(n/1000).toFixed(1).replace('.0','')+'K';}
 function icon(name){return `<img class="ui-raster" src="${uiSkins[name]}" alt="" aria-hidden="true">`;}
