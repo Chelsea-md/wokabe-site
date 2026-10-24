@@ -10,3 +10,11 @@ body.production .garden-book-left p{-webkit-text-stroke:1px #392713;paint-order:
 @media(prefers-reduced-motion:reduce){.game-tap-feedback{animation:game-tap-quiet .18s linear both}}
 html.reduce-game-motion .game-tap-feedback{animation:game-tap-quiet .18s linear both}
 @keyframes game-tap-quiet{from{opacity:.8;transform:scale(.6)}to{opacity:0;transform:scale(.6)}}
+/* Optical alignment follows the painted top face, not its lower bevel. */
+body.production .garden-book h2{font-size:3.65cqw;padding-bottom:.35cqw}
+body.production .garden-book-right>.garden-action:first-child{font-size:3.05cqw;gap:.85cqw;padding-bottom:1cqw}
+body.production .garden-book-right>.garden-action:first-child .garden-icon{width:4.4cqw;height:4.4cqw}
+body.production .garden-pause-secondary .garden-action{font-size:1.4cqw;gap:.45cqw;padding-bottom:.95cqw}
+body.production .garden-pause-secondary .garden-icon{width:2.5cqw;height:2.5cqw}
+body.production .garden-book-right>.danger{font-size:1.6cqw;gap:.65cqw;padding:.25cqw 1.3cqw 1cqw}
+body.production .garden-book-right>.danger .garden-icon{width:2.6cqw;height:2.6cqw}
