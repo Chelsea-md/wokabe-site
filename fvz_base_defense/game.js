@@ -1,4 +1,5 @@
 import {loadGameImage} from './game-image.js?v=loading-2';
+import {createPinch} from './battle-pinch.js';
 import {gamePoint,gameBounds} from './game-viewport.js?v=production-49';
 import {defaultSizes,validateSizes,characterSize,sizeCatalog} from './character-sizes.js?v=production-49';
 import {validateGrowth,growthCharacters} from './character-growth.js?v=production-49';
@@ -358,8 +359,46 @@ document.querySelectorAll('[data-upgrade]').forEach(b=>b.onclick=()=>{if(scene!=
 window.addEventListener('keydown',e=>{if(e.key==='Escape'){if($('#recruit-celebration')){closeRecruit();return;}if(!$('#production-dialog').hidden)return;if(!$('#return-home-overlay').hidden){$('#cancel-home').click();return;}if(bossIntro){endBossIntro();return;}if(!$('#pause-overlay').hidden){$('#resume-battle').click();return;}openPause();}if(e.key==='Tab'){const box=[$('#recruit-celebration'),$('#production-dialog'),$('#return-home-overlay'),$('#pause-overlay')].find(n=>n&&!n.hidden);if(!box)return;const buttons=[...box.querySelectorAll('button:not(:disabled)')].filter(b=>!b.hidden),first=buttons[0],last=buttons.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}});
 function updateUI(){canvas.dataset.zoom=zoom.toFixed(3);canvas.removeAttribute('title');const waveTotal=countForWave(saved,wave),track=$('.wave-track');track.setAttribute('role','progressbar');track.setAttribute('aria-label','Enemies defeated this wave');track.setAttribute('aria-valuemin','0');track.setAttribute('aria-valuemax',String(waveTotal));track.setAttribute('aria-valuenow',String(waveKilled));track.querySelector('i').style.width=(Math.min(waveTotal,waveKilled)/waveTotal*100)+'%';$('.wave-head').style.setProperty('--wave-progress',(waveProgress(waveKilled,waveTotal)*100)+'%');wavePointer.hidden=countdown>0;wavePointer.style.left=(3+waveProgress(waveKilled,waveTotal)*94)+'%';if(bonusReady){const b=$('#production-dialog [data-action="0"]'),remain=Math.max(0,Math.ceil((bonusReady-performance.now())/1000));if(b){b.disabled=remain>0;b.textContent=remain?'CONTINUE IN '+remain:'CLAIM';const close=$('#production-dialog .bonus-close');if(close)close.hidden=remain===0;}}$('#coins').textContent=money(scene==='battle'?earned:displayBalance('coins'));$('#gems').textContent=money(displayBalance('gems'));gemWallet.setAttribute('aria-label','Gems '+(saved.gems||0));$('#sun-count').textContent=Math.floor(sun);$('.wave-number').innerHTML=wave+' <small>/ '+chapter().waves+'</small>';$('#wave-countdown').textContent=scene==='battle'&&countdown>0?'Wave starts in '+Math.ceil(countdown):'';$('#production-fill').style.width=(sun>=999?100:sun%1*100)+'%';$('.sun-stock').style.setProperty('--sun-progress',(sun>=999?100:sun%1*100)+'%');$('.production-track').setAttribute('aria-valuenow',String(sun>=999?100:Math.floor(sun%1*100)));$('.sun-stock').setAttribute('aria-label','Sunlight '+Math.floor(sun)+' of 999');document.querySelectorAll('.troop-card').forEach(b=>{const enough=sun>=costs[+b.dataset.type];b.classList.toggle('unaffordable',!enough);b.setAttribute('aria-disabled',String(!enough));});$('#unit-inspector').hidden=true;$('#placement-tip').hidden=true;canvas.setAttribute('aria-label',scene==='battle'?`Stage ${stageNumber()}, wave ${wave} of ${chapter().waves}. Sunlight ${Math.floor(sun)}. Base health ${Math.ceil(baseHp)} of ${baseMaxHp}. Plants ${units.length}. Enemies ${enemies.length}. ${paused?'Paused.':''}`:`${scene}. Stage ${stageNumber()}. Coins ${saved.coins}.`);}
 
-markBoot('tutorial');const tutorial=document.createElement('div');tutorial.id='merge-tutorial';tutorial.className='battle-only';tutorial.setAttribute('role','status');tutorial.innerHTML='<img alt=""><span></span>';frame.append(tutorial);const hintAtlas=await loadImage('../../../assets/cartoon-v5-tutorial-hand.png'),hintCanvas=document.createElement('canvas');hintCanvas.width=345;hintCanvas.height=255;hintCanvas.getContext('2d').drawImage(hintAtlas,143,600,345,255,0,0,345,255);tutorial.querySelector('img').src=hintCanvas.toDataURL();
-function updateTutorial(){tutorial.hidden=scene!=='battle'||saved.tutorial||paused||!!bossIntro||!!sceneSplash;if(tutorial.hidden)return;const pair=units.some(u=>units.some(v=>u!==v&&u.type===v.type&&u.level===v.level&&u.level<10));tutorial.querySelector('span').textContent=!units.length?'Drag a plant onto a tile':pair?'Drag matching plants together':'Add one more matching plant';const anchor=units.length?visualPosition(units[0]):{x:600,y:410};tutorial.style.left=(50+(anchor.x-600)*zoom/W*100)+'%';tutorial.style.top=(units.length?Math.min(67,(center.y+(anchor.y-center.y)*zoom+45)/H*100):70)+'%';}
+markBoot('tutorial');
+let lastTutorialInput=performance.now(),tutorialKey='',tutorialSince=0;
+const pinch=createPinch({getZoom:()=>zoomTarget,setZoom:value=>{zoomTarget=value;},cancelDrag});
+const consume=e=>{e.preventDefault();e.stopImmediatePropagation();};
+window.addEventListener('pointerdown',e=>{
+ lastTutorialInput=performance.now();
+ if(e.pointerType!=='touch'||scene!=='battle'||paused||bossIntro||sceneSplash)return;
+ if(!e.target.closest('#world,.troop-card')&&!pinch.active)return;
+ if(pinch.down(e.pointerId,e.clientX,e.clientY))consume(e);
+},{capture:true,passive:false});
+window.addEventListener('pointermove',e=>{if(e.pointerType==='touch'&&pinch.move(e.pointerId,e.clientX,e.clientY))consume(e);},{capture:true,passive:false});
+for(const event of ['pointerup','pointercancel'])window.addEventListener(event,e=>{if(e.pointerType==='touch'&&pinch.up(e.pointerId)){lastTutorialInput=performance.now();consume(e);}},{capture:true,passive:false});
+window.addEventListener('blur',()=>pinch.reset());
+document.addEventListener('visibilitychange',()=>{pinch.reset();lastTutorialInput=performance.now();});
+window.addEventListener('keydown',()=>{lastTutorialInput=performance.now();});
+const tutorial=document.createElement('div');tutorial.id='merge-tutorial';tutorial.className='battle-only contextual-guide';tutorial.setAttribute('aria-hidden','true');
+tutorial.innerHTML='<i class="guide-origin"></i><i class="guide-target"></i><img alt="" draggable="false">';frame.append(tutorial);
+tutorial.querySelector('img').src=new URL('./assets/tutorial-pointer-v2.png',import.meta.url).href;
+function updateTutorial(){
+ const now=performance.now();
+ tutorial.hidden=scene!=='battle'||saved.tutorial||paused||!!bossIntro||!!sceneSplash||!!drag||pinch.active||now-lastTutorialInput<3500;
+ if(tutorial.hidden){tutorialKey='';return;}
+ const worldToUI=p=>({x:center.x+(p.x-center.x)*zoom,y:center.y+(p.y-center.y)*zoom});
+ let from,to,key;
+ const first=units.find(u=>u.level<10&&units.some(v=>v!==u&&v.type===u.type&&v.level===u.level));
+ if(first){const second=units.find(v=>v!==first&&v.type===first.type&&v.level===first.level);from=worldToUI(visualPosition(first));to=worldToUI(visualPosition(second));key='merge-'+first.slot+'-'+second.slot;}
+ else{
+  const empty=slotOffsets.findIndex((_,i)=>!units.some(u=>u.slot===i));
+  const cards=[...document.querySelectorAll('.troop-card')];
+  const card=cards.find(b=>sun>=costs[+b.dataset.type]&&(!units.length||units.some(u=>u.type===+b.dataset.type&&u.level===1)));
+  if(empty<0||!card){tutorial.hidden=true;tutorialKey='';return;}
+  const b=gameBounds(card,canvas);from={x:(b.left+b.width*.5)*W/canvas.clientWidth,y:(b.top+b.height*.4)*H/canvas.clientHeight};to=worldToUI(position(empty));key='deploy-'+card.dataset.type+'-'+empty;
+ }
+ if(key!==tutorialKey){tutorialKey=key;tutorialSince=now;}
+ const cycle=(now-tutorialSince)%6500,progress=Math.max(0,Math.min(1,(cycle-650)/1600)),ease=progress*progress*(3-2*progress);
+ const locate=(node,p)=>{node.style.left=p.x/W*100+'%';node.style.top=p.y/H*100+'%';};
+ locate(tutorial.querySelector('.guide-origin'),from);locate(tutorial.querySelector('.guide-target'),to);
+ const hand=tutorial.querySelector('img');locate(hand,reducedMotion()?from:{x:from.x+(to.x-from.x)*ease,y:from.y+(to.y-from.y)*ease});
+ hand.style.opacity=reducedMotion()?'0':String(cycle<250?cycle/250:cycle>2250?Math.max(0,1-(cycle-2250)/350):1);
+}
 async function finishBoot(){await Promise.all([sharedArtReady,window.entryIntroReady]);const overlay=$('#boot-loading');document.body.classList.add('ready');overlay.classList.add('leaving');if(!reducedMotion())await new Promise(resolve=>setTimeout(resolve,260));overlay.hidden=true;last=performance.now();}
 // Fixed simulation steps preserve combat while browser rendering is throttled.
 function advanceElapsed(seconds){let remaining=Math.max(0,seconds);while(remaining>1e-7){const dt=Math.min(1/30,remaining);tickVisuals(dt);tickSceneSplash(dt);if(!paused&&!sceneSplash){if(bossIntro){bossIntro.elapsed+=dt;if(bossIntro.elapsed>=introDuration)endBossIntro();}update(dt*(bossIntro?.12:1));}remaining-=dt;if(paused||(!sceneSplash&&scene!=='battle')||runResolved){if(!paused)time+=remaining;break;}}}

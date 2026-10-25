@@ -18,3 +18,8 @@ body.production .garden-pause-secondary .garden-action{font-size:1.4cqw;gap:.45c
 body.production .garden-pause-secondary .garden-icon{width:2.5cqw;height:2.5cqw}
 body.production .garden-book-right>.danger{font-size:1.6cqw;gap:.65cqw;padding:.25cqw 1.3cqw 1cqw}
 body.production .garden-book-right>.danger .garden-icon{width:2.6cqw;height:2.6cqw}
+/* Tutorial overlays share the battlefield coordinate system; HUD stays fixed. */
+body.production #merge-tutorial.contextual-guide{inset:0;width:100%;height:100%;transform:none;display:block;pointer-events:none}
+body.production #merge-tutorial.contextual-guide img{position:absolute;width:3.8cqw;height:4.2cqw;object-fit:contain;transform:translate(-18%,-15%);animation:none;filter:drop-shadow(0 .12cqw .12cqw #18291770)}
+.contextual-guide i{position:absolute;width:3.8cqw;height:3.8cqw;border:.16cqw solid #ffdc55;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 .8cqw #ffe56f88,inset 0 0 .6cqw #ffe56f44;background:#ffdf4b12}
+.contextual-guide .guide-target{width:4.8cqw;height:4.8cqw;border-radius:.7cqw;transform:translate(-50%,-50%) rotate(45deg)}
