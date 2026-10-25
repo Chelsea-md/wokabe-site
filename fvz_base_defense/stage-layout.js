@@ -40,6 +40,7 @@ export function validateStage(input,stage=input?.stage){
  num(stage,1,999,'스테이지');if(!Number.isInteger(stage)||input?.schemaVersion!==1||input.stage!==stage||!themes.includes(input.theme))throw Error('스테이지 설정 형식이 올바르지 않습니다.');
  const b=input.background,g=input.glow,a=input.actors;
  const out={schemaVersion:1,layoutVersion:input.layoutVersion||2,stage,theme:input.theme,background:{scale:num(b?.scale,.7,1.6,'배경 크기'),x:num(b?.x,-300,300,'배경 X'),y:num(b?.y,-200,200,'배경 Y'),brightness:num(b?.brightness,.3,1.8,'배경 밝기')},glow:{scale:num(g?.scale,.3,2,'기지 빛 크기'),opacity:num(g?.opacity,0,2,'기지 빛 진하기')},actors:{},props:[]};
+ out.background=validateBackground(b);out.backgroundScope=input.backgroundScope==='theme'?'theme':input.backgroundScope==='stage'?'stage':JSON.stringify({...b,flipX:false})===JSON.stringify({...defaultStage(stage).background,flipX:false})?'theme':'stage';
  for(const k of ['plant','enemy','boss','base'])out.actors[k]=num(a?.[k],.5,1.8,k+' 크기');
  for(const k of ['shadowWidth','shadowHeight'])out.actors[k]=num(a?.[k],.2,3,'캐릭터 그림자');
  out.actors.shadowOpacity=num(a?.shadowOpacity,0,2,'캐릭터 그림자 진하기');
@@ -52,11 +53,25 @@ export function propBounds(p){const b=propPieces[p.asset],width=p.height*b[2]/b[
 export function sceneryCamera(blend){const t=Math.max(0,Math.min(1,blend)),boardScale=1.08-.08*t,scale=1.06*boardScale/1.08,originX=345+255*t+(-78-345)*boardScale/1.08,originY=315-50*t+(-10-315)*boardScale/1.08;return {scale,x:originX-600+600*scale,y:originY-300+300*scale};}
 export function sceneryPoint(x,y,blend=1){const c=sceneryCamera(blend);return {x:600+(x-600)*c.scale+c.x,y:300+(y-300)*c.scale+c.y};}
 export function sceneryBounds(p,blend=1){const r=propBounds(p),at=sceneryPoint(r.x,r.y,blend),c=sceneryCamera(blend);return {...at,width:r.width*c.scale,height:r.height*c.scale};}
-export function layoutObstacles(layout,baked=[]){const b=layout.background;return [...baked.map(([x,y,rx,ry])=>[600+(x-600)*b.scale+b.x,300+(y-300)*b.scale+b.y,rx*b.scale,ry*b.scale]),...layout.props.filter(p=>p.visible&&p.solid).map(p=>{const r=sceneryBounds(p);return[r.x+r.width/2,r.y+r.height/2,r.width/2,r.height/2];})];}
+export function layoutObstacles(layout,baked=[]){const b=layout.background;return [...baked.map(([x,y,rx,ry])=>[600+(x-600)*b.scale*(b.flipX?-1:1)+b.x,300+(y-300)*b.scale+b.y,rx*b.scale,ry*b.scale]),...layout.props.filter(p=>p.visible&&p.solid).map(p=>{const r=sceneryBounds(p);return[r.x+r.width/2,r.y+r.height/2,r.width/2,r.height/2];})];}
 
 // Legacy layouts remain the home composition and seed battle on first edit.
 export function layoutForScene(layout,scene='home'){const {battle,...home}=layout;return scene==='battle'&&battle?battle:home;}
 export function withSceneLayout(document,scene,layout){
  const next=validateStage(layout),home=layoutForScene(document,'home');
  return validateStage(scene==='battle'?{...home,battle:next}:{...next,battle:document.battle||structuredClone(home)});
+}
+
+export function validateBackground(b){
+ if(b?.flipX!==undefined&&typeof b.flipX!=='boolean')throw Error('배경 좌우 반전 값을 확인해 주세요.');
+ return {scale:num(b?.scale,.7,1.6,'배경 크기'),x:num(b?.x,-300,300,'배경 X'),y:num(b?.y,-200,200,'배경 Y'),brightness:num(b?.brightness,.3,1.8,'배경 밝기'),flipX:b.flipX===true};
+}
+export function validateThemeBackgrounds(input){
+ const out={};if(!input||typeof input!=='object'||Array.isArray(input))throw Error('테마 설정을 확인해 주세요.');
+ for(const [theme,scenes]of Object.entries(input)){if(!themes.includes(theme))throw Error('알 수 없는 테마입니다.');out[theme]={};for(const [scene,b]of Object.entries(scenes)){if(!['home','battle'].includes(scene))throw Error('화면을 확인해 주세요.');out[theme][scene]=validateBackground(b);}}
+ return out;
+}
+export function resolveBackground(layout,scene,masters={}){
+ const common=masters[layout.theme]?.[scene==='battle'?'battle':'home'];
+ return common&&layout.backgroundScope!=='stage'?{...layout,background:{...common}}:layout;
 }

@@ -1,15 +1,18 @@
 import {publicationBar} from './publication-ui.js?v=production-49';
-import {installNavigationReview} from './navigation-review.js?v=scene-split-1';
+import {installNavigationReview} from './navigation-review.js?v=theme-master-1';
 import {addCampDecor} from './camp-decor.js';
-import {readLiveRelease,adminOrigin,privateEditor} from './live-release.js?v=scene-split-1';
+import {readLiveRelease,adminOrigin,privateEditor} from './live-release.js?v=theme-master-1';
 import {copyStageShadows} from './editor-batch.js?v=production-49';
-import {defaultStage,validateStage,layoutForScene,withSceneLayout,themes,themeNames,propNames,propBounds} from './stage-layout.js?v=scene-split-1';
+import {defaultStage,validateStage,layoutForScene,withSceneLayout,resolveBackground,validateThemeBackgrounds,themes,themeNames,propNames,propBounds} from './stage-layout.js?v=theme-master-1';
 const $=s=>document.querySelector(s),clone=x=>JSON.parse(JSON.stringify(x)),key=n=>'fvz-liveops-draft-v1-'+n;
 let loaded=false;
 let stage=Math.max(1,Math.min(999,Number(new URLSearchParams(location.search).get('stage'))||2)),layout=defaultStage(stage),selected=null,scene='home',cloud=false,version=0,history=[],ready=false,dirty=false,loading=false;
+let themeBackgrounds={},themeVersion=0;
 let stageDocument=clone(layout);
+function syncBackground(){layout=resolveBackground(layout,scene,themeBackgrounds);}
+
 function bundle(){return withSceneLayout(stageDocument,scene,layout);}
-function acceptDocument(input){stageDocument=validateStage(input);layout=clone(layoutForScene(stageDocument,scene));}
+function acceptDocument(input){stageDocument=validateStage(input);layout=clone(layoutForScene(stageDocument,scene));syncBackground();}
 const draftVersions=new Map(),undos=new Map(),drafts=new Map(),shadowTargetSets=new Map();
 const navigationReview=installNavigationReview({getLayout:()=>layout,getScene:()=>scene,onBattle:()=>$('#battle').click(),onDecor:()=>{remember();layout=addCampDecor(layout);changed();renderInspector();}});
 function status(message,error=false){$('#status').textContent=message;$('#status').classList.toggle('error',error);}
@@ -17,7 +20,7 @@ function store(){stageDocument=bundle();drafts.set(stage,clone(stageDocument));t
 function remember(){const u=undos.get(stage)||[];u.push(clone(bundle()));if(u.length>80)u.shift();undos.set(stage,u);$('#undo').disabled=false;}
 function send(){navigationReview.render();if(ready)$('#game').contentWindow.postMessage({type:'fvz-stage-preview',layout:bundle(),scene,showUI:$('#show-ui').checked,progressMode:$('#progress-mode').value},location.origin);}
 function changed(){layout=validateStage(layout);dirty=true;store();status('미게시 초안 · 미리보기만 변경되었습니다. 라이브 게시 후 게임에 적용됩니다.');renderObjects();send();}
-function update(path,value){remember();const keys=path.split('.');let target=layout;for(const k of keys.slice(0,-1))target=target[k];const field=keys.at(-1),old=target[field];target[field]=value;try{changed();}catch(e){target[field]=old;undos.get(stage).pop();status(e.message,true);}}
+function update(path,value){remember();const keys=path.split('.');let target=layout;for(const k of keys.slice(0,-1))target=target[k];const field=keys.at(-1),old=target[field];if(path.startsWith('background.'))layout.backgroundScope='stage';target[field]=value;try{changed();}catch(e){target[field]=old;undos.get(stage).pop();status(e.message,true);}}
 function field(label,path,min,max,step=1){const value=path.split('.').reduce((o,k)=>o?.[k],layout);return `<label>${label}<input data-path="${path}" type="number" min="${min}" max="${max}" step="${step}" value="${value}"></label>`;}
 function renderObjects(){
  $('#prop-count').textContent=layout.props.length+'/60';$('#objects').replaceChildren();$('#handles').replaceChildren();
@@ -29,12 +32,16 @@ function renderObjects(){
  $('#stage-list').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.stage===stage)));$('#theme').value=layout.theme;
  $('#baked-note').textContent=['green'].includes(layout.theme)?'통이미지 배경입니다. 배경 전체는 이동·확대할 수 있고, 장식은 새 레이어로 추가할 수 있습니다. 그려진 나무 자체는 분리할 수 없습니다.':'배경과 장식이 분리된 맵입니다. 개별 아이템을 자유롭게 조절하세요.';
 }
+$('#preview').addEventListener('pointerdown',e=>{if(!e.target.closest('.prop-handle'))select(null);});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')select(null);});
 function select(id){selected=id;renderObjects();renderInspector();$('.inspector').scrollTop=0;}
 function renderInspector(){const i=layout.props.findIndex(p=>p.id===selected),p=layout.props[i];$('#selection-title').textContent=p?propNames[p.asset]:'장식을 선택하세요';$('#duplicate').disabled=!p||layout.props.length>=60;$('#remove').disabled=!p;renderShadowTargets();
  $('#prop-controls').innerHTML=p?`<div class="field-row">${field('X 위치',`props.${i}.x`,-100,1300)}${field('Y 위치 (발)',`props.${i}.y`,-100,700)}</div>${field('이미지 높이',`props.${i}.height`,10,300)}<div class="field-row">${field('그림자 폭 배율',`props.${i}.shadow.width`,0,2,.01)}${field('그림자 높이',`props.${i}.shadow.height`,0,60,.5)}</div>${field('그림자 진하기',`props.${i}.shadow.opacity`,0,.8,.01)}<div class="field-row">${field('그림자 X',`props.${i}.shadow.x`,-100,100)}${field('그림자 Y',`props.${i}.shadow.y`,-100,100)}</div><label class="check"><input data-bool="flipX" type="checkbox" ${p.flipX?'checked':''}>좌우 반전</label><label class="check"><input data-bool="visible" type="checkbox" ${p.visible?'checked':''}>장식 표시</label><label class="check"><input data-bool="solid" type="checkbox" ${p.solid?'checked':''}>적이 피해 가는 장식</label>`:'<p class="hint">왼쪽 목록이나 미리보기의 장식을 선택하세요.</p>';
- $('#background-controls').innerHTML=field('배경 전체 크기','background.scale',.7,1.6,.01)+`<div class="field-row">${field('배경 X','background.x',-300,300)}${field('배경 Y','background.y',-200,200)}</div>`+field('배경 밝기','background.brightness',.3,1.8,.01)+field('기지 주변 빛 크기','glow.scale',.3,2,.01)+field('기지 주변 빛 진하기','glow.opacity',0,2,.01);
+ $('#background-controls').innerHTML=field('배경 전체 크기','background.scale',.7,1.6,.01)+`<div class="field-row">${field('배경 X','background.x',-300,300)}${field('배경 Y','background.y',-200,200)}</div>`+field('배경 밝기','background.brightness',.3,1.8,.01)+`<label class="check"><input id="background-flip" type="checkbox" ${layout.background.flipX?'checked':''}>배경 좌우 반전</label><p class="hint">${scene==='home'?'홈':'전투'} · ${layout.backgroundScope==='stage'?'스테이지 개별 설정':'테마 공통값 사용'}</p><div class="actions"><button id="background-stage">이 스테이지에 저장</button><button id="background-master">테마 공통값으로 저장</button><button id="background-inherit">공통값으로 돌아가기</button><button id="background-reset">기본 위치로 복원</button></div>`+field('기지 주변 빛 크기','glow.scale',.3,2,.01)+field('기지 주변 빛 진하기','glow.opacity',0,2,.01);
  $('#actor-controls').innerHTML=[['식물 크기','plant'],['일반 적 크기','enemy'],['보스 크기','boss'],['기지 크기','base']].map(([n,k])=>field(n,'actors.'+k,.5,1.8,.01)).join('')+field('그림자 가로','actors.shadowWidth',.2,3,.05)+field('그림자 세로','actors.shadowHeight',.2,3,.05)+field('그림자 진하기','actors.shadowOpacity',0,2,.05);
 }
+document.addEventListener('click',async e=>{const id=e.target.id;if(id==='background-stage'){remember();layout.backgroundScope='stage';changed();renderInspector();cloud?confirmPublish():openAdmin();}if(id==='background-inherit'){remember();layout.backgroundScope='theme';layout.background=clone(themeBackgrounds[layout.theme]?.[scene]||defaultStage(stage).background);changed();renderInspector();}if(id==='background-reset'){remember();layout.backgroundScope='stage';layout.background=clone(defaultStage(stage).background);changed();renderInspector();}if(id==='background-master'){if(!cloud){status('관리자 작업 공간에서 저장해 주세요.',true);return;}if(!confirm((scene==='home'?'홈':'전투')+' 배경을 '+layout.theme+' 테마 공통값으로 게시할까요? 개별 저장된 스테이지는 유지됩니다.'))return;e.target.disabled=true;try{const config=validateThemeBackgrounds({...themeBackgrounds,[layout.theme]:{...themeBackgrounds[layout.theme],[scene]:layout.background}});const r=await fetch('/api/live-settings/backgrounds',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({config,expectedVersion:themeVersion})});const data=await r.json();if(!r.ok)throw Error(data.error);themeBackgrounds=data.config;themeVersion=data.version;status('테마 공통값 게시 완료. 개별 설정은 유지됩니다. 이 스테이지도 공통값을 따르게 하려면 공통값으로 돌아간 뒤 스테이지를 게시해 주세요.');}catch(error){status(error.message,true);}finally{e.target.disabled=false;}}});
+document.addEventListener('change',e=>{if(e.target.id==='background-flip'){remember();layout.backgroundScope='stage';layout.background.flipX=e.target.checked;changed();}});
 document.addEventListener('input',e=>{if(!e.target.dataset.path)return;const value=Number(e.target.value),old=e.target.dataset.path.split('.').reduce((o,k)=>o[k],layout);if(e.target.validity.valid&&value!==old)update(e.target.dataset.path,value);});
 document.addEventListener('change',e=>{if(e.target.dataset.shadowField){updateShadowAction();return;}if(e.target.dataset.path&&Number(e.target.value)!==e.target.dataset.path.split('.').reduce((o,k)=>o[k],layout)){if(!e.target.validity.valid){status('입력 범위를 확인해 주세요.',true);renderInspector();return;}update(e.target.dataset.path,Number(e.target.value));}if(e.target.dataset.bool){const i=layout.props.findIndex(p=>p.id===selected);if(i>=0)update(`props.${i}.`+e.target.dataset.bool,e.target.checked);}});
 function render(){renderObjects();renderInspector();$('#undo').disabled=!(undos.get(stage)?.length);$('#save').disabled=loading||(!cloud&&location.hostname.endsWith('.chatgpt.site'));$('#save').textContent=cloud?'라이브 게시':'라이브 게시 · 관리자 확인';$('#applied-game').href='./?layout-preview='+stage+'&v=production-49';$('#revision').textContent='공개 게시본 v'+version+' · '+(dirty?'초안은 아직 게시되지 않았습니다.':'게임 적용본');$('#history').replaceChildren(new Option('이전 저장 기록 선택',''));for(const h of history)$('#history').add(new Option('v'+h.version+' · '+new Date(h.at).toLocaleString('ko-KR'),String(h.version)));$('#restore').disabled=true;send();}
@@ -47,7 +54,7 @@ async function load(n,{discard=false}={}){if(loading){$('#stage-number').value=s
 $('#stage-number').onchange=()=>{const n=Number($('#stage-number').value);if(Number.isInteger(n)&&n>=1&&n<=999)load(n);};
 for(let n=1;n<=themes.length;n++){const b=document.createElement('button');b.textContent=n;b.dataset.stage=n;b.onclick=()=>load(n);$('#stage-list').append(b);}
 themes.forEach((t,i)=>$('#theme').add(new Option(themeNames[i],t)));propNames.forEach((t,i)=>$('#asset').add(new Option(t,i)));
-$('#theme').onchange=()=>update('theme',$('#theme').value);
+$('#theme').onchange=()=>{update('theme',$('#theme').value);syncBackground();renderInspector();send();};
 $('#add').onclick=()=>{if(layout.props.length>=60){status('장식은 최대 60개까지 배치할 수 있습니다.',true);return;}remember();const p={id:'prop-'+crypto.randomUUID(),asset:Number($('#asset').value),x:600,y:300,height:90,visible:true,flipX:false,solid:true,shadow:{width:.74,height:10,opacity:.18,x:0,y:-2}};layout.props.push(p);selected=p.id;changed();renderInspector();};
 $('#duplicate').onclick=()=>{const p=layout.props.find(p=>p.id===selected);if(!p||layout.props.length>=60)return;remember();const copy=clone(p);copy.id='prop-'+crypto.randomUUID();copy.x=Math.min(1300,copy.x+25);copy.y=Math.min(700,copy.y+20);layout.props.push(copy);selected=copy.id;changed();renderInspector();};
 function shadowTargetSet(){if(!shadowTargetSets.has(stage))shadowTargetSets.set(stage,new Set());return shadowTargetSets.get(stage);}
@@ -60,7 +67,7 @@ $('#shadow-target-none').onclick=()=>{shadowTargetSet().clear();renderShadowTarg
 $('#apply-shadows').onclick=()=>{try{const fields=[...document.querySelectorAll('[data-shadow-field]:checked')].map(el=>el.dataset.shadowField),targets=chosenShadowTargets(),next=copyStageShadows(layout,selected,fields,targets),count=targets===null?layout.props.length:targets.length;remember();layout=next;changed();renderInspector();status('그림자 '+fields.length+'개 항목을 '+(targets===null?'전체 ':'선택한 ')+count+'개 오브젝트에 적용했습니다. 저장 전 초안입니다.');}catch(e){status(e.message,true);}};
 $('#remove').onclick=()=>{remember();layout.props=layout.props.filter(p=>p.id!==selected);selected=null;changed();renderInspector();};
 $('#undo').onclick=()=>{const old=undos.get(stage)?.pop();if(!old)return;acceptDocument(old);selected=null;changed();render();};
-for(const mode of ['home','battle'])$('#'+mode).onclick=()=>{stageDocument=bundle();scene=mode;layout=clone(layoutForScene(stageDocument,scene));selected=null;shadowTargetSets.delete(stage);render();$('#copy-scene').textContent=scene==='home'?'전투 구성을 홈에 복사':'홈 구성을 전투에 복사';for(const m of ['home','battle'])$('#'+m).setAttribute('aria-pressed',String(m===mode));send();};
+for(const mode of ['home','battle'])$('#'+mode).onclick=()=>{stageDocument=bundle();scene=mode;layout=clone(layoutForScene(stageDocument,scene));syncBackground();selected=null;shadowTargetSets.delete(stage);render();$('#copy-scene').textContent=scene==='home'?'전투 구성을 홈에 복사':'홈 구성을 전투에 복사';for(const m of ['home','battle'])$('#'+m).setAttribute('aria-pressed',String(m===mode));send();};
 $('#show-ui').onchange=send;$('#progress-mode').onchange=send;
 window.addEventListener('message',e=>{if(e.source!==$('#game').contentWindow||e.origin!==location.origin)return;if(e.data?.type==='fvz-stage-camera'){const c=e.data.camera;$('#handles').style.transform=`translate(${c.x/12}%,${c.y/6}%) scale(${c.scale})`;return;}if(e.data?.type==='fvz-stage-ready'){ready=true;send();}if(e.data?.type==='fvz-stage-error')status(e.data.error,true);});
 async function post(route,input){const response=await fetch('/api/live-stages/'+stage+route,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({...input,expectedVersion:version})});const result=await response.json();if(!response.ok)throw Error(result.error||'저장하지 못했습니다.');return result;}
@@ -74,7 +81,7 @@ $('#save').onclick=()=>cloud?confirmPublish():openAdmin();$('#history').onchange
 $('#reload').onclick=()=>{remember();load(stage,{discard:true});};$('#reset').onclick=()=>{remember();layout=defaultStage(stage);selected=null;changed();renderInspector();};
 $('#export').onclick=()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(bundle(),null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='fvz-stage-'+stage+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);status('스테이지 설정 파일을 내보냈습니다.');};
 $('#import').onchange=async e=>{const file=e.target.files[0];if(!file)return;try{if(file.size>100000)throw Error('100KB 이하의 설정 파일을 선택해 주세요.');const data=validateStage(JSON.parse(await file.text()),stage);remember();acceptDocument(data);selected=null;changed();renderInspector();}catch(error){status(error.message,true);}e.target.value='';};
-window.addEventListener('beforeunload',()=>store());await load(stage);
+window.addEventListener('beforeunload',()=>store());try{const release=await readLiveRelease();themeBackgrounds=validateThemeBackgrounds(release.settings.backgrounds||{});themeVersion=release.settingsVersions.backgrounds||0;}catch{}await load(stage);
 
 // Transfer is a draft only. The signed-in owner must confirm before any public write.
 const handoffNonce=new URLSearchParams(location.search).get('handoff');
