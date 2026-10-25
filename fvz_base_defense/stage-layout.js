@@ -35,6 +35,7 @@ function baseStage(stage=1){
 }
 function num(v,min,max,label){if(typeof v!=='number'||!Number.isFinite(v)||v<min||v>max)throw Error(label+' 범위를 확인해 주세요 ('+min+'–'+max+').');return v;}
 export function validateStage(input,stage=input?.stage){
+ if(input?.battle?.battle)throw Error("Nested battle layouts are not supported.");
  input=upgradeStage(input);
  num(stage,1,999,'스테이지');if(!Number.isInteger(stage)||input?.schemaVersion!==1||input.stage!==stage||!themes.includes(input.theme))throw Error('스테이지 설정 형식이 올바르지 않습니다.');
  const b=input.background,g=input.glow,a=input.actors;
@@ -43,7 +44,7 @@ export function validateStage(input,stage=input?.stage){
  for(const k of ['shadowWidth','shadowHeight'])out.actors[k]=num(a?.[k],.2,3,'캐릭터 그림자');
  out.actors.shadowOpacity=num(a?.shadowOpacity,0,2,'캐릭터 그림자 진하기');
  if(!Array.isArray(input.props)||input.props.length>60)throw Error('장식은 최대 60개까지 배치할 수 있습니다.');
- const ids=new Set();out.props=input.props.map(p=>{if(!/^[-a-zA-Z0-9]{1,70}$/.test(p.id)||ids.has(p.id))throw Error('장식 ID가 중복되거나 올바르지 않습니다.');ids.add(p.id);num(p.asset,0,propPieces.length-1,'장식');if(!Number.isInteger(p.asset))throw Error('장식 번호를 확인해 주세요.');if(p.flipX!==undefined&&typeof p.flipX!=='boolean')throw Error('좌우 반전 값이 올바르지 않습니다.');return{id:p.id,asset:p.asset,flipX:p.flipX===true,x:num(p.x,-100,1300,'장식 X'),y:num(p.y,-100,700,'장식 Y'),height:num(p.height,10,300,'장식 높이'),visible:p.visible!==false,solid:!!p.solid,shadow:{width:num(p.shadow?.width,0,2,'그림자 폭'),height:num(p.shadow?.height,0,60,'그림자 높이'),opacity:num(p.shadow?.opacity,0,.8,'그림자 진하기'),x:num(p.shadow?.x,-100,100,'그림자 X'),y:num(p.shadow?.y,-100,100,'그림자 Y')}};});return out;
+ const ids=new Set();out.props=input.props.map(p=>{if(!/^[-a-zA-Z0-9]{1,70}$/.test(p.id)||ids.has(p.id))throw Error('장식 ID가 중복되거나 올바르지 않습니다.');ids.add(p.id);num(p.asset,0,propPieces.length-1,'장식');if(!Number.isInteger(p.asset))throw Error('장식 번호를 확인해 주세요.');if(p.flipX!==undefined&&typeof p.flipX!=='boolean')throw Error('좌우 반전 값이 올바르지 않습니다.');return{id:p.id,asset:p.asset,flipX:p.flipX===true,x:num(p.x,-100,1300,'장식 X'),y:num(p.y,-100,700,'장식 Y'),height:num(p.height,10,300,'장식 높이'),visible:p.visible!==false,solid:!!p.solid,shadow:{width:num(p.shadow?.width,0,2,'그림자 폭'),height:num(p.shadow?.height,0,60,'그림자 높이'),opacity:num(p.shadow?.opacity,0,.8,'그림자 진하기'),x:num(p.shadow?.x,-100,100,'그림자 X'),y:num(p.shadow?.y,-100,100,'그림자 Y')}};});if(input.battle)out.battle=validateStage(input.battle,stage);return out;
 }
 export function propBounds(p){const b=propPieces[p.asset],width=p.height*b[2]/b[3];return {x:p.x-width/2,y:p.y-p.height,width,height:p.height};}
 // Keep the authored home composition intact. Carry it with the board from
@@ -52,3 +53,10 @@ export function sceneryCamera(blend){const t=Math.max(0,Math.min(1,blend)),board
 export function sceneryPoint(x,y,blend=1){const c=sceneryCamera(blend);return {x:600+(x-600)*c.scale+c.x,y:300+(y-300)*c.scale+c.y};}
 export function sceneryBounds(p,blend=1){const r=propBounds(p),at=sceneryPoint(r.x,r.y,blend),c=sceneryCamera(blend);return {...at,width:r.width*c.scale,height:r.height*c.scale};}
 export function layoutObstacles(layout,baked=[]){const b=layout.background;return [...baked.map(([x,y,rx,ry])=>[600+(x-600)*b.scale+b.x,300+(y-300)*b.scale+b.y,rx*b.scale,ry*b.scale]),...layout.props.filter(p=>p.visible&&p.solid).map(p=>{const r=sceneryBounds(p);return[r.x+r.width/2,r.y+r.height/2,r.width/2,r.height/2];})];}
+
+// Legacy layouts remain the home composition and seed battle on first edit.
+export function layoutForScene(layout,scene='home'){const {battle,...home}=layout;return scene==='battle'&&battle?battle:home;}
+export function withSceneLayout(document,scene,layout){
+ const next=validateStage(layout),home=layoutForScene(document,'home');
+ return validateStage(scene==='battle'?{...home,battle:next}:{...next,battle:document.battle||structuredClone(home)});
+}

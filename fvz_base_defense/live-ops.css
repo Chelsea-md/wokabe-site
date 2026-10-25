@@ -10,3 +10,9 @@ fieldset{min-width:0;border:1px solid #ccd8c2;border-radius:12px;padding:12px;ma
 .preview-options{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:12px}.preview-options label{min-width:180px;margin:0}.preview-options .hint{flex:1;min-width:180px}
 
 dialog{max-width:480px;border:1px solid #cbd5c9;border-radius:16px;padding:26px;color:#233b34;box-shadow:0 20px 70px #10251f44}dialog::backdrop{background:#152b2466}dialog p{line-height:1.8}dialog .actions{justify-content:flex-end}
+.toolbar{flex-wrap:wrap}
+#preview-viewport{width:100%;height:clamp(280px,52vh,680px);overflow:auto;border:1px solid #cbd5c9;border-radius:12px;background:#dae2d6;overscroll-behavior:contain}
+#preview-viewport #preview{flex:none;max-width:none;border-radius:0}
+.zoom-toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:12px 0}
+.zoom-toolbar #editor-zoom{display:inline-block;width:140px;margin:0;padding:0;accent-color:#397a4b}
+.zoom-toolbar output{min-width:42px;font-variant-numeric:tabular-nums}

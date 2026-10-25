@@ -1,5 +1,5 @@
-import {layoutObstacles} from './stage-layout.js?v=camp-3';
-import {findRoute,bodyObstacles,stageObstacles} from './library/art-directions/cartoon-v5/navigation.js?v=production-49';
+import {layoutObstacles} from './stage-layout.js?v=scene-split-1';
+import {findRoute,bodyObstacles,stageObstacles} from './library/art-directions/cartoon-v5/navigation.js?v=unstuck-1';
 export const reviewTarget={x:600,y:265};
 // Representative samples, not an exhaustive simulation of every spawn or target.
 export function reviewRoutes(layout,kind='shambler'){
@@ -11,7 +11,7 @@ export function reviewRoutes(layout,kind='shambler'){
 export function installNavigationReview({getLayout,getScene,onBattle,onDecor}){
  const controls=document.createElement('div');controls.className='preview-options';
  controls.innerHTML='<label class="check"><input type="checkbox" id="review-routes">접근 경로 · 배치 영역 보기</label><label>경로 샘플<select id="review-kind"><option value="shambler">일반 좀비</option><option value="boss">보스</option></select></label><button type="button" id="camp-decor">Night Camp 낮은 장식 추가</button><span class="hint" id="review-summary">12개 출현 지점 → 기지 경로 샘플입니다. 실제 웨이브 검증은 별도로 필요합니다.</span>';
- document.querySelector('#preview').before(controls);
+ document.querySelector('#preview-viewport').before(controls);
  const canvas=document.createElement('canvas');canvas.width=1200;canvas.height=600;canvas.style.cssText='position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4';canvas.hidden=true;document.querySelector('#preview').append(canvas);
  const toggle=controls.querySelector('#review-routes'),kind=controls.querySelector('#review-kind'),summary=controls.querySelector('#review-summary');
  function render(){
