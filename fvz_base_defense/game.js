@@ -399,7 +399,7 @@ function updateTutorial(){
  const hand=tutorial.querySelector('img');locate(hand,reducedMotion()?from:{x:from.x+(to.x-from.x)*ease,y:from.y+(to.y-from.y)*ease});
  hand.style.opacity=reducedMotion()?'0':String(cycle<250?cycle/250:cycle>2250?Math.max(0,1-(cycle-2250)/350):1);
 }
-async function finishBoot(){await sharedArtReady;window.bootProgress?.complete();await window.entryIntroReady;const overlay=$('#boot-loading');document.body.classList.add('ready');overlay.classList.add('leaving');if(!reducedMotion())await new Promise(resolve=>setTimeout(resolve,260));overlay.hidden=true;last=performance.now();}
+async function finishBoot(){await sharedArtReady;window.bootProgress?.complete();await Promise.all([window.entryIntroReady,new Promise(resolve=>setTimeout(resolve,280))]);const overlay=$('#boot-loading');document.body.classList.add('ready');overlay.classList.add('leaving');if(!reducedMotion())await new Promise(resolve=>setTimeout(resolve,260));overlay.hidden=true;last=performance.now();}
 // Fixed simulation steps preserve combat while browser rendering is throttled.
 function advanceElapsed(seconds){let remaining=Math.max(0,seconds);while(remaining>1e-7){const dt=Math.min(1/30,remaining);tickVisuals(dt);tickSceneSplash(dt);if(!paused&&!sceneSplash){if(bossIntro){bossIntro.elapsed+=dt;if(bossIntro.elapsed>=introDuration)endBossIntro();}update(dt*(bossIntro?.12:1));}remaining-=dt;if(paused||(!sceneSplash&&scene!=='battle')||runResolved){if(!paused)time+=remaining;break;}}}
 function advanceFrame(now){if(now<=last)return;const elapsed=Math.max(0,(now-last)/1000);last=now;advanceElapsed(elapsed);}
