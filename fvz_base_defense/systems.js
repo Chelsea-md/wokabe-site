@@ -33,6 +33,21 @@ export function increaseStat(save, stat) {
 
 export function encounterScale(save){return 1+Math.floor((save.completedStages||0)/rules.chapters.length)*(rules.campaign?.repeatDifficultyIncrement||.18);}
 
+// Shared by the live game and Live Ops combat inspector (world-space units).
+export function enemyStats(save,wave,kind,archerRange=240){
+  const scale=encounterScale(save),boss=kind===3,ranged=kind===2||kind===4;
+  const hp=boss?chapterFor(save).bossHp:(40+Math.max(0,wave-1)*10)*(kind===1?2:kind===4?2.5:kind===2?.8:1);
+  return {hp:Math.round(hp*(chapterFor(save).hpFactor||1)*scale),
+    damage:(boss?40:ranged?(kind===4?16:10)+wave*2:10)*scale,
+    interval:ranged?(kind===4?2.3:1.8):boss?1.6:1.2,
+    range:ranged?(kind===4?108:archerRange):boss?100:28,
+    baseRange:ranged?(kind===4?108:archerRange):boss?120:62,
+    speed:((boss?18:kind===1?9:11)*1.5+wave*.6)*Math.min(1.4,scale),
+    armor:stageBeat(save)?.stage===18&&(kind===1||kind===4)?.32:0};
+}
+
+export function bigWaveBonus(base){return Math.min(14,Math.max(6,Math.ceil(base*.45)));}
+
 export function stageBeat(save) {
   const stage=(save.completedStages||0)+1;
   const beats=[
