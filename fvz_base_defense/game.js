@@ -29,7 +29,12 @@ void warmStyles(new URL('./menus-preview.css?v=loading-2',import.meta.url).href)
 const dialogStyles=document.createElement('link');dialogStyles.rel='stylesheet';dialogStyles.href=new URL('./game-dialogs.css?v=loading-2',import.meta.url).href;document.head.append(dialogStyles);
 const menuStyles=document.createElement('link');menuStyles.rel='stylesheet';menuStyles.href=new URL('./menus-preview.css?v=growth-1',import.meta.url).href;document.head.append(menuStyles);
 const markBoot=stage=>{window.fvzBootStage=stage;window.bootProgress?.stage(stage);};markBoot('ui');
-const $=s=>document.querySelector(s),gameParams=new URLSearchParams(location.search),stageEditor=gameParams.get('editor')==='stage'&&window.parent!==window,menuDemo=gameParams.get('demo')==='menus',uiSkins=await loadUiSkins();createLoadingWallpaper(uiSkins);markBoot('popup');const popupArt=await loadPopupArt();const sprout=$('.pause-sprout'),popupSprout=document.createElement('img');popupSprout.className='pause-sprout';popupSprout.src=popupArt.sprout;popupSprout.alt='';sprout.replaceWith(popupSprout);for(const [id,key,label]of [['resume-battle','resume','Resume'],['pause-to-home','home','Home']]){const b=$('#'+id);b.classList.add('asset-button');b.innerHTML='<span class="sr-only">'+label+'</span>';b.setAttribute('aria-label',label);b.style.setProperty('--button-art',`url("${popupArt[key]}")`);}markBoot('rigs');const rigs=await loadRigs({includeConcepts:stageEditor});
+// These loaders are independent. Start all three before awaiting UI setup,
+// instead of serializing their network waterfalls. Catch immediately so an
+// early failure is still handled by the existing boot retry screen.
+const bootArtTasks={popup:loadPopupArt(),rigs:loadRigs({includeConcepts:new URLSearchParams(location.search).get('editor')==='stage'&&window.parent!==window})};
+for(const task of Object.values(bootArtTasks))task.catch(()=>{});
+const $=s=>document.querySelector(s),gameParams=new URLSearchParams(location.search),stageEditor=gameParams.get('editor')==='stage'&&window.parent!==window,menuDemo=gameParams.get('demo')==='menus',uiSkins=await loadUiSkins();createLoadingWallpaper(uiSkins);markBoot('popup');const popupArt=await bootArtTasks.popup;const sprout=$('.pause-sprout'),popupSprout=document.createElement('img');popupSprout.className='pause-sprout';popupSprout.src=popupArt.sprout;popupSprout.alt='';sprout.replaceWith(popupSprout);for(const [id,key,label]of [['resume-battle','resume','Resume'],['pause-to-home','home','Home']]){const b=$('#'+id);b.classList.add('asset-button');b.innerHTML='<span class="sr-only">'+label+'</span>';b.setAttribute('aria-label',label);b.style.setProperty('--button-art',`url("${popupArt[key]}")`);}markBoot('rigs');const rigs=await bootArtTasks.rigs;
 let editorMotion=null,editorSizePreview=null,sizeConfig=defaultSizes();
 let themeBackgrounds={};let stageOverrides={},liveVersions={};try{stageOverrides=(await fetch(new URL('./data/stage-layouts.json',import.meta.url)).then(r=>r.json())).stages||{};}catch{}
 try{const release=await readLiveRelease();themeBackgrounds=release.settings.backgrounds||{};stageOverrides={...stageOverrides,...release.stages};liveVersions=release.versions;if(release.settings.sizes)sizeConfig=validateSizes(release.settings.sizes);}catch{}
@@ -68,9 +73,7 @@ let baseTier=0,baseMaxHp=saved.health,baseHp=saved.health,baseHitUntil=0,wave=1,
 const baseHeights=[53,55,60,70,100],baseBounds=[[29,387,218,251],[274,346,315,299],[611,284,399,372],[1036,248,566,410],[1630,37,764,662]];
 const loadImage=src=>loadGameImage(src,document.baseURI);
 markBoot('field');const [baseAtlas,combatVfx,homeField,sproutPattern]=await Promise.all(['garden-base','combat-vfx','home-field','plants-sprout-transparent'].map(n=>loadImage('../../../assets/cartoon-v5-'+n+'.png')));
-const dragCardSkin=await loadImage(uiSkins.card),dragSunIcon=await loadImage(uiSkins.sun);
-const moonField=await loadImage('../../../assets/cartoon-v5-moon-field.png');
-const wallpaperTile=await loadImage('../../../assets/cartoon-v5-wallpaper-tile.png');
+const [dragCardSkin,dragSunIcon,moonField,wallpaperTile]=await Promise.all([uiSkins.card,uiSkins.sun,'../../../assets/cartoon-v5-moon-field.png','../../../assets/cartoon-v5-wallpaper-tile.png'].map(loadImage));
 markBoot('assets');const manifest=await fetch('assets.json').then(r=>r.json()),art={};
 await Promise.all(manifest.filter(row=>!rigs[row.id]).map(async row=>art[row.id]={...row,image:await loadImage(row.file)}));
 // Sunflower uses its approved neutral sprite until a dedicated equipped sheet exists.
