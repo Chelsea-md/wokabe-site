@@ -11,3 +11,7 @@
 @keyframes cup-right{to{transform:translate(5px,6px) rotate(14deg)}}
 @media(prefers-reduced-motion:reduce){.broken-cup i{animation-duration:0s}}
 .reduce-game-motion .broken-cup i{animation-duration:0s}
+/* One stable battle control; menus retain their settings gear. */
+body.production[data-ui-theme=bold] .game-frame.battle #settings{display:none!important}
+body.production[data-ui-theme=bold] .game-frame.battle #battle-pause{left:2.5%;right:auto;top:4%;width:5.6%;height:11%;border-radius:24%;padding:.5cqw}
+body.production[data-ui-theme=bold] .game-frame.battle #battle-pause svg{width:100%;height:100%}
