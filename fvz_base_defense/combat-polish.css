@@ -1,0 +1,12 @@
+#production-dialog .defeat-panel{background:linear-gradient(#eee9db,#babdb5);border-color:#58615e;box-shadow:0 8px 0 #24312d}
+#production-dialog .defeat-panel>span{filter:grayscale(1)}
+#production-dialog .defeat-panel h2{display:flex;align-items:center;justify-content:center;gap:14px;color:#394441}
+#production-dialog .defeat-panel button{filter:grayscale(.85);background:linear-gradient(#9daea0,#5c7266)}
+#production-dialog .defeat-panel .broken-cup{position:relative;display:block;width:62px;height:64px;filter:grayscale(1);font-size:52px}
+.broken-cup i{position:absolute;inset:0;font-style:normal;clip-path:polygon(0 0,53% 0,44% 35%,57% 52%,46% 73%,52% 100%,0 100%);animation:cup-left .7s ease-out both}
+.broken-cup svg{display:block;width:100%;height:100%}
+.broken-cup i+i{clip-path:polygon(53% 0,100% 0,100% 100%,52% 100%,46% 73%,57% 52%,44% 35%);animation-name:cup-right}
+@keyframes cup-left{to{transform:translate(-5px,3px) rotate(-14deg)}}
+@keyframes cup-right{to{transform:translate(5px,6px) rotate(14deg)}}
+@media(prefers-reduced-motion:reduce){.broken-cup i{animation-duration:0s}}
+.reduce-game-motion .broken-cup i{animation-duration:0s}

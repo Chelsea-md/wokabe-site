@@ -49,7 +49,7 @@ export function createGameDialogs({frame,skins,portrait,grownPortrait=portrait,o
  function confirm({title='CONFIRM PURCHASE',message='',image='',name='',cost=null,balance=null,confirmLabel='CONFIRM',danger=false}){
   return new Promise(resolve=>{
    const settle=value=>{hide();resolve(value);};
-   shell(title,`${image?`<img class="garden-confirm-art" src="${esc(image)}" alt="">`:''}${name?`<h3>${esc(name)}</h3>`:''}<p class="garden-confirm-message">${esc(message)}</p>${cost!==null?`<div class="garden-cost">${img('coin')}<b>${cost.toLocaleString()}</b></div><small class="garden-balance">Balance: ${balance.toLocaleString()} → ${(balance-cost).toLocaleString()}</small>`:''}`,`${button('cancel','CANCEL','neutral')}${button('confirm',cost!==null?img('coin')+esc(confirmLabel)+' · '+cost:esc(confirmLabel),danger?'danger':'gold')}`,{onCancel:()=>settle(false)});
+   shell(title,`${image?`<img class="garden-confirm-art" src="${esc(image)}" alt="">`:''}${name?`<h3>${esc(name)}</h3>`:''}<p class="garden-confirm-message">${esc(message)}</p>${cost!==null?`<div class="garden-cost">${img('coin')}<b>${cost.toLocaleString()}</b></div>`:''}`,`${button('cancel','CANCEL','neutral')}${button('confirm',cost!==null?img('coin')+esc(confirmLabel)+' · '+cost:esc(confirmLabel),danger?'danger':'gold')}`,{onCancel:()=>settle(false)});
    if(danger){
     const b=getBattle(),restart=confirmLabel==='RESTART';
     overlay.querySelector('.garden-dialog').classList.add('garden-battle-confirm');
