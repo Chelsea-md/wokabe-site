@@ -12,5 +12,5 @@ html.reduce-game-motion .entry-logo{animation:none}
 
 .boot-progress{position:absolute;z-index:4;left:7%;right:7%;bottom:max(12px,env(safe-area-inset-bottom));display:grid;gap:6px;pointer-events:none;color:#fff6d9;text-align:center;font:700 clamp(11px,1.3vw,17px) system-ui;text-shadow:0 2px 3px #102c20}.boot-progress [role=progressbar]{height:9px;border:2px solid #243c23;border-radius:20px;background:#152e27dd;box-shadow:0 1px 0 #ffffff40;overflow:hidden}.boot-progress i{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(#f6e788,#cfa038);transition:width .24s ease-out}@media(prefers-reduced-motion:reduce){.boot-progress i{transition:none}}
 
-.entry-illustration{width:min(100%,calc((var(--play-height,100dvh) - 32px)*1.7787));top:calc(50% - 16px)}
 .boot-progress{left:0;right:0;bottom:0;gap:3px;padding-top:4px;background:#142e26;font-size:12px}.boot-progress [role=progressbar]{height:5px;border:0;border-radius:0}.boot-progress i{border-radius:0}
+.entry-illustration>.boot-progress{background:linear-gradient(transparent,#142e26cc);padding-top:5px;font-size:clamp(10px,1.15vw,14px);line-height:1.2;gap:2px}
