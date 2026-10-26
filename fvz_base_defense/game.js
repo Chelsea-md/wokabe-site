@@ -9,7 +9,7 @@ import {validateMotions,motionCharacters,motionActions,allyMotionState} from './
 import {terrainCamera,advanceTerrainCamera} from './scene-camera.js?v=production-49';
 import {createWorldArt,worldThemes,drawEnemyLayers} from './world-themes.js?v=camp-2';
 import {upgradeValue} from './ui-markup.js?v=production-49';
-import {paintSand,paintMapProps,paintCampGround} from './map-scenery.js?v=camp-3';
+import {paintSand,paintMapProps,paintCampGround} from './map-scenery.js?v=shadow-layer-1';
 import {defaultStage,validateStage,layoutForScene,resolveBackground,propPieces,layoutObstacles,sceneryCamera} from './stage-layout.js?v=theme-master-1';
 import {observeWorldResolution} from './canvas-resolution.js';
 import {createMenuPreview} from './menus-preview.js?v=growth-1';
