@@ -119,7 +119,7 @@ const baseHeights=[53,55,60,70,100],baseBounds=[[29,387,218,251],[274,346,315,29
 const loadImage=src=>loadGameImage(src,document.baseURI);
 markBoot('field');const [baseAtlas,combatVfx,homeField,sproutPattern]=await Promise.all(['garden-base','combat-vfx','home-field','plants-sprout-transparent'].map(n=>loadImage('../../../assets/cartoon-v5-'+n+'.png')));
 const [dragCardSkin,dragSunIcon,moonField,wallpaperTile]=await Promise.all([uiSkins.card,uiSkins.sun,'../../../assets/cartoon-v5-moon-field.png','../../../assets/cartoon-v5-wallpaper-tile.png'].map(loadImage));
-const frostShell=new Image();frostShell.src=new URL('./assets/frost-shell-v1.png',import.meta.url).href;
+const frostSpikes=new Image();frostSpikes.src=new URL('./assets/frost-spikes-v2.png',import.meta.url).href;
 markBoot('assets');const manifest=await fetch('assets.json').then(r=>r.json()),art={};
 await Promise.all(manifest.filter(row=>!rigs[row.id]).map(async row=>art[row.id]={...row,image:await loadImage(row.file)}));
 // Sunflower uses its approved neutral sprite until a dedicated equipped sheet exists.
@@ -291,7 +291,7 @@ function drawDragCard(d,x,y){if(!d.fromCard||d.cardAlpha<.01)return;const w=d.ca
 function drawEnemyStrike(e){const t=1-e.life/e.max,reach=Math.min(1,t*4),x=e.x+(e.tx-e.x)*reach,y=e.y+(e.ty-e.y)*reach,angle=Math.atan2(e.ty-e.y,e.tx-e.x);g.save();g.globalAlpha=(1-t)*.85;g.strokeStyle='#f0d1ff';g.lineWidth=e.boss?10:3;g.lineCap='round';if(e.boss){g.strokeStyle='#ffe6a0';g.beginPath();g.arc(e.tx,e.ty,30+35*t,-2.8+t*2,-.3+t*2);g.stroke();}g.beginPath();g.moveTo(e.x,e.y);g.lineTo(x,y);g.stroke();g.translate(x,y);g.rotate(angle);g.fillStyle='#fff2d0';g.beginPath();g.moveTo(7,0);g.lineTo(-4,-4);g.lineTo(-4,4);g.closePath();g.fill();g.restore();}
 function drawStatusOnEnemy(e,size){
  const icy=(e.slowTime||0)>0,poisoned=(e.poisonTime||0)>0,shocked=(e.shockTime||0)>0;
- if(icy){g.save();g.fillStyle='#5bcee240';g.beginPath();g.ellipse(e.x,e.y+21,Math.max(25,size*.37),7,0,0,Math.PI*2);g.fill();g.strokeStyle='#d8faff8c';g.lineWidth=1.5;g.beginPath();g.ellipse(e.x,e.y+21,Math.max(25,size*.37)+Math.sin(time*6)*2,8,0,0,Math.PI*2);g.stroke();g.globalAlpha=.56;if(frostShell.complete&&frostShell.naturalWidth)g.drawImage(frostShell,e.x-size*.54,e.y-size*.94,size*1.08,size*1.08);g.restore();}
+ if(icy){g.save();g.fillStyle='#5bcee240';g.beginPath();g.ellipse(e.x,e.y+21,Math.max(25,size*.37),7,0,0,Math.PI*2);g.fill();g.strokeStyle='#d8faff8c';g.lineWidth=1.5;g.beginPath();g.ellipse(e.x,e.y+21,Math.max(25,size*.37)+Math.sin(time*6)*2,8,0,Math.PI*2);g.stroke();g.globalAlpha=.68;if(frostSpikes.complete&&frostSpikes.naturalWidth){const iceSize=size*1.28;g.drawImage(frostSpikes,e.x-iceSize/2,e.y+25-iceSize,iceSize,iceSize);}g.restore();}
  if(poisoned){g.save();g.globalAlpha=reducedMotion()?.32:.22+.19*(.5+.5*Math.sin(time*12+e.phase));g.fillStyle='#a047e7';g.beginPath();g.ellipse(e.x,e.y-size*.34,size*.35,size*.48,0,0,Math.PI*2);g.fill();g.restore();}
  if(shocked){g.save();g.strokeStyle='#ff6662';g.globalAlpha=reducedMotion()?.6:.45+.4*Math.abs(Math.sin(time*22));g.lineWidth=2.5;for(let i=0;i<3;i++){const x=e.x-size*.35+i*size*.31,y=e.y-size*.7+(i%2)*6;g.beginPath();g.moveTo(x,y);g.lineTo(x+8,y-7);g.lineTo(x+3,y+1);g.lineTo(x+10,y+8);g.stroke();}g.restore();}
 }
