@@ -24,7 +24,7 @@ $('save-draft').onclick=()=>{try{current();const valid={};for(const [key,value]o
 $('reset').onclick=()=>{drafts[activeKey]=defaults();render();queueDuel();status('선택한 스테이지·웨이브를 기본값으로 복원했습니다. 적용 또는 다시 시작을 눌러주세요.');};
 $('apply').onclick=()=>{try{const tuning=current();if(!running)throw Error('먼저 전투를 시작해주세요.');if(running.stage!==tuning.stage||running.wave!==tuning.wave)throw Error('실행 중인 스테이지·웨이브와 다릅니다. 다시 시작해주세요.');$('battle').contentWindow.postMessage({type:'fvz-combat-tuning',requestId:++requestId,tuning},location.origin);status('전투에 적용 중…');}catch(e){status(e.message);}};
 window.addEventListener('message',e=>{if(e.origin!==location.origin||e.source!==$('battle').contentWindow)return;if(e.data?.type==='fvz-combat-ready'){running={stage:e.data.stage,wave:e.data.wave};status('Stage '+running.stage+' · Wave '+running.wave+' 테스트 준비 완료 · 편집한 몬스터 수치 적용됨');}if(e.data?.type==='fvz-combat-tuning-result'&&e.data.requestId===requestId)status(e.data.error||'현재 전투에 적용 완료 · 생존 몬스터 '+e.data.count+'마리와 이후 등장 몬스터에 반영했습니다.');});
-$('run').onclick=()=>{try{stopDuel();const tuning=current(),q=new URLSearchParams({demo:'menus','combat-sim':'1','sim-stage':tuning.stage,'sim-wave':tuning.wave,'sim-tuning':JSON.stringify(tuning),'sim-health':number('health',20,10000,100),'sim-sun':number('sun',0,999,30),v:'combat-88',run:Date.now()});running=null;$('battle').hidden=false;$('battle').src='./?'+q;status('편집한 값으로 전투를 불러오는 중…');}catch(e){status(e.message);}};
+$('run').onclick=()=>{try{stopDuel();const tuning=current(),q=new URLSearchParams({demo:'menus','combat-sim':'1','sim-stage':tuning.stage,'sim-wave':tuning.wave,'sim-tuning':JSON.stringify(tuning),'sim-health':number('health',20,10000,100),'sim-sun':number('sun',0,999,30),v:'combat-89',run:Date.now()});running=null;$('battle').hidden=false;$('battle').src='./?'+q;status('편집한 값으로 전투를 불러오는 중…');}catch(e){status(e.message);}};
 let selectedMonster=null,duelTimer=null,duelKey='',duelReady=false;
 const slots=['위','왼쪽 위','오른쪽 위','왼쪽','오른쪽','왼쪽 아래','오른쪽 아래','아래'];
 $('plant-slots').innerHTML=slots.map((name,i)=>'<label>'+name+'<select aria-label="'+name+' Plants" data-slot="'+i+'"><option value="-1">비워두기</option>'+rules.troops.map((p,index)=>'<option value="'+index+'">'+p.name+'</option>').join('')+'</select></label>').join('');
@@ -46,7 +46,7 @@ function updateDuel(){
   $('duel-status').textContent='변경값을 적용하며 적을 교체합니다…';
   if(duelKey===key){if(duelReady)$('duel-frame').contentWindow.postMessage({type:'fvz-duel-config',config},location.origin);return;}
   duelReady=false;duelKey=key;
-  const q=new URLSearchParams({demo:'menus','combat-sim':'1',duel:'1','sim-stage':config.tuning.stage,'sim-wave':config.tuning.wave,'sim-health':config.health,v:'combat-88'});
+  const q=new URLSearchParams({demo:'menus','combat-sim':'1',duel:'1','sim-stage':config.tuning.stage,'sim-wave':config.tuning.wave,'sim-health':config.health,v:'combat-89'});
   $('duel-frame').src='./?'+q;
  }catch(error){$('duel-status').textContent=error.message;}
 }
